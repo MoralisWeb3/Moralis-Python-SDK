@@ -1,0 +1,22 @@
+[
+  {
+    "swagger": "https://storage.googleapis.com/testing-moralis/evmapi-swagger.json",
+    "name": "evm_api",
+    "security_key": "ApiKeyAuth"
+  },
+  {
+    "swagger": "https://storage.googleapis.com/testing-moralis/solapi-swagger.json",
+    "name": "sol_api",
+    "security_key": "ApiKeyAuth"
+  },
+  {
+    "swagger": "https://storage.googleapis.com/testing-moralis/auth-swagger.json",
+    "name": "auth",
+    "security_key": "X-API-KEY"
+  },
+  {
+    "swagger": "https://storage.googleapis.com/testing-moralis/streams-swagger.json",
+    "name": "streams",
+    "security_key": "x-api-key"
+  }
+]

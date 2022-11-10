@@ -1,0 +1,23 @@
+
+from setuptools import setup, find_packages
+
+REQUIRES = [
+    "certifi >= 14.5.14",
+    "frozendict ~= 2.3.4",
+    "python-dateutil ~= 2.7.0",
+    "setuptools >= 21.0.0",
+    "typing_extensions ~= 4.3.0",
+    "urllib3 ~= 1.26.7",
+]
+
+setup(
+    name="moralis",
+    version="0.0.1",
+    description="The official Moralis Python SDK",
+    keywords=["Moralis", "Moralis SDK", "Moralis Python SDK", "Web3"],
+    python_requires=">=3.7",
+    install_requires=REQUIRES,
+    package_dir={'': 'src'},
+    packages=find_packages(),
+    long_description=open('README.md').read(),
+)
