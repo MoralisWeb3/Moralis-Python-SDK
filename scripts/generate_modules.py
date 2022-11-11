@@ -7,16 +7,18 @@ from distutils.dir_util import copy_tree
 import json
 import importlib
 import shutil
+from inspect import signature, getmembers
+
+nl = '\n'
 
 root_path = Path(__file__).parent.parent
 moralis_module_path = (root_path / 'src/moralis')
 
 
-def make_module_base_code(api_name, tag, api_client_name, security_key):
-    return f'''
+def make_module_api_instance(api_name, tag, api_client_name, security_key):
+    return f'''\
 import openapi_{api_name}
 from openapi_{api_name}.apis.tags import {tag}_api
-import json
 from ..utilities import get_common_headers
 
 
@@ -35,12 +37,48 @@ def get_api_instance(api_key):
 '''
 
 
-def make_operation_snippet(function_name):
-    return f'''
-def {function_name}(api_key, **args):
+def make_operation_snippet(function_name, fn_data):
+    has_query_params = fn_data["has_query_params"]
+    has_path_params = fn_data["has_path_params"]
+    has_body = fn_data["has_body"]
+    fn_module = fn_data["fn_module"]
+    has_any_params = has_query_params or has_path_params
+
+    imports = []
+    params = []
+    if (has_query_params):
+        imports.append("RequestQueryParams")
+        params.append("RequestQueryParams")
+    if (has_path_params):
+        imports.append("RequestPathParams")
+        params.append("RequestPathParams")
+    if (has_body):
+        imports.append("SchemaForRequestBodyApplicationJson")
+
+    import_statement = f'from {fn_module} import {", ".join(imports)}' if len(
+        imports) > 0 else None
+    params_union = f'typing.Union[{", ".join(params)}]' if len(
+        params) > 1 else ", ".join(params)
+
+    return f'''\
+import json
+from .api_instance import get_api_instance
+{f'import typing{nl}' if has_any_params and len(imports) > 1  else ''}\
+{f'{import_statement}{nl}' if import_statement else ''}\
+
+
+def {function_name}(api_key: str{f', params: {params_union}' if has_any_params else ''}{', body: SchemaForRequestBodyApplicationJson' if has_body else ''}):
     api_instance = get_api_instance(api_key)
+{f'    query_params = {{k: v for k, v in params.items() if k in RequestQueryParams.__annotations__.keys()}}{nl}' if has_query_params else ''}\
+{f'    path_params = {{k: v for k, v in params.items() if k in RequestPathParams.__annotations__.keys()}}{nl}' if has_path_params else ''}\
+
     api_response = api_instance.{function_name}(
-        **args, accept_content_types='application/json; charset=utf-8', skip_deserialization=True)
+{f'        body=body,{nl}' if has_body else ''}\
+{f'        query_params=query_params,{nl}' if has_query_params else ''}\
+{f'        path_params=path_params,{nl}' if has_path_params else ''}\
+        accept_content_types='application/json; charset=utf-8',
+        skip_deserialization=True
+    )
 
     return json.loads(api_response.response.data)
 
@@ -48,7 +86,7 @@ def {function_name}(api_key, **args):
 
 
 def make_utililities():
-    return '''
+    return '''\
 import pkg_resources
 
 
@@ -59,7 +97,7 @@ def get_common_headers():
         "x-moralis-build-target": 'python',
         "x-moralis-build-target": pkg_resources.get_distribution('moralis').version,
     }
- 
+
 '''
 
 
@@ -68,6 +106,44 @@ def api_operation_predicate(o):
         return True
     else:
         return False
+
+
+def get_function_data(fn):
+    function_reference = fn[1]
+    fn_params = signature(function_reference).parameters
+    fn_module = function_reference.__module__
+    imports = []
+    required_query_params = None
+    optional_query_params = None
+    required_path_params = None
+    optional_path_params = None
+
+    has_body = 'body' in fn_params.keys()
+    has_query_params = 'query_params' in fn_params.keys()
+    has_path_params = 'path_params' in fn_params.keys()
+
+    if has_query_params:
+        query_params_sig = fn_params["query_params"].annotation
+        required_query_params = query_params_sig.__required_keys__
+        optional_query_params = query_params_sig.__optional_keys__
+        imports.append(query_params_sig.__name__)
+    if has_path_params:
+        path_params_sig = fn_params["path_params"].annotation
+        required_path_params = path_params_sig.__required_keys__
+        optional_path_params = path_params_sig.__optional_keys__
+        imports.append(path_params_sig.__name__)
+
+    return {
+        "imports": imports,
+        "has_body": has_body,
+        "has_query_params": has_query_params,
+        "has_path_params": has_path_params,
+        "required_query_params": required_query_params,
+        "optional_query_params": optional_query_params,
+        "required_path_params": required_path_params,
+        "optional_path_params": optional_path_params,
+        "fn_module": fn_module
+    }
 
 
 def get_function_names(api_name, tag, api_client_name):
@@ -89,14 +165,21 @@ def make_module(api_name, tag, api_client_name, security_key):
 
     functions = get_function_names(api_name, tag, api_client_name)
 
-    with open(module_path / '__init__.py', 'w') as f:
+    with open(module_path / f'{tag}.py', 'w') as f:
+        for fn in functions:
+            f.write(f'from .{fn[0]} import {fn[0]}\n')
+
+    with open(module_path / f'api_instance.py', 'w') as f:
+        f.write(make_module_api_instance(
+            api_name, tag, api_client_name, security_key))
+
+    with open(module_path / f'__init__.py', 'w') as f:
         f.write(f'from .{tag} import *\n')
 
-    with open(module_path / f'{tag}.py', 'w') as f:
-        f.write(make_module_base_code(
-            api_name, tag, api_client_name, security_key))
-        for function_name in functions:
-            f.write(make_operation_snippet(function_name[0]))
+    for fn in functions:
+        fn_data = get_function_data(fn)
+        with open(module_path / f'{fn[0]}.py', 'w') as f:
+            f.write(make_operation_snippet(fn[0], fn_data))
 
     print(f"✅ Generated modules for {api_name} [{tag}]")
 
