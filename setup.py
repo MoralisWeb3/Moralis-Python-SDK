@@ -12,12 +12,14 @@ REQUIRES = [
 
 setup(
     name="moralis",
-    version="0.0.1",
+    version="0.1.3",
     description="The official Moralis Python SDK",
-    keywords=["Moralis", "Moralis SDK", "Moralis Python SDK", "Web3"],
+    keywords=["Moralis", "Moralis SDK", "Moralis Python SDK", "Web3", "Crypto", "Ethereum", "Avalanche",
+              "Blockchain", "Contracts", "Eth", "Evm", "Fantom", "Nft", "Dapps", "Binance", "Solana"],
     python_requires=">=3.7",
     install_requires=REQUIRES,
     package_dir={'': 'src'},
-    packages=find_packages(),
+    packages=find_packages('src'),
     long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
 )

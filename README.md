@@ -1,8 +1,8 @@
 <div align="center">
     <a align="center" href="https://moralis.io" target="_blank">
-      <img src="./assets/moralis-logo.svg" alt="Moralis JS SDK" height=200/>
+      <img src="https://raw.githubusercontent.com/MoralisWeb3/Moralis-Python-SDK/main/assets/moralis-logo.svg" alt="Moralis JS SDK" height=200/>
     </a>
-    <h1 align="center">Moralis SDK (Python)</h1>
+    <h1 align="center">Moralis Python SDK</h1>
     <a href="https://discord.gg/moralis" target="_blank">
       <img alt="Join the Moralis DAO on Discord" src="https://img.shields.io/discord/819584798443569182?color=7289DA&label=Discord&logo=discord&logoColor=ffffff">
     </a>
@@ -12,10 +12,8 @@
     <a href="https://forum.moralis.io" target="_blank">
       <img alt="Discourse posts" src="https://img.shields.io/discourse/posts?color=B7E803&label=Forum&logo=discourse&server=https%3A%2F%2Fforum.moralis.io">
     </a><br/>
-    <img alt="npm" src="https://img.shields.io/npm/v/moralis?label=version">
-    <img src="https://img.shields.io/github/last-commit/MoralisWeb3/Moralis-JS-SDK">
-    <img src="https://img.shields.io/bundlephobia/minzip/moralis">
-    <img src="https://img.shields.io/npm/types/moralis">
+    <img alt="npm" src="https://img.shields.io/pypi/v/moralis?label=version">
+    <img src="https://img.shields.io/github/last-commit/MoralisWeb3/Moralis-Python-SDK">
   <p>
   </p>
   <p>
