@@ -69,12 +69,12 @@ print(result)
 
 <!-- End: generated:example-evm_api -->
 
-# Table of Contents
+# 🧭 Table of Contents
 
-- [🚀 Quick startttt](#-quick-startttt)
+- [🚀 Quick start](#-quick-start)
   - [1. Install Moralis](#1-install-moralis)
   - [2. Call your methods](#2-call-your-methods)
-- [Table of Contents](#table-of-contents)
+- [🧭 Table of Contents](#-table-of-contents)
 - [⭐️ Star us](#️-star-us)
 - [🤝 Need help](#-need-help)
 - [👀 Examples](#-examples)
@@ -83,6 +83,7 @@ print(result)
   - [sol_api](#sol_api)
   - [auth](#auth)
   - [streams](#streams)
+- [🧙‍♂️ Community](#️-community)
 
 # ⭐️ Star us
 
@@ -232,3 +233,8 @@ For more info see [the live docs](https://moralisweb3.github.io/Moralis-Python-S
 - [stats](./docs/streams/stats.md)
 
 <!-- End: generated:references -->
+
+# 🧙‍♂️ Community
+
+- [Discord](https://discord.gg/moralis)
+- [Forum](https://forum.moralis.io)
