@@ -44,42 +44,90 @@ pip install moralis
 
 ## 2. Call your methods
 
+**_Example getting native balance of an address via the EVM balance API_**
+
 ```python
-from moralis import evm_api, auth
+from moralis import evm_api
 
 api_key = "YOUR_API_KEY"
-
-path_params = {
-  'address': '0xd8da6bf26964af9d7eed9e03e53415d37aa96045'
+params = {
+    "address": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e",
+    "chain": "eth",
+    "to_block": 1000000,
 }
 
 result = evm_api.balance.get_native_balance(
-  api_key=api_key,
-  path_params=path_params
+    api_key=api_key,
+    params=params,
+)
+
+print(result)
+
+```
+
+**_Example getting native balance of an address via the SOL account API_**
+
+```python
+from moralis import sol_api
+
+api_key = "YOUR_API_KEY"
+params = {
+    "network": "mainnet",
+    "address": "EgxVyTgh2Msg781wt9EsqYx4fW8wSvfFAHGLaJQjghiL",
+}
+
+result = sol_api.account.balance(
+    api_key=api_key,
+    params=params,
+)
+
+print(result)
+
+```
+
+**_Example getting authentication message via the Auth API_**
+
+```python
+from moralis import auth
+
+api_key = "YOUR_API_KEY"
+body = {
+    "domain": "defi.finance",
+    "chainId": "1",
+    "address": "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B",
+    "statement": "Please confirm",
+    "uri": "https://defi.finance/",
+    "expirationTime": "2020-01-01T00:00:00.000Z",
+    "notBefore": "2020-01-01T00:00:00.000Z",
+    "resources": ['https://docs.moralis.io/'],
+    "timeout": 15,
+}
+
+result = auth.challenge.request_challenge_evm(
+    api_key=api_key,
+    body=body,
 )
 
 print(result)
 ```
 
+**_Example getting stream via the Streams API_**
+
 ```python
-from moralis import  auth
+from moralis import streams
 
 api_key = "YOUR_API_KEY"
-
-body = {
-  "timeout": 15,
-  "domain": "moralis.io",
-  "uri": "https://moralis.io",
-  "chainId": "1",
-  "address": "0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+params = {
+    "id": "12345",
 }
 
-result = auth.challenge.request_challenge_evm(
-  api_key=api_key,
-  body=body
+result = streams.evm.get_stream(
+    api_key=api_key,
+    params=params,
 )
 
 print(result)
+
 ```
 
 # 📚 References
@@ -115,8 +163,6 @@ print(result)
 - [history](/docs/streams/history.md)
 - [evm](/docs/streams/evm.md)
 - [stats](/docs/streams/stats.md)
-
-
 
 <!-- End: generated:references -->
 
