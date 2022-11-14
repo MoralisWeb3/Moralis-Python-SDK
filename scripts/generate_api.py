@@ -2,7 +2,6 @@
 
 import os
 from pathlib import Path
-from distutils.dir_util import copy_tree
 import shutil
 import json
 import urllib3
@@ -78,20 +77,10 @@ def makeapi(swagger_url, api_name):
     print(f"⏳ Finished api generation for {api_name}")
 
 
-# Remove temp files
-def remove_temp():
-    print("⏳ Removing temp folder...")
-    if temp_path.exists() and temp_path.is_dir():
-        shutil.rmtree(temp_path)
-    print("✅ Removing temp folder done")
-
-
-def generate_api(debug=False):
+def generate_api():
     print("⏳ Generating all api clients...")
     make_temp()
     apis = json.load(open(root_path / 'api-config.json'))
     for api in apis:
         makeapi(api["swagger"], api["name"])
-    if not debug:
-        remove_temp()
     print('🏁 Finished generating all api clients\n')
