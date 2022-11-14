@@ -26,6 +26,7 @@ result = evm_api.block.get_block(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -60,6 +61,7 @@ result = evm_api.block.get_date_to_block(
 )
 
 print(result)
+
 ```
 
 ### Parameters

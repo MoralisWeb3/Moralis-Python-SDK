@@ -33,6 +33,7 @@ result = auth.challenge.request_challenge_solana(
 )
 
 print(result)
+
 ```
 
 ### Body
@@ -71,6 +72,7 @@ result = auth.challenge.verify_challenge_evm(
 )
 
 print(result)
+
 ```
 
 ### Body
@@ -114,6 +116,7 @@ result = auth.challenge.verify_challenge_solana(
 )
 
 print(result)
+
 ```
 
 ### Body
@@ -164,6 +167,7 @@ result = auth.challenge.request_challenge_evm(
 )
 
 print(result)
+
 ```
 
 ### Body

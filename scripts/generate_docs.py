@@ -4,12 +4,17 @@ import os
 import json
 import re
 from operation_params import get_required_for_param, get_param_details, get_type_for_body, resolve_ref_to_type, get_description_for_param
+from operations_generation_utils import generate_operation_example
 
 root_path = Path(__file__).parent.parent
 moralis_module_path = Path(__file__).parent.parent / 'src/moralis'
+docs_path = root_path / 'docs'
+snippet_path = docs_path / 'code_snippets.json'
 
 nl = '\n'
 quote = '"'
+
+code_snippets = {}
 
 
 def camel_to_snake(string):
@@ -20,68 +25,20 @@ def camel_to_snake(string):
     return ''.join(string.lower())
 
 
-def generate_operation_params_example_item(param, swagger):
-    type, example, default = get_param_details(param["schema"], swagger)
-    name = param["name"]
-    required = get_required_for_param(param)
+def register_snippet(module_name, group_name, operation, snippet):
+    if not module_name in code_snippets:
+        code_snippets[module_name] = {}
+    if not group_name in code_snippets[module_name]:
+        code_snippets[module_name][group_name] = {}
 
-    return f'    {quote}{name}{quote}: {example if example != "" else quote+quote}, {" # Required" if required == "Y" else ""}{nl}'
+    code_snippets[module_name][group_name][operation] = snippet
 
-
-def generate_operation_body_example_item(data, swagger):
-    name, schema = data
-    type, example, default = get_param_details(schema, swagger)
-    required = '' if 'nullable' in data and data['nullable'] == True else 'Yes'
-
-    return f'    {quote}{name}{quote}: {example if example != "" else quote+quote}, {" # Required" if required == "Y" else ""}{nl}'
+    print("Registered snippet for", module_name, group_name, operation)
 
 
-def generate_params_example(swagger_data, swagger):
-    if not "parameters" in swagger_data:
-        return ""
-
-    params = sorted(
-        list(swagger_data["parameters"]), key=lambda h: get_required_for_param(h), reverse=True)
-
-    return f'''\
-{{
-{''.join(
-    (map(lambda param: generate_operation_params_example_item(param, swagger), params)))}}}\
-'''
-
-
-def generate_body_example(swagger_data, swagger):
-    # TODO: resolve examples of body params better
-    if not "requestBody" in swagger_data:
-        return ""
-
-    # Body is Array of objects
-    schema = swagger_data["requestBody"]["content"]["application/json"]["schema"]
-    if 'type' in schema and schema['type'] == 'array' and '$ref' in schema['items']:
-        resolved_ref_type = resolve_ref_to_type(
-            schema['items'], swagger)
-
-        # TODO: add check if it has properties
-        params = dict.items(resolved_ref_type["properties"])
-        return f'''\
-[{{
-{''.join(
-    (map(lambda param: generate_operation_body_example_item(param, swagger), params)))}}}]\
-'''
-
-    # Body is object
-    # WIP
-    if '$ref' in schema:
-        resolved_ref_type = resolve_ref_to_type(
-            schema, swagger)
-        params = dict.items(resolved_ref_type["properties"])
-        return f'''\
-{{
-{''.join(
-    (map(lambda param: generate_operation_body_example_item(param, swagger), params)))}}}\
-'''
-
-    return '""'
+def save_snippets():
+    with open(snippet_path, 'w') as outfile:
+        json.dump(code_snippets, outfile, indent=4)
 
 
 def generate_operation_params_row(param, swagger):
@@ -180,9 +137,10 @@ Object with the properties:
 
 def generate_operation_snippet(module_name, group_name, operation, swagger_path_by_operation, swagger):
     swagger_data = swagger_path_by_operation[operation]["data"]
-    hasParams = 'parameters' in swagger_data and len(
-        swagger_data['parameters']) > 0
-    hasBody = 'requestBody' in swagger_data
+
+    snippet = generate_operation_example(
+        module_name, group_name, operation, swagger, swagger_data)
+    register_snippet(module_name, group_name, operation, snippet)
 
     return f'''\
 ---
@@ -191,19 +149,7 @@ def generate_operation_snippet(module_name, group_name, operation, swagger_path_
 
 ### Example
 ```python
-from moralis import {module_name}
-
-api_key = "YOUR_API_KEY"
-{f'params = {generate_params_example(swagger_data, swagger)}{nl}' if hasParams else ''}\
-{f'body = {generate_body_example(swagger_data, swagger)}{nl}' if hasBody else ''}\
-
-result = {module_name}.{group_name}.{operation}(
-    api_key=api_key,
-{'    params=params,'+nl if hasParams else ''}\
-{'    body=body,'+nl if hasBody else ''}\
-)
-
-print(result)
+{snippet}
 ```
 
 {generate_operation_params(swagger_data, swagger)}\
@@ -310,4 +256,5 @@ def generate_docs():
         module_groups, module_name = generate_docs_for_module(module)
         groups[module_name] = module_groups
     generate_root_readme(modules, groups)
+    save_snippets()
     print(f"🏁 Generatied docs")

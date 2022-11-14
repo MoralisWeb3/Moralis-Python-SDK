@@ -33,6 +33,7 @@ result = streams.evm.get_addresses(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -65,6 +66,7 @@ result = streams.evm.delete_stream(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -99,6 +101,7 @@ result = streams.evm.add_address_to_stream(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -140,6 +143,7 @@ result = streams.evm.delete_address_from_stream(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -177,6 +181,7 @@ result = streams.evm.get_stream(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -208,6 +213,7 @@ result = streams.evm.get_streams(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -249,6 +255,7 @@ result = streams.evm.create_stream(
 )
 
 print(result)
+
 ```
 
 ### Body
@@ -303,6 +310,7 @@ result = streams.evm.update_stream(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -354,6 +362,7 @@ result = streams.evm.update_stream_status(
 )
 
 print(result)
+
 ```
 
 ### Parameters

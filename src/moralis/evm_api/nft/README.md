@@ -48,6 +48,7 @@ result = evm_api.nft.re_sync_metadata(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -91,6 +92,7 @@ result = evm_api.nft.get_contract_nfts(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -133,6 +135,7 @@ result = evm_api.nft.get_nft_transfers(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -174,6 +177,7 @@ result = evm_api.nft.get_nft_owners(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -217,6 +221,7 @@ result = evm_api.nft.get_nft_token_id_owners(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -256,6 +261,7 @@ result = evm_api.nft.get_wallet_nft_collections(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -293,6 +299,7 @@ result = evm_api.nft.get_nft_transfers_by_block(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -330,6 +337,7 @@ result = evm_api.nft.get_nft_contract_metadata(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -365,6 +373,7 @@ result = evm_api.nft.get_nft_contract_transfers(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -400,6 +409,7 @@ result = evm_api.nft.sync_nft_contract(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -437,6 +447,7 @@ result = evm_api.nft.get_nft_metadata(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -478,6 +489,7 @@ result = evm_api.nft.get_nft_transfers_from_to_block(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -522,6 +534,7 @@ result = evm_api.nft.get_wallet_nft_transfers(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -563,6 +576,7 @@ result = evm_api.nft.get_nft_lowest_price(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -606,6 +620,7 @@ result = evm_api.nft.get_nft_trades(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -655,6 +670,7 @@ result = evm_api.nft.search_nfts(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -705,6 +721,7 @@ result = evm_api.nft.get_wallet_nfts(
 )
 
 print(result)
+
 ```
 
 ### Parameters

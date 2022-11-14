@@ -26,6 +26,7 @@ result = evm_api.balance.get_native_balance(
 )
 
 print(result)
+
 ```
 
 ### Parameters

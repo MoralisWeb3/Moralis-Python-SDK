@@ -32,6 +32,7 @@ result = evm_api.transaction.get_wallet_transactions(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -72,6 +73,7 @@ result = evm_api.transaction.get_transaction(
 )
 
 print(result)
+
 ```
 
 ### Parameters

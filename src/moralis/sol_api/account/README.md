@@ -27,6 +27,7 @@ result = sol_api.account.get_portfolio(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -59,6 +60,7 @@ result = sol_api.account.get_nfts(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -91,6 +93,7 @@ result = sol_api.account.get_spl(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -123,6 +126,7 @@ result = sol_api.account.balance(
 )
 
 print(result)
+
 ```
 
 ### Parameters

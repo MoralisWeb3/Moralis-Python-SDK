@@ -37,6 +37,7 @@ result = evm_api.token.get_wallet_token_transfers(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -78,6 +79,7 @@ result = evm_api.token.get_token_metadata(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -119,6 +121,7 @@ result = evm_api.token.get_token_transfers(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -159,6 +162,7 @@ result = evm_api.token.get_token_metadata_by_symbol(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -195,6 +199,7 @@ result = evm_api.token.get_token_price(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -233,6 +238,7 @@ result = evm_api.token.get_wallet_token_balances(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -271,6 +277,7 @@ result = evm_api.token.get_token_allowance(
 )
 
 print(result)
+
 ```
 
 ### Parameters

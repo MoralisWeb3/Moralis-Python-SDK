@@ -26,6 +26,7 @@ result = streams.history.get_history(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -59,6 +60,7 @@ result = streams.history.replay_history(
 )
 
 print(result)
+
 ```
 
 ### Parameters

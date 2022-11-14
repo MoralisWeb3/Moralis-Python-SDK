@@ -20,6 +20,7 @@ result = streams.project.get_settings(
 )
 
 print(result)
+
 ```
 
 
@@ -43,6 +44,7 @@ result = streams.project.set_settings(
 )
 
 print(result)
+
 ```
 
 ### Body

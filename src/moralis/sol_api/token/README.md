@@ -24,6 +24,7 @@ result = sol_api.token.get_token_price(
 )
 
 print(result)
+
 ```
 
 ### Parameters

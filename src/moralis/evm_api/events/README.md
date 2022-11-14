@@ -36,6 +36,7 @@ result = evm_api.events.get_contract_events(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -95,6 +96,7 @@ result = evm_api.events.get_contract_logs(
 )
 
 print(result)
+
 ```
 
 ### Parameters

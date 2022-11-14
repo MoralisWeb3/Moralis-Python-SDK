@@ -24,6 +24,7 @@ result = streams.stats.get_stats_by_stream_id(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -50,6 +51,7 @@ result = streams.stats.get_stats(
 )
 
 print(result)
+
 ```
 
 

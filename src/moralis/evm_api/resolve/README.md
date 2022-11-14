@@ -25,6 +25,7 @@ result = evm_api.resolve.resolve_domain(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -56,6 +57,7 @@ result = evm_api.resolve.resolve_address(
 )
 
 print(result)
+
 ```
 
 ### Parameters

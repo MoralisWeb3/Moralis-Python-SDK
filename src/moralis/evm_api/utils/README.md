@@ -34,6 +34,7 @@ result = evm_api.utils.run_contract_function(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -72,6 +73,7 @@ result = evm_api.utils.endpoint_weights(
 )
 
 print(result)
+
 ```
 
 
@@ -91,6 +93,7 @@ result = evm_api.utils.web3_api_version(
 )
 
 print(result)
+
 ```
 
 

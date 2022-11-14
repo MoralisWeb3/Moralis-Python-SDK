@@ -31,6 +31,7 @@ result = evm_api.defi.get_pair_address(
 )
 
 print(result)
+
 ```
 
 ### Parameters
@@ -70,6 +71,7 @@ result = evm_api.defi.get_pair_reserves(
 )
 
 print(result)
+
 ```
 
 ### Parameters

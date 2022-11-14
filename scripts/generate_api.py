@@ -14,15 +14,6 @@ temp_path = (root_path / "temp")
 swaggers_path = (temp_path / "swagger")
 
 
-# Make temp folder
-def make_temp():
-    print("⏳ Making temp folder...")
-    if not os.path.exists(temp_path):
-        os.makedirs(temp_path)
-        os.makedirs(swaggers_path)
-    print("✅ Making temp folder done")
-
-
 # Get swagger
 def get_swagger(swagger_url):
     print("⏳ Fetching swagger...")
@@ -79,7 +70,6 @@ def makeapi(swagger_url, api_name):
 
 def generate_api():
     print("⏳ Generating all api clients...")
-    make_temp()
     apis = json.load(open(root_path / 'api-config.json'))
     for api in apis:
         makeapi(api["swagger"], api["name"])

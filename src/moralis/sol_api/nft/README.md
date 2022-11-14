@@ -24,6 +24,7 @@ result = sol_api.nft.get_nft_metadata(
 )
 
 print(result)
+
 ```
 
 ### Parameters
