@@ -1,6 +1,6 @@
 # project API:
 
-> `Moralis.streams.project`
+> `streams.project`
 
 - [get_settings](#get_settings)
 - [set_settings](#set_settings)
@@ -9,7 +9,7 @@
 ---
 ## get_settings
 
-> `Moralis.streams.project.get_settings()`
+> `streams.project.get_settings()`
 
 Get the settings for the current project based on the project api-key.
 
@@ -32,7 +32,7 @@ print(result)
 ---
 ## set_settings
 
-> `Moralis.streams.project.set_settings()`
+> `streams.project.set_settings()`
 
 Set the settings for the current project based on the project api-key.
 

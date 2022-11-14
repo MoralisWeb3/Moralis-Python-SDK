@@ -1,6 +1,6 @@
 # token API:
 
-> `Moralis.sol_api.token`
+> `sol_api.token`
 
 - [get_token_price](#get_token_price)
 
@@ -8,7 +8,7 @@
 ---
 ## get_token_price
 
-> `Moralis.sol_api.token.get_token_price()`
+> `sol_api.token.get_token_price()`
 
 Gets the token price (usd and native) for a given contract address and network.
 

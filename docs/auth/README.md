@@ -1,3 +1,3 @@
-# Moralis.auth
+# `moralis.auth`
 
 - [challenge](./challenge.md)

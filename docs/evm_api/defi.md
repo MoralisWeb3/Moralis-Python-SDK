@@ -1,6 +1,6 @@
 # defi API:
 
-> `Moralis.evm_api.defi`
+> `evm_api.defi`
 
 - [get_pair_address](#get_pair_address)
 - [get_pair_reserves](#get_pair_reserves)
@@ -9,7 +9,7 @@
 ---
 ## get_pair_address
 
-> `Moralis.evm_api.defi.get_pair_address()`
+> `evm_api.defi.get_pair_address()`
 
 Fetch the pair data of the provided token0+token1 combination.
 The token0 and token1 options are interchangable (ie. there is no different outcome in "token0=WETH and token1=USDT" or "token0=USDT and token1=WETH")
@@ -55,7 +55,7 @@ print(result)
 ---
 ## get_pair_reserves
 
-> `Moralis.evm_api.defi.get_pair_reserves()`
+> `evm_api.defi.get_pair_reserves()`
 
 Get the liquidity reserves for a given pair address. Only Uniswap V2 based exchanges supported at the moment.
 

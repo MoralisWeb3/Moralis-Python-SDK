@@ -1,4 +1,4 @@
-# Moralis.sol_api
+# `moralis.sol_api`
 
 - [token](./token.md)
 - [nft](./nft.md)

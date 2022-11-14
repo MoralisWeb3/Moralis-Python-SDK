@@ -3,7 +3,7 @@
 
 ## Getting stated
 
-If you're new to Moralis, check the [quickstart guide in the official docs](https://docs.moralis.io/moralis-dapp/getting-started) on how to get started.
+If you're new to Moralis, check the [quickstart guide in the official docs](https://docs.moralis.io/docs/quickstart) on how to get started.
 
 If you're already familiar with Moralis and have your account registered. Then follow along to connect your SDK:
 

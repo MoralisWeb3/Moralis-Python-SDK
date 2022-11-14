@@ -155,7 +155,7 @@ def generate_operation_snippet(module_name, group_name, operation, swagger_path_
 ---
 ## {operation}
 
-> `Moralis.{module_name}.{group_name}.{operation}()`
+> `{module_name}.{group_name}.{operation}()`
 
 {f'{swagger_data["description"]}{nl}' if 'description' in swagger_data else swagger_data["summary"]}
 
@@ -174,7 +174,7 @@ def generate_group_snippet(module_name, group_name, operations, swagger_path_by_
     return f'''\
 # {group_name} API:
 
-> `Moralis.{module_name}.{group_name}`
+> `{module_name}.{group_name}`
 
 {''.join(list(map(
     lambda operation: f"- [{Path(operation).stem}](#{Path(operation).stem}){nl}", sorted(operations))))}
@@ -226,7 +226,7 @@ def generate_docs_for_module(module_name):
     if not os.path.exists(docs_path / module_name):
         os.makedirs(docs_path / module_name)
     with open(docs_path / module_name / 'README.md', "w") as f:
-        f.write(f"# Moralis.{module_name}\n\n")
+        f.write(f"# `moralis.{module_name}`\n\n")
         f.write(
             f"{''.join(list(map(lambda group: f'- [{group}](./{group}.md){nl}', groups)))}")
 
@@ -296,7 +296,7 @@ def generate_root_readme(modules, groups):
 
 ## Getting stated
 
-If you're new to Moralis, check the [quickstart guide in the official docs](https://docs.moralis.io/moralis-dapp/getting-started) on how to get started.
+If you're new to Moralis, check the [quickstart guide in the official docs](https://docs.moralis.io/docs/quickstart) on how to get started.
 
 If you're already familiar with Moralis and have your account registered. Then follow along to connect your SDK:
 

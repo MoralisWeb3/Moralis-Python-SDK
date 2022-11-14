@@ -1,6 +1,6 @@
 # block API:
 
-> `Moralis.evm_api.block`
+> `evm_api.block`
 
 - [get_block](#get_block)
 - [get_date_to_block](#get_date_to_block)
@@ -9,7 +9,7 @@
 ---
 ## get_block
 
-> `Moralis.evm_api.block.get_block()`
+> `evm_api.block.get_block()`
 
 Get the contents of a block given the block hash.
 
@@ -47,7 +47,7 @@ print(result)
 ---
 ## get_date_to_block
 
-> `Moralis.evm_api.block.get_date_to_block()`
+> `evm_api.block.get_date_to_block()`
 
 Get the closest block given the date.
 

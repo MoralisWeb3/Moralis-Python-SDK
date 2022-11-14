@@ -1,4 +1,4 @@
-# Moralis.streams
+# `moralis.streams`
 
 - [project](./project.md)
 - [history](./history.md)

@@ -1,6 +1,6 @@
 # balance API:
 
-> `Moralis.evm_api.balance`
+> `evm_api.balance`
 
 - [get_native_balance](#get_native_balance)
 
@@ -8,7 +8,7 @@
 ---
 ## get_native_balance
 
-> `Moralis.evm_api.balance.get_native_balance()`
+> `evm_api.balance.get_native_balance()`
 
 Get the native balance for a specific wallet address.
 

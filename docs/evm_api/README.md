@@ -1,4 +1,4 @@
-# Moralis.evm_api
+# `moralis.evm_api`
 
 - [token](./token.md)
 - [transaction](./transaction.md)

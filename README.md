@@ -32,24 +32,9 @@
 
 # 🚀 Quick start
 
-If you're new to Moralis, check the [quickstart guide in the official docs](https://docs.moralis.io/moralis-dapp/getting-started) on how to get started.
+If you're new to Moralis, check the [quickstart guide in the official docs](https://docs.moralis.io/docs/quickstart) on how to get started.
 
-If you're already familiar with Moralis and have your account registered. Then follow along to connect your SDK.
-
-# Table of Contents
-
-- [🚀 Quick start](#-quick-start)
-- [Table of Contents](#table-of-contents)
-  - [1. Install Moralis](#1-install-moralis)
-  - [2. Call your methods](#2-call-your-methods)
-- [⭐️ Star us](#️-star-us)
-- [🤝 Need help](#-need-help)
-- [👀 Examples](#-examples)
-- [📚 References](#-references)
-  - [evm_api](#evm_api)
-  - [sol_api](#sol_api)
-  - [auth](#auth)
-  - [streams](#streams)
+If you're already familiar with Moralis and have your account registered. Then follow along to connect your SDK:
 
 ## 1. Install Moralis
 
@@ -59,9 +44,7 @@ pip install moralis
 
 ## 2. Call your methods
 
-Import the correct module from the SDK and call the method you need. For a full reference of all the methods available, check the [references](#references) section.
-
-````python
+Import the correct module from the SDK and call the method you need. For a full reference of all the methods available, check the [references](#-references) section.
 
 <!-- Start: generated:example-evm_api -->
 
@@ -85,6 +68,21 @@ print(result)
 ```
 
 <!-- End: generated:example-evm_api -->
+
+# Table of Contents
+
+- [🚀 Quick startttt](#-quick-startttt)
+  - [1. Install Moralis](#1-install-moralis)
+  - [2. Call your methods](#2-call-your-methods)
+- [Table of Contents](#table-of-contents)
+- [⭐️ Star us](#️-star-us)
+- [🤝 Need help](#-need-help)
+- [👀 Examples](#-examples)
+- [📚 References](#-references)
+  - [evm_api](#evm_api)
+  - [sol_api](#sol_api)
+  - [auth](#auth)
+  - [streams](#streams)
 
 # ⭐️ Star us
 
@@ -234,3 +232,7 @@ print(result)
 
 
 <!-- End: generated:references -->
+
+```
+
+```

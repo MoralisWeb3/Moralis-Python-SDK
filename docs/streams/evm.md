@@ -1,6 +1,6 @@
 # evm API:
 
-> `Moralis.streams.evm`
+> `streams.evm`
 
 - [add_address_to_stream](#add_address_to_stream)
 - [create_stream](#create_stream)
@@ -16,7 +16,7 @@
 ---
 ## add_address_to_stream
 
-> `Moralis.streams.evm.add_address_to_stream()`
+> `streams.evm.add_address_to_stream()`
 
 Adds an address to a Stream.
 
@@ -61,7 +61,7 @@ Object with the properties:
 ---
 ## create_stream
 
-> `Moralis.streams.evm.create_stream()`
+> `streams.evm.create_stream()`
 
 Creates a new evm stream.
 
@@ -115,7 +115,7 @@ Object with the properties:
 ---
 ## delete_address_from_stream
 
-> `Moralis.streams.evm.delete_address_from_stream()`
+> `streams.evm.delete_address_from_stream()`
 
 Deletes an address from a Stream.
 
@@ -160,7 +160,7 @@ Object with the properties:
 ---
 ## delete_stream
 
-> `Moralis.streams.evm.delete_stream()`
+> `streams.evm.delete_stream()`
 
 Delete a specific evm stream.
 
@@ -194,7 +194,7 @@ print(result)
 ---
 ## get_addresses
 
-> `Moralis.streams.evm.get_addresses()`
+> `streams.evm.get_addresses()`
 
 Get all addresses associated with a specific stream.
 
@@ -232,7 +232,7 @@ print(result)
 ---
 ## get_stream
 
-> `Moralis.streams.evm.get_stream()`
+> `streams.evm.get_stream()`
 
 Get a specific evm stream.
 
@@ -266,7 +266,7 @@ print(result)
 ---
 ## get_streams
 
-> `Moralis.streams.evm.get_streams()`
+> `streams.evm.get_streams()`
 
 Get all the evm streams for the current project based on the project api-key.
 
@@ -302,7 +302,7 @@ print(result)
 ---
 ## update_stream
 
-> `Moralis.streams.evm.update_stream()`
+> `streams.evm.update_stream()`
 
 Updates a specific evm stream.
 
@@ -367,7 +367,7 @@ Object with the properties:
 ---
 ## update_stream_status
 
-> `Moralis.streams.evm.update_stream_status()`
+> `streams.evm.update_stream_status()`
 
 Updates the status of specific evm stream.
 

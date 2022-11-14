@@ -1,6 +1,6 @@
 # resolve API:
 
-> `Moralis.evm_api.resolve`
+> `evm_api.resolve`
 
 - [resolve_address](#resolve_address)
 - [resolve_domain](#resolve_domain)
@@ -9,7 +9,7 @@
 ---
 ## resolve_address
 
-> `Moralis.evm_api.resolve.resolve_address()`
+> `evm_api.resolve.resolve_address()`
 
 Resolve an ETH address and find the ENS name.
 
@@ -43,7 +43,7 @@ print(result)
 ---
 ## resolve_domain
 
-> `Moralis.evm_api.resolve.resolve_domain()`
+> `evm_api.resolve.resolve_domain()`
 
 Resolve an Unstoppable domain and get the address.
 

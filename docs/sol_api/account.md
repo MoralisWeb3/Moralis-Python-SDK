@@ -1,6 +1,6 @@
 # account API:
 
-> `Moralis.sol_api.account`
+> `sol_api.account`
 
 - [balance](#balance)
 - [get_nfts](#get_nfts)
@@ -11,7 +11,7 @@
 ---
 ## balance
 
-> `Moralis.sol_api.account.balance()`
+> `sol_api.account.balance()`
 
 Gets the native balance owned by a given network and address.
 
@@ -47,7 +47,7 @@ print(result)
 ---
 ## get_nfts
 
-> `Moralis.sol_api.account.get_nfts()`
+> `sol_api.account.get_nfts()`
 
 Gets NFTs owned by a given network and address.
 
@@ -83,7 +83,7 @@ print(result)
 ---
 ## get_portfolio
 
-> `Moralis.sol_api.account.get_portfolio()`
+> `sol_api.account.get_portfolio()`
 
 Gets the portfolio for a given network and address.
 
@@ -119,7 +119,7 @@ print(result)
 ---
 ## get_spl
 
-> `Moralis.sol_api.account.get_spl()`
+> `sol_api.account.get_spl()`
 
 Gets the token balances owned by a given network and address.
 
