@@ -303,8 +303,8 @@ def generate_root_readme(modules, groups):
 
 def generate_docs():
     print(f"⏳ Generating docs...")
-    modules = [directory for directory in os.listdir(
-        moralis_module_path) if os.path.isdir(moralis_module_path / directory) and directory != 'moralis.egg-info' and not directory.startswith('__')]
+    apis = json.load(open(root_path / 'api-config.json'))
+    modules = [api["name"] for api in apis]
     groups = {}
     for module in modules:
         module_groups, module_name = generate_docs_for_module(module)

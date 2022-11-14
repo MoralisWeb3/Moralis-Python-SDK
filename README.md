@@ -86,6 +86,19 @@ print(result)
 
 <!-- Start: generated:references -->
 
+## evm_api
+
+- [token](./src/moralis/evm_api/token/README.md)
+- [transaction](./src/moralis/evm_api/transaction/README.md)
+- [resolve](./src/moralis/evm_api/resolve/README.md)
+- [nft](./src/moralis/evm_api/nft/README.md)
+- [ipfs](./src/moralis/evm_api/ipfs/README.md)
+- [balance](./src/moralis/evm_api/balance/README.md)
+- [utils](./src/moralis/evm_api/utils/README.md)
+- [events](./src/moralis/evm_api/events/README.md)
+- [defi](./src/moralis/evm_api/defi/README.md)
+- [block](./src/moralis/evm_api/block/README.md)
+
 ## sol_api
 
 - [token](./src/moralis/sol_api/token/README.md)
@@ -102,19 +115,6 @@ print(result)
 - [history](./src/moralis/streams/history/README.md)
 - [evm](./src/moralis/streams/evm/README.md)
 - [stats](./src/moralis/streams/stats/README.md)
-
-## evm_api
-
-- [token](./src/moralis/evm_api/token/README.md)
-- [transaction](./src/moralis/evm_api/transaction/README.md)
-- [resolve](./src/moralis/evm_api/resolve/README.md)
-- [nft](./src/moralis/evm_api/nft/README.md)
-- [ipfs](./src/moralis/evm_api/ipfs/README.md)
-- [balance](./src/moralis/evm_api/balance/README.md)
-- [utils](./src/moralis/evm_api/utils/README.md)
-- [events](./src/moralis/evm_api/events/README.md)
-- [defi](./src/moralis/evm_api/defi/README.md)
-- [block](./src/moralis/evm_api/block/README.md)
 
 
 
