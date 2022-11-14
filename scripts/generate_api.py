@@ -86,11 +86,12 @@ def remove_temp():
     print("✅ Removing temp folder done")
 
 
-def generate_api():
+def generate_api(debug=False):
     print("⏳ Generating all api clients...")
     make_temp()
     apis = json.load(open(root_path / 'api-config.json'))
     for api in apis:
         makeapi(api["swagger"], api["name"])
-    remove_temp()
+    if not debug:
+        remove_temp()
     print('🏁 Finished generating all api clients\n')
