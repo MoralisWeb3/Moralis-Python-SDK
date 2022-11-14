@@ -1,4 +1,4 @@
-# token API: 
+# token API:
 
 > `Moralis.evm_api.token`
 
@@ -12,7 +12,10 @@
 
 
 ---
-## `get_token_allowance()`
+## get_token_allowance
+
+> `Moralis.evm_api.token.get_token_allowance()`
+
 Get the amount which the spender is allowed to withdraw on behalf of the owner.
 
 
@@ -51,7 +54,10 @@ print(result)
 
 
 ---
-## `get_token_metadata()`
+## get_token_metadata
+
+> `Moralis.evm_api.token.get_token_metadata()`
+
 Get the metadata for a given token contract address (name, symbol, decimals, logo).
 
 
@@ -88,7 +94,10 @@ print(result)
 
 
 ---
-## `get_token_metadata_by_symbol()`
+## get_token_metadata_by_symbol
+
+> `Moralis.evm_api.token.get_token_metadata_by_symbol()`
+
 Get the metadata for a list of token symbols (name, symbol, decimals, logo).
 
 
@@ -123,7 +132,10 @@ print(result)
 
 
 ---
-## `get_token_price()`
+## get_token_price
+
+> `Moralis.evm_api.token.get_token_price()`
+
 Get the token price denominated in the blockchain's native token and USD.
 
 
@@ -162,7 +174,10 @@ print(result)
 
 
 ---
-## `get_token_transfers()`
+## get_token_transfers
+
+> `Moralis.evm_api.token.get_token_transfers()`
+
 Get ERC20 token transactions from a contract ordered by block number in descending order.
 
 
@@ -209,7 +224,10 @@ print(result)
 
 
 ---
-## `get_wallet_token_balances()`
+## get_wallet_token_balances
+
+> `Moralis.evm_api.token.get_wallet_token_balances()`
+
 Get token balances for a specific wallet address.
 
 
@@ -248,7 +266,10 @@ print(result)
 
 
 ---
-## `get_wallet_token_transfers()`
+## get_wallet_token_transfers
+
+> `Moralis.evm_api.token.get_wallet_token_transfers()`
+
 Get ERC20 token transactions ordered by block number in descending order.
 
 

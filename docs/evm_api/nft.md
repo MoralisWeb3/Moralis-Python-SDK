@@ -1,4 +1,4 @@
-# nft API: 
+# nft API:
 
 > `Moralis.evm_api.nft`
 
@@ -22,7 +22,10 @@
 
 
 ---
-## `get_contract_nfts()`
+## get_contract_nfts
+
+> `Moralis.evm_api.nft.get_contract_nfts()`
+
 Get NFTs for a given contract address, including metadata for all NFTs (where available).
 * Results are limited to 100 per page by default
 * Requests for contract addresses not yet indexed will automatically start the indexing process for that NFT collection.
@@ -69,7 +72,10 @@ print(result)
 
 
 ---
-## `get_nft_contract_metadata()`
+## get_nft_contract_metadata
+
+> `Moralis.evm_api.nft.get_nft_contract_metadata()`
+
 Get the collection / contract level metadata for a given contract (name, symbol, base token URI).
 * Requests for contract addresses not yet indexed will automatically start the indexing process for that NFT collection
 
@@ -104,7 +110,10 @@ print(result)
 
 
 ---
-## `get_nft_contract_transfers()`
+## get_nft_contract_transfers
+
+> `Moralis.evm_api.nft.get_nft_contract_transfers()`
+
 Get transfers of NFTs for a given contract and other parameters.
 
 
@@ -143,7 +152,10 @@ print(result)
 
 
 ---
-## `get_nft_lowest_price()`
+## get_nft_lowest_price
+
+> `Moralis.evm_api.nft.get_nft_lowest_price()`
+
 Get the lowest executed price for an NFT contract for the last x days (only trades paid in ETH).
 
 
@@ -182,7 +194,10 @@ print(result)
 
 
 ---
-## `get_nft_metadata()`
+## get_nft_metadata
+
+> `Moralis.evm_api.nft.get_nft_metadata()`
+
 Get NFT data, including metadata (where available), for the given NFT token ID and contract address.
 * Requests for contract addresses not yet indexed will automatically start the indexing process for that NFT collection
 
@@ -223,7 +238,10 @@ print(result)
 
 
 ---
-## `get_nft_owners()`
+## get_nft_owners
+
+> `Moralis.evm_api.nft.get_nft_owners()`
+
 Get owners of NFTs for a given contract.
 * Requests for contract addresses not yet indexed will automatically start the indexing process for that NFT collection.
 
@@ -265,7 +283,10 @@ print(result)
 
 
 ---
-## `get_nft_token_id_owners()`
+## get_nft_token_id_owners
+
+> `Moralis.evm_api.nft.get_nft_token_id_owners()`
+
 Get owners of a specific NFT given the contract address and token ID. 
 * Requests for contract addresses not yet indexed will automatically start the indexing process for that NFT collection
 
@@ -310,7 +331,10 @@ print(result)
 
 
 ---
-## `get_nft_trades()`
+## get_nft_trades
+
+> `Moralis.evm_api.nft.get_nft_trades()`
+
 Get trades of NFTs for a given contract and marketplace.
 
 
@@ -359,7 +383,10 @@ print(result)
 
 
 ---
-## `get_nft_transfers()`
+## get_nft_transfers
+
+> `Moralis.evm_api.nft.get_nft_transfers()`
+
 Get transfers of an NFT given a contract address and token ID.
 
 
@@ -400,7 +427,10 @@ print(result)
 
 
 ---
-## `get_nft_transfers_by_block()`
+## get_nft_transfers_by_block
+
+> `Moralis.evm_api.nft.get_nft_transfers_by_block()`
+
 Get transfers of NFTs given a block number or block hash.
 
 
@@ -439,7 +469,10 @@ print(result)
 
 
 ---
-## `get_nft_transfers_from_to_block()`
+## get_nft_transfers_from_to_block
+
+> `Moralis.evm_api.nft.get_nft_transfers_from_to_block()`
+
 Get transfers of NFTs from a block number to a block number.
 
 
@@ -484,7 +517,10 @@ print(result)
 
 
 ---
-## `get_wallet_nft_collections()`
+## get_wallet_nft_collections
+
+> `Moralis.evm_api.nft.get_wallet_nft_collections()`
+
 Get NFT collections owned by a given wallet address.
 
 
@@ -521,7 +557,10 @@ print(result)
 
 
 ---
-## `get_wallet_nft_transfers()`
+## get_wallet_nft_transfers
+
+> `Moralis.evm_api.nft.get_wallet_nft_transfers()`
+
 Get transfers of NFTs given the wallet and other parameters.
 
 
@@ -566,7 +605,10 @@ print(result)
 
 
 ---
-## `get_wallet_nfts()`
+## get_wallet_nfts
+
+> `Moralis.evm_api.nft.get_wallet_nfts()`
+
 Get NFTs owned by a given address.
 * The response will include status [SYNCED/SYNCING] based on the contracts being indexed.
 * Use the token_address param to get results for a specific contract only
@@ -613,7 +655,10 @@ print(result)
 
 
 ---
-## `re_sync_metadata()`
+## re_sync_metadata
+
+> `Moralis.evm_api.nft.re_sync_metadata()`
+
 Resync the metadata for an NFT
 * The metadata flag will request the NFT's metadata from an already existing token_uri
 * The URI (default) flag will fetch the latest token_uri from the given NFT contract address. In sync mode the metadata will also be fetched
@@ -657,7 +702,10 @@ print(result)
 
 
 ---
-## `search_nfts()`
+## search_nfts
+
+> `Moralis.evm_api.nft.search_nfts()`
+
 Get NFTs that match a given metadata search query.
 
 
@@ -708,7 +756,10 @@ print(result)
 
 
 ---
-## `sync_nft_contract()`
+## sync_nft_contract
+
+> `Moralis.evm_api.nft.sync_nft_contract()`
+
 Initiates a sync of a previously non synced contract.
 
 

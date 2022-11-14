@@ -1,4 +1,4 @@
-# utils API: 
+# utils API:
 
 > `Moralis.evm_api.utils`
 
@@ -8,7 +8,10 @@
 
 
 ---
-## `endpoint_weights()`
+## endpoint_weights
+
+> `Moralis.evm_api.utils.endpoint_weights()`
+
 Get the cost and rate limit for each API endpoint.
 
 
@@ -28,7 +31,10 @@ print(result)
 
 
 ---
-## `run_contract_function()`
+## run_contract_function
+
+> `Moralis.evm_api.utils.run_contract_function()`
+
 Run a given function of a contract ABI and retrieve readonly data.
 
 
@@ -80,7 +86,10 @@ Object with the properties:
 
 
 ---
-## `web3_api_version()`
+## web3_api_version
+
+> `Moralis.evm_api.utils.web3_api_version()`
+
 Get the current version of the Moralis Web3 API.
 
 

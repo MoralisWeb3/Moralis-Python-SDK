@@ -1,4 +1,4 @@
-# nft API: 
+# nft API:
 
 > `Moralis.sol_api.nft`
 
@@ -6,7 +6,10 @@
 
 
 ---
-## `get_nft_metadata()`
+## get_nft_metadata
+
+> `Moralis.sol_api.nft.get_nft_metadata()`
+
 Get the global NFT metadata for a given network and contract (mint, standard, name, symbol, metaplex).
 
 

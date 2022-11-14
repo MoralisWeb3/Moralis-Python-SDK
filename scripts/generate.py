@@ -5,7 +5,7 @@ from generate_docs import generate_docs
 from cleanup import cleanup
 
 prepare()
-generate_api()
+# generate_api()
 generate_modules()
 generate_docs()
-cleanup()
+# cleanup()

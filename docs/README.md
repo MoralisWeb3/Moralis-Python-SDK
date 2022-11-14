@@ -1,5 +1,20 @@
-# API References 
 
+# Technical Documentation
+
+## Getting stated
+
+If you're new to Moralis, check the [quickstart guide in the official docs](https://docs.moralis.io/moralis-dapp/getting-started) on how to get started.
+
+If you're already familiar with Moralis and have your account registered. Then follow along to connect your SDK:
+
+
+```shell
+pip install moralis
+```
+
+Now you can import the correct module from the SDK and call the method you need. For a full reference of all the methods available, check the references below.
+
+## API References
 ## evm_api
 
 - [token](./evm_api/token.md)

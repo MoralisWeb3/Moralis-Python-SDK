@@ -1,4 +1,4 @@
-# account API: 
+# account API:
 
 > `Moralis.sol_api.account`
 
@@ -9,7 +9,10 @@
 
 
 ---
-## `balance()`
+## balance
+
+> `Moralis.sol_api.account.balance()`
+
 Gets the native balance owned by a given network and address.
 
 
@@ -42,7 +45,10 @@ print(result)
 
 
 ---
-## `get_nfts()`
+## get_nfts
+
+> `Moralis.sol_api.account.get_nfts()`
+
 Gets NFTs owned by a given network and address.
 
 
@@ -75,7 +81,10 @@ print(result)
 
 
 ---
-## `get_portfolio()`
+## get_portfolio
+
+> `Moralis.sol_api.account.get_portfolio()`
+
 Gets the portfolio for a given network and address.
 
 
@@ -108,7 +117,10 @@ print(result)
 
 
 ---
-## `get_spl()`
+## get_spl
+
+> `Moralis.sol_api.account.get_spl()`
+
 Gets the token balances owned by a given network and address.
 
 

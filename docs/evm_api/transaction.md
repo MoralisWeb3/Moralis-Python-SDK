@@ -1,4 +1,4 @@
-# transaction API: 
+# transaction API:
 
 > `Moralis.evm_api.transaction`
 
@@ -7,7 +7,10 @@
 
 
 ---
-## `get_transaction()`
+## get_transaction
+
+> `Moralis.evm_api.transaction.get_transaction()`
+
 Get the contents of a transaction by the given transaction hash.
 
 
@@ -42,7 +45,10 @@ print(result)
 
 
 ---
-## `get_wallet_transactions()`
+## get_wallet_transactions
+
+> `Moralis.evm_api.transaction.get_wallet_transactions()`
+
 Get native transactions ordered by block number in descending order.
 
 

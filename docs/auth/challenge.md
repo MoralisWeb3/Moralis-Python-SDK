@@ -1,4 +1,4 @@
-# challenge API: 
+# challenge API:
 
 > `Moralis.auth.challenge`
 
@@ -9,7 +9,10 @@
 
 
 ---
-## `request_challenge_evm()`
+## request_challenge_evm
+
+> `Moralis.auth.challenge.request_challenge_evm()`
+
 Request EVM challenge
 
 ### Example
@@ -55,7 +58,10 @@ Object with the properties:
 
 
 ---
-## `request_challenge_solana()`
+## request_challenge_solana
+
+> `Moralis.auth.challenge.request_challenge_solana()`
+
 Request Solana challenge
 
 ### Example
@@ -101,7 +107,10 @@ Object with the properties:
 
 
 ---
-## `verify_challenge_evm()`
+## verify_challenge_evm
+
+> `Moralis.auth.challenge.verify_challenge_evm()`
+
 Verify EVM challenge
 
 ### Example
@@ -133,7 +142,10 @@ Object with the properties:
 
 
 ---
-## `verify_challenge_solana()`
+## verify_challenge_solana
+
+> `Moralis.auth.challenge.verify_challenge_solana()`
+
 Verify Solana challenge
 
 ### Example

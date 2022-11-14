@@ -34,7 +34,22 @@
 
 If you're new to Moralis, check the [quickstart guide in the official docs](https://docs.moralis.io/moralis-dapp/getting-started) on how to get started.
 
-If you're already familiar with Moralis and have your account registered. Then follow along to connect your SDK:
+If you're already familiar with Moralis and have your account registered. Then follow along to connect your SDK.
+
+# Table of Contents
+
+- [🚀 Quick start](#-quick-start)
+- [Table of Contents](#table-of-contents)
+  - [1. Install Moralis](#1-install-moralis)
+  - [2. Call your methods](#2-call-your-methods)
+- [⭐️ Star us](#️-star-us)
+- [🤝 Need help](#-need-help)
+- [👀 Examples](#-examples)
+- [📚 References](#-references)
+  - [evm_api](#evm_api)
+  - [sol_api](#sol_api)
+  - [auth](#auth)
+  - [streams](#streams)
 
 ## 1. Install Moralis
 
@@ -43,6 +58,43 @@ pip install moralis
 ```
 
 ## 2. Call your methods
+
+Import the correct module from the SDK and call the method you need. For a full reference of all the methods available, check the [references](#references) section.
+
+````python
+
+<!-- Start: generated:example-evm_api -->
+
+```python
+from moralis import evm_api
+
+api_key = "YOUR_API_KEY"
+params = {
+    "address": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e", 
+    "chain": "eth", 
+    "providerUrl": "", 
+    "to_block": 1.2, 
+}
+
+result = evm_api.balance.get_native_balance(
+    api_key=api_key,
+    params=params,
+)
+
+print(result)
+```
+
+<!-- End: generated:example-evm_api -->
+
+# ⭐️ Star us
+
+If this JS SDK helps you build your dapps faster - please star this project, every star makes us very happy!
+
+# 🤝 Need help
+
+If you need help with setting up the boilerplate or have other questions - don't hesitate to write in our community forum and we will check asap. [Forum link](https://forum.moralis.io). The best thing about this SDK is the super active community ready to help at any time! We help each other.
+
+# 👀 Examples
 
 **_Example getting native balance of an address via the EVM balance API_**
 
@@ -182,11 +234,3 @@ print(result)
 
 
 <!-- End: generated:references -->
-
-# ⭐️ Star us
-
-If this JS SDK helps you build your dapps faster - please star this project, every star makes us very happy!
-
-# 🤝 Need help
-
-If you need help with setting up the boilerplate or have other questions - don't hesitate to write in our community forum and we will check asap. [Forum link](https://forum.moralis.io). The best thing about this SDK is the super active community ready to help at any time! We help each other.

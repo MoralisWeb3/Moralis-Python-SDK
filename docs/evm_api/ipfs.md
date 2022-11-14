@@ -1,4 +1,4 @@
-# ipfs API: 
+# ipfs API:
 
 > `Moralis.evm_api.ipfs`
 
@@ -6,7 +6,10 @@
 
 
 ---
-## `upload_folder()`
+## upload_folder
+
+> `Moralis.evm_api.ipfs.upload_folder()`
+
 Upload multiple files to IPFS and place them in a folder directory.
 
 

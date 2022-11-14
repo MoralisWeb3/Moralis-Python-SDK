@@ -44,8 +44,6 @@ def register_snippet(module_name, group_name, operation, snippet):
     code_snippets[module_name][group_name][revert_camel_to_snake(
         operation)] = snippet
 
-    print("Registered snippet for", module_name, group_name, operation)
-
 
 def save_snippets():
     with open(snippet_path, 'w') as outfile:
@@ -155,7 +153,10 @@ def generate_operation_snippet(module_name, group_name, operation, swagger_path_
 
     return f'''\
 ---
-## `{operation}()`
+## {operation}
+
+> `Moralis.{module_name}.{group_name}.{operation}()`
+
 {f'{swagger_data["description"]}{nl}' if 'description' in swagger_data else swagger_data["summary"]}
 
 ### Example
@@ -170,9 +171,8 @@ def generate_operation_snippet(module_name, group_name, operation, swagger_path_
 
 
 def generate_group_snippet(module_name, group_name, operations, swagger_path_by_operation, swagger):
-    print(operations)
     return f'''\
-# {group_name} API: 
+# {group_name} API:
 
 > `Moralis.{module_name}.{group_name}`
 
@@ -256,32 +256,32 @@ def generate_root_readme(modules, groups):
         current_content = f.read()
 
         new_content = re.sub(
-            pattern=r'<!-- Start: generated:references -->(.*)<!-- End: generated:references -->',
+            pattern=r'<!-- Start: generated:references -->(.*?)<!-- End: generated:references -->',
             repl=f'<!-- Start: generated:references -->{nl}{nl}{generate_modules_list(modules, groups, "docs/")}{nl}{nl}<!-- End: generated:references -->',
             string=current_content,
             flags=re.DOTALL
         )
 
         new_content = re.sub(
-            pattern=r'<!-- Start: generated:example-evm_api -->(.*)<!-- End: generated:example-evm_api -->',
+            pattern=r'<!-- Start: generated:example-evm_api -->(.*?)<!-- End: generated:example-evm_api -->',
             repl=f'<!-- Start: generated:example-evm_api -->{nl}{nl}```python{nl}{code_snippets["evm_api"]["balance"]["getNativeBalance"]}```{nl}{nl}<!-- End: generated:example-evm_api -->',
             string=new_content,
             flags=re.DOTALL
         )
         new_content = re.sub(
-            pattern=r'<!-- Start: generated:example-sol_api -->(.*)<!-- End: generated:example-sol_api -->',
+            pattern=r'<!-- Start: generated:example-sol_api -->(.*?)<!-- End: generated:example-sol_api -->',
             repl=f'<!-- Start: generated:example-sol_api -->{nl}{nl}```python{nl}{code_snippets["sol_api"]["account"]["balance"]}```{nl}{nl}<!-- End: generated:example-sol_api -->',
             string=new_content,
             flags=re.DOTALL
         )
         new_content = re.sub(
-            pattern=r'<!-- Start: generated:example-auth -->(.*)<!-- End: generated:example-auth -->',
+            pattern=r'<!-- Start: generated:example-auth -->(.*?)<!-- End: generated:example-auth -->',
             repl=f'<!-- Start: generated:example-auth -->{nl}{nl}```python{nl}{code_snippets["auth"]["challenge"]["requestChallengeEvm"]}```{nl}{nl}<!-- End: generated:example-auth -->',
             string=new_content,
             flags=re.DOTALL
         )
         new_content = re.sub(
-            pattern=r'<!-- Start: generated:example-streams -->(.*)<!-- End: generated:example-streams -->',
+            pattern=r'<!-- Start: generated:example-streams -->(.*?)<!-- End: generated:example-streams -->',
             repl=f'<!-- Start: generated:example-streams -->{nl}{nl}```python{nl}{code_snippets["streams"]["evm"]["GetStreams"]}```{nl}{nl}<!-- End: generated:example-streams -->',
             string=new_content,
             flags=re.DOTALL
@@ -289,8 +289,26 @@ def generate_root_readme(modules, groups):
 
         with open(readme_path, 'w') as write_file:
             write_file.write(new_content)
+
         with open(docs_path / 'README.md', 'w') as write_file:
-            write_file.write('# API References \n\n' +
+            write_file.write('''
+# Technical Documentation
+
+## Getting stated
+
+If you're new to Moralis, check the [quickstart guide in the official docs](https://docs.moralis.io/moralis-dapp/getting-started) on how to get started.
+
+If you're already familiar with Moralis and have your account registered. Then follow along to connect your SDK:
+
+
+```shell
+pip install moralis
+```
+
+Now you can import the correct module from the SDK and call the method you need. For a full reference of all the methods available, check the references below.
+
+## API References
+''' +
                              generate_modules_list(modules, groups))
 
 

@@ -1,4 +1,4 @@
-# stats API: 
+# stats API:
 
 > `Moralis.streams.stats`
 
@@ -7,7 +7,10 @@
 
 
 ---
-## `get_stats()`
+## get_stats
+
+> `Moralis.streams.stats.get_stats()`
+
 Get the global stats for the account.
 
 
@@ -27,7 +30,10 @@ print(result)
 
 
 ---
-## `get_stats_by_stream_id()`
+## get_stats_by_stream_id
+
+> `Moralis.streams.stats.get_stats_by_stream_id()`
+
 Get the stats for the streamId specified
 
 

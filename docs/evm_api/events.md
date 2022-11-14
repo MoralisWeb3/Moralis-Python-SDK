@@ -1,4 +1,4 @@
-# events API: 
+# events API:
 
 > `Moralis.evm_api.events`
 
@@ -7,7 +7,10 @@
 
 
 ---
-## `get_contract_events()`
+## get_contract_events
+
+> `Moralis.evm_api.events.get_contract_events()`
+
 Get events for a contract ordered by block number in descending order.
 
 
@@ -66,7 +69,10 @@ print(result)
 
 
 ---
-## `get_contract_logs()`
+## get_contract_logs
+
+> `Moralis.evm_api.events.get_contract_logs()`
+
 Get the logs for a contract.
 
 

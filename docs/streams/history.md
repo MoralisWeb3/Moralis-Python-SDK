@@ -1,4 +1,4 @@
-# history API: 
+# history API:
 
 > `Moralis.streams.history`
 
@@ -7,7 +7,10 @@
 
 
 ---
-## `get_history()`
+## get_history
+
+> `Moralis.streams.history.get_history()`
+
 Get all history
 
 
@@ -42,7 +45,10 @@ print(result)
 
 
 ---
-## `replay_history()`
+## replay_history
+
+> `Moralis.streams.history.replay_history()`
+
 Replay a specific history.
 
 
