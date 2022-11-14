@@ -238,12 +238,12 @@ def generate_docs_for_module(module_name):
     return groups, module_name
 
 
-def generate_modules_list(modules, groups):
+def generate_modules_list(modules, groups, path=""):
     out = ""
     for module in modules:
         out += f"## {module}{nl}{nl}"
         for group in groups[module]:
-            out += f"- [{group}](/docs/{module}/{group}.md){nl}"
+            out += f"- [{group}](./{path}{module}/{group}.md){nl}"
         out += f"{nl}"
 
     return out
@@ -254,11 +254,10 @@ def generate_root_readme(modules, groups):
 
     with open(readme_path, 'r+') as f:
         current_content = f.read()
-        module_list = generate_modules_list(modules, groups)
 
         new_content = re.sub(
             pattern=r'<!-- Start: generated:references -->(.*)<!-- End: generated:references -->',
-            repl=f'<!-- Start: generated:references -->{nl}{nl}{module_list}{nl}{nl}<!-- End: generated:references -->',
+            repl=f'<!-- Start: generated:references -->{nl}{nl}{generate_modules_list(modules, groups, "docs/")}{nl}{nl}<!-- End: generated:references -->',
             string=current_content,
             flags=re.DOTALL
         )
@@ -291,7 +290,8 @@ def generate_root_readme(modules, groups):
         with open(readme_path, 'w') as write_file:
             write_file.write(new_content)
         with open(docs_path / 'README.md', 'w') as write_file:
-            write_file.write('# References \n\n' + module_list)
+            write_file.write('# API References \n\n' +
+                             generate_modules_list(modules, groups))
 
 
 def generate_docs():
