@@ -46,14 +46,17 @@ pip install moralis
 
 **_Example getting native balance of an address via the EVM balance API_**
 
+<!-- Start: generated:example-evm_api -->
+
 ```python
 from moralis import evm_api
 
 api_key = "YOUR_API_KEY"
 params = {
-    "address": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e",
-    "chain": "eth",
-    "to_block": 1000000,
+    "address": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e", 
+    "chain": "eth", 
+    "providerUrl": "", 
+    "to_block": 1.2, 
 }
 
 result = evm_api.balance.get_native_balance(
@@ -62,18 +65,21 @@ result = evm_api.balance.get_native_balance(
 )
 
 print(result)
-
 ```
 
+<!-- End: generated:example-evm_api -->
+
 **_Example getting native balance of an address via the SOL account API_**
+
+<!-- Start: generated:example-sol_api -->
 
 ```python
 from moralis import sol_api
 
 api_key = "YOUR_API_KEY"
 params = {
-    "network": "mainnet",
-    "address": "EgxVyTgh2Msg781wt9EsqYx4fW8wSvfFAHGLaJQjghiL",
+    "network": "", 
+    "address": "", 
 }
 
 result = sol_api.account.balance(
@@ -82,25 +88,28 @@ result = sol_api.account.balance(
 )
 
 print(result)
-
 ```
 
+<!-- End: generated:example-sol_api -->
+
 **_Example getting authentication message via the Auth API_**
+
+<!-- Start: generated:example-auth -->
 
 ```python
 from moralis import auth
 
 api_key = "YOUR_API_KEY"
 body = {
-    "domain": "defi.finance",
-    "chainId": "1",
-    "address": "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B",
-    "statement": "Please confirm",
-    "uri": "https://defi.finance/",
-    "expirationTime": "2020-01-01T00:00:00.000Z",
-    "notBefore": "2020-01-01T00:00:00.000Z",
-    "resources": ['https://docs.moralis.io/'],
-    "timeout": 15,
+    "domain": "defi.finance", 
+    "chainId": "1", 
+    "address": "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B", 
+    "statement": "Please confirm", 
+    "uri": "https://defi.finance/", 
+    "expirationTime": "2020-01-01T00:00:00.000Z", 
+    "notBefore": "2020-01-01T00:00:00.000Z", 
+    "resources": ['https://docs.moralis.io/'], 
+    "timeout": 15, 
 }
 
 result = auth.challenge.request_challenge_evm(
@@ -111,24 +120,30 @@ result = auth.challenge.request_challenge_evm(
 print(result)
 ```
 
+<!-- End: generated:example-auth -->
+
 **_Example getting stream via the Streams API_**
+
+<!-- Start: generated:example-streams -->
 
 ```python
 from moralis import streams
 
 api_key = "YOUR_API_KEY"
 params = {
-    "id": "12345",
+    "limit": 1.2, 
+    "cursor": "", 
 }
 
-result = streams.evm.get_stream(
+result = streams.evm.get_streams(
     api_key=api_key,
     params=params,
 )
 
 print(result)
-
 ```
+
+<!-- End: generated:example-streams -->
 
 # 📚 References
 

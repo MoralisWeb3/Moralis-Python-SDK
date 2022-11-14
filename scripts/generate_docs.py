@@ -262,6 +262,32 @@ def generate_root_readme(modules, groups):
             string=current_content,
             flags=re.DOTALL
         )
+
+        new_content = re.sub(
+            pattern=r'<!-- Start: generated:example-evm_api -->(.*)<!-- End: generated:example-evm_api -->',
+            repl=f'<!-- Start: generated:example-evm_api -->{nl}{nl}```python{nl}{code_snippets["evm_api"]["balance"]["getNativeBalance"]}```{nl}{nl}<!-- End: generated:example-evm_api -->',
+            string=new_content,
+            flags=re.DOTALL
+        )
+        new_content = re.sub(
+            pattern=r'<!-- Start: generated:example-sol_api -->(.*)<!-- End: generated:example-sol_api -->',
+            repl=f'<!-- Start: generated:example-sol_api -->{nl}{nl}```python{nl}{code_snippets["sol_api"]["account"]["balance"]}```{nl}{nl}<!-- End: generated:example-sol_api -->',
+            string=new_content,
+            flags=re.DOTALL
+        )
+        new_content = re.sub(
+            pattern=r'<!-- Start: generated:example-auth -->(.*)<!-- End: generated:example-auth -->',
+            repl=f'<!-- Start: generated:example-auth -->{nl}{nl}```python{nl}{code_snippets["auth"]["challenge"]["requestChallengeEvm"]}```{nl}{nl}<!-- End: generated:example-auth -->',
+            string=new_content,
+            flags=re.DOTALL
+        )
+        new_content = re.sub(
+            pattern=r'<!-- Start: generated:example-streams -->(.*)<!-- End: generated:example-streams -->',
+            repl=f'<!-- Start: generated:example-streams -->{nl}{nl}```python{nl}{code_snippets["streams"]["evm"]["GetStreams"]}```{nl}{nl}<!-- End: generated:example-streams -->',
+            string=new_content,
+            flags=re.DOTALL
+        )
+
         with open(readme_path, 'w') as write_file:
             write_file.write(new_content)
         with open(docs_path / 'README.md', 'w') as write_file:
