@@ -16,13 +16,23 @@ quote = '"'
 
 code_snippets = {}
 
+camel_to_snake_map = {}
+
 
 def camel_to_snake(string):
+    original = string
     string = re.sub(r'NFT', 'Nft', string)
     string = re.sub(r'SPL', 'Spl', string)
 
     string = re.sub(r'(?<!^)(?=[A-Z])', '_', string).lower()
-    return ''.join(string.lower())
+    out = ''.join(string.lower())
+    if not out in camel_to_snake_map:
+        camel_to_snake_map[out] = original
+    return out
+
+
+def revert_camel_to_snake(string):
+    return camel_to_snake_map[string]
 
 
 def register_snippet(module_name, group_name, operation, snippet):
@@ -31,7 +41,8 @@ def register_snippet(module_name, group_name, operation, snippet):
     if not group_name in code_snippets[module_name]:
         code_snippets[module_name][group_name] = {}
 
-    code_snippets[module_name][group_name][operation] = snippet
+    code_snippets[module_name][group_name][revert_camel_to_snake(
+        operation)] = snippet
 
     print("Registered snippet for", module_name, group_name, operation)
 
