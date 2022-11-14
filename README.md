@@ -53,10 +53,10 @@ from moralis import evm_api
 
 api_key = "YOUR_API_KEY"
 params = {
-    "address": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e", 
-    "chain": "eth", 
-    "providerUrl": "", 
-    "to_block": 1.2, 
+    "address": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e",
+    "chain": "eth",
+    "providerUrl": "",
+    "to_block": 1.2,
 }
 
 result = evm_api.balance.get_native_balance(
@@ -103,10 +103,10 @@ from moralis import evm_api
 
 api_key = "YOUR_API_KEY"
 params = {
-    "address": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e", 
-    "chain": "eth", 
-    "providerUrl": "", 
-    "to_block": 1.2, 
+    "address": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e",
+    "chain": "eth",
+    "providerUrl": "",
+    "to_block": 1.2,
 }
 
 result = evm_api.balance.get_native_balance(
@@ -128,8 +128,8 @@ from moralis import sol_api
 
 api_key = "YOUR_API_KEY"
 params = {
-    "network": "", 
-    "address": "", 
+    "network": "",
+    "address": "",
 }
 
 result = sol_api.account.balance(
@@ -151,15 +151,15 @@ from moralis import auth
 
 api_key = "YOUR_API_KEY"
 body = {
-    "domain": "defi.finance", 
-    "chainId": "1", 
-    "address": "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B", 
-    "statement": "Please confirm", 
-    "uri": "https://defi.finance/", 
-    "expirationTime": "2020-01-01T00:00:00.000Z", 
-    "notBefore": "2020-01-01T00:00:00.000Z", 
-    "resources": ['https://docs.moralis.io/'], 
-    "timeout": 15, 
+    "domain": "defi.finance",
+    "chainId": "1",
+    "address": "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B",
+    "statement": "Please confirm",
+    "uri": "https://defi.finance/",
+    "expirationTime": "2020-01-01T00:00:00.000Z",
+    "notBefore": "2020-01-01T00:00:00.000Z",
+    "resources": ['https://docs.moralis.io/'],
+    "timeout": 15,
 }
 
 result = auth.challenge.request_challenge_evm(
@@ -181,8 +181,8 @@ from moralis import streams
 
 api_key = "YOUR_API_KEY"
 params = {
-    "limit": 1.2, 
-    "cursor": "", 
+    "limit": 1.2,
+    "cursor": "",
 }
 
 result = streams.evm.get_streams(
@@ -196,6 +196,8 @@ print(result)
 <!-- End: generated:example-streams -->
 
 # 📚 References
+
+For more info see [the live docs](https://moralisweb3.github.io/Moralis-Python-SDK/), or the [docs pages](./docs)
 
 <!-- Start: generated:references -->
 
@@ -229,10 +231,4 @@ print(result)
 - [evm](./docs/streams/evm.md)
 - [stats](./docs/streams/stats.md)
 
-
-
 <!-- End: generated:references -->
-
-```
-
-```
