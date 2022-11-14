@@ -170,16 +170,17 @@ def generate_operation_snippet(module_name, group_name, operation, swagger_path_
 
 
 def generate_group_snippet(module_name, group_name, operations, swagger_path_by_operation, swagger):
+    print(operations)
     return f'''\
 # {group_name} API: 
 
 > `Moralis.{module_name}.{group_name}`
 
 {''.join(list(map(
-    lambda operation: f"- [{Path(operation).stem}](#{Path(operation).stem}){nl}", operations)))}
+    lambda operation: f"- [{Path(operation).stem}](#{Path(operation).stem}){nl}", sorted(operations))))}
 
 {''.join(map(lambda operation: generate_operation_snippet(module_name,
-         group_name, Path(operation).stem, swagger_path_by_operation, swagger), operations))}
+         group_name, Path(operation).stem, swagger_path_by_operation, swagger), sorted(operations)))}
 
 '''
 

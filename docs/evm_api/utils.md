@@ -2,9 +2,29 @@
 
 > `Moralis.evm_api.utils`
 
-- [run_contract_function](#run_contract_function)
 - [endpoint_weights](#endpoint_weights)
+- [run_contract_function](#run_contract_function)
 - [web3_api_version](#web3_api_version)
+
+
+---
+## `endpoint_weights()`
+Get the cost and rate limit for each API endpoint.
+
+
+### Example
+```python
+from moralis import evm_api
+
+api_key = "YOUR_API_KEY"
+
+result = evm_api.utils.endpoint_weights(
+    api_key=api_key,
+)
+
+print(result)
+
+```
 
 
 ---
@@ -57,26 +77,6 @@ Object with the properties:
 |------|------|-------------|----------|---------|---------|
 | abi | object | The contract ABI | Yes |  | [] |
 | params | object | The params for the given function | Yes |  | {} |
-
-
----
-## `endpoint_weights()`
-Get the cost and rate limit for each API endpoint.
-
-
-### Example
-```python
-from moralis import evm_api
-
-api_key = "YOUR_API_KEY"
-
-result = evm_api.utils.endpoint_weights(
-    api_key=api_key,
-)
-
-print(result)
-
-```
 
 
 ---

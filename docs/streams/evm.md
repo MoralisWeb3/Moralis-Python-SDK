@@ -2,81 +2,15 @@
 
 > `Moralis.streams.evm`
 
-- [get_addresses](#get_addresses)
-- [delete_stream](#delete_stream)
 - [add_address_to_stream](#add_address_to_stream)
+- [create_stream](#create_stream)
 - [delete_address_from_stream](#delete_address_from_stream)
+- [delete_stream](#delete_stream)
+- [get_addresses](#get_addresses)
 - [get_stream](#get_stream)
 - [get_streams](#get_streams)
-- [create_stream](#create_stream)
 - [update_stream](#update_stream)
 - [update_stream_status](#update_stream_status)
-
-
----
-## `get_addresses()`
-Get all addresses associated with a specific stream.
-
-
-### Example
-```python
-from moralis import streams
-
-api_key = "YOUR_API_KEY"
-params = {
-    "id": "", 
-    "limit": 1.2, 
-    "cursor": "", 
-}
-
-result = streams.evm.get_addresses(
-    api_key=api_key,
-    params=params,
-)
-
-print(result)
-
-```
-
-### Parameters
-
-| Name | Type | Description | Required | Default | Example |
-|------|------|-------------|----------|---------|---------|
-| id | str | the id of the stream to get the addresses from | Yes |  | "" |
-| limit | float | Limit response results max value 100 | Yes |  | 1.2 |
-| cursor | str | Cursor for fetching next page |  |  | "" |
-
-
-
----
-## `delete_stream()`
-Delete a specific evm stream.
-
-
-### Example
-```python
-from moralis import streams
-
-api_key = "YOUR_API_KEY"
-params = {
-    "id": "", 
-}
-
-result = streams.evm.delete_stream(
-    api_key=api_key,
-    params=params,
-)
-
-print(result)
-
-```
-
-### Parameters
-
-| Name | Type | Description | Required | Default | Example |
-|------|------|-------------|----------|---------|---------|
-| id | str | The id of the stream to delete | Yes |  | "" |
-
 
 
 ---
@@ -122,6 +56,57 @@ Object with the properties:
 
 
 ---
+## `create_stream()`
+Creates a new evm stream.
+
+
+### Example
+```python
+from moralis import streams
+
+api_key = "YOUR_API_KEY"
+body = {
+    "webhookUrl": "", 
+    "description": "", 
+    "tag": "", 
+    "topic0": [], 
+    "allAddresses": True, 
+    "includeNativeTxs": True, 
+    "includeContractLogs": True, 
+    "includeInternalTxs": True, 
+    "abi": [], 
+    "advancedOptions": [], 
+    "chainIds": [], 
+}
+
+result = streams.evm.create_stream(
+    api_key=api_key,
+    body=body,
+)
+
+print(result)
+
+```
+
+### Body
+Object with the properties:
+
+| Name | Type | Description | Required | Default | Example |
+|------|------|-------------|----------|---------|---------|
+| webhookUrl | str | Webhook URL where moralis will send the POST request. | Yes |  | "" |
+| description | str | A description for this stream | Yes |  | "" |
+| tag | str | A user-provided tag that will be send along the webhook, the user can use this tag to identify the specific stream if multiple streams are present | Yes |  | "" |
+| topic0 | List of str | An Array of topic0's in hex, required if the type : log | Yes |  | [] |
+| allAddresses | bool | Include events for all addresses (only applied when abi and topic0 is provided) | Yes |  | True |
+| includeNativeTxs | bool | Include or not native transactions defaults to false (only applied when type:contract) | Yes |  | True |
+| includeContractLogs | bool | Include or not logs of contract interactions defaults to false | Yes |  | True |
+| includeInternalTxs | bool | Include or not include internal transactions defaults to false | Yes |  | True |
+| abi | List of object: <br/> - anonymous: bool<br/> - constant: bool<br/> - inputs: List of AbiInput<br/> - name: str<br/> - outputs: List of AbiOutput<br/> - payable: bool<br/> - stateMutability: str<br/> - type: str<br/> - gas: float | - | Yes |  | [] |
+| advancedOptions | List of object: <br/> - topic0: str<br/> - filter: object: <br/><br/> - includeNativeTxs: bool | - | Yes |  | [] |
+| chainIds | List of str | The ids of the chains for this stream in hex Ex: ["0x1","0x38"] | Yes |  | [] |
+
+
+---
 ## `delete_address_from_stream()`
 Deletes an address from a Stream.
 
@@ -161,6 +146,72 @@ Object with the properties:
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
 | address | str | The address or a list of addresses to be removed from the Stream. | Yes |  | "" |
+
+
+---
+## `delete_stream()`
+Delete a specific evm stream.
+
+
+### Example
+```python
+from moralis import streams
+
+api_key = "YOUR_API_KEY"
+params = {
+    "id": "", 
+}
+
+result = streams.evm.delete_stream(
+    api_key=api_key,
+    params=params,
+)
+
+print(result)
+
+```
+
+### Parameters
+
+| Name | Type | Description | Required | Default | Example |
+|------|------|-------------|----------|---------|---------|
+| id | str | The id of the stream to delete | Yes |  | "" |
+
+
+
+---
+## `get_addresses()`
+Get all addresses associated with a specific stream.
+
+
+### Example
+```python
+from moralis import streams
+
+api_key = "YOUR_API_KEY"
+params = {
+    "id": "", 
+    "limit": 1.2, 
+    "cursor": "", 
+}
+
+result = streams.evm.get_addresses(
+    api_key=api_key,
+    params=params,
+)
+
+print(result)
+
+```
+
+### Parameters
+
+| Name | Type | Description | Required | Default | Example |
+|------|------|-------------|----------|---------|---------|
+| id | str | the id of the stream to get the addresses from | Yes |  | "" |
+| limit | float | Limit response results max value 100 | Yes |  | 1.2 |
+| cursor | str | Cursor for fetching next page |  |  | "" |
+
 
 
 ---
@@ -225,57 +276,6 @@ print(result)
 | limit | float | Limit response results max value 100 | Yes |  | 1.2 |
 | cursor | str | Cursor for fetching next page |  |  | "" |
 
-
-
----
-## `create_stream()`
-Creates a new evm stream.
-
-
-### Example
-```python
-from moralis import streams
-
-api_key = "YOUR_API_KEY"
-body = {
-    "webhookUrl": "", 
-    "description": "", 
-    "tag": "", 
-    "topic0": [], 
-    "allAddresses": True, 
-    "includeNativeTxs": True, 
-    "includeContractLogs": True, 
-    "includeInternalTxs": True, 
-    "abi": [], 
-    "advancedOptions": [], 
-    "chainIds": [], 
-}
-
-result = streams.evm.create_stream(
-    api_key=api_key,
-    body=body,
-)
-
-print(result)
-
-```
-
-### Body
-Object with the properties:
-
-| Name | Type | Description | Required | Default | Example |
-|------|------|-------------|----------|---------|---------|
-| webhookUrl | str | Webhook URL where moralis will send the POST request. | Yes |  | "" |
-| description | str | A description for this stream | Yes |  | "" |
-| tag | str | A user-provided tag that will be send along the webhook, the user can use this tag to identify the specific stream if multiple streams are present | Yes |  | "" |
-| topic0 | List of str | An Array of topic0's in hex, required if the type : log | Yes |  | [] |
-| allAddresses | bool | Include events for all addresses (only applied when abi and topic0 is provided) | Yes |  | True |
-| includeNativeTxs | bool | Include or not native transactions defaults to false (only applied when type:contract) | Yes |  | True |
-| includeContractLogs | bool | Include or not logs of contract interactions defaults to false | Yes |  | True |
-| includeInternalTxs | bool | Include or not include internal transactions defaults to false | Yes |  | True |
-| abi | List of object: <br/> - anonymous: bool<br/> - constant: bool<br/> - inputs: List of AbiInput<br/> - name: str<br/> - outputs: List of AbiOutput<br/> - payable: bool<br/> - stateMutability: str<br/> - type: str<br/> - gas: float | - | Yes |  | [] |
-| advancedOptions | List of object: <br/> - topic0: str<br/> - filter: object: <br/><br/> - includeNativeTxs: bool | - | Yes |  | [] |
-| chainIds | List of str | The ids of the chains for this stream in hex Ex: ["0x1","0x38"] | Yes |  | [] |
 
 
 ---
