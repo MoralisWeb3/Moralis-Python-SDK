@@ -1,4 +1,6 @@
-# evm_api: defi
+# defi API: 
+
+> `Moralis.evm_api.defi`
 
 - [get_pair_address](#get_pair_address)
 - [get_pair_reserves](#get_pair_reserves)

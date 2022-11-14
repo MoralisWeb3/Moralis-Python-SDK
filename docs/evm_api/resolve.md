@@ -1,4 +1,6 @@
-# evm_api: resolve
+# resolve API: 
+
+> `Moralis.evm_api.resolve`
 
 - [resolve_domain](#resolve_domain)
 - [resolve_address](#resolve_address)

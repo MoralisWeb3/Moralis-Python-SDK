@@ -88,33 +88,33 @@ print(result)
 
 ## evm_api
 
-- [token](./src/moralis/evm_api/token/README.md)
-- [transaction](./src/moralis/evm_api/transaction/README.md)
-- [resolve](./src/moralis/evm_api/resolve/README.md)
-- [nft](./src/moralis/evm_api/nft/README.md)
-- [ipfs](./src/moralis/evm_api/ipfs/README.md)
-- [balance](./src/moralis/evm_api/balance/README.md)
-- [utils](./src/moralis/evm_api/utils/README.md)
-- [events](./src/moralis/evm_api/events/README.md)
-- [defi](./src/moralis/evm_api/defi/README.md)
-- [block](./src/moralis/evm_api/block/README.md)
+- [token](/docs/evm_api/token.md)
+- [transaction](/docs/evm_api/transaction.md)
+- [resolve](/docs/evm_api/resolve.md)
+- [nft](/docs/evm_api/nft.md)
+- [ipfs](/docs/evm_api/ipfs.md)
+- [balance](/docs/evm_api/balance.md)
+- [utils](/docs/evm_api/utils.md)
+- [events](/docs/evm_api/events.md)
+- [defi](/docs/evm_api/defi.md)
+- [block](/docs/evm_api/block.md)
 
 ## sol_api
 
-- [token](./src/moralis/sol_api/token/README.md)
-- [nft](./src/moralis/sol_api/nft/README.md)
-- [account](./src/moralis/sol_api/account/README.md)
+- [token](/docs/sol_api/token.md)
+- [nft](/docs/sol_api/nft.md)
+- [account](/docs/sol_api/account.md)
 
 ## auth
 
-- [challenge](./src/moralis/auth/challenge/README.md)
+- [challenge](/docs/auth/challenge.md)
 
 ## streams
 
-- [project](./src/moralis/streams/project/README.md)
-- [history](./src/moralis/streams/history/README.md)
-- [evm](./src/moralis/streams/evm/README.md)
-- [stats](./src/moralis/streams/stats/README.md)
+- [project](/docs/streams/project.md)
+- [history](/docs/streams/history.md)
+- [evm](/docs/streams/evm.md)
+- [stats](/docs/streams/stats.md)
 
 
 

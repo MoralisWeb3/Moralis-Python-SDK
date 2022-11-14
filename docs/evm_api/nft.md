@@ -1,4 +1,6 @@
-# evm_api: nft
+# nft API: 
+
+> `Moralis.evm_api.nft`
 
 - [re_sync_metadata](#re_sync_metadata)
 - [get_contract_nfts](#get_contract_nfts)

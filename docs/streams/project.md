@@ -1,4 +1,6 @@
-# streams: project
+# project API: 
+
+> `Moralis.streams.project`
 
 - [get_settings](#get_settings)
 - [set_settings](#set_settings)

@@ -1,4 +1,6 @@
-# evm_api: token
+# token API: 
+
+> `Moralis.evm_api.token`
 
 - [get_wallet_token_transfers](#get_wallet_token_transfers)
 - [get_token_metadata](#get_token_metadata)

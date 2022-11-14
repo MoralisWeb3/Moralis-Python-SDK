@@ -171,7 +171,9 @@ def generate_operation_snippet(module_name, group_name, operation, swagger_path_
 
 def generate_group_snippet(module_name, group_name, operations, swagger_path_by_operation, swagger):
     return f'''\
-# {module_name}: {group_name}
+# {group_name} API: 
+
+> `Moralis.{module_name}.{group_name}`
 
 {''.join(list(map(
     lambda operation: f"- [{Path(operation).stem}](#{Path(operation).stem}){nl}", operations)))}
@@ -192,7 +194,7 @@ def generate_docs_for_group(module_name, group_name, swagger_path_by_operation, 
 
     content = generate_group_snippet(
         module_name, group_name, operations, swagger_path_by_operation, swagger)
-    out_path = group_path / 'README.md'
+    out_path = docs_path / module_name / f'{group_name}.md'
     with open(out_path, "w") as f:
         f.write(content)
     print(f"✅ Generated docs for group {module_name}.{group_name}")
@@ -219,14 +221,17 @@ def generate_docs_for_module(module_name):
     module_path = moralis_module_path / module_name
     groups = [directory for directory in os.listdir(
         module_path) if os.path.isdir(module_path / directory) and directory != 'moralis.egg-info' and not directory.startswith('__')]
+
+    if not os.path.exists(docs_path / module_name):
+        os.makedirs(docs_path / module_name)
+    with open(docs_path / module_name / 'README.md', "w") as f:
+        f.write(f"# Moralis.{module_name}\n\n")
+        f.write(
+            f"{''.join(list(map(lambda group: f'- [{group}](./{group}.md){nl}', groups)))}")
+
     for group in groups:
         generate_docs_for_group(
             module_name, group, swagger_path_by_operation, swagger)
-
-    with open(module_path / 'README.md', "w") as f:
-        f.write(f"# {module_name}\n\n")
-        f.write(
-            f"{''.join(list(map(lambda group: f'- [{group}](./{group}/README.md){nl}', groups)))}")
 
     print(f"✅ Generated docs for module {module_name}")
     return groups, module_name
@@ -237,7 +242,7 @@ def generate_modules_list(modules, groups):
     for module in modules:
         out += f"## {module}{nl}{nl}"
         for group in groups[module]:
-            out += f"- [{group}](./src/moralis/{module}/{group}/README.md){nl}"
+            out += f"- [{group}](/docs/{module}/{group}.md){nl}"
         out += f"{nl}"
 
     return out
@@ -248,14 +253,18 @@ def generate_root_readme(modules, groups):
 
     with open(readme_path, 'r+') as f:
         current_content = f.read()
+        module_list = generate_modules_list(modules, groups)
+
         new_content = re.sub(
             pattern=r'<!-- Start: generated:references -->(.*)<!-- End: generated:references -->',
-            repl=f'<!-- Start: generated:references -->{nl}{nl}{generate_modules_list(modules, groups)}{nl}{nl}<!-- End: generated:references -->',
+            repl=f'<!-- Start: generated:references -->{nl}{nl}{module_list}{nl}{nl}<!-- End: generated:references -->',
             string=current_content,
             flags=re.DOTALL
         )
         with open(readme_path, 'w') as write_file:
             write_file.write(new_content)
+        with open(docs_path / 'README.md', 'w') as write_file:
+            write_file.write('# References \n\n' + module_list)
 
 
 def generate_docs():

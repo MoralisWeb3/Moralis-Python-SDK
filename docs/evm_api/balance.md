@@ -1,4 +1,6 @@
-# evm_api: balance
+# balance API: 
+
+> `Moralis.evm_api.balance`
 
 - [get_native_balance](#get_native_balance)
 

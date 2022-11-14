@@ -1,4 +1,6 @@
-# streams: stats
+# stats API: 
+
+> `Moralis.streams.stats`
 
 - [get_stats_by_stream_id](#get_stats_by_stream_id)
 - [get_stats](#get_stats)

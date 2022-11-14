@@ -1,4 +1,6 @@
-# evm_api: block
+# block API: 
+
+> `Moralis.evm_api.block`
 
 - [get_block](#get_block)
 - [get_date_to_block](#get_date_to_block)

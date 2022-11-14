@@ -1,4 +1,6 @@
-# sol_api: account
+# account API: 
+
+> `Moralis.sol_api.account`
 
 - [get_portfolio](#get_portfolio)
 - [get_nfts](#get_nfts)

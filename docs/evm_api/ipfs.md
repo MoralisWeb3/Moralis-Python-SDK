@@ -1,4 +1,6 @@
-# evm_api: ipfs
+# ipfs API: 
+
+> `Moralis.evm_api.ipfs`
 
 - [upload_folder](#upload_folder)
 

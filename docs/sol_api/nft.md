@@ -1,11 +1,13 @@
-# sol_api: token
+# nft API: 
 
-- [get_token_price](#get_token_price)
+> `Moralis.sol_api.nft`
+
+- [get_nft_metadata](#get_nft_metadata)
 
 
 ---
-## `get_token_price()`
-Gets the token price (usd and native) for a given contract address and network.
+## `get_nft_metadata()`
+Get the global NFT metadata for a given network and contract (mint, standard, name, symbol, metaplex).
 
 
 ### Example
@@ -18,7 +20,7 @@ params = {
     "network": "", 
 }
 
-result = sol_api.token.get_token_price(
+result = sol_api.nft.get_nft_metadata(
     api_key=api_key,
     params=params,
 )
@@ -32,7 +34,7 @@ print(result)
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
 | address | str | - | Yes |  | "" |
-| network | enum[str]: <br/>- "mainnet" | - | Yes |  | "" |
+| network | enum[str]: <br/>- "mainnet"<br/>- "devnet" | - | Yes |  | "" |
 
 
 

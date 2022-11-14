@@ -1,4 +1,6 @@
-# auth: challenge
+# challenge API: 
+
+> `Moralis.auth.challenge`
 
 - [request_challenge_solana](#request_challenge_solana)
 - [verify_challenge_evm](#verify_challenge_evm)

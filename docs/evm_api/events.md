@@ -1,4 +1,6 @@
-# evm_api: events
+# events API: 
+
+> `Moralis.evm_api.events`
 
 - [get_contract_events](#get_contract_events)
 - [get_contract_logs](#get_contract_logs)

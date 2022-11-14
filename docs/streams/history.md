@@ -1,4 +1,6 @@
-# streams: history
+# history API: 
+
+> `Moralis.streams.history`
 
 - [get_history](#get_history)
 - [replay_history](#replay_history)

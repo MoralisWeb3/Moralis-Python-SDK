@@ -1,4 +1,6 @@
-# streams: evm
+# evm API: 
+
+> `Moralis.streams.evm`
 
 - [get_addresses](#get_addresses)
 - [delete_stream](#delete_stream)

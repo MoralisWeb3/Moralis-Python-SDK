@@ -1,4 +1,6 @@
-# evm_api: utils
+# utils API: 
+
+> `Moralis.evm_api.utils`
 
 - [run_contract_function](#run_contract_function)
 - [endpoint_weights](#endpoint_weights)
