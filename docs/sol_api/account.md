@@ -39,8 +39,8 @@ print(result)
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-| network | enum[str]: <br/>- "mainnet"<br/>- "devnet" | - | Yes |  | "" |
-| address | str | - | Yes |  | "" |
+| network | enum[str]: <br/>- "mainnet"<br/>- "devnet" |  | Yes |  | "" |
+| address | str |  | Yes |  | "" |
 
 
 
@@ -75,8 +75,8 @@ print(result)
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-| network | enum[str]: <br/>- "mainnet"<br/>- "devnet" | - | Yes |  | "" |
-| address | str | - | Yes |  | "" |
+| network | enum[str]: <br/>- "mainnet"<br/>- "devnet" |  | Yes |  | "" |
+| address | str |  | Yes |  | "" |
 
 
 
@@ -111,8 +111,8 @@ print(result)
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-| address | str | - | Yes |  | "" |
-| network | enum[str]: <br/>- "mainnet"<br/>- "devnet" | - | Yes |  | "" |
+| address | str |  | Yes |  | "" |
+| network | enum[str]: <br/>- "mainnet"<br/>- "devnet" |  | Yes |  | "" |
 
 
 
@@ -147,8 +147,8 @@ print(result)
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-| network | enum[str]: <br/>- "mainnet"<br/>- "devnet" | - | Yes |  | "" |
-| address | str | - | Yes |  | "" |
+| network | enum[str]: <br/>- "mainnet"<br/>- "devnet" |  | Yes |  | "" |
+| address | str |  | Yes |  | "" |
 
 
 

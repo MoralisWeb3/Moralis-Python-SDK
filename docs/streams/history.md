@@ -38,9 +38,9 @@ print(result)
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-| limit | float | - | Yes |  | 1.2 |
-| cursor | str | - |  |  | "" |
-| excludePayload | bool | - |  |  | True |
+| limit | float |  | Yes |  | 1.2 |
+| cursor | str |  |  |  | "" |
+| excludePayload | bool |  |  |  | True |
 
 
 

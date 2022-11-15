@@ -158,8 +158,14 @@ def get_type_for_body(schema, swagger):
     return type
 
 
+def sanitize_example(example):
+    if type(example) is str:
+        return f'{example}'.replace("\n", "<br/>") if example else ''
+    return example
+
+
 def get_description_for_param(param):
-    return param["description"].replace("\n", "<br/>") if "description" in param else "-"
+    return param["description"].replace("\n", "<br/>") if "description" in param else ""
 
 
 def get_required_for_param(param):
@@ -169,4 +175,4 @@ def get_required_for_param(param):
 def get_param_details(param, swagger):
     type, example, default = get_type_for_param(param, swagger)
 
-    return type, example, default
+    return type, sanitize_example(example), default

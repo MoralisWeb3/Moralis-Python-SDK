@@ -107,8 +107,8 @@ Object with the properties:
 | includeNativeTxs | bool | Include or not native transactions defaults to false (only applied when type:contract) | Yes |  | True |
 | includeContractLogs | bool | Include or not logs of contract interactions defaults to false | Yes |  | True |
 | includeInternalTxs | bool | Include or not include internal transactions defaults to false | Yes |  | True |
-| abi | List of object: <br/> - anonymous: bool<br/> - constant: bool<br/> - inputs: List of AbiInput<br/> - name: str<br/> - outputs: List of AbiOutput<br/> - payable: bool<br/> - stateMutability: str<br/> - type: str<br/> - gas: float | - | Yes |  | [] |
-| advancedOptions | List of object: <br/> - topic0: str<br/> - filter: object: <br/><br/> - includeNativeTxs: bool | - | Yes |  | [] |
+| abi | List of object: <br/> - anonymous: bool<br/> - constant: bool<br/> - inputs: List of AbiInput<br/> - name: str<br/> - outputs: List of AbiOutput<br/> - payable: bool<br/> - stateMutability: str<br/> - type: str<br/> - gas: float |  | Yes |  | [] |
+| advancedOptions | List of object: <br/> - topic0: str<br/> - filter: object: <br/><br/> - includeNativeTxs: bool |  | Yes |  | [] |
 | chainIds | List of str | The ids of the chains for this stream in hex Ex: ["0x1","0x38"] | Yes |  | [] |
 
 
@@ -359,8 +359,8 @@ Object with the properties:
 | includeNativeTxs | bool | Include or not native transactions defaults to false (only applied when type:contract) | Yes |  | True |
 | includeContractLogs | bool | Include or not logs of contract interactions defaults to false | Yes |  | True |
 | includeInternalTxs | bool | Include or not include internal transactions defaults to false | Yes |  | True |
-| abi | List of object: <br/> - anonymous: bool<br/> - constant: bool<br/> - inputs: List of AbiInput<br/> - name: str<br/> - outputs: List of AbiOutput<br/> - payable: bool<br/> - stateMutability: str<br/> - type: str<br/> - gas: float | - | Yes |  | [] |
-| advancedOptions | List of object: <br/> - topic0: str<br/> - filter: object: <br/><br/> - includeNativeTxs: bool | - | Yes |  | [] |
+| abi | List of object: <br/> - anonymous: bool<br/> - constant: bool<br/> - inputs: List of AbiInput<br/> - name: str<br/> - outputs: List of AbiOutput<br/> - payable: bool<br/> - stateMutability: str<br/> - type: str<br/> - gas: float |  | Yes |  | [] |
+| advancedOptions | List of object: <br/> - topic0: str<br/> - filter: object: <br/><br/> - includeNativeTxs: bool |  | Yes |  | [] |
 | chainIds | List of str | The ids of the chains for this stream in hex Ex: ["0x1","0x38"] | Yes |  | [] |
 
 

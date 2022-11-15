@@ -137,8 +137,8 @@ Object with the properties:
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-| message | str | - | Yes |  | "" |
-| signature | str | - | Yes |  | "0x1234567890abcdef0123456789abcdef1234567890abcdef" |
+| message | str |  | Yes |  | "" |
+| signature | str |  | Yes |  | "0x1234567890abcdef0123456789abcdef1234567890abcdef" |
 
 
 ---
@@ -154,19 +154,7 @@ from moralis import auth
 
 api_key = "YOUR_API_KEY"
 body = {
-    "message": "defi.finance wants you to sign in with your Solana account:
-26qv4GCcx98RihuK3c4T6ozB3J7L6VwCuFVc7Ta2A3Uo
-
-I am a third party API
-
-URI: http://defi.finance
-Version: 1
-Network: mainnet
-Nonce: PYxxb9msdjVXsMQ9x
-Issued At: 2022-08-25T11:02:34.097Z
-Expiration Time: 2022-08-25T11:12:38.243Z
-Resources:
-- https://docs.moralis.io/", 
+    "message": "defi.finance wants you to sign in with your Solana account:<br/>26qv4GCcx98RihuK3c4T6ozB3J7L6VwCuFVc7Ta2A3Uo<br/><br/>I am a third party API<br/><br/>URI: http://defi.finance<br/>Version: 1<br/>Network: mainnet<br/>Nonce: PYxxb9msdjVXsMQ9x<br/>Issued At: 2022-08-25T11:02:34.097Z<br/>Expiration Time: 2022-08-25T11:12:38.243Z<br/>Resources:<br/>- https://docs.moralis.io/", 
     "signature": "2pH9DqD5rve2qV4yBDshcAjWd2y8TqMx8BPb7f3KoNnuLEhE5JwjruYi4jaFaD4HN6wriLz2Vdr32kRBAJmHcyny", 
 }
 
@@ -184,19 +172,7 @@ Object with the properties:
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-| message | str | Message that needs to be signed by the end user | Yes |  | "defi.finance wants you to sign in with your Solana account:
-26qv4GCcx98RihuK3c4T6ozB3J7L6VwCuFVc7Ta2A3Uo
-
-I am a third party API
-
-URI: http://defi.finance
-Version: 1
-Network: mainnet
-Nonce: PYxxb9msdjVXsMQ9x
-Issued At: 2022-08-25T11:02:34.097Z
-Expiration Time: 2022-08-25T11:12:38.243Z
-Resources:
-- https://docs.moralis.io/" |
+| message | str | Message that needs to be signed by the end user | Yes |  | "defi.finance wants you to sign in with your Solana account:<br/>26qv4GCcx98RihuK3c4T6ozB3J7L6VwCuFVc7Ta2A3Uo<br/><br/>I am a third party API<br/><br/>URI: http://defi.finance<br/>Version: 1<br/>Network: mainnet<br/>Nonce: PYxxb9msdjVXsMQ9x<br/>Issued At: 2022-08-25T11:02:34.097Z<br/>Expiration Time: 2022-08-25T11:12:38.243Z<br/>Resources:<br/>- https://docs.moralis.io/" |
 | signature | str | Base58 signature that needs to be used to verify end user | Yes |  | "2pH9DqD5rve2qV4yBDshcAjWd2y8TqMx8BPb7f3KoNnuLEhE5JwjruYi4jaFaD4HN6wriLz2Vdr32kRBAJmHcyny" |
 
 
