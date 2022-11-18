@@ -137,6 +137,8 @@ class ParameterSerializerBase:
             if percent_encode:
                 return quote(str(in_data))
             return str(in_data)
+        elif isinstance(in_data, bool):
+            return "true" if in_data else "false"
         elif isinstance(in_data, none_type):
             # ignored by the expansion process https://datatracker.ietf.org/doc/html/rfc6570#section-3.2.1
             return None
@@ -244,7 +246,7 @@ class ParameterSerializerBase:
         """
         named_parameter_expansion = prefix_separator_iterator.separator in {'&', ';'}
         var_name_piece = variable_name if named_parameter_expansion else ''
-        if type(in_data) in {str, float, int}:
+        if type(in_data) in {str, float, int, bool}:
             return cls.__ref6570_str_float_int_expansion(
                 variable_name,
                 in_data,
