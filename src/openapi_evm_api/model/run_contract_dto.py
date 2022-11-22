@@ -39,7 +39,29 @@ class RunContractDto(
         }
         
         class properties:
-            abi = schemas.DictSchema
+            
+            
+            class abi(
+                schemas.ListSchema
+            ):
+            
+            
+                class MetaOapg:
+                    items = schemas.DictSchema
+            
+                def __new__(
+                    cls,
+                    arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, dict, frozendict.frozendict, ]], typing.List[typing.Union[MetaOapg.items, dict, frozendict.frozendict, ]]],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'abi':
+                    return super().__new__(
+                        cls,
+                        arg,
+                        _configuration=_configuration,
+                    )
+            
+                def __getitem__(self, i: int) -> MetaOapg.items:
+                    return super().__getitem__(i)
             params = schemas.DictSchema
             __annotations__ = {
                 "abi": abi,
@@ -79,7 +101,7 @@ class RunContractDto(
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
-        abi: typing.Union[MetaOapg.properties.abi, dict, frozendict.frozendict, ],
+        abi: typing.Union[MetaOapg.properties.abi, list, tuple, ],
         params: typing.Union[MetaOapg.properties.params, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
