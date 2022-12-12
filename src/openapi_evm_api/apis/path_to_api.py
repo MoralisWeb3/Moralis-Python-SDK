@@ -2,6 +2,7 @@ import typing_extensions
 
 from openapi_evm_api.paths import PathValues
 from openapi_evm_api.apis.paths.address_nft import AddressNft
+from openapi_evm_api.apis.paths.nft_get_multiple_nfts import NftGetMultipleNFTs
 from openapi_evm_api.apis.paths.address_nft_transfers import AddressNftTransfers
 from openapi_evm_api.apis.paths.address_nft_collections import AddressNftCollections
 from openapi_evm_api.apis.paths.nft_address import NftAddress
@@ -27,6 +28,7 @@ from openapi_evm_api.apis.paths.erc20_address_allowance import Erc20AddressAllow
 from openapi_evm_api.apis.paths.erc20_address_transfers import Erc20AddressTransfers
 from openapi_evm_api.apis.paths.address_balance import AddressBalance
 from openapi_evm_api.apis.paths.address import Address
+from openapi_evm_api.apis.paths.address_verbose import AddressVerbose
 from openapi_evm_api.apis.paths.transaction_transaction_hash import TransactionTransactionHash
 from openapi_evm_api.apis.paths.block_block_number_or_hash import BlockBlockNumberOrHash
 from openapi_evm_api.apis.paths.date_to_block import DateToBlock
@@ -45,6 +47,7 @@ PathToApi = typing_extensions.TypedDict(
     'PathToApi',
     {
         PathValues.ADDRESS_NFT: AddressNft,
+        PathValues.NFT_GET_MULTIPLE_NFTS: NftGetMultipleNFTs,
         PathValues.ADDRESS_NFT_TRANSFERS: AddressNftTransfers,
         PathValues.ADDRESS_NFT_COLLECTIONS: AddressNftCollections,
         PathValues.NFT_ADDRESS: NftAddress,
@@ -70,6 +73,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.ERC20_ADDRESS_TRANSFERS: Erc20AddressTransfers,
         PathValues.ADDRESS_BALANCE: AddressBalance,
         PathValues.ADDRESS: Address,
+        PathValues.ADDRESS_VERBOSE: AddressVerbose,
         PathValues.TRANSACTION_TRANSACTION_HASH: TransactionTransactionHash,
         PathValues.BLOCK_BLOCK_NUMBER_OR_HASH: BlockBlockNumberOrHash,
         PathValues.DATE_TO_BLOCK: DateToBlock,
@@ -89,6 +93,7 @@ PathToApi = typing_extensions.TypedDict(
 path_to_api = PathToApi(
     {
         PathValues.ADDRESS_NFT: AddressNft,
+        PathValues.NFT_GET_MULTIPLE_NFTS: NftGetMultipleNFTs,
         PathValues.ADDRESS_NFT_TRANSFERS: AddressNftTransfers,
         PathValues.ADDRESS_NFT_COLLECTIONS: AddressNftCollections,
         PathValues.NFT_ADDRESS: NftAddress,
@@ -114,6 +119,7 @@ path_to_api = PathToApi(
         PathValues.ERC20_ADDRESS_TRANSFERS: Erc20AddressTransfers,
         PathValues.ADDRESS_BALANCE: AddressBalance,
         PathValues.ADDRESS: Address,
+        PathValues.ADDRESS_VERBOSE: AddressVerbose,
         PathValues.TRANSACTION_TRANSACTION_HASH: TransactionTransactionHash,
         PathValues.BLOCK_BLOCK_NUMBER_OR_HASH: BlockBlockNumberOrHash,
         PathValues.DATE_TO_BLOCK: DateToBlock,

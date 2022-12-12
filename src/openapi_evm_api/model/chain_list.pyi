@@ -114,6 +114,14 @@ class ChainList(
         return cls("0xfa")
     
     @schemas.classproperty
+    def PALM(cls):
+        return cls("palm")
+    
+    @schemas.classproperty
+    def X2A15C308D(cls):
+        return cls("0x2a15c308d")
+    
+    @schemas.classproperty
     def CRONOS(cls):
         return cls("cronos")
     
@@ -128,3 +136,11 @@ class ChainList(
     @schemas.classproperty
     def X152(cls):
         return cls("0x152")
+    
+    @schemas.classproperty
+    def ARBITRUM(cls):
+        return cls("arbitrum")
+    
+    @schemas.classproperty
+    def XA4B1(cls):
+        return cls("0xa4b1")

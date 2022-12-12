@@ -7,6 +7,7 @@ import enum
 
 class PathValues(str, enum.Enum):
     ADDRESS_NFT = "/{address}/nft"
+    NFT_GET_MULTIPLE_NFTS = "/nft/getMultipleNFTs"
     ADDRESS_NFT_TRANSFERS = "/{address}/nft/transfers"
     ADDRESS_NFT_COLLECTIONS = "/{address}/nft/collections"
     NFT_ADDRESS = "/nft/{address}"
@@ -32,6 +33,7 @@ class PathValues(str, enum.Enum):
     ERC20_ADDRESS_TRANSFERS = "/erc20/{address}/transfers"
     ADDRESS_BALANCE = "/{address}/balance"
     ADDRESS = "/{address}"
+    ADDRESS_VERBOSE = "/{address}/verbose"
     TRANSACTION_TRANSACTION_HASH = "/transaction/{transaction_hash}"
     BLOCK_BLOCK_NUMBER_OR_HASH = "/block/{block_number_or_hash}"
     DATE_TO_BLOCK = "/dateToBlock"

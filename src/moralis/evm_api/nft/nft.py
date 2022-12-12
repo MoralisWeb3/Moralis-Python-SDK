@@ -1,4 +1,5 @@
 from .get_contract_nfts import get_contract_nfts
+from .get_multiple_nfts import get_multiple_nfts
 from .get_nft_contract_metadata import get_nft_contract_metadata
 from .get_nft_contract_transfers import get_nft_contract_transfers
 from .get_nft_lowest_price import get_nft_lowest_price

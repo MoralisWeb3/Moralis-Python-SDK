@@ -1,6 +1,6 @@
 [
   {
-    "swagger": "https://storage.googleapis.com/testing-moralis/evmapi-swagger.json",
+    "swagger": "https://deep-index.moralis.io/api-docs-2.1/v2.1/swagger.json",
     "name": "evm_api",
     "security_key": "ApiKeyAuth"
   },
@@ -10,9 +10,9 @@
     "security_key": "ApiKeyAuth"
   },
   {
-    "swagger": "https://storage.googleapis.com/testing-moralis/auth-swagger.json",
+    "swagger": "https://authapi.moralis.io/api-docs-json",
     "name": "auth",
-    "security_key": "X-API-KEY"
+    "security_key": "ApiKeyAuth"
   },
   {
     "swagger": "https://storage.googleapis.com/testing-moralis/streams-swagger.json",

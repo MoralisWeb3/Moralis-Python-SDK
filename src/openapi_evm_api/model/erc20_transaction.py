@@ -40,7 +40,9 @@ class Erc20Transaction(
             "block_hash",
             "block_number",
             "to_address",
+            "transaction_index",
             "from_address",
+            "log_index",
             "value",
             "transaction_hash",
         }
@@ -54,6 +56,8 @@ class Erc20Transaction(
             to_address = schemas.StrSchema
             from_address = schemas.StrSchema
             value = schemas.StrSchema
+            transaction_index = schemas.IntSchema
+            log_index = schemas.IntSchema
             __annotations__ = {
                 "transaction_hash": transaction_hash,
                 "address": address,
@@ -63,6 +67,8 @@ class Erc20Transaction(
                 "to_address": to_address,
                 "from_address": from_address,
                 "value": value,
+                "transaction_index": transaction_index,
+                "log_index": log_index,
             }
 
     
@@ -71,7 +77,9 @@ class Erc20Transaction(
     block_hash: MetaOapg.properties.block_hash
     block_number: MetaOapg.properties.block_number
     to_address: MetaOapg.properties.to_address
+    transaction_index: MetaOapg.properties.transaction_index
     from_address: MetaOapg.properties.from_address
+    log_index: MetaOapg.properties.log_index
     value: MetaOapg.properties.value
     transaction_hash: MetaOapg.properties.transaction_hash
     
@@ -100,9 +108,15 @@ class Erc20Transaction(
     def __getitem__(self, name: typing_extensions.Literal["value"]) -> MetaOapg.properties.value: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["transaction_index"]) -> MetaOapg.properties.transaction_index: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["log_index"]) -> MetaOapg.properties.log_index: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["transaction_hash", "address", "block_timestamp", "block_number", "block_hash", "to_address", "from_address", "value", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["transaction_hash", "address", "block_timestamp", "block_number", "block_hash", "to_address", "from_address", "value", "transaction_index", "log_index", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -132,9 +146,15 @@ class Erc20Transaction(
     def get_item_oapg(self, name: typing_extensions.Literal["value"]) -> MetaOapg.properties.value: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["transaction_index"]) -> MetaOapg.properties.transaction_index: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["log_index"]) -> MetaOapg.properties.log_index: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["transaction_hash", "address", "block_timestamp", "block_number", "block_hash", "to_address", "from_address", "value", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["transaction_hash", "address", "block_timestamp", "block_number", "block_hash", "to_address", "from_address", "value", "transaction_index", "log_index", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -146,7 +166,9 @@ class Erc20Transaction(
         block_hash: typing.Union[MetaOapg.properties.block_hash, str, ],
         block_number: typing.Union[MetaOapg.properties.block_number, str, ],
         to_address: typing.Union[MetaOapg.properties.to_address, str, ],
+        transaction_index: typing.Union[MetaOapg.properties.transaction_index, decimal.Decimal, int, ],
         from_address: typing.Union[MetaOapg.properties.from_address, str, ],
+        log_index: typing.Union[MetaOapg.properties.log_index, decimal.Decimal, int, ],
         value: typing.Union[MetaOapg.properties.value, str, ],
         transaction_hash: typing.Union[MetaOapg.properties.transaction_hash, str, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
@@ -160,7 +182,9 @@ class Erc20Transaction(
             block_hash=block_hash,
             block_number=block_number,
             to_address=to_address,
+            transaction_index=transaction_index,
             from_address=from_address,
+            log_index=log_index,
             value=value,
             transaction_hash=transaction_hash,
             _configuration=_configuration,

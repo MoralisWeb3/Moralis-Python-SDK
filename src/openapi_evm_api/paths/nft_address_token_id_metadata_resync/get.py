@@ -42,13 +42,13 @@ class FlagSchema(
 
     class MetaOapg:
         enum_value_to_name = {
-            "URI": "URI",
+            "uri": "URI",
             "metadata": "METADATA",
         }
     
     @schemas.classproperty
     def URI(cls):
-        return cls("URI")
+        return cls("uri")
     
     @schemas.classproperty
     def METADATA(cls):

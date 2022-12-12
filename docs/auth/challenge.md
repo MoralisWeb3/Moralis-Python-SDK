@@ -53,7 +53,7 @@ Object with the properties:
 | uri | str | RFC 3986 URI referring to the resource that is the subject of the signing (as in the __subject__ of a claim). | Yes |  | "https://defi.finance/" |
 | expirationTime | str | ISO 8601 datetime string that, if present, indicates when the signed authentication message is no longer valid. | Yes |  | "2020-01-01T00:00:00.000Z" |
 | notBefore | str | ISO 8601 datetime string that, if present, indicates when the signed authentication message will become valid. | Yes |  | "2020-01-01T00:00:00.000Z" |
-| resources | List of str | List of information or references to information the user wishes to have resolved as part of authentication by the relying party. They are expressed as RFC 3986 URIs separated by `<br/>- `. | Yes |  | ['https://docs.moralis.io/'] |
+| resources | List of str | List of information or references to information the user wishes to have resolved as part of authentication by the relying party. They are expressed as RFC 3986 URIs separated by new lines. | Yes |  | ['https://docs.moralis.io/'] |
 | timeout | float | Time in seconds before the challenge is expired | Yes | 15 | 15 |
 
 
@@ -102,7 +102,7 @@ Object with the properties:
 | uri | str | RFC 3986 URI referring to the resource that is the subject of the signing (as in the __subject__ of a claim). | Yes |  | "https://defi.finance/" |
 | expirationTime | str | ISO 8601 datetime string that, if present, indicates when the signed authentication message is no longer valid. | Yes |  | "2020-01-01T00:00:00.000Z" |
 | notBefore | str | ISO 8601 datetime string that, if present, indicates when the signed authentication message will become valid. | Yes |  | "2020-01-01T00:00:00.000Z" |
-| resources | List of str | List of information or references to information the user wishes to have resolved as part of authentication by the relying party. They are expressed as RFC 3986 URIs separated by `<br/>- `. | Yes |  | ['https://docs.moralis.io/'] |
+| resources | List of str | List of information or references to information the user wishes to have resolved as part of authentication by the relying party. They are expressed as RFC 3986 URIs separated by new lines. | Yes |  | ['https://docs.moralis.io/'] |
 | timeout | float | Time in seconds before the challenge is expired | Yes | 15 | 15 |
 
 
@@ -119,8 +119,8 @@ from moralis import auth
 
 api_key = "YOUR_API_KEY"
 body = {
-    "message": "", 
-    "signature": "0x1234567890abcdef0123456789abcdef1234567890abcdef", 
+    "message": "defi.finance wants you to sign in with your Ethereum account:<br/>0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B<br/><br/><br/>URI: https://defi.finance<br/>Version: 1<br/>Chain ID: 1<br/>Nonce: Px7Nh1RPzlCLwqgOb<br/>Issued At: 2022-11-30T10:20:00.262Z", 
+    "signature": "0xa8f89a58bf9b433d3100f9e41ee35b5e31fb8c7cd62547acb113162ec6f2e4140207e2dfbd4e387e1801ebc7f08a9dd105ac1d22b2e2ff0df5fa8b6d9bdcfe491c", 
 }
 
 result = auth.challenge.verify_challenge_evm(
@@ -137,8 +137,8 @@ Object with the properties:
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-| message | str |  | Yes |  | "" |
-| signature | str |  | Yes |  | "0x1234567890abcdef0123456789abcdef1234567890abcdef" |
+| message | str | Message that needs to be signed by the end user. | Yes |  | "defi.finance wants you to sign in with your Ethereum account:<br/>0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B<br/><br/><br/>URI: https://defi.finance<br/>Version: 1<br/>Chain ID: 1<br/>Nonce: Px7Nh1RPzlCLwqgOb<br/>Issued At: 2022-11-30T10:20:00.262Z" |
+| signature | str | EIP-191 compliant signature signed by the Ethereum account address requesting authentication. | Yes |  | "0xa8f89a58bf9b433d3100f9e41ee35b5e31fb8c7cd62547acb113162ec6f2e4140207e2dfbd4e387e1801ebc7f08a9dd105ac1d22b2e2ff0df5fa8b6d9bdcfe491c" |
 
 
 ---

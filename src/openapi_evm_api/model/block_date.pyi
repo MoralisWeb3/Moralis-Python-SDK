@@ -44,10 +44,16 @@ class BlockDate(
             date = schemas.StrSchema
             block = schemas.NumberSchema
             timestamp = schemas.NumberSchema
+            block_timestamp = schemas.NumberSchema
+            block_hash = schemas.StrSchema
+            parent_hash = schemas.StrSchema
             __annotations__ = {
                 "date": date,
                 "block": block,
                 "timestamp": timestamp,
+                "block_timestamp": block_timestamp,
+                "block_hash": block_hash,
+                "parent_hash": parent_hash,
             }
 
     
@@ -65,9 +71,18 @@ class BlockDate(
     def __getitem__(self, name: typing_extensions.Literal["timestamp"]) -> MetaOapg.properties.timestamp: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["block_timestamp"]) -> MetaOapg.properties.block_timestamp: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["block_hash"]) -> MetaOapg.properties.block_hash: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["parent_hash"]) -> MetaOapg.properties.parent_hash: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["date", "block", "timestamp", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["date", "block", "timestamp", "block_timestamp", "block_hash", "parent_hash", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -82,9 +97,18 @@ class BlockDate(
     def get_item_oapg(self, name: typing_extensions.Literal["timestamp"]) -> MetaOapg.properties.timestamp: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["block_timestamp"]) -> typing.Union[MetaOapg.properties.block_timestamp, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["block_hash"]) -> typing.Union[MetaOapg.properties.block_hash, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["parent_hash"]) -> typing.Union[MetaOapg.properties.parent_hash, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["date", "block", "timestamp", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["date", "block", "timestamp", "block_timestamp", "block_hash", "parent_hash", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -94,6 +118,9 @@ class BlockDate(
         date: typing.Union[MetaOapg.properties.date, str, ],
         block: typing.Union[MetaOapg.properties.block, decimal.Decimal, int, float, ],
         timestamp: typing.Union[MetaOapg.properties.timestamp, decimal.Decimal, int, float, ],
+        block_timestamp: typing.Union[MetaOapg.properties.block_timestamp, decimal.Decimal, int, float, schemas.Unset] = schemas.unset,
+        block_hash: typing.Union[MetaOapg.properties.block_hash, str, schemas.Unset] = schemas.unset,
+        parent_hash: typing.Union[MetaOapg.properties.parent_hash, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'BlockDate':
@@ -103,6 +130,9 @@ class BlockDate(
             date=date,
             block=block,
             timestamp=timestamp,
+            block_timestamp=block_timestamp,
+            block_hash=block_hash,
+            parent_hash=parent_hash,
             _configuration=_configuration,
             **kwargs,
         )

@@ -25,39 +25,44 @@ import frozendict  # noqa: F401
 
 from openapi_evm_api import schemas  # noqa: F401
 
-from openapi_evm_api.model.metadata_resync import MetadataResync
 from openapi_evm_api.model.chain_list import ChainList
+from openapi_evm_api.model.transaction_collection_verbose import TransactionCollectionVerbose
+
+from . import path
 
 # Query params
 ChainSchema = ChainList
+SubdomainSchema = schemas.StrSchema
 
 
-class FlagSchema(
-    schemas.EnumBase,
-    schemas.StrSchema
+class FromBlockSchema(
+    schemas.IntSchema
 ):
-    
-    @schemas.classproperty
-    def URI(cls):
-        return cls("uri")
-    
-    @schemas.classproperty
-    def METADATA(cls):
-        return cls("metadata")
 
 
-class ModeSchema(
-    schemas.EnumBase,
-    schemas.StrSchema
+    class MetaOapg:
+        inclusive_minimum = 0
+
+
+class ToBlockSchema(
+    schemas.IntSchema
 ):
-    
-    @schemas.classproperty
-    def ASYNC(cls):
-        return cls("async")
-    
-    @schemas.classproperty
-    def SYNC(cls):
-        return cls("sync")
+
+
+    class MetaOapg:
+        inclusive_minimum = 0
+FromDateSchema = schemas.StrSchema
+ToDateSchema = schemas.StrSchema
+CursorSchema = schemas.StrSchema
+
+
+class LimitSchema(
+    schemas.IntSchema
+):
+
+
+    class MetaOapg:
+        inclusive_minimum = 0
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -67,8 +72,13 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
     'RequestOptionalQueryParams',
     {
         'chain': typing.Union[ChainSchema, ],
-        'flag': typing.Union[FlagSchema, str, ],
-        'mode': typing.Union[ModeSchema, str, ],
+        'subdomain': typing.Union[SubdomainSchema, str, ],
+        'from_block': typing.Union[FromBlockSchema, decimal.Decimal, int, ],
+        'to_block': typing.Union[ToBlockSchema, decimal.Decimal, int, ],
+        'from_date': typing.Union[FromDateSchema, str, ],
+        'to_date': typing.Union[ToDateSchema, str, ],
+        'cursor': typing.Union[CursorSchema, str, ],
+        'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
     },
     total=False
 )
@@ -84,26 +94,54 @@ request_query_chain = api_client.QueryParameter(
     schema=ChainSchema,
     explode=True,
 )
-request_query_flag = api_client.QueryParameter(
-    name="flag",
+request_query_subdomain = api_client.QueryParameter(
+    name="subdomain",
     style=api_client.ParameterStyle.FORM,
-    schema=FlagSchema,
+    schema=SubdomainSchema,
     explode=True,
 )
-request_query_mode = api_client.QueryParameter(
-    name="mode",
+request_query_from_block = api_client.QueryParameter(
+    name="from_block",
     style=api_client.ParameterStyle.FORM,
-    schema=ModeSchema,
+    schema=FromBlockSchema,
+    explode=True,
+)
+request_query_to_block = api_client.QueryParameter(
+    name="to_block",
+    style=api_client.ParameterStyle.FORM,
+    schema=ToBlockSchema,
+    explode=True,
+)
+request_query_from_date = api_client.QueryParameter(
+    name="from_date",
+    style=api_client.ParameterStyle.FORM,
+    schema=FromDateSchema,
+    explode=True,
+)
+request_query_to_date = api_client.QueryParameter(
+    name="to_date",
+    style=api_client.ParameterStyle.FORM,
+    schema=ToDateSchema,
+    explode=True,
+)
+request_query_cursor = api_client.QueryParameter(
+    name="cursor",
+    style=api_client.ParameterStyle.FORM,
+    schema=CursorSchema,
+    explode=True,
+)
+request_query_limit = api_client.QueryParameter(
+    name="limit",
+    style=api_client.ParameterStyle.FORM,
+    schema=LimitSchema,
     explode=True,
 )
 # Path params
 AddressSchema = schemas.StrSchema
-TokenIdSchema = schemas.StrSchema
 RequestRequiredPathParams = typing_extensions.TypedDict(
     'RequestRequiredPathParams',
     {
         'address': typing.Union[AddressSchema, str, ],
-        'token_id': typing.Union[TokenIdSchema, str, ],
     }
 )
 RequestOptionalPathParams = typing_extensions.TypedDict(
@@ -124,13 +162,10 @@ request_path_address = api_client.PathParameter(
     schema=AddressSchema,
     required=True,
 )
-request_path_token_id = api_client.PathParameter(
-    name="token_id",
-    style=api_client.ParameterStyle.SIMPLE,
-    schema=TokenIdSchema,
-    required=True,
-)
-SchemaFor200ResponseBodyApplicationJson = MetadataResync
+_auth = [
+    'ApiKeyAuth',
+]
+SchemaFor200ResponseBodyApplicationJson = TransactionCollectionVerbose
 
 
 @dataclass
@@ -149,44 +184,9 @@ _response_for_200 = api_client.OpenApiResponse(
             schema=SchemaFor200ResponseBodyApplicationJson),
     },
 )
-SchemaFor202ResponseBodyApplicationJson = MetadataResync
-
-
-@dataclass
-class ApiResponseFor202(api_client.ApiResponse):
-    response: urllib3.HTTPResponse
-    body: typing.Union[
-        SchemaFor202ResponseBodyApplicationJson,
-    ]
-    headers: schemas.Unset = schemas.unset
-
-
-_response_for_202 = api_client.OpenApiResponse(
-    response_cls=ApiResponseFor202,
-    content={
-        'application/json': api_client.MediaType(
-            schema=SchemaFor202ResponseBodyApplicationJson),
-    },
-)
-SchemaFor404ResponseBodyApplicationJson = MetadataResync
-
-
-@dataclass
-class ApiResponseFor404(api_client.ApiResponse):
-    response: urllib3.HTTPResponse
-    body: typing.Union[
-        SchemaFor404ResponseBodyApplicationJson,
-    ]
-    headers: schemas.Unset = schemas.unset
-
-
-_response_for_404 = api_client.OpenApiResponse(
-    response_cls=ApiResponseFor404,
-    content={
-        'application/json': api_client.MediaType(
-            schema=SchemaFor404ResponseBodyApplicationJson),
-    },
-)
+_status_code_to_response = {
+    '200': _response_for_200,
+}
 _all_accept_content_types = (
     'application/json',
 )
@@ -194,7 +194,7 @@ _all_accept_content_types = (
 
 class BaseApi(api_client.Api):
     @typing.overload
-    def _re_sync_metadata_oapg(
+    def _get_wallet_transactions_verbose_oapg(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
@@ -204,11 +204,10 @@ class BaseApi(api_client.Api):
         skip_deserialization: typing_extensions.Literal[False] = ...,
     ) -> typing.Union[
         ApiResponseFor200,
-        ApiResponseFor202,
     ]: ...
 
     @typing.overload
-    def _re_sync_metadata_oapg(
+    def _get_wallet_transactions_verbose_oapg(
         self,
         skip_deserialization: typing_extensions.Literal[True],
         query_params: RequestQueryParams = frozendict.frozendict(),
@@ -219,7 +218,7 @@ class BaseApi(api_client.Api):
     ) -> api_client.ApiResponseWithoutDeserialization: ...
 
     @typing.overload
-    def _re_sync_metadata_oapg(
+    def _get_wallet_transactions_verbose_oapg(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
@@ -229,11 +228,10 @@ class BaseApi(api_client.Api):
         skip_deserialization: bool = ...,
     ) -> typing.Union[
         ApiResponseFor200,
-        ApiResponseFor202,
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
-    def _re_sync_metadata_oapg(
+    def _get_wallet_transactions_verbose_oapg(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
@@ -243,7 +241,7 @@ class BaseApi(api_client.Api):
         skip_deserialization: bool = False,
     ):
         """
-        Resync NFT metadata
+        Get verbose transactions by wallet
         :param skip_deserialization: If true then api_response.response will be set but
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
@@ -255,7 +253,6 @@ class BaseApi(api_client.Api):
         _path_params = {}
         for parameter in (
             request_path_address,
-            request_path_token_id,
         ):
             parameter_data = path_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -269,8 +266,13 @@ class BaseApi(api_client.Api):
         prefix_separator_iterator = None
         for parameter in (
             request_query_chain,
-            request_query_flag,
-            request_query_mode,
+            request_query_subdomain,
+            request_query_from_block,
+            request_query_to_block,
+            request_query_from_date,
+            request_query_to_date,
+            request_query_cursor,
+            request_query_limit,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -311,11 +313,11 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class ReSyncMetadata(BaseApi):
+class GetWalletTransactionsVerbose(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
     @typing.overload
-    def re_sync_metadata(
+    def get_wallet_transactions_verbose(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
@@ -325,11 +327,10 @@ class ReSyncMetadata(BaseApi):
         skip_deserialization: typing_extensions.Literal[False] = ...,
     ) -> typing.Union[
         ApiResponseFor200,
-        ApiResponseFor202,
     ]: ...
 
     @typing.overload
-    def re_sync_metadata(
+    def get_wallet_transactions_verbose(
         self,
         skip_deserialization: typing_extensions.Literal[True],
         query_params: RequestQueryParams = frozendict.frozendict(),
@@ -340,7 +341,7 @@ class ReSyncMetadata(BaseApi):
     ) -> api_client.ApiResponseWithoutDeserialization: ...
 
     @typing.overload
-    def re_sync_metadata(
+    def get_wallet_transactions_verbose(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
@@ -350,11 +351,10 @@ class ReSyncMetadata(BaseApi):
         skip_deserialization: bool = ...,
     ) -> typing.Union[
         ApiResponseFor200,
-        ApiResponseFor202,
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
-    def re_sync_metadata(
+    def get_wallet_transactions_verbose(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
@@ -363,7 +363,7 @@ class ReSyncMetadata(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ):
-        return self._re_sync_metadata_oapg(
+        return self._get_wallet_transactions_verbose_oapg(
             query_params=query_params,
             path_params=path_params,
             accept_content_types=accept_content_types,
@@ -387,7 +387,6 @@ class ApiForget(BaseApi):
         skip_deserialization: typing_extensions.Literal[False] = ...,
     ) -> typing.Union[
         ApiResponseFor200,
-        ApiResponseFor202,
     ]: ...
 
     @typing.overload
@@ -412,7 +411,6 @@ class ApiForget(BaseApi):
         skip_deserialization: bool = ...,
     ) -> typing.Union[
         ApiResponseFor200,
-        ApiResponseFor202,
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
@@ -425,7 +423,7 @@ class ApiForget(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ):
-        return self._re_sync_metadata_oapg(
+        return self._get_wallet_transactions_verbose_oapg(
             query_params=query_params,
             path_params=path_params,
             accept_content_types=accept_content_types,

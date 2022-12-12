@@ -24,6 +24,7 @@ from openapi_evm_api.model.erc20_token_balance import Erc20TokenBalance
 from openapi_evm_api.model.erc20_transaction import Erc20Transaction
 from openapi_evm_api.model.erc20_transaction_collection import Erc20TransactionCollection
 from openapi_evm_api.model.erc721_metadata import Erc721Metadata
+from openapi_evm_api.model.get_multiple_nfts_dto import GetMultipleNftsDto
 from openapi_evm_api.model.historical_nft_transfer import HistoricalNftTransfer
 from openapi_evm_api.model.ipfs_file import IpfsFile
 from openapi_evm_api.model.ipfs_file_request import IpfsFileRequest
@@ -52,8 +53,10 @@ from openapi_evm_api.model.reserves_collection import ReservesCollection
 from openapi_evm_api.model.reserves_pair import ReservesPair
 from openapi_evm_api.model.resolve import Resolve
 from openapi_evm_api.model.run_contract_dto import RunContractDto
+from openapi_evm_api.model.token_item import TokenItem
 from openapi_evm_api.model.trade import Trade
 from openapi_evm_api.model.trade_collection import TradeCollection
 from openapi_evm_api.model.transaction import Transaction
 from openapi_evm_api.model.transaction_collection import TransactionCollection
+from openapi_evm_api.model.transaction_collection_verbose import TransactionCollectionVerbose
 from openapi_evm_api.model.web3version import Web3version

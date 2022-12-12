@@ -383,13 +383,13 @@ conf = openapi_auth.Configuration(
         :return: The Auth Settings information dict.
         """
         auth = {}
-        if 'X-API-KEY' in self.api_key:
-            auth['X-API-KEY'] = {
+        if 'ApiKeyAuth' in self.api_key:
+            auth['ApiKeyAuth'] = {
                 'type': 'api_key',
                 'in': 'header',
-                'key': 'X-API-KEY',
+                'key': 'X-API-Key',
                 'value': self.get_api_key_with_prefix(
-                    'X-API-KEY',
+                    'ApiKeyAuth',
                 ),
             }
         return auth

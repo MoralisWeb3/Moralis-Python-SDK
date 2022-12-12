@@ -37,27 +37,27 @@ class EndpointWeights(
         required = {
             "path",
             "endpoint",
-            "rateLimitWeight",
             "price",
+            "rateLimitCost",
         }
         
         class properties:
             endpoint = schemas.StrSchema
             path = schemas.StrSchema
-            rateLimitWeight = schemas.StrSchema
+            rateLimitCost = schemas.StrSchema
             price = schemas.StrSchema
             __annotations__ = {
                 "endpoint": endpoint,
                 "path": path,
-                "rateLimitWeight": rateLimitWeight,
+                "rateLimitCost": rateLimitCost,
                 "price": price,
             }
 
     
     path: MetaOapg.properties.path
     endpoint: MetaOapg.properties.endpoint
-    rateLimitWeight: MetaOapg.properties.rateLimitWeight
     price: MetaOapg.properties.price
+    rateLimitCost: MetaOapg.properties.rateLimitCost
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["endpoint"]) -> MetaOapg.properties.endpoint: ...
@@ -66,7 +66,7 @@ class EndpointWeights(
     def __getitem__(self, name: typing_extensions.Literal["path"]) -> MetaOapg.properties.path: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["rateLimitWeight"]) -> MetaOapg.properties.rateLimitWeight: ...
+    def __getitem__(self, name: typing_extensions.Literal["rateLimitCost"]) -> MetaOapg.properties.rateLimitCost: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["price"]) -> MetaOapg.properties.price: ...
@@ -74,7 +74,7 @@ class EndpointWeights(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["endpoint", "path", "rateLimitWeight", "price", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["endpoint", "path", "rateLimitCost", "price", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -86,7 +86,7 @@ class EndpointWeights(
     def get_item_oapg(self, name: typing_extensions.Literal["path"]) -> MetaOapg.properties.path: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["rateLimitWeight"]) -> MetaOapg.properties.rateLimitWeight: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["rateLimitCost"]) -> MetaOapg.properties.rateLimitCost: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["price"]) -> MetaOapg.properties.price: ...
@@ -94,7 +94,7 @@ class EndpointWeights(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["endpoint", "path", "rateLimitWeight", "price", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["endpoint", "path", "rateLimitCost", "price", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -103,8 +103,8 @@ class EndpointWeights(
         *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         path: typing.Union[MetaOapg.properties.path, str, ],
         endpoint: typing.Union[MetaOapg.properties.endpoint, str, ],
-        rateLimitWeight: typing.Union[MetaOapg.properties.rateLimitWeight, str, ],
         price: typing.Union[MetaOapg.properties.price, str, ],
+        rateLimitCost: typing.Union[MetaOapg.properties.rateLimitCost, str, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'EndpointWeights':
@@ -113,8 +113,8 @@ class EndpointWeights(
             *args,
             path=path,
             endpoint=endpoint,
-            rateLimitWeight=rateLimitWeight,
             price=price,
+            rateLimitCost=rateLimitCost,
             _configuration=_configuration,
             **kwargs,
         )

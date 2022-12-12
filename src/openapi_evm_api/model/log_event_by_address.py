@@ -44,6 +44,8 @@ class LogEventByAddress(
             "block_timestamp",
             "block_hash",
             "block_number",
+            "transaction_index",
+            "log_index",
             "transaction_hash",
         }
         
@@ -58,6 +60,8 @@ class LogEventByAddress(
             topic1 = schemas.StrSchema
             topic2 = schemas.StrSchema
             topic3 = schemas.StrSchema
+            transaction_index = schemas.IntSchema
+            log_index = schemas.IntSchema
             __annotations__ = {
                 "transaction_hash": transaction_hash,
                 "address": address,
@@ -69,6 +73,8 @@ class LogEventByAddress(
                 "topic1": topic1,
                 "topic2": topic2,
                 "topic3": topic3,
+                "transaction_index": transaction_index,
+                "log_index": log_index,
             }
 
     
@@ -81,6 +87,8 @@ class LogEventByAddress(
     block_timestamp: MetaOapg.properties.block_timestamp
     block_hash: MetaOapg.properties.block_hash
     block_number: MetaOapg.properties.block_number
+    transaction_index: MetaOapg.properties.transaction_index
+    log_index: MetaOapg.properties.log_index
     transaction_hash: MetaOapg.properties.transaction_hash
     
     @typing.overload
@@ -114,9 +122,15 @@ class LogEventByAddress(
     def __getitem__(self, name: typing_extensions.Literal["topic3"]) -> MetaOapg.properties.topic3: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["transaction_index"]) -> MetaOapg.properties.transaction_index: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["log_index"]) -> MetaOapg.properties.log_index: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["transaction_hash", "address", "block_timestamp", "block_number", "block_hash", "data", "topic0", "topic1", "topic2", "topic3", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["transaction_hash", "address", "block_timestamp", "block_number", "block_hash", "data", "topic0", "topic1", "topic2", "topic3", "transaction_index", "log_index", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -152,9 +166,15 @@ class LogEventByAddress(
     def get_item_oapg(self, name: typing_extensions.Literal["topic3"]) -> MetaOapg.properties.topic3: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["transaction_index"]) -> MetaOapg.properties.transaction_index: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["log_index"]) -> MetaOapg.properties.log_index: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["transaction_hash", "address", "block_timestamp", "block_number", "block_hash", "data", "topic0", "topic1", "topic2", "topic3", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["transaction_hash", "address", "block_timestamp", "block_number", "block_hash", "data", "topic0", "topic1", "topic2", "topic3", "transaction_index", "log_index", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -170,6 +190,8 @@ class LogEventByAddress(
         block_timestamp: typing.Union[MetaOapg.properties.block_timestamp, str, ],
         block_hash: typing.Union[MetaOapg.properties.block_hash, str, ],
         block_number: typing.Union[MetaOapg.properties.block_number, str, ],
+        transaction_index: typing.Union[MetaOapg.properties.transaction_index, decimal.Decimal, int, ],
+        log_index: typing.Union[MetaOapg.properties.log_index, decimal.Decimal, int, ],
         transaction_hash: typing.Union[MetaOapg.properties.transaction_hash, str, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -186,6 +208,8 @@ class LogEventByAddress(
             block_timestamp=block_timestamp,
             block_hash=block_hash,
             block_number=block_number,
+            transaction_index=transaction_index,
+            log_index=log_index,
             transaction_hash=transaction_hash,
             _configuration=_configuration,
             **kwargs,

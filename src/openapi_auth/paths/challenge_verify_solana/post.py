@@ -42,7 +42,7 @@ request_body_solana_complete_challenge_request_dto = api_client.RequestBody(
     required=True,
 )
 _auth = [
-    'X-API-KEY',
+    'ApiKeyAuth',
 ]
 SchemaFor201ResponseBodyApplicationJson = SolanaCompleteChallengeResponseDto
 
