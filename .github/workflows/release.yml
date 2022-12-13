@@ -32,11 +32,8 @@ jobs:
         if: steps.changed-files-specific.outputs.any_changed == 'true'
         run: bumpver update --patch
       - name: Build
-        # if: steps.changed-files-specific.outputs.any_changed == 'true'
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
         run: bash scripts/build.sh
-      - name: Debug
-        # if: steps.changed-files-specific.outputs.any_changed == 'true'
-        run: ls dist
       - name: Release
         if: steps.changed-files-specific.outputs.any_changed == 'true'
         uses: pypa/gh-action-pypi-publish@release/v1
