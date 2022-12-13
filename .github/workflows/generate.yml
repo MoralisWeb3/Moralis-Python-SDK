@@ -9,15 +9,15 @@ on:
       - main
 
 jobs:
-  release:
-    name: Release
+  generate:
+    name: Generate
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
         with:
           fetch-depth: 2
-          ref: generate
+          ref: main
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
