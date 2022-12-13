@@ -31,7 +31,7 @@ def move_generated_apis():
 
 
 move_generated_apis()
-generate_modules()
-apply_patches()
-generate_docs()
-cleanup()
+# generate_modules()
+# apply_patches()
+# generate_docs()
+# cleanup()
