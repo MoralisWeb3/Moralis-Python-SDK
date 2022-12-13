@@ -220,7 +220,6 @@ params = {
     "address": "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB", 
     "chain": "eth", 
     "days": 0, 
-    "provider_url": "", 
     "marketplace": "opensea", 
 }
 
@@ -240,7 +239,6 @@ print(result)
 | address | str | The address of the NFT contract | Yes |  | "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB" |
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "avalanche testnet"<br/>- "0xa869"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "cronos testnet"<br/>- "0x152"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 | days | int | The number of days to look back to find the lowest price<br/>If not provided 7 days will be the default<br/> |  |  | 0 |
-| provider_url | str | The web3 provider URL to use when using local dev chain |  |  | "" |
 | marketplace | enum[str]: <br/>- "opensea" | Marketplace from which to get the trades (only OpenSea is supported at the moment) |  | "opensea" | "opensea" |
 
 
@@ -402,7 +400,6 @@ params = {
     "to_block": "", 
     "from_date": "", 
     "to_date": "", 
-    "provider_url": "", 
     "marketplace": "opensea", 
     "cursor": "", 
     "limit": 0, 
@@ -427,7 +424,6 @@ print(result)
 | to_block | str | The block number to get the trades from |  |  | "" |
 | from_date | str | The start date from which to get the transfers (any format that is accepted by momentjs)<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | "" |
 | to_date | str | The end date from which to get the transfers (any format that is accepted by momentjs)<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | "" |
-| provider_url | str | The web3 provider URL to use when using local dev chain |  |  | "" |
 | marketplace | enum[str]: <br/>- "opensea" | Marketplace from which to get the trades (only OpenSea is supported at the moment) |  | "opensea" | "opensea" |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 | limit | int | The desired page size of the result. |  |  | 0 |
@@ -494,7 +490,6 @@ api_key = "YOUR_API_KEY"
 params = {
     "block_number_or_hash": "15846571", 
     "chain": "eth", 
-    "subdomain": "", 
     "limit": 0, 
     "cursor": "", 
 }
@@ -514,7 +509,6 @@ print(result)
 |------|------|-------------|----------|---------|---------|
 | block_number_or_hash | str | The block number or block hash | Yes |  | "15846571" |
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "avalanche testnet"<br/>- "0xa869"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "cronos testnet"<br/>- "0x152"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
-| subdomain | str | The subdomain of the Moralis server to use (only use when selecting local devchain as chain) |  |  | "" |
 | limit | int | The desired page size of the result. |  | 100 | 0 |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 

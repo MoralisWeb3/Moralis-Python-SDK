@@ -114,7 +114,7 @@ class BlockDate(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         date: typing.Union[MetaOapg.properties.date, str, ],
         block: typing.Union[MetaOapg.properties.block, decimal.Decimal, int, float, ],
         timestamp: typing.Union[MetaOapg.properties.timestamp, decimal.Decimal, int, float, ],
@@ -126,7 +126,7 @@ class BlockDate(
     ) -> 'BlockDate':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             date=date,
             block=block,
             timestamp=timestamp,

@@ -85,12 +85,12 @@ class SolanaChallengeRequestDto(
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+                    _arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'resources':
                     return super().__new__(
                         cls,
-                        arg,
+                        _arg,
                         _configuration=_configuration,
                     )
             
@@ -185,7 +185,7 @@ class SolanaChallengeRequestDto(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, ],
+        *_args: typing.Union[dict, frozendict.frozendict, ],
         address: typing.Union[MetaOapg.properties.address, str, ],
         domain: typing.Union[MetaOapg.properties.domain, str, ],
         uri: typing.Union[MetaOapg.properties.uri, str, ],
@@ -200,7 +200,7 @@ class SolanaChallengeRequestDto(
     ) -> 'SolanaChallengeRequestDto':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             address=address,
             domain=domain,
             uri=uri,

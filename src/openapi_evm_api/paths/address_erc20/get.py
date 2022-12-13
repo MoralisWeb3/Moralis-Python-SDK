@@ -32,7 +32,6 @@ from . import path
 
 # Query params
 ChainSchema = ChainList
-SubdomainSchema = schemas.StrSchema
 ToBlockSchema = schemas.NumberSchema
 
 
@@ -47,12 +46,12 @@ class TokenAddressesSchema(
 
     def __new__(
         cls,
-        arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+        _arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'TokenAddressesSchema':
         return super().__new__(
             cls,
-            arg,
+            _arg,
             _configuration=_configuration,
         )
 
@@ -67,7 +66,6 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
     'RequestOptionalQueryParams',
     {
         'chain': typing.Union[ChainSchema, ],
-        'subdomain': typing.Union[SubdomainSchema, str, ],
         'to_block': typing.Union[ToBlockSchema, decimal.Decimal, int, float, ],
         'token_addresses': typing.Union[TokenAddressesSchema, list, tuple, ],
     },
@@ -83,12 +81,6 @@ request_query_chain = api_client.QueryParameter(
     name="chain",
     style=api_client.ParameterStyle.FORM,
     schema=ChainSchema,
-    explode=True,
-)
-request_query_subdomain = api_client.QueryParameter(
-    name="subdomain",
-    style=api_client.ParameterStyle.FORM,
-    schema=SubdomainSchema,
     explode=True,
 )
 request_query_to_block = api_client.QueryParameter(
@@ -147,12 +139,12 @@ class SchemaFor200ResponseBodyApplicationJson(
 
     def __new__(
         cls,
-        arg: typing.Union[typing.Tuple['Erc20TokenBalance'], typing.List['Erc20TokenBalance']],
+        _arg: typing.Union[typing.Tuple['Erc20TokenBalance'], typing.List['Erc20TokenBalance']],
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'SchemaFor200ResponseBodyApplicationJson':
         return super().__new__(
             cls,
-            arg,
+            _arg,
             _configuration=_configuration,
         )
 
@@ -258,7 +250,6 @@ class BaseApi(api_client.Api):
         prefix_separator_iterator = None
         for parameter in (
             request_query_chain,
-            request_query_subdomain,
             request_query_to_block,
             request_query_token_addresses,
         ):
@@ -296,7 +287,11 @@ class BaseApi(api_client.Api):
                 api_response = api_client.ApiResponseWithoutDeserialization(response=response)
 
         if not 200 <= response.status <= 299:
-            raise exceptions.ApiException(api_response=api_response)
+            raise exceptions.ApiException(
+                status=response.status,
+                reason=response.reason,
+                api_response=api_response
+            )
 
         return api_response
 

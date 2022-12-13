@@ -105,7 +105,7 @@ class NormalizedMetadataAttribute(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         trait_type: typing.Union[MetaOapg.properties.trait_type, str, schemas.Unset] = schemas.unset,
         value: typing.Union[MetaOapg.properties.value, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
         display_type: typing.Union[MetaOapg.properties.display_type, str, schemas.Unset] = schemas.unset,
@@ -117,7 +117,7 @@ class NormalizedMetadataAttribute(
     ) -> 'NormalizedMetadataAttribute':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             trait_type=trait_type,
             value=value,
             display_type=display_type,

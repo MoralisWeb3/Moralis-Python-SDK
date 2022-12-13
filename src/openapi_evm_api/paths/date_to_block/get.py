@@ -32,7 +32,6 @@ from . import path
 
 # Query params
 ChainSchema = ChainList
-ProviderUrlSchema = schemas.StrSchema
 DateSchema = schemas.StrSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
@@ -44,7 +43,6 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
     'RequestOptionalQueryParams',
     {
         'chain': typing.Union[ChainSchema, ],
-        'providerUrl': typing.Union[ProviderUrlSchema, str, ],
     },
     total=False
 )
@@ -58,12 +56,6 @@ request_query_chain = api_client.QueryParameter(
     name="chain",
     style=api_client.ParameterStyle.FORM,
     schema=ChainSchema,
-    explode=True,
-)
-request_query_provider_url = api_client.QueryParameter(
-    name="providerUrl",
-    style=api_client.ParameterStyle.FORM,
-    schema=ProviderUrlSchema,
     explode=True,
 )
 request_query_date = api_client.QueryParameter(
@@ -159,7 +151,6 @@ class BaseApi(api_client.Api):
         prefix_separator_iterator = None
         for parameter in (
             request_query_chain,
-            request_query_provider_url,
             request_query_date,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
@@ -196,7 +187,11 @@ class BaseApi(api_client.Api):
                 api_response = api_client.ApiResponseWithoutDeserialization(response=response)
 
         if not 200 <= response.status <= 299:
-            raise exceptions.ApiException(api_response=api_response)
+            raise exceptions.ApiException(
+                status=response.status,
+                reason=response.reason,
+                api_response=api_response
+            )
 
         return api_response
 

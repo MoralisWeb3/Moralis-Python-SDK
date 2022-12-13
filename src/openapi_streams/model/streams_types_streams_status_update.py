@@ -65,13 +65,13 @@ class StreamsTypesStreamsStatusUpdate(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, ],
+        *_args: typing.Union[dict, frozendict.frozendict, ],
         status: 'StreamsStatus',
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'StreamsTypesStreamsStatusUpdate':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             status=status,
             _configuration=_configuration,
         )

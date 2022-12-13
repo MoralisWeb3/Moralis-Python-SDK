@@ -88,7 +88,7 @@ class Erc721Metadata(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         symbol: typing.Union[MetaOapg.properties.symbol, str, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
         token_uri: typing.Union[MetaOapg.properties.token_uri, str, schemas.Unset] = schemas.unset,
@@ -97,7 +97,7 @@ class Erc721Metadata(
     ) -> 'Erc721Metadata':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             symbol=symbol,
             name=name,
             token_uri=token_uri,

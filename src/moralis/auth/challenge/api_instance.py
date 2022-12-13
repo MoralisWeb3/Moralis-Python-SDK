@@ -5,7 +5,7 @@ from ..utilities import get_common_headers
 
 def get_api_instance(api_key):
     configuration = openapi_auth.Configuration()
-    configuration.api_key['X-API-KEY'] = api_key
+    configuration.api_key['ApiKeyAuth'] = api_key
     api_client = openapi_auth.ApiClient(configuration)
     headers = get_common_headers()
     for header in headers:

@@ -73,7 +73,7 @@ class TokenItem(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         token_address: typing.Union[MetaOapg.properties.token_address, str, schemas.Unset] = schemas.unset,
         token_id: typing.Union[MetaOapg.properties.token_id, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
@@ -81,7 +81,7 @@ class TokenItem(
     ) -> 'TokenItem':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             token_address=token_address,
             token_id=token_id,
             _configuration=_configuration,

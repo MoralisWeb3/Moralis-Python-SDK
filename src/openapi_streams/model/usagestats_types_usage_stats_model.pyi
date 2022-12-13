@@ -118,7 +118,7 @@ class UsagestatsTypesUsageStatsModel(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, ],
+        *_args: typing.Union[dict, frozendict.frozendict, ],
         totalWebhooksDelivered: typing.Union[MetaOapg.properties.totalWebhooksDelivered, decimal.Decimal, int, float, ],
         totalTxsProcessed: typing.Union[MetaOapg.properties.totalTxsProcessed, decimal.Decimal, int, float, ],
         totalLogsProcessed: typing.Union[MetaOapg.properties.totalLogsProcessed, decimal.Decimal, int, float, ],
@@ -130,7 +130,7 @@ class UsagestatsTypesUsageStatsModel(
     ) -> 'UsagestatsTypesUsageStatsModel':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             totalWebhooksDelivered=totalWebhooksDelivered,
             totalTxsProcessed=totalTxsProcessed,
             totalLogsProcessed=totalLogsProcessed,

@@ -44,7 +44,6 @@ class FromBlockSchema(
 ToBlockSchema = schemas.StrSchema
 FromDateSchema = schemas.StrSchema
 ToDateSchema = schemas.StrSchema
-ProviderUrlSchema = schemas.StrSchema
 
 
 class MarketplaceSchema(
@@ -84,7 +83,6 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'to_block': typing.Union[ToBlockSchema, str, ],
         'from_date': typing.Union[FromDateSchema, str, ],
         'to_date': typing.Union[ToDateSchema, str, ],
-        'provider_url': typing.Union[ProviderUrlSchema, str, ],
         'marketplace': typing.Union[MarketplaceSchema, str, ],
         'cursor': typing.Union[CursorSchema, str, ],
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
@@ -125,12 +123,6 @@ request_query_to_date = api_client.QueryParameter(
     name="to_date",
     style=api_client.ParameterStyle.FORM,
     schema=ToDateSchema,
-    explode=True,
-)
-request_query_provider_url = api_client.QueryParameter(
-    name="provider_url",
-    style=api_client.ParameterStyle.FORM,
-    schema=ProviderUrlSchema,
     explode=True,
 )
 request_query_marketplace = api_client.QueryParameter(
@@ -285,7 +277,6 @@ class BaseApi(api_client.Api):
             request_query_to_block,
             request_query_from_date,
             request_query_to_date,
-            request_query_provider_url,
             request_query_marketplace,
             request_query_cursor,
             request_query_limit,
@@ -324,7 +315,11 @@ class BaseApi(api_client.Api):
                 api_response = api_client.ApiResponseWithoutDeserialization(response=response)
 
         if not 200 <= response.status <= 299:
-            raise exceptions.ApiException(api_response=api_response)
+            raise exceptions.ApiException(
+                status=response.status,
+                reason=response.reason,
+                api_response=api_response
+            )
 
         return api_response
 

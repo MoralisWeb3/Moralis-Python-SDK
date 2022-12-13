@@ -126,7 +126,7 @@ class Erc20TokenBalance(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         symbol: typing.Union[MetaOapg.properties.symbol, str, ],
         balance: typing.Union[MetaOapg.properties.balance, str, ],
         decimals: typing.Union[MetaOapg.properties.decimals, decimal.Decimal, int, ],
@@ -139,7 +139,7 @@ class Erc20TokenBalance(
     ) -> 'Erc20TokenBalance':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             symbol=symbol,
             balance=balance,
             decimals=decimals,

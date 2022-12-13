@@ -198,7 +198,7 @@ class NftTransfer(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         contract_type: typing.Union[MetaOapg.properties.contract_type, str, ],
         token_id: typing.Union[MetaOapg.properties.token_id, str, ],
         block_timestamp: typing.Union[MetaOapg.properties.block_timestamp, str, ],
@@ -219,7 +219,7 @@ class NftTransfer(
     ) -> 'NftTransfer':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             contract_type=contract_type,
             token_id=token_id,
             block_timestamp=block_timestamp,
