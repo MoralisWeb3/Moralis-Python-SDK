@@ -46,8 +46,11 @@ def register_snippet(module_name, group_name, operation, snippet):
 
 
 def save_snippets():
+    print(f"⏳ Saving snippets")
     with open(snippet_path, 'w') as outfile:
         json.dump(code_snippets, outfile, indent=4)
+    print(f"✅ Saving snippets complete")
+
 
 
 def generate_operation_params_row(param, swagger):
@@ -250,6 +253,7 @@ def generate_modules_list(modules, groups, path=""):
 
 
 def generate_root_readme(modules, groups):
+    print(f"⏳ Generating docs for root")
     readme_path = root_path / 'README.md'
 
     with open(readme_path, 'r+') as f:
@@ -308,8 +312,8 @@ pip install moralis
 Now you can import the correct module from the SDK and call the method you need. For a full reference of all the methods available, check the references below.
 
 ## API References
-''' +
-                             generate_modules_list(modules, groups))
+''' + generate_modules_list(modules, groups))
+        print(f"✅ Generatied docs for root")
 
 
 def generate_docs():
@@ -322,4 +326,4 @@ def generate_docs():
         groups[module_name] = module_groups
     generate_root_readme(modules, groups)
     save_snippets()
-    print(f"🏁 Generatied docs")
+    print(f"🏁 Generated docs")
