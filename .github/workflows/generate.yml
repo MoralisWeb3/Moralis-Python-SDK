@@ -33,13 +33,27 @@ jobs:
           config-file: openapi.json
           openapi-file: temp/swagger/evm_api.json
           command-args: '-p packageName=openapi_evm_api,projectName=evm_api'
-      - name: 'Generate 2.2 OpenApi for Auth'
+      - name: 'Generate 2.2 OpenApi for SolApi'
+        uses: openapi-generators/openapitools-generator-action@v1
+        with:
+          generator: python
+          config-file: openapi.json
+          openapi-file: temp/swagger/sol_api.json
+          command-args: '-p packageName=openapi_sol_api,projectName=sol_api'
+      - name: 'Generate 2.3 OpenApi for Auth'
         uses: openapi-generators/openapitools-generator-action@v1
         with:
           generator: python
           config-file: openapi.json
           openapi-file: temp/swagger/auth.json
           command-args: '-p packageName=openapi_auth,projectName=auth'
+      - name: 'Generate 2.4 OpenApi for Streams'
+        uses: openapi-generators/openapitools-generator-action@v1
+        with:
+          generator: python
+          config-file: openapi.json
+          openapi-file: temp/swagger/streams.json
+          command-args: '-p packageName=openapi_streams,projectName=streams'
 
       - name: 'Generate 3: generate output files'
         run: 'python scripts/generate_ci_2.py'
