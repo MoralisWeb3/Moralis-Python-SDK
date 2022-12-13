@@ -11,7 +11,7 @@ temp_path = (root_path / "temp")
 
 
 def move_generated_api(api_name):
-    print("⏳ Moving openapi client...")
+    print(f"⏳ Moving openapi client {api_name}...")
     generated_path = (temp_path / f"generated-api/openapi_{api_name}")
     out_path = (root_path / f"src/openapi_{api_name}")
     if out_path.exists() and out_path.is_dir():
@@ -31,7 +31,7 @@ def move_generated_apis():
 
 
 move_generated_apis()
-# generate_modules()
+generate_modules()
 # apply_patches()
 # generate_docs()
 # cleanup()
