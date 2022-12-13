@@ -1,12 +1,9 @@
 name: Generate
 
 on:
-  # schedule:
-  #   # Runs “At every 2nd minute.” (see https://crontab.guru)
-  #   - cron: '* * * * *'
-  push:
-    branches:
-      - main
+  schedule:
+    # Runs “At 5th minute.” (see https://crontab.guru)
+    - cron: '*/5 * * * *'
 
 jobs:
   release:
@@ -17,6 +14,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 2
+          ref: generate
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
@@ -66,26 +64,12 @@ jobs:
       - name: 'Generate 3: generate output files'
         run: 'python scripts/generate_ci_2.py'
 
-      - name: Get changed files
-        id: changed-files-specific
-        uses: tj-actions/changed-files@v34
-      
-      - name: List all changed files
-        run: |
-          for file in ${{ steps.changed-files-specific.outputs.all_changed_files }}; do
-            echo "$file was changed"
-          done
 
-      - name: Run step if any file(s) change
-        if: steps.changed-files-specific.outputs.any_changed == 'true'
-        run: |
-          echo "One or more files has changed."
-          echo "List all the files that have changed: ${{ steps.changed-files-specific.outputs.all_changed_files }}"
-
-      # - name: Run when files have changed
-      #   if: steps.changed-files-specific.outputs.any_changed == 'true'
-      #   uses: stefanzweifel/git-auto-commit-action@v4
-      #   with:
-      #     commit_message: 'fix: re-generate SDK'
-
-  
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'fix: automatic api update'
+          branch: generate
+          file_pattern: 'src/**/* docs/**/*'
+          commit_user_name: Moralis CI/CD
+        env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
