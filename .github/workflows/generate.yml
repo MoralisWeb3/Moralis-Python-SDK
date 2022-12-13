@@ -2,8 +2,8 @@ name: Generate
 
 on:
   schedule:
-    # Runs “At 5th minute.” (see https://crontab.guru)
-    - cron: '*/5 * * * *'
+    # Runs "At every 30th minute" (see https://crontab.guru)
+    - cron: '*/30 * * * *'
   push:
     branches:
       - main
