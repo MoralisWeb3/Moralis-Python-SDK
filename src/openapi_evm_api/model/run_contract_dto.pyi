@@ -78,7 +78,7 @@ class RunContractDto(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         abi: typing.Union[MetaOapg.properties.abi, dict, frozendict.frozendict, ],
         params: typing.Union[MetaOapg.properties.params, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
@@ -86,7 +86,7 @@ class RunContractDto(
     ) -> 'RunContractDto':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             abi=abi,
             params=params,
             _configuration=_configuration,

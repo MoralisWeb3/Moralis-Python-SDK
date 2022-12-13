@@ -101,7 +101,7 @@ class EvmChallengeResponseDto(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, ],
+        *_args: typing.Union[dict, frozendict.frozendict, ],
         profileId: typing.Union[MetaOapg.properties.profileId, str, ],
         id: typing.Union[MetaOapg.properties.id, str, ],
         message: typing.Union[MetaOapg.properties.message, str, ],
@@ -110,7 +110,7 @@ class EvmChallengeResponseDto(
     ) -> 'EvmChallengeResponseDto':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             profileId=profileId,
             id=id,
             message=message,

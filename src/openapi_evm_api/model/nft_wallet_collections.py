@@ -56,12 +56,12 @@ class NftWalletCollections(
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple['NftCollections'], typing.List['NftCollections']],
+                    _arg: typing.Union[typing.Tuple['NftCollections'], typing.List['NftCollections']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'result':
                     return super().__new__(
                         cls,
-                        arg,
+                        _arg,
                         _configuration=_configuration,
                     )
             
@@ -130,7 +130,7 @@ class NftWalletCollections(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         status: typing.Union[MetaOapg.properties.status, str, schemas.Unset] = schemas.unset,
         total: typing.Union[MetaOapg.properties.total, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         page: typing.Union[MetaOapg.properties.page, decimal.Decimal, int, schemas.Unset] = schemas.unset,
@@ -142,7 +142,7 @@ class NftWalletCollections(
     ) -> 'NftWalletCollections':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             status=status,
             total=total,
             page=page,

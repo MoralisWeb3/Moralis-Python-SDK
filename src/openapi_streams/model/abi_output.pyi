@@ -57,12 +57,12 @@ class AbiOutput(
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple['AbiOutput'], typing.List['AbiOutput']],
+                    _arg: typing.Union[typing.Tuple['AbiOutput'], typing.List['AbiOutput']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'components':
                     return super().__new__(
                         cls,
-                        arg,
+                        _arg,
                         _configuration=_configuration,
                     )
             
@@ -113,7 +113,7 @@ class AbiOutput(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, ],
+        *_args: typing.Union[dict, frozendict.frozendict, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
         type: typing.Union[MetaOapg.properties.type, str, ],
         components: typing.Union[MetaOapg.properties.components, list, tuple, schemas.Unset] = schemas.unset,
@@ -122,7 +122,7 @@ class AbiOutput(
     ) -> 'AbiOutput':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             name=name,
             type=type,
             components=components,

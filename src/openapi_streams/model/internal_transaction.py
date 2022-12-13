@@ -55,12 +55,12 @@ class InternalTransaction(
             
                 def __new__(
                     cls,
-                    *args: typing.Union[None, str, ],
+                    *_args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> '_from':
                     return super().__new__(
                         cls,
-                        *args,
+                        *_args,
                         _configuration=_configuration,
                     )
             
@@ -75,12 +75,12 @@ class InternalTransaction(
             
                 def __new__(
                     cls,
-                    *args: typing.Union[None, str, ],
+                    *_args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'to':
                     return super().__new__(
                         cls,
-                        *args,
+                        *_args,
                         _configuration=_configuration,
                     )
             
@@ -95,12 +95,12 @@ class InternalTransaction(
             
                 def __new__(
                     cls,
-                    *args: typing.Union[None, str, ],
+                    *_args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'value':
                     return super().__new__(
                         cls,
-                        *args,
+                        *_args,
                         _configuration=_configuration,
                     )
             transactionHash = schemas.StrSchema
@@ -116,12 +116,12 @@ class InternalTransaction(
             
                 def __new__(
                     cls,
-                    *args: typing.Union[None, str, ],
+                    *_args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'gas':
                     return super().__new__(
                         cls,
-                        *args,
+                        *_args,
                         _configuration=_configuration,
                     )
             __annotations__ = {
@@ -177,7 +177,7 @@ class InternalTransaction(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, ],
+        *_args: typing.Union[dict, frozendict.frozendict, ],
         gas: typing.Union[MetaOapg.properties.gas, None, str, ],
         to: typing.Union[MetaOapg.properties.to, None, str, ],
         value: typing.Union[MetaOapg.properties.value, None, str, ],
@@ -186,7 +186,7 @@ class InternalTransaction(
     ) -> 'InternalTransaction':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             gas=gas,
             to=to,
             value=value,

@@ -205,7 +205,7 @@ class NftOwner(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         block_number_minted: typing.Union[MetaOapg.properties.block_number_minted, str, ],
         contract_type: typing.Union[MetaOapg.properties.contract_type, str, ],
         symbol: typing.Union[MetaOapg.properties.symbol, str, ],
@@ -226,7 +226,7 @@ class NftOwner(
     ) -> 'NftOwner':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             block_number_minted=block_number_minted,
             contract_type=contract_type,
             symbol=symbol,

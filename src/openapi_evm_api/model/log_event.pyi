@@ -103,7 +103,7 @@ class LogEvent(
             
                 def __new__(
                     cls,
-                    *args: typing.Union[dict, frozendict.frozendict, ],
+                    *_args: typing.Union[dict, frozendict.frozendict, ],
                     to: typing.Union[MetaOapg.properties.to, str, schemas.Unset] = schemas.unset,
                     value: typing.Union[MetaOapg.properties.value, str, schemas.Unset] = schemas.unset,
                     _configuration: typing.Optional[schemas.Configuration] = None,
@@ -111,7 +111,7 @@ class LogEvent(
                 ) -> 'data':
                     return super().__new__(
                         cls,
-                        *args,
+                        *_args,
                         to=to,
                         value=value,
                         _configuration=_configuration,
@@ -187,7 +187,7 @@ class LogEvent(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         address: typing.Union[MetaOapg.properties.address, str, ],
         data: typing.Union[MetaOapg.properties.data, dict, frozendict.frozendict, ],
         block_timestamp: typing.Union[MetaOapg.properties.block_timestamp, str, ],
@@ -199,7 +199,7 @@ class LogEvent(
     ) -> 'LogEvent':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             address=address,
             data=data,
             block_timestamp=block_timestamp,

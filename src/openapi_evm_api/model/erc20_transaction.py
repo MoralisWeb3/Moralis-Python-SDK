@@ -160,7 +160,7 @@ class Erc20Transaction(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         address: typing.Union[MetaOapg.properties.address, str, ],
         block_timestamp: typing.Union[MetaOapg.properties.block_timestamp, str, ],
         block_hash: typing.Union[MetaOapg.properties.block_hash, str, ],
@@ -176,7 +176,7 @@ class Erc20Transaction(
     ) -> 'Erc20Transaction':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             address=address,
             block_timestamp=block_timestamp,
             block_hash=block_hash,

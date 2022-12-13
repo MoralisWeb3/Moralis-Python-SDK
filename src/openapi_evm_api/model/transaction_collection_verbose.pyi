@@ -53,12 +53,12 @@ class TransactionCollectionVerbose(
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple['BlockTransaction'], typing.List['BlockTransaction']],
+                    _arg: typing.Union[typing.Tuple['BlockTransaction'], typing.List['BlockTransaction']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'result':
                     return super().__new__(
                         cls,
-                        arg,
+                        _arg,
                         _configuration=_configuration,
                     )
             
@@ -106,7 +106,7 @@ class TransactionCollectionVerbose(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         page: typing.Union[MetaOapg.properties.page, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         page_size: typing.Union[MetaOapg.properties.page_size, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         result: typing.Union[MetaOapg.properties.result, list, tuple, schemas.Unset] = schemas.unset,
@@ -115,7 +115,7 @@ class TransactionCollectionVerbose(
     ) -> 'TransactionCollectionVerbose':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             page=page,
             page_size=page_size,
             result=result,

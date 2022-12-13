@@ -230,7 +230,7 @@ class Transaction(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         gas_price: typing.Union[MetaOapg.properties.gas_price, str, ],
         receipt_status: typing.Union[MetaOapg.properties.receipt_status, str, ],
         receipt_contract_address: typing.Union[MetaOapg.properties.receipt_contract_address, str, ],
@@ -253,7 +253,7 @@ class Transaction(
     ) -> 'Transaction':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             gas_price=gas_price,
             receipt_status=receipt_status,
             receipt_contract_address=receipt_contract_address,

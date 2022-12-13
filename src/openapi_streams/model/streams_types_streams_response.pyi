@@ -55,12 +55,12 @@ class StreamsTypesStreamsResponse(
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple['StreamsModel'], typing.List['StreamsModel']],
+                    _arg: typing.Union[typing.Tuple['StreamsModel'], typing.List['StreamsModel']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'result':
                     return super().__new__(
                         cls,
-                        arg,
+                        _arg,
                         _configuration=_configuration,
                     )
             
@@ -105,7 +105,7 @@ class StreamsTypesStreamsResponse(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, ],
+        *_args: typing.Union[dict, frozendict.frozendict, ],
         result: typing.Union[MetaOapg.properties.result, list, tuple, ],
         total: typing.Union[MetaOapg.properties.total, decimal.Decimal, int, float, ],
         cursor: typing.Union[MetaOapg.properties.cursor, str, schemas.Unset] = schemas.unset,
@@ -113,7 +113,7 @@ class StreamsTypesStreamsResponse(
     ) -> 'StreamsTypesStreamsResponse':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             result=result,
             total=total,
             cursor=cursor,

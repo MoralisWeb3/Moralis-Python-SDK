@@ -62,13 +62,13 @@ class Addresses(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, ],
+        *_args: typing.Union[dict, frozendict.frozendict, ],
         address: typing.Union[MetaOapg.properties.address, str, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'Addresses':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             address=address,
             _configuration=_configuration,
         )

@@ -68,12 +68,12 @@ class WebhookTypesIWebhookUnParsed(
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple['Log'], typing.List['Log']],
+                    _arg: typing.Union[typing.Tuple['Log'], typing.List['Log']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'logs':
                     return super().__new__(
                         cls,
-                        arg,
+                        _arg,
                         _configuration=_configuration,
                     )
             
@@ -94,12 +94,12 @@ class WebhookTypesIWebhookUnParsed(
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple['Transaction'], typing.List['Transaction']],
+                    _arg: typing.Union[typing.Tuple['Transaction'], typing.List['Transaction']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'txs':
                     return super().__new__(
                         cls,
-                        arg,
+                        _arg,
                         _configuration=_configuration,
                     )
             
@@ -120,12 +120,12 @@ class WebhookTypesIWebhookUnParsed(
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple['InternalTransaction'], typing.List['InternalTransaction']],
+                    _arg: typing.Union[typing.Tuple['InternalTransaction'], typing.List['InternalTransaction']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'txsInternal':
                     return super().__new__(
                         cls,
-                        arg,
+                        _arg,
                         _configuration=_configuration,
                     )
             
@@ -146,12 +146,12 @@ class WebhookTypesIWebhookUnParsed(
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple['AbiItem'], typing.List['AbiItem']],
+                    _arg: typing.Union[typing.Tuple['AbiItem'], typing.List['AbiItem']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'abi':
                     return super().__new__(
                         cls,
-                        arg,
+                        _arg,
                         _configuration=_configuration,
                     )
             
@@ -255,7 +255,7 @@ class WebhookTypesIWebhookUnParsed(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, ],
+        *_args: typing.Union[dict, frozendict.frozendict, ],
         retries: typing.Union[MetaOapg.properties.retries, decimal.Decimal, int, float, ],
         streamId: typing.Union[MetaOapg.properties.streamId, str, ],
         chainId: typing.Union[MetaOapg.properties.chainId, str, ],
@@ -270,7 +270,7 @@ class WebhookTypesIWebhookUnParsed(
     ) -> 'WebhookTypesIWebhookUnParsed':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             retries=retries,
             streamId=streamId,
             chainId=chainId,
