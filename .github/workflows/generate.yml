@@ -46,7 +46,7 @@ jobs:
           generator: python
           config-file: openapi.json
           openapi-file: temp/swagger/auth.json
-          command-args: '-o generated-api -p packageName=openapi_auth,projectName=auth'
+          command-args: '-o temp/generated-api -p packageName=openapi_auth,projectName=auth'
       # - name: 'Generate 2.4 OpenApi for Streams'
       #   uses: openapi-generators/openapitools-generator-action@v1
       #   with:
@@ -59,7 +59,8 @@ jobs:
       - name: 'Copy output folder to project'
         run: |
           ls
-          mv /github/workspace/generated-api/* ${{github.workspace}}/temp/generated-api
+          cd temp
+          ls
       - name: 'Generate 3: generate output files'
         run: 'python scripts/generate_ci_2.py'
       - name: Get changed files
