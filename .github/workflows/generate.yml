@@ -74,7 +74,7 @@ jobs:
           add-paths: |
             src/**/*
             docs/**/*
-          commit_message: 'fix: automatic api update'
+          commit-message: 'fix: automatic api update'
           committer: 'Moralis CI/CD <noreply@github.com>'
           branch: generate
           title: 'Update SDK'
