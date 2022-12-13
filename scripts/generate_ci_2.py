@@ -9,7 +9,6 @@ from apply_patches import apply_patches
 root_path = Path(__file__).parent.parent
 temp_path = (root_path / "temp")
 
-
 def move_generated_api(api_name):
     print(f"⏳ Moving openapi client {api_name}...")
     generated_path = (temp_path / f"generated-api/openapi_{api_name}")

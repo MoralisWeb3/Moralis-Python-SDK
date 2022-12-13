@@ -87,7 +87,7 @@ def {function_name}(api_key: str{f', params: {params_union}' if has_any_params e
 
 def make_utililities():
     return '''\
-import pkg_resources
+from .version import __version__
 
 
 def get_common_headers():
@@ -95,7 +95,7 @@ def get_common_headers():
     return {
         "x-moralis-platform": 'Python SDK',
         "x-moralis-build-target": 'python',
-        "x-moralis-build-target": pkg_resources.get_distribution('moralis').version,
+        "x-moralis-build-target": __version__,
     }
 
 '''
@@ -210,6 +210,10 @@ def make_modules(api_name, security_key):
 
     with open(modules_path / 'utilities.py', 'w') as f:
         f.write(make_utililities())
+
+    with open(modules_path / f'version.py', 'w') as f:
+        # version will be updated once bumpver (according to bumpver.toml) is run before release
+        f.write(f'__version__ = "0.0.0"\n')
 
     with open(modules_path / f'{api_name}.py', 'w') as f:
         for tag in TagValues:

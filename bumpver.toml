@@ -6,7 +6,19 @@ version_pattern = "MAJOR.MINOR.PATCH"
 "setup.py" = [
     "version=\"{version}\",",
 ]
-"src/moralis/__init__.py" = [
+"src/moralis/evm_api/version.py" = [
+    "^__version__ = \"{version}\"$",
+]
+
+"src/moralis/sol_api/version.py" = [
+    "^__version__ = \"{version}\"$",
+]
+
+"src/moralis/auth/version.py" = [
+    "^__version__ = \"{version}\"$",
+]
+
+"src/moralis/streams/version.py" = [
     "^__version__ = \"{version}\"$",
 ]
 
