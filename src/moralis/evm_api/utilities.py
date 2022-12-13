@@ -1,6 +1,5 @@
 from .version import __version__
 
-print(__version__)
 
 def get_common_headers():
     """Get the headers for the requests."""
