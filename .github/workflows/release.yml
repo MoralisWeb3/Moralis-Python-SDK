@@ -28,9 +28,9 @@ jobs:
       - name: Install dependencies
         # if: steps.changed-files-specific.outputs.any_changed == 'true'
         uses: py-actions/py-dependency-install@v4
-      - name: Bump version
-        # if: steps.changed-files-specific.outputs.any_changed == 'true'
-        run: bumpver update --patch
+      # - name: Bump version
+      #   # if: steps.changed-files-specific.outputs.any_changed == 'true'
+      #   run: bumpver update --patch
       - name: Build
         # if: steps.changed-files-specific.outputs.any_changed == 'true'
         run: bash scripts/build.sh
@@ -49,6 +49,14 @@ jobs:
       # - name: Notify Slack
       #   if: steps.changed-files-specific.outputs.any_changed == 'true'
       #   run: TODO
+
+      # - name: Commit changes
+      #   uses: stefanzweifel/git-auto-commit-action@v4
+      #   with:
+      #     commit_message: 'build: new release [skip ci]'
+      #     commit_user_name: 'Moralis CI/CD <noreply@github.com>'
+
+
 
 
 
