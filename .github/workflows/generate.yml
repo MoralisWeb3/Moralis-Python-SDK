@@ -58,6 +58,7 @@ jobs:
           openapi-file: temp/swagger/streams.json
           command-args: '-o temp/generated-api -p packageName=openapi_streams,projectName=streams'
 
+      # Make sure we can access the generated packages in the next step
       - name: Install Python local dependency
         run: |
           pip install -e .
@@ -68,11 +69,6 @@ jobs:
       - name: Get changed files
         id: changed-files-specific
         uses: tj-actions/changed-files@v34
-        with:
-          files: |
-            docs/**
-            src/**
-            temp/**
       - name: Run step if any file(s) change
         if: steps.changed-files-specific.outputs.any_changed == 'true'
         run: |
