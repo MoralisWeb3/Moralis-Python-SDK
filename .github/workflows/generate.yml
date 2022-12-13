@@ -23,7 +23,6 @@ jobs:
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip requests
-          pip install -e .
       - name: 'Generate 1: prepare input files'
         run: 'python scripts/generate_ci_1.py'
 
@@ -33,7 +32,7 @@ jobs:
           generator: python
           config-file: openapi.json
           openapi-file: temp/swagger/evm_api.json
-          command-args: '-p packageName=openapi_evm_api,projectName=evm_api'
+          command-args: '-o temp/generated-api -p packageName=openapi_evm_api,projectName=evm_api'
 
       - name: 'Generate 2.2 OpenApi for SolApi'
         uses: openapi-generators/openapitools-generator-action@v1
@@ -41,7 +40,7 @@ jobs:
           generator: python
           config-file: openapi.json
           openapi-file: temp/swagger/sol_api.json
-          command-args: '-p packageName=openapi_sol_api,projectName=sol_api'
+          command-args: '-o temp/generated-api -p packageName=openapi_sol_api,projectName=sol_api'
 
       - name: 'Generate 2.3 OpenApi for Auth'
         uses: openapi-generators/openapitools-generator-action@v1
@@ -57,11 +56,15 @@ jobs:
           generator: python
           config-file: openapi.json
           openapi-file: temp/swagger/streams.json
-          command-args: '-p packageName=openapi_streams,projectName=streams'
+          command-args: '-o temp/generated-api -p packageName=openapi_streams,projectName=streams'
+
+      - name: Install Python local dependency
+        run: |
+          pip install -e .
 
       - name: 'Generate 3: generate output files'
         run: 'python scripts/generate_ci_2.py'
-        
+
       - name: Get changed files
         id: changed-files-specific
         uses: tj-actions/changed-files@v34
