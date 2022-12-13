@@ -31,7 +31,7 @@ jobs:
         with:
           generator: python
           config-file: openapi.json
-          input-file: temp/swagger/evm_api.json
+          openapi-file: temp/swagger/evm_api.json
 
       # - name: 'Run generate script'
       #   run: 'python scripts/generate.py'
