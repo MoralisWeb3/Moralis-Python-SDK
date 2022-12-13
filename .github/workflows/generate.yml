@@ -58,7 +58,7 @@ jobs:
       # In between step as openapi-generators cannot generate in github.workspace
       - name: 'Copy output folder to project'
         run: |
-          mv generated-api/* ${{github.workspace}}/temp/generated-api
+          mv /github/workspace/generated-api/* ${{github.workspace}}/temp/generated-api
       - name: 'Generate 3: generate output files'
         run: 'python scripts/generate_ci_2.py'
       - name: Get changed files
