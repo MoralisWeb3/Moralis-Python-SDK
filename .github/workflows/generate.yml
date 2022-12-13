@@ -26,13 +26,20 @@ jobs:
       - name: 'Generate 1: prepare input files'
         run: 'python scripts/generate_ci_1.py'
 
-      - name: 'Generate 2 OpenApi for EvmApi'
+      - name: 'Generate 2.1 OpenApi for EvmApi'
         uses: openapi-generators/openapitools-generator-action@v1
         with:
           generator: python
           config-file: openapi.json
           openapi-file: temp/swagger/evm_api.json
-          command-args: '-p packageName=openapi_evm_apix,projectName=evm_apix'
+          command-args: '-p packageName=openapi_evm_api,projectName=evm_api'
+      - name: 'Generate 2.2 OpenApi for Auth'
+        uses: openapi-generators/openapitools-generator-action@v1
+        with:
+          generator: python
+          config-file: openapi.json
+          openapi-file: temp/swagger/auth.json
+          command-args: '-p packageName=openapi_auth,projectName=auth'
 
       - name: 'Generate 3: generate output files'
         run: 'python scripts/generate_ci_2.py'
