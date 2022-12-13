@@ -56,13 +56,18 @@ jobs:
       #     command-args: '-p packageName=openapi_streams,projectName=streams'
 
       # In between step as openapi-generators cannot generate in github.workspace
-      - name: 'Copy output folder to project'
+      - name: 'Debug'
         run: |
           ls
           cd temp
           ls
       - name: 'Generate 3: generate output files'
         run: 'python scripts/generate_ci_2.py'
+      - name: 'Debug'
+        run: |
+          ls
+          cd temp
+          ls
       - name: Get changed files
         id: changed-files-specific
         uses: tj-actions/changed-files@v34
