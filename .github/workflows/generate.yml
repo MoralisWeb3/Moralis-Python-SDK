@@ -66,10 +66,10 @@ jobs:
       # In between step as openapi-generators cannot generate in github.workspace
       - name: 'Debug 1'
         run: |
-          ls
+          ls temp/generated-api
       - name: 'Debug 2'
         run: |
-          ls temp
+          ls src/openapi_auth
       - name: 'Generate 3: generate output files'
         run: 'python scripts/generate_ci_2.py'
       - name: 'Debug'
