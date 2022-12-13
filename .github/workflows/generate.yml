@@ -68,6 +68,7 @@ jobs:
           files: |
             docs/**
             src/**
+            temp/**
       - name: Run step if any file(s) change
         if: steps.changed-files-specific.outputs.any_changed == 'true'
         run: |
