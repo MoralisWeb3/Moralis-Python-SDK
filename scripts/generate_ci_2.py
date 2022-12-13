@@ -20,7 +20,7 @@ def move_generated_api(api_name):
     docs_path = out_path / 'docs'
     if docs_path.exists() and docs_path.is_dir():
         shutil.rmtree(docs_path)
-    print("✅ Moving openapi client done")
+    print(f"✅ Moving openapi client done from {generated_path} to {out_path}")
 
 def move_generated_apis():
   print("⏳ Moving all api clients...")
