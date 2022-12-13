@@ -32,7 +32,7 @@ jobs:
           generator: python
           config-file: openapi.json
           openapi-file: temp/swagger/evm_api.json
-          command-args: 'packageName=openapi_evm_apix,projectName=evm_apix'
+          command-args: '-p packageName=openapi_evm_apix,projectName=evm_apix'
 
       # - name: 'Run generate script'
       #   run: 'python scripts/generate.py'
