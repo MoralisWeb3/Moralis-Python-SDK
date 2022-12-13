@@ -8,7 +8,6 @@ on:
     branches:
       - main
 
-
 jobs:
   release:
     name: Release
@@ -68,12 +67,33 @@ jobs:
       - name: 'Generate 3: generate output files'
         run: 'python scripts/generate_ci_2.py'
 
-
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: "File changes detected: Create PR"
+        id: create-pr
+        uses: peter-evans/create-pull-request@v4
         with:
+          add-paths: |
+            src/**/*
+            docs/**/*
           commit_message: 'fix: automatic api update'
+          committer: 'Moralis CI/CD <noreply@github.com>'
           branch: generate
-          file_pattern: 'src/**/* docs/**/*'
-          commit_user_name: Moralis CI/CD
+          title: 'Update SDK'
+          body: |
+            This PR was automatically opened via Github Actions.
+
+            New Api changes have been detected. To release:
+
+            1. Make any manual changes that are needed
+            2. Merge this PR to `main`
+            3. Wait for the next Github Action to do an automatic release
+
+            **Note that this PR is automatically updated when more changes are made to the APIs.**
+          labels: 'Automated PR'
+          team-reviewers: |
+            owners
+            maintainers
         env:
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+
