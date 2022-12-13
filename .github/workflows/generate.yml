@@ -46,7 +46,7 @@ jobs:
           generator: python
           config-file: openapi.json
           openapi-file: temp/swagger/auth.json
-          command-args: '-o temp/generated-api -p packageName=openapi_auth,projectName=auth'
+          command-args: '-o ${GITHUB_WORKSPACE}/temp/generated-api -p packageName=openapi_auth,projectName=auth'
       # - name: 'Generate 2.4 OpenApi for Streams'
       #   uses: openapi-generators/openapitools-generator-action@v1
       #   with:
@@ -61,17 +61,17 @@ jobs:
 
       # - name: 'Run generate script'
       #   run: 'python scripts/generate.py'
-      - name: Get changed files in the docs folder
+      - name: Get changed files
         id: changed-files-specific
         uses: tj-actions/changed-files@v34
         with:
           files: |
             docs/**
             src/**
-      - name: Run step if any file(s) in the docs folder change
+      - name: Run step if any file(s) change
         if: steps.changed-files-specific.outputs.any_changed == 'true'
         run: |
-          echo "One or more files in the docs folder has changed."
+          echo "One or more files has changed."
           echo "List all the files that have changed: ${{ steps.changed-files-specific.outputs.all_changed_files }}"
 
       # - name: Run when files have changed
