@@ -22,42 +22,39 @@ jobs:
             docs/**
             src/**
       - uses: actions/setup-python@v4
-        # if: steps.changed-files-specific.outputs.any_changed == 'true'
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
         with:
           python-version: '3.10'
       - name: Install dependencies
-        # if: steps.changed-files-specific.outputs.any_changed == 'true'
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
         uses: py-actions/py-dependency-install@v4
-      # - name: Bump version
-      #   # if: steps.changed-files-specific.outputs.any_changed == 'true'
-      #   run: bumpver update --patch
+      - name: Bump version
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        run: bumpver update --patch
       - name: Build
         # if: steps.changed-files-specific.outputs.any_changed == 'true'
         run: bash scripts/build.sh
       - name: Debug
         # if: steps.changed-files-specific.outputs.any_changed == 'true'
         run: ls dist
-      # - name: Release
-      #   if: steps.changed-files-specific.outputs.any_changed == 'true'
-      #   uses: pypa/gh-action-pypi-publish@release/v1
-      #   with:
-      #     password: ${{ secrets.PYPI_API_TOKEN }}
-      #     verbose: true
-      # - name: Generate notes
-      #   if: steps.changed-files-specific.outputs.any_changed == 'true'
-      #   run: TODO
-      # - name: Notify Slack
-      #   if: steps.changed-files-specific.outputs.any_changed == 'true'
-      #   run: TODO
-
-      # - name: Commit changes
-      #   uses: stefanzweifel/git-auto-commit-action@v4
-      #   with:
-      #     commit_message: 'build: new release [skip ci]'
-      #     commit_user_name: 'Moralis CI/CD <noreply@github.com>'
-
-
-
+      - name: Release
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
+          verbose: true
+      - name: Commit changes
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'build: new release [skip ci]'
+          commit_user_name: 'Moralis CI/CD <noreply@github.com>'
+      - name: Notify Slack
+        id: slack
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        uses: slackapi/slack-github-action@v1.23.0
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_RELEASE_URL }}
 
 
     
