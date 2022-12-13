@@ -32,6 +32,7 @@ jobs:
           generator: python
           config-file: openapi.json
           openapi-file: temp/swagger/evm_api.json
+          command-args: 'packageName=openapi_evm_apix,projectName=evm_apix'
 
       # - name: 'Run generate script'
       #   run: 'python scripts/generate.py'
@@ -42,6 +43,12 @@ jobs:
           files: |
             docs/**
             src/**
+      - name: Run step if any file(s) in the docs folder change
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        run: |
+          echo "One or more files in the docs folder has changed."
+          echo "List all the files that have changed: ${{ steps.changed-files-specific.outputs.all_changed_files }}"
+
       # - name: Run when files have changed
       #   if: steps.changed-files-specific.outputs.any_changed == 'true'
       #   uses: stefanzweifel/git-auto-commit-action@v4

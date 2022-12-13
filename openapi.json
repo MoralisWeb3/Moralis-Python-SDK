@@ -1,8 +1,6 @@
 {
   "generatorName": "python",
   "outputDir": "./temp/generated-api",
-  "packageName": "evm_api",
-  "projectName": "evm_api",
   "additionalProperties": {
     "generateSourceCodeOnly": true
   }
