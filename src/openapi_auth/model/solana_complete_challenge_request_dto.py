@@ -79,7 +79,7 @@ class SolanaCompleteChallengeRequestDto(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, ],
+        *_args: typing.Union[dict, frozendict.frozendict, ],
         signature: typing.Union[MetaOapg.properties.signature, str, ],
         message: typing.Union[MetaOapg.properties.message, str, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
@@ -87,7 +87,7 @@ class SolanaCompleteChallengeRequestDto(
     ) -> 'SolanaCompleteChallengeRequestDto':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             signature=signature,
             message=message,
             _configuration=_configuration,

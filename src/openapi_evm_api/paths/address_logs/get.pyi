@@ -30,7 +30,6 @@ from openapi_evm_api.model.chain_list import ChainList
 
 # Query params
 ChainSchema = ChainList
-SubdomainSchema = schemas.StrSchema
 BlockNumberSchema = schemas.StrSchema
 FromBlockSchema = schemas.StrSchema
 ToBlockSchema = schemas.StrSchema
@@ -56,7 +55,6 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
     'RequestOptionalQueryParams',
     {
         'chain': typing.Union[ChainSchema, ],
-        'subdomain': typing.Union[SubdomainSchema, str, ],
         'block_number': typing.Union[BlockNumberSchema, str, ],
         'from_block': typing.Union[FromBlockSchema, str, ],
         'to_block': typing.Union[ToBlockSchema, str, ],
@@ -81,12 +79,6 @@ request_query_chain = api_client.QueryParameter(
     name="chain",
     style=api_client.ParameterStyle.FORM,
     schema=ChainSchema,
-    explode=True,
-)
-request_query_subdomain = api_client.QueryParameter(
-    name="subdomain",
-    style=api_client.ParameterStyle.FORM,
-    schema=SubdomainSchema,
     explode=True,
 )
 request_query_block_number = api_client.QueryParameter(
@@ -279,7 +271,6 @@ class BaseApi(api_client.Api):
         prefix_separator_iterator = None
         for parameter in (
             request_query_chain,
-            request_query_subdomain,
             request_query_block_number,
             request_query_from_block,
             request_query_to_block,
@@ -326,7 +317,11 @@ class BaseApi(api_client.Api):
                 api_response = api_client.ApiResponseWithoutDeserialization(response=response)
 
         if not 200 <= response.status <= 299:
-            raise exceptions.ApiException(api_response=api_response)
+            raise exceptions.ApiException(
+                status=response.status,
+                reason=response.reason,
+                api_response=api_response
+            )
 
         return api_response
 

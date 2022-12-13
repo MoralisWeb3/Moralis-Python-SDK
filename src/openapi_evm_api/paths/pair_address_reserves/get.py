@@ -33,7 +33,6 @@ from . import path
 ChainSchema = ChainList
 ToBlockSchema = schemas.StrSchema
 ToDateSchema = schemas.StrSchema
-ProviderUrlSchema = schemas.StrSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -45,7 +44,6 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'chain': typing.Union[ChainSchema, ],
         'to_block': typing.Union[ToBlockSchema, str, ],
         'to_date': typing.Union[ToDateSchema, str, ],
-        'provider_url': typing.Union[ProviderUrlSchema, str, ],
     },
     total=False
 )
@@ -71,12 +69,6 @@ request_query_to_date = api_client.QueryParameter(
     name="to_date",
     style=api_client.ParameterStyle.FORM,
     schema=ToDateSchema,
-    explode=True,
-)
-request_query_provider_url = api_client.QueryParameter(
-    name="provider_url",
-    style=api_client.ParameterStyle.FORM,
-    schema=ProviderUrlSchema,
     explode=True,
 )
 # Path params
@@ -154,7 +146,7 @@ class SchemaFor200ResponseBodyApplicationJson(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, ],
+        *_args: typing.Union[dict, frozendict.frozendict, ],
         reserve0: typing.Union[MetaOapg.properties.reserve0, str, schemas.Unset] = schemas.unset,
         reserve1: typing.Union[MetaOapg.properties.reserve1, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
@@ -162,7 +154,7 @@ class SchemaFor200ResponseBodyApplicationJson(
     ) -> 'SchemaFor200ResponseBodyApplicationJson':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             reserve0=reserve0,
             reserve1=reserve1,
             _configuration=_configuration,
@@ -270,7 +262,6 @@ class BaseApi(api_client.Api):
             request_query_chain,
             request_query_to_block,
             request_query_to_date,
-            request_query_provider_url,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -306,7 +297,11 @@ class BaseApi(api_client.Api):
                 api_response = api_client.ApiResponseWithoutDeserialization(response=response)
 
         if not 200 <= response.status <= 299:
-            raise exceptions.ApiException(api_response=api_response)
+            raise exceptions.ApiException(
+                status=response.status,
+                reason=response.reason,
+                api_response=api_response
+            )
 
         return api_response
 

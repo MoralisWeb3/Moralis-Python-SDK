@@ -55,12 +55,12 @@ class GetMultipleNftsDto(
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple['TokenItem'], typing.List['TokenItem']],
+                    _arg: typing.Union[typing.Tuple['TokenItem'], typing.List['TokenItem']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'tokens':
                     return super().__new__(
                         cls,
-                        arg,
+                        _arg,
                         _configuration=_configuration,
                     )
             
@@ -104,7 +104,7 @@ class GetMultipleNftsDto(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         tokens: typing.Union[MetaOapg.properties.tokens, list, tuple, ],
         normalizeMetadata: typing.Union[MetaOapg.properties.normalizeMetadata, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
@@ -112,7 +112,7 @@ class GetMultipleNftsDto(
     ) -> 'GetMultipleNftsDto':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             tokens=tokens,
             normalizeMetadata=normalizeMetadata,
             _configuration=_configuration,

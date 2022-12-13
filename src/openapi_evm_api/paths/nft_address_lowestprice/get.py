@@ -41,7 +41,6 @@ class DaysSchema(
 
     class MetaOapg:
         inclusive_minimum = 0
-ProviderUrlSchema = schemas.StrSchema
 
 
 class MarketplaceSchema(
@@ -68,7 +67,6 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
     {
         'chain': typing.Union[ChainSchema, ],
         'days': typing.Union[DaysSchema, decimal.Decimal, int, ],
-        'provider_url': typing.Union[ProviderUrlSchema, str, ],
         'marketplace': typing.Union[MarketplaceSchema, str, ],
     },
     total=False
@@ -89,12 +87,6 @@ request_query_days = api_client.QueryParameter(
     name="days",
     style=api_client.ParameterStyle.FORM,
     schema=DaysSchema,
-    explode=True,
-)
-request_query_provider_url = api_client.QueryParameter(
-    name="provider_url",
-    style=api_client.ParameterStyle.FORM,
-    schema=ProviderUrlSchema,
     explode=True,
 )
 request_query_marketplace = api_client.QueryParameter(
@@ -234,7 +226,6 @@ class BaseApi(api_client.Api):
         for parameter in (
             request_query_chain,
             request_query_days,
-            request_query_provider_url,
             request_query_marketplace,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
@@ -271,7 +262,11 @@ class BaseApi(api_client.Api):
                 api_response = api_client.ApiResponseWithoutDeserialization(response=response)
 
         if not 200 <= response.status <= 299:
-            raise exceptions.ApiException(api_response=api_response)
+            raise exceptions.ApiException(
+                status=response.status,
+                reason=response.reason,
+                api_response=api_response
+            )
 
         return api_response
 

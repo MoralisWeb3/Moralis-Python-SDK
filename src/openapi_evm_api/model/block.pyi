@@ -90,12 +90,12 @@ class Block(
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple['BlockTransaction'], typing.List['BlockTransaction']],
+                    _arg: typing.Union[typing.Tuple['BlockTransaction'], typing.List['BlockTransaction']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'transactions':
                     return super().__new__(
                         cls,
-                        arg,
+                        _arg,
                         _configuration=_configuration,
                     )
             
@@ -275,7 +275,7 @@ class Block(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         gas_used: typing.Union[MetaOapg.properties.gas_used, str, ],
         sha3_uncles: typing.Union[MetaOapg.properties.sha3_uncles, str, ],
         transaction_count: typing.Union[MetaOapg.properties.transaction_count, str, ],
@@ -300,7 +300,7 @@ class Block(
     ) -> 'Block':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             gas_used=gas_used,
             sha3_uncles=sha3_uncles,
             transaction_count=transaction_count,

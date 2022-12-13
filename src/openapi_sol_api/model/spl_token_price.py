@@ -102,7 +102,7 @@ class SPLTokenPrice(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, ],
+        *_args: typing.Union[dict, frozendict.frozendict, ],
         usdPrice: typing.Union[MetaOapg.properties.usdPrice, decimal.Decimal, int, float, ],
         exchangeAddress: typing.Union[MetaOapg.properties.exchangeAddress, str, ],
         nativePrice: 'SPLNativePrice',
@@ -112,7 +112,7 @@ class SPLTokenPrice(
     ) -> 'SPLTokenPrice':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             usdPrice=usdPrice,
             exchangeAddress=exchangeAddress,
             nativePrice=nativePrice,

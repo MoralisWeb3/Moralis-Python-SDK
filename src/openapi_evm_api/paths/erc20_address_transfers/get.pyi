@@ -30,7 +30,6 @@ from openapi_evm_api.model.erc20_transaction_collection import Erc20TransactionC
 
 # Query params
 ChainSchema = ChainList
-SubdomainSchema = schemas.StrSchema
 
 
 class FromBlockSchema(
@@ -66,7 +65,6 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
     'RequestOptionalQueryParams',
     {
         'chain': typing.Union[ChainSchema, ],
-        'subdomain': typing.Union[SubdomainSchema, str, ],
         'from_block': typing.Union[FromBlockSchema, decimal.Decimal, int, ],
         'to_block': typing.Union[ToBlockSchema, decimal.Decimal, int, ],
         'from_date': typing.Union[FromDateSchema, str, ],
@@ -86,12 +84,6 @@ request_query_chain = api_client.QueryParameter(
     name="chain",
     style=api_client.ParameterStyle.FORM,
     schema=ChainSchema,
-    explode=True,
-)
-request_query_subdomain = api_client.QueryParameter(
-    name="subdomain",
-    style=api_client.ParameterStyle.FORM,
-    schema=SubdomainSchema,
     explode=True,
 )
 request_query_from_block = api_client.QueryParameter(
@@ -254,7 +246,6 @@ class BaseApi(api_client.Api):
         prefix_separator_iterator = None
         for parameter in (
             request_query_chain,
-            request_query_subdomain,
             request_query_from_block,
             request_query_to_block,
             request_query_from_date,
@@ -296,7 +287,11 @@ class BaseApi(api_client.Api):
                 api_response = api_client.ApiResponseWithoutDeserialization(response=response)
 
         if not 200 <= response.status <= 299:
-            raise exceptions.ApiException(api_response=api_response)
+            raise exceptions.ApiException(
+                status=response.status,
+                reason=response.reason,
+                api_response=api_response
+            )
 
         return api_response
 

@@ -30,8 +30,6 @@ from openapi_evm_api.model.log_event import LogEvent
 
 # Query params
 ChainSchema = ChainList
-SubdomainSchema = schemas.StrSchema
-ProviderUrlSchema = schemas.StrSchema
 
 
 class FromBlockSchema(
@@ -69,8 +67,6 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
     'RequestOptionalQueryParams',
     {
         'chain': typing.Union[ChainSchema, ],
-        'subdomain': typing.Union[SubdomainSchema, str, ],
-        'providerUrl': typing.Union[ProviderUrlSchema, str, ],
         'from_block': typing.Union[FromBlockSchema, decimal.Decimal, int, ],
         'to_block': typing.Union[ToBlockSchema, decimal.Decimal, int, ],
         'from_date': typing.Union[FromDateSchema, str, ],
@@ -90,18 +86,6 @@ request_query_chain = api_client.QueryParameter(
     name="chain",
     style=api_client.ParameterStyle.FORM,
     schema=ChainSchema,
-    explode=True,
-)
-request_query_subdomain = api_client.QueryParameter(
-    name="subdomain",
-    style=api_client.ParameterStyle.FORM,
-    schema=SubdomainSchema,
-    explode=True,
-)
-request_query_provider_url = api_client.QueryParameter(
-    name="providerUrl",
-    style=api_client.ParameterStyle.FORM,
-    schema=ProviderUrlSchema,
     explode=True,
 )
 request_query_from_block = api_client.QueryParameter(
@@ -211,12 +195,12 @@ class SchemaFor200ResponseBodyApplicationJson(
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple['LogEvent'], typing.List['LogEvent']],
+                    _arg: typing.Union[typing.Tuple['LogEvent'], typing.List['LogEvent']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'result':
                     return super().__new__(
                         cls,
-                        arg,
+                        _arg,
                         _configuration=_configuration,
                     )
             
@@ -270,7 +254,7 @@ class SchemaFor200ResponseBodyApplicationJson(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, ],
+        *_args: typing.Union[dict, frozendict.frozendict, ],
         total: typing.Union[MetaOapg.properties.total, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         page: typing.Union[MetaOapg.properties.page, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         page_size: typing.Union[MetaOapg.properties.page_size, decimal.Decimal, int, schemas.Unset] = schemas.unset,
@@ -280,7 +264,7 @@ class SchemaFor200ResponseBodyApplicationJson(
     ) -> 'SchemaFor200ResponseBodyApplicationJson':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             total=total,
             page=page,
             page_size=page_size,
@@ -409,8 +393,6 @@ class BaseApi(api_client.Api):
         prefix_separator_iterator = None
         for parameter in (
             request_query_chain,
-            request_query_subdomain,
-            request_query_provider_url,
             request_query_from_block,
             request_query_to_block,
             request_query_from_date,
@@ -464,7 +446,11 @@ class BaseApi(api_client.Api):
                 api_response = api_client.ApiResponseWithoutDeserialization(response=response)
 
         if not 200 <= response.status <= 299:
-            raise exceptions.ApiException(api_response=api_response)
+            raise exceptions.ApiException(
+                status=response.status,
+                reason=response.reason,
+                api_response=api_response
+            )
 
         return api_response
 

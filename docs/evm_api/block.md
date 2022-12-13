@@ -22,7 +22,6 @@ api_key = "YOUR_API_KEY"
 params = {
     "block_number_or_hash": "15863321", 
     "chain": "eth", 
-    "subdomain": "", 
 }
 
 result = evm_api.block.get_block(
@@ -40,7 +39,6 @@ print(result)
 |------|------|-------------|----------|---------|---------|
 | block_number_or_hash | str | The block number or block hash | Yes |  | "15863321" |
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "avalanche testnet"<br/>- "0xa869"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "cronos testnet"<br/>- "0x152"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
-| subdomain | str | The subdomain of the Moralis server to use (only use when selecting local devchain as chain) |  |  | "" |
 
 
 
@@ -60,7 +58,6 @@ api_key = "YOUR_API_KEY"
 params = {
     "date": "", 
     "chain": "eth", 
-    "providerUrl": "", 
 }
 
 result = evm_api.block.get_date_to_block(
@@ -78,7 +75,6 @@ print(result)
 |------|------|-------------|----------|---------|---------|
 | date | str | Unix date in milliseconds or a datestring (any format that is accepted by momentjs) | Yes |  | "" |
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "avalanche testnet"<br/>- "0xa869"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "cronos testnet"<br/>- "0x152"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
-| providerUrl | str | The web3 provider URL to use when using local dev chain |  |  | "" |
 
 
 

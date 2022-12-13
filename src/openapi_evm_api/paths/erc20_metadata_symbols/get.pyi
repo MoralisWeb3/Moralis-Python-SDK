@@ -30,7 +30,6 @@ from openapi_evm_api.model.erc20_metadata import Erc20Metadata
 
 # Query params
 ChainSchema = ChainList
-SubdomainSchema = schemas.StrSchema
 
 
 class SymbolsSchema(
@@ -43,12 +42,12 @@ class SymbolsSchema(
 
     def __new__(
         cls,
-        arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+        _arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'SymbolsSchema':
         return super().__new__(
             cls,
-            arg,
+            _arg,
             _configuration=_configuration,
         )
 
@@ -64,7 +63,6 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
     'RequestOptionalQueryParams',
     {
         'chain': typing.Union[ChainSchema, ],
-        'subdomain': typing.Union[SubdomainSchema, str, ],
     },
     total=False
 )
@@ -78,12 +76,6 @@ request_query_chain = api_client.QueryParameter(
     name="chain",
     style=api_client.ParameterStyle.FORM,
     schema=ChainSchema,
-    explode=True,
-)
-request_query_subdomain = api_client.QueryParameter(
-    name="subdomain",
-    style=api_client.ParameterStyle.FORM,
-    schema=SubdomainSchema,
     explode=True,
 )
 request_query_symbols = api_client.QueryParameter(
@@ -108,12 +100,12 @@ class SchemaFor200ResponseBodyApplicationJson(
 
     def __new__(
         cls,
-        arg: typing.Union[typing.Tuple['Erc20Metadata'], typing.List['Erc20Metadata']],
+        _arg: typing.Union[typing.Tuple['Erc20Metadata'], typing.List['Erc20Metadata']],
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'SchemaFor200ResponseBodyApplicationJson':
         return super().__new__(
             cls,
-            arg,
+            _arg,
             _configuration=_configuration,
         )
 
@@ -198,7 +190,6 @@ class BaseApi(api_client.Api):
         prefix_separator_iterator = None
         for parameter in (
             request_query_chain,
-            request_query_subdomain,
             request_query_symbols,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
@@ -235,7 +226,11 @@ class BaseApi(api_client.Api):
                 api_response = api_client.ApiResponseWithoutDeserialization(response=response)
 
         if not 200 <= response.status <= 299:
-            raise exceptions.ApiException(api_response=api_response)
+            raise exceptions.ApiException(
+                status=response.status,
+                reason=response.reason,
+                api_response=api_response
+            )
 
         return api_response
 

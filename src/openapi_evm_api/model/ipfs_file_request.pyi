@@ -80,7 +80,7 @@ class IpfsFileRequest(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         path: typing.Union[MetaOapg.properties.path, str, ],
         content: typing.Union[MetaOapg.properties.content, str, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
@@ -88,7 +88,7 @@ class IpfsFileRequest(
     ) -> 'IpfsFileRequest':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             path=path,
             content=content,
             _configuration=_configuration,

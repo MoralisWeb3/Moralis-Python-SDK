@@ -139,7 +139,7 @@ class HistoryModel(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, ],
+        *_args: typing.Union[dict, frozendict.frozendict, ],
         date: typing.Union[MetaOapg.properties.date, str, datetime, ],
         streamId: typing.Union[MetaOapg.properties.streamId, str, ],
         tinyPayload: 'WebhookTypesITinyPayload',
@@ -152,7 +152,7 @@ class HistoryModel(
     ) -> 'HistoryModel':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             date=date,
             streamId=streamId,
             tinyPayload=tinyPayload,

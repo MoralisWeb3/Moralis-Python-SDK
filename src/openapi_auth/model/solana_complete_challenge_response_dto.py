@@ -106,12 +106,12 @@ class SolanaCompleteChallengeResponseDto(
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+                    _arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'resources':
                     return super().__new__(
                         cls,
-                        arg,
+                        _arg,
                         _configuration=_configuration,
                     )
             
@@ -230,7 +230,7 @@ class SolanaCompleteChallengeResponseDto(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, ],
+        *_args: typing.Union[dict, frozendict.frozendict, ],
         address: typing.Union[MetaOapg.properties.address, str, ],
         profileId: typing.Union[MetaOapg.properties.profileId, str, ],
         domain: typing.Union[MetaOapg.properties.domain, str, ],
@@ -248,7 +248,7 @@ class SolanaCompleteChallengeResponseDto(
     ) -> 'SolanaCompleteChallengeResponseDto':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             address=address,
             profileId=profileId,
             domain=domain,

@@ -60,12 +60,12 @@ class Portfolio(
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple['SPLNFT'], typing.List['SPLNFT']],
+                    _arg: typing.Union[typing.Tuple['SPLNFT'], typing.List['SPLNFT']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'nfts':
                     return super().__new__(
                         cls,
-                        arg,
+                        _arg,
                         _configuration=_configuration,
                     )
             
@@ -86,12 +86,12 @@ class Portfolio(
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple['SPLTokenBalance'], typing.List['SPLTokenBalance']],
+                    _arg: typing.Union[typing.Tuple['SPLTokenBalance'], typing.List['SPLTokenBalance']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'tokens':
                     return super().__new__(
                         cls,
-                        arg,
+                        _arg,
                         _configuration=_configuration,
                     )
             
@@ -142,7 +142,7 @@ class Portfolio(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, ],
+        *_args: typing.Union[dict, frozendict.frozendict, ],
         nfts: typing.Union[MetaOapg.properties.nfts, list, tuple, ],
         nativeBalance: 'NativeBalance',
         tokens: typing.Union[MetaOapg.properties.tokens, list, tuple, ],
@@ -151,7 +151,7 @@ class Portfolio(
     ) -> 'Portfolio':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             nfts=nfts,
             nativeBalance=nativeBalance,
             tokens=tokens,

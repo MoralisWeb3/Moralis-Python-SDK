@@ -82,7 +82,7 @@ class Block(
 
     def __new__(
         cls,
-        *args: typing.Union[dict, frozendict.frozendict, ],
+        *_args: typing.Union[dict, frozendict.frozendict, ],
         number: typing.Union[MetaOapg.properties.number, str, ],
         hash: typing.Union[MetaOapg.properties.hash, str, ],
         timestamp: typing.Union[MetaOapg.properties.timestamp, str, ],
@@ -90,7 +90,7 @@ class Block(
     ) -> 'Block':
         return super().__new__(
             cls,
-            *args,
+            *_args,
             number=number,
             hash=hash,
             timestamp=timestamp,
