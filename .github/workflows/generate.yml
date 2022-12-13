@@ -1,9 +1,9 @@
 name: Generate
 
 on:
-  schedule:
-    # Runs “At every 2nd minute.” (see https://crontab.guru)
-    - cron: '* * * * *'
+  # schedule:
+  #   # Runs “At every 2nd minute.” (see https://crontab.guru)
+  #   - cron: '* * * * *'
   push:
     branches:
       - main
