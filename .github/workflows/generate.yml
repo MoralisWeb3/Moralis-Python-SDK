@@ -46,7 +46,7 @@ jobs:
           generator: python
           config-file: openapi.json
           openapi-file: temp/swagger/auth.json
-          command-args: '-o /${GITHUB_WORKSPACE}/temp/generated-api -p packageName=openapi_auth,projectName=auth'
+          command-args: '-o temp/generated-api -p packageName=openapi_auth,projectName=auth'
       # - name: 'Generate 2.4 OpenApi for Streams'
       #   uses: openapi-generators/openapitools-generator-action@v1
       #   with:
