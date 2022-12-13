@@ -1,4 +1,4 @@
-import pkg_resources
+from .version import __version__
 
 
 def get_common_headers():
@@ -6,6 +6,6 @@ def get_common_headers():
     return {
         "x-moralis-platform": 'Python SDK',
         "x-moralis-build-target": 'python',
-        "x-moralis-build-target": pkg_resources.get_distribution('moralis').version,
+        "x-moralis-build-target": __version__,
     }
 
