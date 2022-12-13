@@ -34,6 +34,10 @@ jobs:
           openapi-file: temp/swagger/evm_api.json
           command-args: '-p packageName=openapi_evm_apix,projectName=evm_apix'
 
+      - name: 'Generate 3: generate output files'
+        run: 'python scripts/generate_ci_2.py'
+
+
       # - name: 'Run generate script'
       #   run: 'python scripts/generate.py'
       - name: Get changed files in the docs folder
