@@ -22,12 +22,19 @@ jobs:
           python-version: '3.10'
       - name: Install Python dependencies
         run: python -m pip install --upgrade pip requests
-      - name: openapi-generators
+        
+      - name: 'Generate 1: prepare input files'
+        run: 'python scripts/generate_ci_1.py'
+
+      - name: 'Generate 2 OpenApi for EvmApi'
         uses: openapi-generators/openapitools-generator-action@v1
         with:
           generator: python
-      - name: 'Run generate script'
-        run: 'python scripts/generate.py'
+          config-file: openapi.json
+          input-file: temp/swagger/evm_api.json
+
+      # - name: 'Run generate script'
+      #   run: 'python scripts/generate.py'
       - name: Get changed files in the docs folder
         id: changed-files-specific
         uses: tj-actions/changed-files@v34
@@ -35,10 +42,10 @@ jobs:
           files: |
             docs/**
             src/**
-      - name: Run when files have changed
-        if: steps.changed-files-specific.outputs.any_changed == 'true'
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'fix: re-generate SDK'
+      # - name: Run when files have changed
+      #   if: steps.changed-files-specific.outputs.any_changed == 'true'
+      #   uses: stefanzweifel/git-auto-commit-action@v4
+      #   with:
+      #     commit_message: 'fix: re-generate SDK'
 
   
