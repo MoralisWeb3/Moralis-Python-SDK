@@ -4,6 +4,10 @@ on:
   schedule:
     # Runs “At 5th minute.” (see https://crontab.guru)
     - cron: '*/5 * * * *'
+  push:
+    branches:
+      - main
+
 
 jobs:
   release:
