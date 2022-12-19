@@ -34,6 +34,26 @@ from . import path
 ChainSchema = ChainList
 
 
+class FromBlockSchema(
+    schemas.IntSchema
+):
+
+
+    class MetaOapg:
+        inclusive_minimum = 0
+
+
+class ToBlockSchema(
+    schemas.IntSchema
+):
+
+
+    class MetaOapg:
+        inclusive_minimum = 0
+FromDateSchema = schemas.StrSchema
+ToDateSchema = schemas.StrSchema
+
+
 class FormatSchema(
     schemas.EnumBase,
     schemas.StrSchema
@@ -72,6 +92,10 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
     'RequestOptionalQueryParams',
     {
         'chain': typing.Union[ChainSchema, ],
+        'from_block': typing.Union[FromBlockSchema, decimal.Decimal, int, ],
+        'to_block': typing.Union[ToBlockSchema, decimal.Decimal, int, ],
+        'from_date': typing.Union[FromDateSchema, str, ],
+        'to_date': typing.Union[ToDateSchema, str, ],
         'format': typing.Union[FormatSchema, str, ],
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
         'cursor': typing.Union[CursorSchema, str, ],
@@ -88,6 +112,30 @@ request_query_chain = api_client.QueryParameter(
     name="chain",
     style=api_client.ParameterStyle.FORM,
     schema=ChainSchema,
+    explode=True,
+)
+request_query_from_block = api_client.QueryParameter(
+    name="from_block",
+    style=api_client.ParameterStyle.FORM,
+    schema=FromBlockSchema,
+    explode=True,
+)
+request_query_to_block = api_client.QueryParameter(
+    name="to_block",
+    style=api_client.ParameterStyle.FORM,
+    schema=ToBlockSchema,
+    explode=True,
+)
+request_query_from_date = api_client.QueryParameter(
+    name="from_date",
+    style=api_client.ParameterStyle.FORM,
+    schema=FromDateSchema,
+    explode=True,
+)
+request_query_to_date = api_client.QueryParameter(
+    name="to_date",
+    style=api_client.ParameterStyle.FORM,
+    schema=ToDateSchema,
     explode=True,
 )
 request_query_format = api_client.QueryParameter(
@@ -213,7 +261,7 @@ class BaseApi(api_client.Api):
         skip_deserialization: bool = False,
     ):
         """
-        Get transfers by contract
+        Get NFT transfers by contract
         :param skip_deserialization: If true then api_response.response will be set but
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
@@ -238,6 +286,10 @@ class BaseApi(api_client.Api):
         prefix_separator_iterator = None
         for parameter in (
             request_query_chain,
+            request_query_from_block,
+            request_query_to_block,
+            request_query_from_date,
+            request_query_to_date,
             request_query_format,
             request_query_limit,
             request_query_cursor,
