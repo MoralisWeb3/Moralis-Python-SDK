@@ -232,7 +232,7 @@ def generate_docs_for_module(module_name):
     with open(docs_path / module_name / 'README.md', "w") as f:
         f.write(f"# `moralis.{module_name}`\n\n")
         f.write(
-            f"{''.join(list(map(lambda group: f'- [{group}](./{group}.md){nl}', groups)))}")
+            f"{''.join(list(map(lambda group: f'- [{group}](./{group}.md){nl}', sorted(groups))))}")
 
     groups = sorted(groups)
 
