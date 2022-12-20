@@ -11,7 +11,7 @@
 
 > `evm_api.resolve.resolve_address()`
 
-Resolve an ETH address and find the ENS name.
+Reverse resolve a given ETH address to its ENS domain.
 
 
 ### Example
@@ -45,7 +45,7 @@ print(result)
 
 > `evm_api.resolve.resolve_domain()`
 
-Resolve an Unstoppable domain and get the address.
+Resolve a specific Unstoppable domain to its address.
 
 
 ### Example
