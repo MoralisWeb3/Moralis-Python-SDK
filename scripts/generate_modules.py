@@ -186,20 +186,18 @@ def make_module(api_name, tag, api_client_name, security_key):
 
 def cleanup_modules(api_name, modules_path):
     print(f"⏳ Removing modules for {api_name}...")
-    # Remove the modules folder, but keep the version file
+    # Remove the modules folder, but keep the version file (note we only return the version of the last module, but they all should be the same)
+    version_file_content = None
+
     if modules_path.exists() and modules_path.is_dir():
         version_file_path = modules_path / 'version.py'
-        version_file_content = None
         if version_file_path.exists() and version_file_path.is_file():
             version_file = open(version_file_path, 'r')
             version_file_content = version_file.read()
             version_file.close()
         shutil.rmtree(modules_path)
-        if version_file_content:
-            version_file = open(version_file_path, 'w')
-            version_file.write(version_file_content)
-            version_file.close()
     print(f"✅ Removed modules for {api_name}")
+    return version_file_content
 
 
 def make_modules(api_name, security_key):
@@ -211,7 +209,7 @@ def make_modules(api_name, security_key):
 
     modules_path = moralis_module_path / api_name
 
-    cleanup_modules(api_name, modules_path)
+    version_file_content = cleanup_modules(api_name, modules_path)
 
     for tag in TagValues:
         make_module(api_name, tag, tag_to_api[tag].__name__, security_key)
@@ -224,7 +222,7 @@ def make_modules(api_name, security_key):
 
     with open(modules_path / f'version.py', 'w') as f:
         # version will be updated once bumpver (according to bumpver.toml) is run before release
-        f.write(f'__version__ = "0.0.0"\n')
+        f.write(version_file_content)
 
     with open(modules_path / f'{api_name}.py', 'w') as f:
         for tag in TagValues:
