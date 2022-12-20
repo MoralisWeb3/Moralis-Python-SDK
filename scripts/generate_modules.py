@@ -186,7 +186,7 @@ def make_module(api_name, tag, api_client_name, security_key):
 
 def cleanup_modules(api_name, modules_path):
     print(f"⏳ Removing modules for {api_name}...")
-    # Remove the modules folder, but keep the 
+    # Remove the modules folder, but keep the version file
     if modules_path.exists() and modules_path.is_dir():
         version_file_path = modules_path / 'version.py'
         version_file_content = None
