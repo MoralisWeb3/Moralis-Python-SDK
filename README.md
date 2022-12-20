@@ -55,7 +55,6 @@ api_key = "YOUR_API_KEY"
 params = {
     "address": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e", 
     "chain": "eth", 
-    "providerUrl": "", 
     "to_block": 1.2, 
 }
 
@@ -106,7 +105,6 @@ api_key = "YOUR_API_KEY"
 params = {
     "address": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e", 
     "chain": "eth", 
-    "providerUrl": "", 
     "to_block": 1.2, 
 }
 
@@ -204,22 +202,22 @@ For more info see [the live docs](https://moralisweb3.github.io/Moralis-Python-S
 
 ## evm_api
 
+- [balance](./docs/evm_api/balance.md)
+- [block](./docs/evm_api/block.md)
+- [defi](./docs/evm_api/defi.md)
+- [events](./docs/evm_api/events.md)
+- [ipfs](./docs/evm_api/ipfs.md)
+- [nft](./docs/evm_api/nft.md)
+- [resolve](./docs/evm_api/resolve.md)
 - [token](./docs/evm_api/token.md)
 - [transaction](./docs/evm_api/transaction.md)
-- [resolve](./docs/evm_api/resolve.md)
-- [nft](./docs/evm_api/nft.md)
-- [ipfs](./docs/evm_api/ipfs.md)
-- [balance](./docs/evm_api/balance.md)
 - [utils](./docs/evm_api/utils.md)
-- [events](./docs/evm_api/events.md)
-- [defi](./docs/evm_api/defi.md)
-- [block](./docs/evm_api/block.md)
 
 ## sol_api
 
-- [token](./docs/sol_api/token.md)
-- [nft](./docs/sol_api/nft.md)
 - [account](./docs/sol_api/account.md)
+- [nft](./docs/sol_api/nft.md)
+- [token](./docs/sol_api/token.md)
 
 ## auth
 
@@ -227,9 +225,9 @@ For more info see [the live docs](https://moralisweb3.github.io/Moralis-Python-S
 
 ## streams
 
-- [project](./docs/streams/project.md)
-- [history](./docs/streams/history.md)
 - [evm](./docs/streams/evm.md)
+- [history](./docs/streams/history.md)
+- [project](./docs/streams/project.md)
 - [stats](./docs/streams/stats.md)
 
 

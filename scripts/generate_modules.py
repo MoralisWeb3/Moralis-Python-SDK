@@ -186,8 +186,19 @@ def make_module(api_name, tag, api_client_name, security_key):
 
 def cleanup_modules(api_name, modules_path):
     print(f"⏳ Removing modules for {api_name}...")
+    # Remove the modules folder, but keep the version file
     if modules_path.exists() and modules_path.is_dir():
+        version_file_path = modules_path / 'version.py'
+        version_file_content = None
+        if version_file_path.exists() and version_file_path.is_file():
+            version_file = open(version_file_path, 'r')
+            version_file_content = version_file.read()
+            version_file.close()
         shutil.rmtree(modules_path)
+        if version_file_content:
+            version_file = open(version_file_path, 'w')
+            version_file.write(version_file_content)
+            version_file.close()
     print(f"✅ Removed modules for {api_name}")
 
 

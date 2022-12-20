@@ -1,6 +1,6 @@
 # `moralis.streams`
 
-- [history](./history.md)
-- [stats](./stats.md)
-- [project](./project.md)
 - [evm](./evm.md)
+- [history](./history.md)
+- [project](./project.md)
+- [stats](./stats.md)
