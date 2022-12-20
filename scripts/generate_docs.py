@@ -330,5 +330,3 @@ def generate_docs():
     generate_root_readme(modules, groups)
     save_snippets()
     print(f"🏁 Generated docs")
-
-generate_docs()
