@@ -78,9 +78,10 @@ print(result)
 > `evm_api.nft.get_multiple_nfts()`
 
 Returns an array of NFTs specified in the request.
+* The response will include status [SYNCED/SYNCING] based on the contracts being indexed.
+* Use the token_address param to get results for a specific contract only
 * Note that results will include all indexed NFTs
 * Any request that includes the token_address param will start the indexing process for that NFT collection the very first time it is requested.
-* Only 25 NFTs can be fetched in one API call.
 
 
 ### Example
@@ -118,7 +119,7 @@ Object with the properties:
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-| tokens | List of object: <br/> - token_address: str<br/> - token_id: str | The tokens to be fetched (max 25 tokens) | Yes |  | [{'token_address': '0xa4991609c508b6d4fb7156426db0bd49fe298bd8', 'token_id': '12'}, {'token_address': '0x3c64dc415ebb4690d1df2b6216148c8de6dd29f7', 'token_id': '1'}, {'token_address': '0x3c64dc415ebb4690d1df2b6216148c8de6dd29f7', 'token_id': '200'}] |
+| tokens | List of object: <br/> - token_address: str<br/> - token_id: str | The tokens to be fetched | Yes |  | [{'token_address': '0xa4991609c508b6d4fb7156426db0bd49fe298bd8', 'token_id': '12'}, {'token_address': '0x3c64dc415ebb4690d1df2b6216148c8de6dd29f7', 'token_id': '1'}, {'token_address': '0x3c64dc415ebb4690d1df2b6216148c8de6dd29f7', 'token_id': '200'}] |
 | normalizeMetadata | bool | Should normalized metadata be returned? | Yes |  | False |
 
 
@@ -176,10 +177,6 @@ api_key = "YOUR_API_KEY"
 params = {
     "address": "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB", 
     "chain": "eth", 
-    "from_block": 0, 
-    "to_block": 0, 
-    "from_date": "", 
-    "to_date": "", 
     "format": "decimal", 
     "limit": 0, 
     "cursor": "", 
@@ -200,10 +197,6 @@ print(result)
 |------|------|-------------|----------|---------|---------|
 | address | str | The address of the NFT contract | Yes |  | "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB" |
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "avalanche testnet"<br/>- "0xa869"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "cronos testnet"<br/>- "0x152"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
-| from_block | int | The minimum block number from where to get the transfers<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | 0 |
-| to_block | int | The maximum block number from where to get the transfers.<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | 0 |
-| from_date | str | The date from where to get the transfers (any format that is accepted by momentjs)<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | "" |
-| to_date | str | Get transfers up until this date (any format that is accepted by momentjs)<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | "" |
 | format | enum[str]: <br/>- "decimal"<br/>- "hex" | The format of the token ID |  | "decimal" | "decimal" |
 | limit | int | The desired page size of the result. |  |  | 0 |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
@@ -224,7 +217,7 @@ from moralis import evm_api
 
 api_key = "YOUR_API_KEY"
 params = {
-    "address": "0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D", 
+    "address": "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB", 
     "chain": "eth", 
     "days": 0, 
     "marketplace": "opensea", 
@@ -243,7 +236,7 @@ print(result)
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-| address | str | The address of the NFT contract | Yes |  | "0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D" |
+| address | str | The address of the NFT contract | Yes |  | "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB" |
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "avalanche testnet"<br/>- "0xa869"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "cronos testnet"<br/>- "0x152"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 | days | int | The number of days to look back to find the lowest price<br/>If not provided 7 days will be the default<br/> |  |  | 0 |
 | marketplace | enum[str]: <br/>- "opensea" | Marketplace from which to get the trades (only OpenSea is supported at the moment) |  | "opensea" | "opensea" |

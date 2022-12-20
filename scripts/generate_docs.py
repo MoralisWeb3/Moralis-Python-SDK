@@ -174,6 +174,7 @@ def generate_operation_snippet(module_name, group_name, operation, swagger_path_
 
 
 def generate_group_snippet(module_name, group_name, operations, swagger_path_by_operation, swagger):
+    print(operations)
     return f'''\
 # {group_name} API:
 
@@ -232,6 +233,8 @@ def generate_docs_for_module(module_name):
         f.write(f"# `moralis.{module_name}`\n\n")
         f.write(
             f"{''.join(list(map(lambda group: f'- [{group}](./{group}.md){nl}', groups)))}")
+
+    groups = sorted(groups)
 
     for group in groups:
         generate_docs_for_group(
@@ -327,3 +330,5 @@ def generate_docs():
     generate_root_readme(modules, groups)
     save_snippets()
     print(f"🏁 Generated docs")
+
+generate_docs()
