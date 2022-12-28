@@ -5,7 +5,7 @@
     "security_key": "ApiKeyAuth"
   },
   {
-    "swagger": "https://storage.googleapis.com/testing-moralis/solapi-swagger.json",
+    "swagger": "https://solana-gateway.moralis.io/api-json",
     "name": "sol_api",
     "security_key": "ApiKeyAuth"
   },
@@ -15,7 +15,7 @@
     "security_key": "ApiKeyAuth"
   },
   {
-    "swagger": "https://storage.googleapis.com/testing-moralis/streams-swagger.json",
+    "swagger": "https://api.moralis-streams.com/api-docs/swagger.json",
     "name": "streams",
     "security_key": "x-api-key"
   }

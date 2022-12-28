@@ -24,7 +24,7 @@ def get_swagger(swagger_url):
 # process swagger
 def process_swagger(data):
     print("⏳ Processing swagger...")
-    data = re.sub('"tags":\[.*?\],', '', data)
+    data = re.sub('"tags":\[.*?\],?', '', data)
     data = re.sub('"x-tag-sdk":"(.*?)",', r'"tags": ["\1"],', data)
     print("✅ Processing swagger done")
     return data

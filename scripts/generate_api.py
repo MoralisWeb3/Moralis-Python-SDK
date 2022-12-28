@@ -26,8 +26,13 @@ def get_swagger(swagger_url):
 # process swagger
 def process_swagger(data):
     print("⏳ Processing swagger...")
-    data = re.sub('"tags":\[.*?\],', '', data)
-    data = re.sub('"x-tag-sdk":"(.*?)",', r'"tags": ["\1"],', data)
+    # Remove original 'tags'
+    data = re.sub('"tags":\[.*?\]', '', data)
+    # Remove traling commas and double commas (caused by previous step)
+    data = re.sub(',}', '}', data)
+    data = re.sub(',,', ',', data)
+    # Convert x-tag-sdk to tags
+    data = re.sub('"x-tag-sdk":"(.*?)"', r'"tags": ["\1"]', data)
     print("✅ Processing swagger done")
     return data
 
@@ -37,7 +42,11 @@ def save_swagger(data, api_name):
     print("⏳ Saving swagger...")
     json_out_file = (swaggers_path / (api_name + ".json"))
     with open(json_out_file, "w") as outfile:
-        json.dump(json.loads(data), outfile, indent=4)
+        try:
+            json.dump(json.loads(data), outfile, indent=4)
+        except BaseException as error:
+            print("An exception occured parsing the swagger for " + api_name + ": " + data)
+            raise Exception("An exception occured parsing the swagger for " +api_name+ ": " + str(error))
     print("✅ Saving swagger done")
 
 
