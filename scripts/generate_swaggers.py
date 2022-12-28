@@ -40,7 +40,11 @@ def save_swagger(data, api_name):
     print("⏳ Saving swagger...")
     json_out_file = (swaggers_path / (api_name + ".json"))
     with open(json_out_file, "w") as outfile:
-        json.dump(json.loads(data), outfile, indent=4)
+        try:
+            json.dump(json.loads(data), outfile, indent=4)
+        except BaseException as error:
+            print("An exception occured parsing the swagger for " + api_name + ": " + data)
+            raise Exception("An exception occured parsing the swagger for " +api_name+ ": " + str(error))
     print("✅ Saving swagger done")
 
 
