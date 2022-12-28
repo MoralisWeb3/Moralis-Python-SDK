@@ -289,7 +289,7 @@ def generate_root_readme(modules, groups):
         )
         new_content = re.sub(
             pattern=r'<!-- Start: generated:example-streams -->(.*?)<!-- End: generated:example-streams -->',
-            repl=f'<!-- Start: generated:example-streams -->{nl}{nl}```python{nl}{code_snippets["streams"]["evm"]["GetStreams"]}```{nl}{nl}<!-- End: generated:example-streams -->',
+            repl=f'<!-- Start: generated:example-streams -->{nl}{nl}```python{nl}{code_snippets["streams"]["evm_streams"]["GetStreams"]}```{nl}{nl}<!-- End: generated:example-streams -->',
             string=new_content,
             flags=re.DOTALL
         )
