@@ -20,6 +20,11 @@ def get_swagger(swagger_url):
     print("✅ Fetching swagger done")
     return data
 
+# Rename tags is needed because of transform issues to snake_case in CI: evm-streams get converted to evm_streams
+def rename_tag(tag):
+    if tag == "evm-streams":
+        return "evm_streams"
+    return tag
 
 # process swagger
 def process_swagger(data):
@@ -30,7 +35,7 @@ def process_swagger(data):
     data = re.sub(',}', '}', data)
     data = re.sub(',,', ',', data)
     # Convert x-tag-sdk to tags
-    data = re.sub('"x-tag-sdk":"(.*?)"', r'"tags": ["\1"]', data)
+    data = re.sub('"x-tag-sdk":"(.*?)"', lambda match: f'"tags": ["{rename_tag(match.group(1))}"]', data)
     print("✅ Processing swagger done")
     return data
 
