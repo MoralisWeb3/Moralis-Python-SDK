@@ -19,8 +19,8 @@ from moralis import sol_api
 
 api_key = "YOUR_API_KEY"
 params = {
-    "address": "", 
     "network": "", 
+    "address": "", 
 }
 
 result = sol_api.token.get_token_price(
@@ -36,8 +36,8 @@ print(result)
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-| address | str |  | Yes |  | "" |
-| network | enum[str]: <br/>- "mainnet" |  | Yes |  | "" |
+| network | enum[str]: <br/>- "mainnet" | The network to query | Yes | "mainnet" | "" |
+| address | str | The address of the token contract | Yes |  | "" |
 
 
 

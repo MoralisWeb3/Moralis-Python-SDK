@@ -39,8 +39,8 @@ print(result)
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-| network | enum[str]: <br/>- "mainnet"<br/>- "devnet" |  | Yes |  | "" |
-| address | str |  | Yes |  | "" |
+| network | enum[str]: <br/>- "mainnet"<br/>- "devnet" | The network to query | Yes | "mainnet" | "" |
+| address | str | The address for which the native balance will be checked | Yes |  | "" |
 
 
 
@@ -75,8 +75,8 @@ print(result)
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-| network | enum[str]: <br/>- "mainnet"<br/>- "devnet" |  | Yes |  | "" |
-| address | str |  | Yes |  | "" |
+| network | enum[str]: <br/>- "mainnet"<br/>- "devnet" | The network to query | Yes | "mainnet" | "" |
+| address | str | The address of the contract | Yes |  | "" |
 
 
 
@@ -94,8 +94,8 @@ from moralis import sol_api
 
 api_key = "YOUR_API_KEY"
 params = {
-    "address": "", 
     "network": "", 
+    "address": "", 
 }
 
 result = sol_api.account.get_portfolio(
@@ -111,8 +111,8 @@ print(result)
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-| address | str |  | Yes |  | "" |
-| network | enum[str]: <br/>- "mainnet"<br/>- "devnet" |  | Yes |  | "" |
+| network | enum[str]: <br/>- "mainnet"<br/>- "devnet" | The network to query | Yes | "mainnet" | "" |
+| address | str | The address of the token contract | Yes |  | "" |
 
 
 
@@ -147,8 +147,8 @@ print(result)
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-| network | enum[str]: <br/>- "mainnet"<br/>- "devnet" |  | Yes |  | "" |
-| address | str |  | Yes |  | "" |
+| network | enum[str]: <br/>- "mainnet"<br/>- "devnet" | The network to query | Yes | "mainnet" | "" |
+| address | str | The address for which token balances will be checked | Yes |  | "" |
 
 
 

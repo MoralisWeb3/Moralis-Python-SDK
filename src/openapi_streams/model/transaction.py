@@ -359,6 +359,32 @@ class Transaction(
                         *_args,
                         _configuration=_configuration,
                     )
+            
+            
+            class triggers(
+                schemas.ListSchema
+            ):
+            
+            
+                class MetaOapg:
+                    
+                    @staticmethod
+                    def items() -> typing.Type['TriggerOutput']:
+                        return TriggerOutput
+            
+                def __new__(
+                    cls,
+                    _arg: typing.Union[typing.Tuple['TriggerOutput'], typing.List['TriggerOutput']],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'triggers':
+                    return super().__new__(
+                        cls,
+                        _arg,
+                        _configuration=_configuration,
+                    )
+            
+                def __getitem__(self, i: int) -> 'TriggerOutput':
+                    return super().__getitem__(i)
             __annotations__ = {
                 "hash": hash,
                 "gas": gas,
@@ -378,6 +404,7 @@ class Transaction(
                 "receiptContractAddress": receiptContractAddress,
                 "receiptRoot": receiptRoot,
                 "receiptStatus": receiptStatus,
+                "triggers": triggers,
             }
         additional_properties = schemas.NotAnyTypeSchema
     
@@ -454,7 +481,10 @@ class Transaction(
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["gasPrice"]) -> MetaOapg.properties.gasPrice: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["receiptGasUsed"], typing_extensions.Literal["transactionIndex"], typing_extensions.Literal["type"], typing_extensions.Literal["nonce"], typing_extensions.Literal["toAddress"], typing_extensions.Literal["receiptRoot"], typing_extensions.Literal["input"], typing_extensions.Literal["r"], typing_extensions.Literal["receiptCumulativeGasUsed"], typing_extensions.Literal["s"], typing_extensions.Literal["v"], typing_extensions.Literal["gas"], typing_extensions.Literal["fromAddress"], typing_extensions.Literal["receiptContractAddress"], typing_extensions.Literal["value"], typing_extensions.Literal["hash"], typing_extensions.Literal["receiptStatus"], typing_extensions.Literal["gasPrice"], ]):
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["triggers"]) -> MetaOapg.properties.triggers: ...
+    
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["receiptGasUsed"], typing_extensions.Literal["transactionIndex"], typing_extensions.Literal["type"], typing_extensions.Literal["nonce"], typing_extensions.Literal["toAddress"], typing_extensions.Literal["receiptRoot"], typing_extensions.Literal["input"], typing_extensions.Literal["r"], typing_extensions.Literal["receiptCumulativeGasUsed"], typing_extensions.Literal["s"], typing_extensions.Literal["v"], typing_extensions.Literal["gas"], typing_extensions.Literal["fromAddress"], typing_extensions.Literal["receiptContractAddress"], typing_extensions.Literal["value"], typing_extensions.Literal["hash"], typing_extensions.Literal["receiptStatus"], typing_extensions.Literal["gasPrice"], typing_extensions.Literal["triggers"], ]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -512,7 +542,10 @@ class Transaction(
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["gasPrice"]) -> MetaOapg.properties.gasPrice: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["receiptGasUsed"], typing_extensions.Literal["transactionIndex"], typing_extensions.Literal["type"], typing_extensions.Literal["nonce"], typing_extensions.Literal["toAddress"], typing_extensions.Literal["receiptRoot"], typing_extensions.Literal["input"], typing_extensions.Literal["r"], typing_extensions.Literal["receiptCumulativeGasUsed"], typing_extensions.Literal["s"], typing_extensions.Literal["v"], typing_extensions.Literal["gas"], typing_extensions.Literal["fromAddress"], typing_extensions.Literal["receiptContractAddress"], typing_extensions.Literal["value"], typing_extensions.Literal["hash"], typing_extensions.Literal["receiptStatus"], typing_extensions.Literal["gasPrice"], ]):
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["triggers"]) -> typing.Union[MetaOapg.properties.triggers, schemas.Unset]: ...
+    
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["receiptGasUsed"], typing_extensions.Literal["transactionIndex"], typing_extensions.Literal["type"], typing_extensions.Literal["nonce"], typing_extensions.Literal["toAddress"], typing_extensions.Literal["receiptRoot"], typing_extensions.Literal["input"], typing_extensions.Literal["r"], typing_extensions.Literal["receiptCumulativeGasUsed"], typing_extensions.Literal["s"], typing_extensions.Literal["v"], typing_extensions.Literal["gas"], typing_extensions.Literal["fromAddress"], typing_extensions.Literal["receiptContractAddress"], typing_extensions.Literal["value"], typing_extensions.Literal["hash"], typing_extensions.Literal["receiptStatus"], typing_extensions.Literal["gasPrice"], typing_extensions.Literal["triggers"], ]):
         return super().get_item_oapg(name)
 
     def __new__(
@@ -536,6 +569,7 @@ class Transaction(
         hash: typing.Union[MetaOapg.properties.hash, str, ],
         receiptStatus: typing.Union[MetaOapg.properties.receiptStatus, None, str, ],
         gasPrice: typing.Union[MetaOapg.properties.gasPrice, None, str, ],
+        triggers: typing.Union[MetaOapg.properties.triggers, list, tuple, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'Transaction':
         return super().__new__(
@@ -559,5 +593,8 @@ class Transaction(
             hash=hash,
             receiptStatus=receiptStatus,
             gasPrice=gasPrice,
+            triggers=triggers,
             _configuration=_configuration,
         )
+
+from openapi_streams.model.trigger_output import TriggerOutput

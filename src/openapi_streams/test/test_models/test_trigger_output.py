@@ -12,12 +12,12 @@
 import unittest
 
 import openapi_streams
-from openapi_streams.model.addresses_types_delete_address_response import AddressesTypesDeleteAddressResponse
+from openapi_streams.model.trigger_output import TriggerOutput
 from openapi_streams import configuration
 
 
-class TestAddressesTypesDeleteAddressResponse(unittest.TestCase):
-    """AddressesTypesDeleteAddressResponse unit test stubs"""
+class TestTriggerOutput(unittest.TestCase):
+    """TriggerOutput unit test stubs"""
     _configuration = configuration.Configuration()
 
 

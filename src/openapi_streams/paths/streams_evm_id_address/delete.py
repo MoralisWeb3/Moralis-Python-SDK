@@ -25,7 +25,7 @@ import frozendict  # noqa: F401
 
 from openapi_streams import schemas  # noqa: F401
 
-from openapi_streams.model.addresses_types_delete_address_response import AddressesTypesDeleteAddressResponse
+from openapi_streams.model.addresses_types_address_response import AddressesTypesAddressResponse
 from openapi_streams.model.addresses_types_addresses_remove import AddressesTypesAddressesRemove
 from openapi_streams.model.streams_types_uuid import StreamsTypesUUID
 
@@ -71,7 +71,7 @@ request_body_addresses_types_addresses_remove = api_client.RequestBody(
 _auth = [
     'x-api-key',
 ]
-SchemaFor200ResponseBodyApplicationJson = AddressesTypesDeleteAddressResponse
+SchemaFor200ResponseBodyApplicationJson = AddressesTypesAddressResponse
 
 
 @dataclass

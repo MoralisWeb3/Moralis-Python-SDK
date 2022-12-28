@@ -36,19 +36,27 @@ class SPLNFT(
     class MetaOapg:
         required = {
             "mint",
+            "symbol",
             "associatedTokenAddress",
+            "name",
         }
         
         class properties:
             associatedTokenAddress = schemas.StrSchema
             mint = schemas.StrSchema
+            name = schemas.StrSchema
+            symbol = schemas.StrSchema
             __annotations__ = {
                 "associatedTokenAddress": associatedTokenAddress,
                 "mint": mint,
+                "name": name,
+                "symbol": symbol,
             }
     
     mint: MetaOapg.properties.mint
+    symbol: MetaOapg.properties.symbol
     associatedTokenAddress: MetaOapg.properties.associatedTokenAddress
+    name: MetaOapg.properties.name
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["associatedTokenAddress"]) -> MetaOapg.properties.associatedTokenAddress: ...
@@ -57,9 +65,15 @@ class SPLNFT(
     def __getitem__(self, name: typing_extensions.Literal["mint"]) -> MetaOapg.properties.mint: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["symbol"]) -> MetaOapg.properties.symbol: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["associatedTokenAddress", "mint", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["associatedTokenAddress", "mint", "name", "symbol", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -71,9 +85,15 @@ class SPLNFT(
     def get_item_oapg(self, name: typing_extensions.Literal["mint"]) -> MetaOapg.properties.mint: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["symbol"]) -> MetaOapg.properties.symbol: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["associatedTokenAddress", "mint", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["associatedTokenAddress", "mint", "name", "symbol", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -81,7 +101,9 @@ class SPLNFT(
         cls,
         *_args: typing.Union[dict, frozendict.frozendict, ],
         mint: typing.Union[MetaOapg.properties.mint, str, ],
+        symbol: typing.Union[MetaOapg.properties.symbol, str, ],
         associatedTokenAddress: typing.Union[MetaOapg.properties.associatedTokenAddress, str, ],
+        name: typing.Union[MetaOapg.properties.name, str, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'SPLNFT':
@@ -89,7 +111,9 @@ class SPLNFT(
             cls,
             *_args,
             mint=mint,
+            symbol=symbol,
             associatedTokenAddress=associatedTokenAddress,
+            name=name,
             _configuration=_configuration,
             **kwargs,
         )

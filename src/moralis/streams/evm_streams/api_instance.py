@@ -1,5 +1,5 @@
 import openapi_streams
-from openapi_streams.apis.tags import evm_api
+from openapi_streams.apis.tags import evm_streams_api
 from ..utilities import get_common_headers
 
 
@@ -10,7 +10,7 @@ def get_api_instance(api_key):
     headers = get_common_headers()
     for header in headers:
         api_client.default_headers[header] = headers[header]
-    api_instance = evm_api.EvmApi(api_client)
+    api_instance = evm_streams_api.EvmStreamsApi(api_client)
     api_client.close()
 
     return api_instance

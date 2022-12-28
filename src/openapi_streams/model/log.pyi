@@ -130,6 +130,32 @@ class Log(
                         *_args,
                         _configuration=_configuration,
                     )
+            
+            
+            class triggers(
+                schemas.ListSchema
+            ):
+            
+            
+                class MetaOapg:
+                    
+                    @staticmethod
+                    def items() -> typing.Type['TriggerOutput']:
+                        return TriggerOutput
+            
+                def __new__(
+                    cls,
+                    _arg: typing.Union[typing.Tuple['TriggerOutput'], typing.List['TriggerOutput']],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'triggers':
+                    return super().__new__(
+                        cls,
+                        _arg,
+                        _configuration=_configuration,
+                    )
+            
+                def __getitem__(self, i: int) -> 'TriggerOutput':
+                    return super().__getitem__(i)
             __annotations__ = {
                 "logIndex": logIndex,
                 "transactionHash": transactionHash,
@@ -139,6 +165,7 @@ class Log(
                 "topic1": topic1,
                 "topic2": topic2,
                 "topic3": topic3,
+                "triggers": triggers,
             }
         additional_properties = schemas.NotAnyTypeSchema
     
@@ -175,7 +202,10 @@ class Log(
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["transactionHash"]) -> MetaOapg.properties.transactionHash: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["topic1"], typing_extensions.Literal["topic2"], typing_extensions.Literal["address"], typing_extensions.Literal["logIndex"], typing_extensions.Literal["topic0"], typing_extensions.Literal["data"], typing_extensions.Literal["topic3"], typing_extensions.Literal["transactionHash"], ]):
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["triggers"]) -> MetaOapg.properties.triggers: ...
+    
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["topic1"], typing_extensions.Literal["topic2"], typing_extensions.Literal["address"], typing_extensions.Literal["logIndex"], typing_extensions.Literal["topic0"], typing_extensions.Literal["data"], typing_extensions.Literal["topic3"], typing_extensions.Literal["transactionHash"], typing_extensions.Literal["triggers"], ]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -203,7 +233,10 @@ class Log(
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["transactionHash"]) -> MetaOapg.properties.transactionHash: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["topic1"], typing_extensions.Literal["topic2"], typing_extensions.Literal["address"], typing_extensions.Literal["logIndex"], typing_extensions.Literal["topic0"], typing_extensions.Literal["data"], typing_extensions.Literal["topic3"], typing_extensions.Literal["transactionHash"], ]):
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["triggers"]) -> typing.Union[MetaOapg.properties.triggers, schemas.Unset]: ...
+    
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["topic1"], typing_extensions.Literal["topic2"], typing_extensions.Literal["address"], typing_extensions.Literal["logIndex"], typing_extensions.Literal["topic0"], typing_extensions.Literal["data"], typing_extensions.Literal["topic3"], typing_extensions.Literal["transactionHash"], typing_extensions.Literal["triggers"], ]):
         return super().get_item_oapg(name)
 
     def __new__(
@@ -217,6 +250,7 @@ class Log(
         data: typing.Union[MetaOapg.properties.data, str, ],
         topic3: typing.Union[MetaOapg.properties.topic3, None, str, ],
         transactionHash: typing.Union[MetaOapg.properties.transactionHash, str, ],
+        triggers: typing.Union[MetaOapg.properties.triggers, list, tuple, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'Log':
         return super().__new__(
@@ -230,5 +264,8 @@ class Log(
             data=data,
             topic3=topic3,
             transactionHash=transactionHash,
+            triggers=triggers,
             _configuration=_configuration,
         )
+
+from openapi_streams.model.trigger_output import TriggerOutput

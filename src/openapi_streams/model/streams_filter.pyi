@@ -31,8 +31,8 @@ class StreamsFilter(
 
     Do not edit the class manually.
 
-    The filter object, optional and only used if the type : log
-https://v1docs.moralis.io/moralis-dapp/automatic-transaction-sync/smart-contract-events#event-filters
+    The filter object for the topic0
+https://docs.moralis.io/docs/filter-streams
     """
 
 
