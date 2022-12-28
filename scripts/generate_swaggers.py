@@ -24,8 +24,13 @@ def get_swagger(swagger_url):
 # process swagger
 def process_swagger(data):
     print("⏳ Processing swagger...")
-    data = re.sub('"tags":\[.*?\],?', '', data)
-    data = re.sub('"x-tag-sdk":"(.*?)",', r'"tags": ["\1"],', data)
+    # Remove original 'tags'
+    data = re.sub('"tags":\[.*?\]', '', data)
+    # Remove traling commas and double commas (caused by previous step)
+    data = re.sub(',}', '}', data)
+    data = re.sub(',,', ',', data)
+    # Convert x-tag-sdk to tags
+    data = re.sub('"x-tag-sdk":"(.*?)"', r'"tags": ["\1"]', data)
     print("✅ Processing swagger done")
     return data
 
