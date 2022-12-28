@@ -54,7 +54,7 @@ def save_swagger(data, api_name):
 def create_api_client(api_name):
     print("⏳ Generating openapi client...")
     os.system(
-        f'_JAVA_OPTIONS="--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED" openapi-generator generate -c openapi.json -i temp/swagger/{api_name}.json -p packageName=openapi_{api_name},projectName={api_name};')
+        f'_JAVA_OPTIONS="--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED" --skip-validate-spec openapi-generator generate -c openapi.json -i temp/swagger/{api_name}.json -p packageName=openapi_{api_name},projectName={api_name};')
     generated_path = (temp_path / f"generated-api/openapi_{api_name}")
     out_path = (root_path / f"src/openapi_{api_name}")
     if out_path.exists() and out_path.is_dir():

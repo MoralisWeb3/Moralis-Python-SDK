@@ -33,7 +33,7 @@ jobs:
           generator: python
           config-file: openapi.json
           openapi-file: temp/swagger/evm_api.json
-          command-args: '-o temp/generated-api -p packageName=openapi_evm_api,projectName=evm_api'
+          command-args: '--skip-validate-spec -o temp/generated-api -p packageName=openapi_evm_api,projectName=evm_api'
 
       - name: 'Generate 2.2 OpenApi for SolApi'
         uses: openapi-generators/openapitools-generator-action@v1
@@ -41,7 +41,7 @@ jobs:
           generator: python
           config-file: openapi.json
           openapi-file: temp/swagger/sol_api.json
-          command-args: '-o temp/generated-api -p packageName=openapi_sol_api,projectName=sol_api'
+          command-args: '--skip-validate-spec -o temp/generated-api -p packageName=openapi_sol_api,projectName=sol_api'
 
       - name: 'Generate 2.3 OpenApi for Auth'
         uses: openapi-generators/openapitools-generator-action@v1
@@ -49,7 +49,7 @@ jobs:
           generator: python
           config-file: openapi.json
           openapi-file: temp/swagger/auth.json
-          command-args: '-o temp/generated-api -p packageName=openapi_auth,projectName=auth'
+          command-args: '--skip-validate-spec -o temp/generated-api -p packageName=openapi_auth,projectName=auth'
 
       - name: 'Generate 2.4 OpenApi for Streams'
         uses: openapi-generators/openapitools-generator-action@v1
@@ -57,7 +57,7 @@ jobs:
           generator: python
           config-file: openapi.json
           openapi-file: temp/swagger/streams.json
-          command-args: '-o temp/generated-api -p packageName=openapi_streams,projectName=streams'
+          command-args: '--skip-validate-spec -o temp/generated-api -p packageName=openapi_streams,projectName=streams'
 
       # Make sure we can access the generated packages in the next step
       - name: Install Python local dependency
