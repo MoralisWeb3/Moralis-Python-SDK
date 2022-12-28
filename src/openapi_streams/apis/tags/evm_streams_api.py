@@ -20,7 +20,7 @@ from openapi_streams.paths.streams_evm_id.post import UpdateStream
 from openapi_streams.paths.streams_evm_id_status.post import UpdateStreamStatus
 
 
-class EvmApi(
+class EvmStreamsApi(
     AddAddressToStream,
     CreateStream,
     DeleteAddressFromStream,

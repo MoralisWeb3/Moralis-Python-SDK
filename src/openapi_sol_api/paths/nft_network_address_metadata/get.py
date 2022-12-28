@@ -30,7 +30,6 @@ from openapi_sol_api.model.nft_metadata import NFTMetadata
 from . import path
 
 # Path params
-AddressSchema = schemas.StrSchema
 
 
 class NetworkSchema(
@@ -52,11 +51,12 @@ class NetworkSchema(
     @schemas.classproperty
     def DEVNET(cls):
         return cls("devnet")
+AddressSchema = schemas.StrSchema
 RequestRequiredPathParams = typing_extensions.TypedDict(
     'RequestRequiredPathParams',
     {
-        'address': typing.Union[AddressSchema, str, ],
         'network': typing.Union[NetworkSchema, str, ],
+        'address': typing.Union[AddressSchema, str, ],
     }
 )
 RequestOptionalPathParams = typing_extensions.TypedDict(
@@ -71,16 +71,16 @@ class RequestPathParams(RequestRequiredPathParams, RequestOptionalPathParams):
     pass
 
 
-request_path_address = api_client.PathParameter(
-    name="address",
-    style=api_client.ParameterStyle.SIMPLE,
-    schema=AddressSchema,
-    required=True,
-)
 request_path_network = api_client.PathParameter(
     name="network",
     style=api_client.ParameterStyle.SIMPLE,
     schema=NetworkSchema,
+    required=True,
+)
+request_path_address = api_client.PathParameter(
+    name="address",
+    style=api_client.ParameterStyle.SIMPLE,
+    schema=AddressSchema,
     required=True,
 )
 _auth = [
@@ -188,8 +188,8 @@ class BaseApi(api_client.Api):
 
         _path_params = {}
         for parameter in (
-            request_path_address,
             request_path_network,
+            request_path_address,
         ):
             parameter_data = path_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:

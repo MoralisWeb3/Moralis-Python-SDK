@@ -36,30 +36,38 @@ class SPLTokenBalance(
     class MetaOapg:
         required = {
             "mint",
+            "symbol",
             "amount",
             "associatedTokenAddress",
             "decimals",
+            "name",
             "amountRaw",
         }
         
         class properties:
             associatedTokenAddress = schemas.StrSchema
             mint = schemas.StrSchema
+            name = schemas.StrSchema
+            symbol = schemas.StrSchema
             amount = schemas.StrSchema
             amountRaw = schemas.StrSchema
             decimals = schemas.NumberSchema
             __annotations__ = {
                 "associatedTokenAddress": associatedTokenAddress,
                 "mint": mint,
+                "name": name,
+                "symbol": symbol,
                 "amount": amount,
                 "amountRaw": amountRaw,
                 "decimals": decimals,
             }
     
     mint: MetaOapg.properties.mint
+    symbol: MetaOapg.properties.symbol
     amount: MetaOapg.properties.amount
     associatedTokenAddress: MetaOapg.properties.associatedTokenAddress
     decimals: MetaOapg.properties.decimals
+    name: MetaOapg.properties.name
     amountRaw: MetaOapg.properties.amountRaw
     
     @typing.overload
@@ -67,6 +75,12 @@ class SPLTokenBalance(
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["mint"]) -> MetaOapg.properties.mint: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["symbol"]) -> MetaOapg.properties.symbol: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["amount"]) -> MetaOapg.properties.amount: ...
@@ -80,7 +94,7 @@ class SPLTokenBalance(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["associatedTokenAddress", "mint", "amount", "amountRaw", "decimals", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["associatedTokenAddress", "mint", "name", "symbol", "amount", "amountRaw", "decimals", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -90,6 +104,12 @@ class SPLTokenBalance(
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["mint"]) -> MetaOapg.properties.mint: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["symbol"]) -> MetaOapg.properties.symbol: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["amount"]) -> MetaOapg.properties.amount: ...
@@ -103,7 +123,7 @@ class SPLTokenBalance(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["associatedTokenAddress", "mint", "amount", "amountRaw", "decimals", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["associatedTokenAddress", "mint", "name", "symbol", "amount", "amountRaw", "decimals", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -111,9 +131,11 @@ class SPLTokenBalance(
         cls,
         *_args: typing.Union[dict, frozendict.frozendict, ],
         mint: typing.Union[MetaOapg.properties.mint, str, ],
+        symbol: typing.Union[MetaOapg.properties.symbol, str, ],
         amount: typing.Union[MetaOapg.properties.amount, str, ],
         associatedTokenAddress: typing.Union[MetaOapg.properties.associatedTokenAddress, str, ],
         decimals: typing.Union[MetaOapg.properties.decimals, decimal.Decimal, int, float, ],
+        name: typing.Union[MetaOapg.properties.name, str, ],
         amountRaw: typing.Union[MetaOapg.properties.amountRaw, str, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -122,9 +144,11 @@ class SPLTokenBalance(
             cls,
             *_args,
             mint=mint,
+            symbol=symbol,
             amount=amount,
             associatedTokenAddress=associatedTokenAddress,
             decimals=decimals,
+            name=name,
             amountRaw=amountRaw,
             _configuration=_configuration,
             **kwargs,

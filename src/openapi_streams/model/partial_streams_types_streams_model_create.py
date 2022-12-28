@@ -71,6 +71,32 @@ class PartialStreamsTypesStreamsModelCreate(
             includeInternalTxs = schemas.BoolSchema
             
             
+            class getNativeBalances(
+                schemas.ListSchema
+            ):
+            
+            
+                class MetaOapg:
+                    
+                    @staticmethod
+                    def items() -> typing.Type['GetNativeBalances']:
+                        return GetNativeBalances
+            
+                def __new__(
+                    cls,
+                    _arg: typing.Union[typing.Tuple['GetNativeBalances'], typing.List['GetNativeBalances']],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'getNativeBalances':
+                    return super().__new__(
+                        cls,
+                        _arg,
+                        _configuration=_configuration,
+                    )
+            
+                def __getitem__(self, i: int) -> 'GetNativeBalances':
+                    return super().__getitem__(i)
+            
+            
             class abi(
                 schemas.ListBase,
                 schemas.NoneBase,
@@ -146,6 +172,34 @@ class PartialStreamsTypesStreamsModelCreate(
             
                 def __getitem__(self, i: int) -> MetaOapg.items:
                     return super().__getitem__(i)
+            demo = schemas.BoolSchema
+            
+            
+            class triggers(
+                schemas.ListBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneTupleMixin
+            ):
+            
+            
+                class MetaOapg:
+                    
+                    @staticmethod
+                    def items() -> typing.Type['StreamsTrigger']:
+                        return StreamsTrigger
+            
+            
+                def __new__(
+                    cls,
+                    *_args: typing.Union[list, tuple, None, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'triggers':
+                    return super().__new__(
+                        cls,
+                        *_args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "webhookUrl": webhookUrl,
                 "description": description,
@@ -155,9 +209,12 @@ class PartialStreamsTypesStreamsModelCreate(
                 "includeNativeTxs": includeNativeTxs,
                 "includeContractLogs": includeContractLogs,
                 "includeInternalTxs": includeInternalTxs,
+                "getNativeBalances": getNativeBalances,
                 "abi": abi,
                 "advancedOptions": advancedOptions,
                 "chainIds": chainIds,
+                "demo": demo,
+                "triggers": triggers,
             }
     
     @typing.overload
@@ -185,6 +242,9 @@ class PartialStreamsTypesStreamsModelCreate(
     def __getitem__(self, name: typing_extensions.Literal["includeInternalTxs"]) -> MetaOapg.properties.includeInternalTxs: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["getNativeBalances"]) -> MetaOapg.properties.getNativeBalances: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["abi"]) -> MetaOapg.properties.abi: ...
     
     @typing.overload
@@ -194,9 +254,15 @@ class PartialStreamsTypesStreamsModelCreate(
     def __getitem__(self, name: typing_extensions.Literal["chainIds"]) -> MetaOapg.properties.chainIds: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["demo"]) -> MetaOapg.properties.demo: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["triggers"]) -> MetaOapg.properties.triggers: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["webhookUrl", "description", "tag", "topic0", "allAddresses", "includeNativeTxs", "includeContractLogs", "includeInternalTxs", "abi", "advancedOptions", "chainIds", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["webhookUrl", "description", "tag", "topic0", "allAddresses", "includeNativeTxs", "includeContractLogs", "includeInternalTxs", "getNativeBalances", "abi", "advancedOptions", "chainIds", "demo", "triggers", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -226,6 +292,9 @@ class PartialStreamsTypesStreamsModelCreate(
     def get_item_oapg(self, name: typing_extensions.Literal["includeInternalTxs"]) -> typing.Union[MetaOapg.properties.includeInternalTxs, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["getNativeBalances"]) -> typing.Union[MetaOapg.properties.getNativeBalances, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["abi"]) -> typing.Union[MetaOapg.properties.abi, schemas.Unset]: ...
     
     @typing.overload
@@ -235,9 +304,15 @@ class PartialStreamsTypesStreamsModelCreate(
     def get_item_oapg(self, name: typing_extensions.Literal["chainIds"]) -> typing.Union[MetaOapg.properties.chainIds, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["demo"]) -> typing.Union[MetaOapg.properties.demo, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["triggers"]) -> typing.Union[MetaOapg.properties.triggers, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["webhookUrl", "description", "tag", "topic0", "allAddresses", "includeNativeTxs", "includeContractLogs", "includeInternalTxs", "abi", "advancedOptions", "chainIds", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["webhookUrl", "description", "tag", "topic0", "allAddresses", "includeNativeTxs", "includeContractLogs", "includeInternalTxs", "getNativeBalances", "abi", "advancedOptions", "chainIds", "demo", "triggers", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -252,9 +327,12 @@ class PartialStreamsTypesStreamsModelCreate(
         includeNativeTxs: typing.Union[MetaOapg.properties.includeNativeTxs, bool, schemas.Unset] = schemas.unset,
         includeContractLogs: typing.Union[MetaOapg.properties.includeContractLogs, bool, schemas.Unset] = schemas.unset,
         includeInternalTxs: typing.Union[MetaOapg.properties.includeInternalTxs, bool, schemas.Unset] = schemas.unset,
+        getNativeBalances: typing.Union[MetaOapg.properties.getNativeBalances, list, tuple, schemas.Unset] = schemas.unset,
         abi: typing.Union[MetaOapg.properties.abi, list, tuple, None, schemas.Unset] = schemas.unset,
         advancedOptions: typing.Union[MetaOapg.properties.advancedOptions, list, tuple, None, schemas.Unset] = schemas.unset,
         chainIds: typing.Union[MetaOapg.properties.chainIds, list, tuple, schemas.Unset] = schemas.unset,
+        demo: typing.Union[MetaOapg.properties.demo, bool, schemas.Unset] = schemas.unset,
+        triggers: typing.Union[MetaOapg.properties.triggers, list, tuple, None, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'PartialStreamsTypesStreamsModelCreate':
@@ -269,12 +347,17 @@ class PartialStreamsTypesStreamsModelCreate(
             includeNativeTxs=includeNativeTxs,
             includeContractLogs=includeContractLogs,
             includeInternalTxs=includeInternalTxs,
+            getNativeBalances=getNativeBalances,
             abi=abi,
             advancedOptions=advancedOptions,
             chainIds=chainIds,
+            demo=demo,
+            triggers=triggers,
             _configuration=_configuration,
             **kwargs,
         )
 
 from openapi_streams.model.abi_item import AbiItem
 from openapi_streams.model.advanced_options import AdvancedOptions
+from openapi_streams.model.get_native_balances import GetNativeBalances
+from openapi_streams.model.streams_trigger import StreamsTrigger

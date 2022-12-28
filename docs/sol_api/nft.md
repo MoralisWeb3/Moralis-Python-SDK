@@ -19,8 +19,8 @@ from moralis import sol_api
 
 api_key = "YOUR_API_KEY"
 params = {
-    "address": "", 
     "network": "", 
+    "address": "", 
 }
 
 result = sol_api.nft.get_nft_metadata(
@@ -36,8 +36,8 @@ print(result)
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-| address | str |  | Yes |  | "" |
-| network | enum[str]: <br/>- "mainnet"<br/>- "devnet" |  | Yes |  | "" |
+| network | enum[str]: <br/>- "mainnet"<br/>- "devnet" | The network to query | Yes | "mainnet" | "" |
+| address | str | The address of the contract | Yes |  | "" |
 
 
 

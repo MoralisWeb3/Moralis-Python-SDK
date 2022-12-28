@@ -6,7 +6,7 @@ import enum
 
 
 class TagValues(str, enum.Enum):
-    EVM = "evm"
+    EVM_STREAMS = "evm_streams"
     HISTORY = "history"
     PROJECT = "project"
     STATS = "stats"

@@ -48,6 +48,32 @@ class UsagestatsTypesUsageStatsModel(
             totalLogsProcessed = schemas.Float64Schema
             totalTxsProcessed = schemas.Float64Schema
             totalTxsInternalProcessed = schemas.Float64Schema
+            
+            
+            class streams(
+                schemas.ListSchema
+            ):
+            
+            
+                class MetaOapg:
+                    
+                    @staticmethod
+                    def items() -> typing.Type['UsageStatsStreams']:
+                        return UsageStatsStreams
+            
+                def __new__(
+                    cls,
+                    _arg: typing.Union[typing.Tuple['UsageStatsStreams'], typing.List['UsageStatsStreams']],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'streams':
+                    return super().__new__(
+                        cls,
+                        _arg,
+                        _configuration=_configuration,
+                    )
+            
+                def __getitem__(self, i: int) -> 'UsageStatsStreams':
+                    return super().__getitem__(i)
             createdAt = schemas.DateTimeSchema
             updatedAt = schemas.DateTimeSchema
             __annotations__ = {
@@ -56,6 +82,7 @@ class UsagestatsTypesUsageStatsModel(
                 "totalLogsProcessed": totalLogsProcessed,
                 "totalTxsProcessed": totalTxsProcessed,
                 "totalTxsInternalProcessed": totalTxsInternalProcessed,
+                "streams": streams,
                 "createdAt": createdAt,
                 "updatedAt": updatedAt,
             }
@@ -83,12 +110,15 @@ class UsagestatsTypesUsageStatsModel(
     def __getitem__(self, name: typing_extensions.Literal["totalTxsInternalProcessed"]) -> MetaOapg.properties.totalTxsInternalProcessed: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["streams"]) -> MetaOapg.properties.streams: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["createdAt"]) -> MetaOapg.properties.createdAt: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["updatedAt"]) -> MetaOapg.properties.updatedAt: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["totalWebhooksDelivered"], typing_extensions.Literal["totalTxsProcessed"], typing_extensions.Literal["totalLogsProcessed"], typing_extensions.Literal["totalWebhooksFailed"], typing_extensions.Literal["totalTxsInternalProcessed"], typing_extensions.Literal["createdAt"], typing_extensions.Literal["updatedAt"], ]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["totalWebhooksDelivered"], typing_extensions.Literal["totalTxsProcessed"], typing_extensions.Literal["totalLogsProcessed"], typing_extensions.Literal["totalWebhooksFailed"], typing_extensions.Literal["totalTxsInternalProcessed"], typing_extensions.Literal["streams"], typing_extensions.Literal["createdAt"], typing_extensions.Literal["updatedAt"], ]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -108,12 +138,15 @@ class UsagestatsTypesUsageStatsModel(
     def get_item_oapg(self, name: typing_extensions.Literal["totalTxsInternalProcessed"]) -> MetaOapg.properties.totalTxsInternalProcessed: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["streams"]) -> typing.Union[MetaOapg.properties.streams, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["createdAt"]) -> typing.Union[MetaOapg.properties.createdAt, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["updatedAt"]) -> typing.Union[MetaOapg.properties.updatedAt, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["totalWebhooksDelivered"], typing_extensions.Literal["totalTxsProcessed"], typing_extensions.Literal["totalLogsProcessed"], typing_extensions.Literal["totalWebhooksFailed"], typing_extensions.Literal["totalTxsInternalProcessed"], typing_extensions.Literal["createdAt"], typing_extensions.Literal["updatedAt"], ]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["totalWebhooksDelivered"], typing_extensions.Literal["totalTxsProcessed"], typing_extensions.Literal["totalLogsProcessed"], typing_extensions.Literal["totalWebhooksFailed"], typing_extensions.Literal["totalTxsInternalProcessed"], typing_extensions.Literal["streams"], typing_extensions.Literal["createdAt"], typing_extensions.Literal["updatedAt"], ]):
         return super().get_item_oapg(name)
 
     def __new__(
@@ -124,6 +157,7 @@ class UsagestatsTypesUsageStatsModel(
         totalLogsProcessed: typing.Union[MetaOapg.properties.totalLogsProcessed, decimal.Decimal, int, float, ],
         totalWebhooksFailed: typing.Union[MetaOapg.properties.totalWebhooksFailed, decimal.Decimal, int, float, ],
         totalTxsInternalProcessed: typing.Union[MetaOapg.properties.totalTxsInternalProcessed, decimal.Decimal, int, float, ],
+        streams: typing.Union[MetaOapg.properties.streams, list, tuple, schemas.Unset] = schemas.unset,
         createdAt: typing.Union[MetaOapg.properties.createdAt, str, datetime, schemas.Unset] = schemas.unset,
         updatedAt: typing.Union[MetaOapg.properties.updatedAt, str, datetime, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
@@ -136,7 +170,10 @@ class UsagestatsTypesUsageStatsModel(
             totalLogsProcessed=totalLogsProcessed,
             totalWebhooksFailed=totalWebhooksFailed,
             totalTxsInternalProcessed=totalTxsInternalProcessed,
+            streams=streams,
             createdAt=createdAt,
             updatedAt=updatedAt,
             _configuration=_configuration,
         )
+
+from openapi_streams.model.usage_stats_streams import UsageStatsStreams
