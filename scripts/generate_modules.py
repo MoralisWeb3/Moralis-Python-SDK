@@ -76,7 +76,7 @@ def {function_name}(api_key: str{f', params: {params_union}' if has_any_params e
 {f'        body=body,{nl}' if has_body else ''}\
 {f'        query_params=query_params,{nl}' if has_query_params else ''}\
 {f'        path_params=path_params,{nl}' if has_path_params else ''}\
-        accept_content_types='application/json; charset=utf-8',
+{f"        accept_content_types='application/json; charset=utf-8',{nl}" if has_body else ''}\
         skip_deserialization=True
     )
 
