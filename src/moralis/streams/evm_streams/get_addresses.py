@@ -12,7 +12,6 @@ def get_addresses(api_key: str, params: typing.Union[RequestQueryParams, Request
     api_response = api_instance.get_addresses(
         query_params=query_params,
         path_params=path_params,
-        accept_content_types='application/json; charset=utf-8',
         skip_deserialization=True
     )
 

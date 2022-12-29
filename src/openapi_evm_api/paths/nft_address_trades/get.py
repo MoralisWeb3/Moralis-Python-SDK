@@ -70,6 +70,7 @@ class LimitSchema(
 
     class MetaOapg:
         inclusive_minimum = 0
+DisableTotalSchema = schemas.BoolSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -86,6 +87,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'marketplace': typing.Union[MarketplaceSchema, str, ],
         'cursor': typing.Union[CursorSchema, str, ],
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
+        'disable_total': typing.Union[DisableTotalSchema, bool, ],
     },
     total=False
 )
@@ -141,6 +143,12 @@ request_query_limit = api_client.QueryParameter(
     name="limit",
     style=api_client.ParameterStyle.FORM,
     schema=LimitSchema,
+    explode=True,
+)
+request_query_disable_total = api_client.QueryParameter(
+    name="disable_total",
+    style=api_client.ParameterStyle.FORM,
+    schema=DisableTotalSchema,
     explode=True,
 )
 # Path params
@@ -280,6 +288,7 @@ class BaseApi(api_client.Api):
             request_query_marketplace,
             request_query_cursor,
             request_query_limit,
+            request_query_disable_total,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:

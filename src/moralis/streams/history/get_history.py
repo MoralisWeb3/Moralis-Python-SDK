@@ -9,7 +9,6 @@ def get_history(api_key: str, params: RequestQueryParams):
 
     api_response = api_instance.get_history(
         query_params=query_params,
-        accept_content_types='application/json; charset=utf-8',
         skip_deserialization=True
     )
 

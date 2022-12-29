@@ -9,7 +9,6 @@ def get_token_metadata_by_symbol(api_key: str, params: RequestQueryParams):
 
     api_response = api_instance.get_token_metadata_by_symbol(
         query_params=query_params,
-        accept_content_types='application/json; charset=utf-8',
         skip_deserialization=True
     )
 

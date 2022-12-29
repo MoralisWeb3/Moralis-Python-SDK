@@ -12,7 +12,6 @@ def get_wallet_nft_collections(api_key: str, params: typing.Union[RequestQueryPa
     api_response = api_instance.get_wallet_nft_collections(
         query_params=query_params,
         path_params=path_params,
-        accept_content_types='application/json; charset=utf-8',
         skip_deserialization=True
     )
 

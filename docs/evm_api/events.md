@@ -28,6 +28,7 @@ params = {
     "from_date": "", 
     "to_date": "", 
     "offset": 0, 
+    "disable_total": True, 
     "limit": 0, 
 }
 body = ""
@@ -54,6 +55,7 @@ print(result)
 | from_date | str | The start date from which to get the logs (any format that is accepted by momentjs)<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | "" |
 | to_date | str | Get the logs up to this date (any format that is accepted by momentjs)<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | "" |
 | offset | int | offset |  |  | 0 |
+| disable_total | bool | If the result should skip returning the total count (Improves performance). |  |  | True |
 | limit | int | The desired page size of the result. |  |  | 0 |
 
 
@@ -90,6 +92,7 @@ params = {
     "topic2": "", 
     "topic3": "", 
     "limit": 0, 
+    "disable_total": True, 
     "cursor": "", 
 }
 
@@ -118,6 +121,7 @@ print(result)
 | topic2 | str | topic2 |  |  | "" |
 | topic3 | str | topic3 |  |  | "" |
 | limit | int | The desired page size of the result. |  |  | 0 |
+| disable_total | bool | If the result should skip returning the total count (Improves performance). |  |  | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 
 

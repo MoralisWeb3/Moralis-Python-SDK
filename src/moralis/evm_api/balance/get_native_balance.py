@@ -12,7 +12,6 @@ def get_native_balance(api_key: str, params: typing.Union[RequestQueryParams, Re
     api_response = api_instance.get_native_balance(
         query_params=query_params,
         path_params=path_params,
-        accept_content_types='application/json; charset=utf-8',
         skip_deserialization=True
     )
 

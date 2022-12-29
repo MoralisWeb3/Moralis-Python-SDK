@@ -12,7 +12,6 @@ def get_contract_logs(api_key: str, params: typing.Union[RequestQueryParams, Req
     api_response = api_instance.get_contract_logs(
         query_params=query_params,
         path_params=path_params,
-        accept_content_types='application/json; charset=utf-8',
         skip_deserialization=True
     )
 

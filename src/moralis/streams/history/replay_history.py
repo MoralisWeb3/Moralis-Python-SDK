@@ -9,7 +9,6 @@ def replay_history(api_key: str, params: RequestPathParams):
 
     api_response = api_instance.replay_history(
         path_params=path_params,
-        accept_content_types='application/json; charset=utf-8',
         skip_deserialization=True
     )
 

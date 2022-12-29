@@ -12,7 +12,6 @@ def get_wallet_transactions(api_key: str, params: typing.Union[RequestQueryParam
     api_response = api_instance.get_wallet_transactions(
         query_params=query_params,
         path_params=path_params,
-        accept_content_types='application/json; charset=utf-8',
         skip_deserialization=True
     )
 

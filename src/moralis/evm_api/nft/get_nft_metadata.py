@@ -12,7 +12,6 @@ def get_nft_metadata(api_key: str, params: typing.Union[RequestQueryParams, Requ
     api_response = api_instance.get_nft_metadata(
         query_params=query_params,
         path_params=path_params,
-        accept_content_types='application/json; charset=utf-8',
         skip_deserialization=True
     )
 

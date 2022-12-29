@@ -9,7 +9,6 @@ def search_nfts(api_key: str, params: RequestQueryParams):
 
     api_response = api_instance.search_nfts(
         query_params=query_params,
-        accept_content_types='application/json; charset=utf-8',
         skip_deserialization=True
     )
 

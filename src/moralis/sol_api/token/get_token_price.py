@@ -9,7 +9,6 @@ def get_token_price(api_key: str, params: RequestPathParams):
 
     api_response = api_instance.get_token_price(
         path_params=path_params,
-        accept_content_types='application/json; charset=utf-8',
         skip_deserialization=True
     )
 

@@ -12,7 +12,6 @@ def get_nft_trades(api_key: str, params: typing.Union[RequestQueryParams, Reques
     api_response = api_instance.get_nft_trades(
         query_params=query_params,
         path_params=path_params,
-        accept_content_types='application/json; charset=utf-8',
         skip_deserialization=True
     )
 
