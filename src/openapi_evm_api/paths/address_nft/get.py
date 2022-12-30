@@ -62,6 +62,7 @@ class LimitSchema(
 
     class MetaOapg:
         inclusive_minimum = 0
+DisableTotalSchema = schemas.BoolSchema
 
 
 class TokenAddressesSchema(
@@ -99,6 +100,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'chain': typing.Union[ChainSchema, ],
         'format': typing.Union[FormatSchema, str, ],
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
+        'disable_total': typing.Union[DisableTotalSchema, bool, ],
         'token_addresses': typing.Union[TokenAddressesSchema, list, tuple, ],
         'cursor': typing.Union[CursorSchema, str, ],
         'normalizeMetadata': typing.Union[NormalizeMetadataSchema, bool, ],
@@ -127,6 +129,12 @@ request_query_limit = api_client.QueryParameter(
     name="limit",
     style=api_client.ParameterStyle.FORM,
     schema=LimitSchema,
+    explode=True,
+)
+request_query_disable_total = api_client.QueryParameter(
+    name="disable_total",
+    style=api_client.ParameterStyle.FORM,
+    schema=DisableTotalSchema,
     explode=True,
 )
 request_query_token_addresses = api_client.QueryParameter(
@@ -279,6 +287,7 @@ class BaseApi(api_client.Api):
             request_query_chain,
             request_query_format,
             request_query_limit,
+            request_query_disable_total,
             request_query_token_addresses,
             request_query_cursor,
             request_query_normalize_metadata,

@@ -62,6 +62,7 @@ class OffsetSchema(
 
     class MetaOapg:
         inclusive_minimum = 0
+DisableTotalSchema = schemas.BoolSchema
 
 
 class LimitSchema(
@@ -86,6 +87,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'from_date': typing.Union[FromDateSchema, str, ],
         'to_date': typing.Union[ToDateSchema, str, ],
         'offset': typing.Union[OffsetSchema, decimal.Decimal, int, ],
+        'disable_total': typing.Union[DisableTotalSchema, bool, ],
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
     },
     total=False
@@ -137,6 +139,12 @@ request_query_offset = api_client.QueryParameter(
     name="offset",
     style=api_client.ParameterStyle.FORM,
     schema=OffsetSchema,
+    explode=True,
+)
+request_query_disable_total = api_client.QueryParameter(
+    name="disable_total",
+    style=api_client.ParameterStyle.FORM,
+    schema=DisableTotalSchema,
     explode=True,
 )
 request_query_limit = api_client.QueryParameter(
@@ -419,6 +427,7 @@ class BaseApi(api_client.Api):
             request_query_to_date,
             request_query_topic,
             request_query_offset,
+            request_query_disable_total,
             request_query_limit,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)

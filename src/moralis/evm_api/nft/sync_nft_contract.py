@@ -12,7 +12,6 @@ def sync_nft_contract(api_key: str, params: typing.Union[RequestQueryParams, Req
     api_response = api_instance.sync_nft_contract(
         query_params=query_params,
         path_params=path_params,
-        accept_content_types='application/json; charset=utf-8',
         skip_deserialization=True
     )
 
