@@ -40,6 +40,7 @@ def get_api_instance(api_key):
 def make_operation_snippet(function_name, fn_data):
     has_query_params = fn_data["has_query_params"]
     has_path_params = fn_data["has_path_params"]
+    is_json_response = fn_data["is_json_response"]
     has_body = fn_data["has_body"]
     fn_module = fn_data["fn_module"]
     has_any_params = has_query_params or has_path_params
@@ -76,7 +77,7 @@ def {function_name}(api_key: str{f', params: {params_union}' if has_any_params e
 {f'        body=body,{nl}' if has_body else ''}\
 {f'        query_params=query_params,{nl}' if has_query_params else ''}\
 {f'        path_params=path_params,{nl}' if has_path_params else ''}\
-{f"        accept_content_types='application/json; charset=utf-8',{nl}" if has_body else ''}\
+{f"        accept_content_types='application/json; charset=utf-8',{nl}" if is_json_response else ''}\
         skip_deserialization=True
     )
 
@@ -119,6 +120,9 @@ def get_function_data(fn):
     optional_path_params = None
 
     has_body = 'body' in fn_params.keys()
+    # Note we assume this on the accept_content_types param, not the response type
+    # This is currently true for all endpoints, except where we return no data
+    is_json_response = 'accept_content_types' in fn_params.keys()
     has_query_params = 'query_params' in fn_params.keys()
     has_path_params = 'path_params' in fn_params.keys()
 
@@ -135,6 +139,7 @@ def get_function_data(fn):
 
     return {
         "imports": imports,
+        "is_json_response": is_json_response,
         "has_body": has_body,
         "has_query_params": has_query_params,
         "has_path_params": has_path_params,
