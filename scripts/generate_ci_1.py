@@ -6,15 +6,12 @@ from generate.generate_cleanup import generate_cleanup
 
 def generate():
     '''
-    Generate the lib and docs locally
-    Note: on CI this is done in seperate steps to ensure that the generated openapi-clients are installed correctly
+    Phase 1 on ci: Generate the openapi clients
+    Note: after this phase the generated packages need to be installed locally via `pip install -e .`
     '''
-    print("🚀 Generating Moralis Python SDK...")
+    print("🚀 Generating Moralis Python SDK phase 1...")
     generate_prepare()
     generate_lib()
-    generate_openapi_clients()
-    generate_docs()
-    generate_cleanup()
-    print("🏁 Done Moralis Python SDK...")
+    print("🏁 Done Moralis Python SDK phase 1...")
 
 generate()
