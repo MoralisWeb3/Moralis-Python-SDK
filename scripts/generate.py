@@ -4,10 +4,10 @@ from generate.files import ensure_temp_folder, cleanup_temp_folder
 
 def generate():
     print("🚀 Generating Moralis Python SDK...")
-    # ensure_temp_folder()
-    # generate_lib()
+    ensure_temp_folder()
+    generate_lib()
     generate_docs()
-    # cleanup_temp_folder()
+    cleanup_temp_folder()
     print("🏁 Done Moralis Python SDK...")
 
 generate()
