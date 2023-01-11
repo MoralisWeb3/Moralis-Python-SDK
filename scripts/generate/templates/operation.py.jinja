@@ -1,0 +1,36 @@
+import json
+from .api_instance import get_api_instance
+{% if has_any_params and params|length > 1  -%}
+import typing
+{%- endif %}
+{% if import_statement -%}
+{{import_statement}}
+{%- endif %}
+
+def {{operation_name}}(api_key: str{%- if has_any_params %}, params: {{params_union}} {%- endif -%} {%- if has_body %}, body: SchemaForRequestBodyApplicationJson {%- endif -%}):
+    api_instance = get_api_instance(api_key)
+    {% if has_query_params -%}
+    query_params = {k: v for k, v in params.items() if k in RequestQueryParams.__annotations__.keys()}
+    {% endif -%}
+    {% if has_path_params -%}
+    path_params = {k: v for k, v in params.items() if k in RequestPathParams.__annotations__.keys()}
+    {% endif -%}
+
+    api_response = api_instance.{{operation_name}}(
+        {% if has_body -%}
+        body=body,
+        {% endif -%}
+        {% if has_query_params -%}
+        query_params=query_params,
+        {% endif -%}
+        {% if has_path_params -%}
+        path_params=path_params,
+        {% endif -%}
+        {% if is_json_response -%}
+        accept_content_types='application/json; charset=utf-8',
+        {% endif -%}
+        skip_deserialization=True
+    )
+
+    return json.loads(api_response.response.data)
+

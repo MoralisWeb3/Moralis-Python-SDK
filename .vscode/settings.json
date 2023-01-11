@@ -1,4 +1,9 @@
 {
   "editor.formatOnSave": false,
-  "python.analysis.typeCheckingMode": "off"
+  "python.analysis.typeCheckingMode": "off",
+  "[python]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4  
+  },
+  "emmet.includeLanguages": {"py.jinja": "python"},
 }

@@ -1,15 +1,11 @@
 # Generate all docs based on the generated moralis modules
-from pathlib import Path
 import os
 import json
 import re
-from operation_params import get_required_for_param, get_param_details, get_type_for_body, resolve_ref_to_type, get_description_for_param
-from operations_generation_utils import generate_operation_example
-
-root_path = Path(__file__).parent.parent
-moralis_module_path = Path(__file__).parent.parent / 'src/moralis'
-docs_path = root_path / 'docs'
-snippet_path = docs_path / 'code_snippets.json'
+from pathlib import Path
+from .operation_params import get_required_for_param, get_param_details, get_type_for_body, resolve_ref_to_type, get_description_for_param
+from .operations_generation_utils import generate_operation_example
+from .paths import root_path, moralis_modules_root_path, docs_path, docs_snippet_path
 
 nl = '\n'
 quote = '"'
@@ -47,7 +43,7 @@ def register_snippet(module_name, group_name, operation, snippet):
 
 def save_snippets():
     print(f"⏳ Saving snippets")
-    with open(snippet_path, 'w') as outfile:
+    with open(docs_snippet_path, 'w') as outfile:
         json.dump(code_snippets, outfile, indent=4)
     print(f"✅ Saving snippets complete")
 
@@ -192,7 +188,7 @@ def generate_group_snippet(module_name, group_name, operations, swagger_path_by_
 def generate_docs_for_group(module_name, group_name, swagger_path_by_operation, swagger):
     print(f"⏳ Generating docs for group {module_name}.{group_name}...")
 
-    module_path = moralis_module_path / module_name
+    module_path = moralis_modules_root_path / module_name
     group_path = module_path / group_name
     operations = [operation for operation in os.listdir(
         group_path) if os.path.isfile(group_path / operation) and operation.endswith('.py') and not operation.startswith('__') and not operation == 'api_instance.py' and not operation == f'{group_name}.py']
@@ -223,7 +219,7 @@ def generate_docs_for_module(module_name):
 
     swagger_file.close()
 
-    module_path = moralis_module_path / module_name
+    module_path = moralis_modules_root_path / module_name
     groups = [directory for directory in os.listdir(
         module_path) if os.path.isdir(module_path / directory) and directory != 'moralis.egg-info' and not directory.startswith('__')]
 

@@ -1,0 +1,3 @@
+{% for operation in operations -%}
+    from .{{ operation }} import {{ operation }}
+{% endfor %}

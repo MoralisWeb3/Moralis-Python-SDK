@@ -1,0 +1,17 @@
+import openapi_{{api_name}}
+from openapi_{{api_name}}.apis.tags import {{tag}}_api
+from ..utilities import get_common_headers
+
+
+def get_api_instance(api_key):
+    configuration = openapi_{{api_name}}.Configuration()
+    configuration.api_key['{{security_key}}'] = api_key
+    api_client = openapi_{{api_name}}.ApiClient(configuration)
+    headers = get_common_headers()
+    for header in headers:
+        api_client.default_headers[header] = headers[header]
+    api_instance = {{tag}}_api.{{api_client_name}}(api_client)
+    api_client.close()
+
+    return api_instance
+

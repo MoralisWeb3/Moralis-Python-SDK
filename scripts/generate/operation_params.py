@@ -64,6 +64,10 @@ def resolve_boolean_param(schema):
 
 
 def resolve_array_param(schema, swagger):
+    # Edge case when swagger has not specified list items
+    if not 'items' in schema:
+        return 'List', '[]', ''
+
     list_item_type, item_example, item_default = get_type_for_param(
         schema['items'], swagger)
     type = f'List of {list_item_type}'

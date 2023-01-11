@@ -23,50 +23,8 @@ jobs:
           python-version: '3.10'
       - name: Install dependencies
         uses: py-actions/py-dependency-install@v4
-
-      - name: 'Generate 1: prepare input files'
-        run: 'python scripts/generate_ci_1.py'
-
-      - name: 'Generate 2.1 OpenApi for EvmApi'
-        uses: openapi-generators/openapitools-generator-action@v1
-        with:
-          generator: python
-          config-file: openapi.json
-          openapi-file: temp/swagger/evm_api.json
-          command-args: '--skip-validate-spec -o temp/generated-api -p packageName=openapi_evm_api,projectName=evm_api'
-
-      - name: 'Generate 2.2 OpenApi for SolApi'
-        uses: openapi-generators/openapitools-generator-action@v1
-        with:
-          generator: python
-          config-file: openapi.json
-          openapi-file: temp/swagger/sol_api.json
-          command-args: '--skip-validate-spec -o temp/generated-api -p packageName=openapi_sol_api,projectName=sol_api'
-
-      - name: 'Generate 2.3 OpenApi for Auth'
-        uses: openapi-generators/openapitools-generator-action@v1
-        with:
-          generator: python
-          config-file: openapi.json
-          openapi-file: temp/swagger/auth.json
-          command-args: '--skip-validate-spec -o temp/generated-api -p packageName=openapi_auth,projectName=auth'
-
-      - name: 'Generate 2.4 OpenApi for Streams'
-        uses: openapi-generators/openapitools-generator-action@v1
-        with:
-          generator: python
-          config-file: openapi.json
-          openapi-file: temp/swagger/streams.json
-          command-args: '--skip-validate-spec -o temp/generated-api -p packageName=openapi_streams,projectName=streams'
-
-      # Make sure we can access the generated packages in the next step
-      - name: Install Python local dependency
-        run: |
-          pip install -e .
-
-      - name: 'Generate 3: generate output files'
-        run: 'python scripts/generate_ci_2.py'
-
+      - name: 'Generate'
+        run: 'python scripts/generate.py'
       - name: "File changes detected: Create PR"
         id: create-pr
         uses: peter-evans/create-pull-request@v4

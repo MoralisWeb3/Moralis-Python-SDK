@@ -1,4 +1,4 @@
-from operation_params import get_required_for_param, get_param_details, resolve_ref_to_type
+from .operation_params import get_required_for_param, get_param_details, resolve_ref_to_type
 
 nl = '\n'
 quote = '"'
@@ -39,9 +39,11 @@ def generate_body_example(swagger_data, swagger):
     if not "requestBody" in swagger_data:
         return ""
 
+
     # Body is Array of objects
     schema = swagger_data["requestBody"]["content"]["application/json"]["schema"]
-    if 'type' in schema and schema['type'] == 'array' and '$ref' in schema['items']:
+
+    if 'type' in schema and schema['type'] == 'array' and "items" in schema and '$ref' in schema['items']:
         resolved_ref_type = resolve_ref_to_type(
             schema['items'], swagger)
 

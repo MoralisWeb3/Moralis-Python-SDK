@@ -1,7 +1,0 @@
-{
-  "generatorName": "python",
-  "outputDir": "temp/generated-api",
-  "additionalProperties": {
-    "generateSourceCodeOnly": true
-  }
-}
