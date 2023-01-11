@@ -802,14 +802,14 @@ class MediaType:
 @dataclass
 class ApiResponse:
     response: urllib3.HTTPResponse
-    body: typing.Union[Unset, Schema] = unset
-    headers: typing.Union[Unset, typing.Dict[str, Schema]] = unset
+    body: typing.Union[Unset, Schema]
+    headers: typing.Union[Unset, typing.List[HeaderParameter]]
 
     def __init__(
         self,
         response: urllib3.HTTPResponse,
-        body: typing.Union[Unset, Schema] = unset,
-        headers: typing.Union[Unset, typing.Dict[str, Schema]] = unset
+        body: typing.Union[Unset, typing.Type[Schema]],
+        headers: typing.Union[Unset, typing.List[HeaderParameter]]
     ):
         """
         pycharm needs this to prevent 'Unexpected argument' warnings
@@ -1391,24 +1391,24 @@ class RequestBody(StyleFormSerializer, JSONDetector):
 
     def __multipart_json_item(self, key: str, value: Schema) -> RequestField:
         json_value = self.__json_encoder.default(value)
-        request_field = RequestField(name=key, data=json.dumps(json_value))
-        request_field.make_multipart(content_type='application/json')
-        return request_field
+        return RequestField(name=key, data=json.dumps(json_value), headers={'Content-Type': 'application/json'})
 
     def __multipart_form_item(self, key: str, value: Schema) -> RequestField:
         if isinstance(value, str):
-            request_field = RequestField(name=key, data=str(value))
-            request_field.make_multipart(content_type='text/plain')
+            return RequestField(name=key, data=str(value), headers={'Content-Type': 'text/plain'})
         elif isinstance(value, bytes):
-            request_field = RequestField(name=key, data=value)
-            request_field.make_multipart(content_type='application/octet-stream')
+            return RequestField(name=key, data=value, headers={'Content-Type': 'application/octet-stream'})
         elif isinstance(value, FileIO):
-            # TODO use content.encoding to limit allowed content types if they are present
-            request_field = RequestField.from_tuples(key, (os.path.basename(value.name), value.read()))
+            request_field = RequestField(
+                name=key,
+                data=value.read(),
+                filename=os.path.basename(value.name),
+                headers={'Content-Type': 'application/octet-stream'}
+            )
             value.close()
+            return request_field
         else:
-            request_field = self.__multipart_json_item(key=key, value=value)
-        return request_field
+            return self.__multipart_json_item(key=key, value=value)
 
     def __serialize_multipart_form_data(
         self, in_data: Schema

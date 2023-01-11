@@ -50,6 +50,7 @@ class LimitSchema(
     schemas.IntSchema
 ):
     pass
+DisableTotalSchema = schemas.BoolSchema
 
 
 class TotalRangesSchema(
@@ -62,7 +63,6 @@ class RangeSchema(
     schemas.IntSchema
 ):
     pass
-DisableTotalSchema = schemas.BoolSchema
 CursorSchema = schemas.StrSchema
 NormalizeMetadataSchema = schemas.BoolSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
@@ -76,9 +76,9 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'chain': typing.Union[ChainSchema, ],
         'format': typing.Union[FormatSchema, str, ],
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
+        'disable_total': typing.Union[DisableTotalSchema, bool, ],
         'totalRanges': typing.Union[TotalRangesSchema, decimal.Decimal, int, ],
         'range': typing.Union[RangeSchema, decimal.Decimal, int, ],
-        'disable_total': typing.Union[DisableTotalSchema, bool, ],
         'cursor': typing.Union[CursorSchema, str, ],
         'normalizeMetadata': typing.Union[NormalizeMetadataSchema, bool, ],
     },
@@ -108,6 +108,12 @@ request_query_limit = api_client.QueryParameter(
     schema=LimitSchema,
     explode=True,
 )
+request_query_disable_total = api_client.QueryParameter(
+    name="disable_total",
+    style=api_client.ParameterStyle.FORM,
+    schema=DisableTotalSchema,
+    explode=True,
+)
 request_query_total_ranges = api_client.QueryParameter(
     name="totalRanges",
     style=api_client.ParameterStyle.FORM,
@@ -118,12 +124,6 @@ request_query_range = api_client.QueryParameter(
     name="range",
     style=api_client.ParameterStyle.FORM,
     schema=RangeSchema,
-    explode=True,
-)
-request_query_disable_total = api_client.QueryParameter(
-    name="disable_total",
-    style=api_client.ParameterStyle.FORM,
-    schema=DisableTotalSchema,
     explode=True,
 )
 request_query_cursor = api_client.QueryParameter(
@@ -264,9 +264,9 @@ class BaseApi(api_client.Api):
             request_query_chain,
             request_query_format,
             request_query_limit,
+            request_query_disable_total,
             request_query_total_ranges,
             request_query_range,
-            request_query_disable_total,
             request_query_cursor,
             request_query_normalize_metadata,
         ):
@@ -304,11 +304,7 @@ class BaseApi(api_client.Api):
                 api_response = api_client.ApiResponseWithoutDeserialization(response=response)
 
         if not 200 <= response.status <= 299:
-            raise exceptions.ApiException(
-                status=response.status,
-                reason=response.reason,
-                api_response=api_response
-            )
+            raise exceptions.ApiException(api_response=api_response)
 
         return api_response
 

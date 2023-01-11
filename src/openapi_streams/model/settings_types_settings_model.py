@@ -60,13 +60,13 @@ class SettingsTypesSettingsModel(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         region: typing.Union['SettingsRegion', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'SettingsTypesSettingsModel':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             region=region,
             _configuration=_configuration,
         )

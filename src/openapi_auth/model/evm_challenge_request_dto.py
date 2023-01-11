@@ -147,12 +147,12 @@ class EvmChallengeRequestDto(
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+                    arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'resources':
                     return super().__new__(
                         cls,
-                        _arg,
+                        arg,
                         _configuration=_configuration,
                     )
             
@@ -247,7 +247,7 @@ class EvmChallengeRequestDto(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         address: typing.Union[MetaOapg.properties.address, str, ],
         chainId: typing.Union[MetaOapg.properties.chainId, str, ],
         domain: typing.Union[MetaOapg.properties.domain, str, ],
@@ -262,7 +262,7 @@ class EvmChallengeRequestDto(
     ) -> 'EvmChallengeRequestDto':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             address=address,
             chainId=chainId,
             domain=domain,

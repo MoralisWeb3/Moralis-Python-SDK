@@ -56,12 +56,12 @@ class NormalizedMetadata(
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple['NormalizedMetadataAttribute'], typing.List['NormalizedMetadataAttribute']],
+                    arg: typing.Union[typing.Tuple['NormalizedMetadataAttribute'], typing.List['NormalizedMetadataAttribute']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'attributes':
                     return super().__new__(
                         cls,
-                        _arg,
+                        arg,
                         _configuration=_configuration,
                     )
             
@@ -130,7 +130,7 @@ class NormalizedMetadata(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         name: typing.Union[MetaOapg.properties.name, str, schemas.Unset] = schemas.unset,
         description: typing.Union[MetaOapg.properties.description, str, schemas.Unset] = schemas.unset,
         image: typing.Union[MetaOapg.properties.image, str, schemas.Unset] = schemas.unset,
@@ -142,7 +142,7 @@ class NormalizedMetadata(
     ) -> 'NormalizedMetadata':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             name=name,
             description=description,
             image=image,

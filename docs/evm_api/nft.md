@@ -42,9 +42,9 @@ params = {
     "chain": "eth", 
     "format": "decimal", 
     "limit": 0, 
+    "disable_total": True, 
     "totalRanges": 0, 
     "range": 0, 
-    "disable_total": True, 
     "cursor": "", 
     "normalizeMetadata": True, 
 }
@@ -66,9 +66,9 @@ print(result)
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "avalanche testnet"<br/>- "0xa869"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "cronos testnet"<br/>- "0x152"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 | format | enum[str]: <br/>- "decimal"<br/>- "hex" | The format of the token ID |  | "decimal" | "decimal" |
 | limit | int | The desired page size of the result. |  |  | 0 |
+| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | False | True |
 | totalRanges | int | The number of subranges to split the results into |  |  | 0 |
 | range | int | The desired subrange to query |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  |  | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 | normalizeMetadata | bool | Should normalized metadata be returned? |  | False | True |
 
@@ -209,7 +209,7 @@ print(result)
 | to_date | str | Get transfers up until this date (any format that is accepted by momentjs)<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | "" |
 | format | enum[str]: <br/>- "decimal"<br/>- "hex" | The format of the token ID |  | "decimal" | "decimal" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  |  | True |
+| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | False | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 
 
@@ -339,7 +339,7 @@ print(result)
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "avalanche testnet"<br/>- "0xa869"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "cronos testnet"<br/>- "0x152"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 | format | enum[str]: <br/>- "decimal"<br/>- "hex" | The format of the token ID |  | "decimal" | "decimal" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  |  | True |
+| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | False | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 | normalizeMetadata | bool | Should normalized metadata be returned? |  | False | True |
 
@@ -389,7 +389,7 @@ print(result)
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "avalanche testnet"<br/>- "0xa869"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "cronos testnet"<br/>- "0x152"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 | format | enum[str]: <br/>- "decimal"<br/>- "hex" | The format of the token ID |  | "decimal" | "decimal" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  |  | True |
+| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | False | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 | normalizeMetadata | bool | Should normalized metadata be returned? |  | False | True |
 
@@ -443,7 +443,7 @@ print(result)
 | marketplace | enum[str]: <br/>- "opensea" | Marketplace from which to get the trades (only OpenSea is supported at the moment) |  | "opensea" | "opensea" |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  |  | True |
+| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | False | True |
 
 
 
@@ -488,7 +488,7 @@ print(result)
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "avalanche testnet"<br/>- "0xa869"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "cronos testnet"<br/>- "0x152"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 | format | enum[str]: <br/>- "decimal"<br/>- "hex" | The format of the token ID |  | "decimal" | "decimal" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  |  | True |
+| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | False | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 
 
@@ -530,7 +530,7 @@ print(result)
 | block_number_or_hash | str | The block number or block hash | Yes |  | "15846571" |
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "avalanche testnet"<br/>- "0xa869"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "cronos testnet"<br/>- "0x152"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 | limit | int | The desired page size of the result. |  | 100 | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  |  | True |
+| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | False | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 
 
@@ -580,7 +580,7 @@ print(result)
 | to_date | str | The end date from which to get the transfers (any format that is accepted by momentjs)<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | "" |
 | format | enum[str]: <br/>- "decimal"<br/>- "hex" | The format of the token ID |  | "decimal" | "decimal" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  |  | True |
+| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | False | True |
 | cursor | str | The cursor returned in the previous response (for getting the next page)<br/> |  |  | "" |
 
 
@@ -622,7 +622,7 @@ print(result)
 | address | str | The wallet address of the owner of NFTs in the collections | Yes |  | "0xd8da6bf26964af9d7eed9e03e53415d37aa96045" |
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "avalanche testnet"<br/>- "0xa869"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "cronos testnet"<br/>- "0x152"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  |  | True |
+| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | False | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 
 
@@ -672,7 +672,7 @@ print(result)
 | from_block | int | The minimum block number from which to get the transfers<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | 0 |
 | to_block | str | To get the reserves at this block number |  |  | "" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  |  | True |
+| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | False | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 
 
@@ -722,7 +722,7 @@ print(result)
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "avalanche testnet"<br/>- "0xa869"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "cronos testnet"<br/>- "0x152"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 | format | enum[str]: <br/>- "decimal"<br/>- "hex" | The format of the token ID |  | "decimal" | "decimal" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  |  | True |
+| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | False | True |
 | token_addresses | List of str | The addresses to get balances for (optional) |  |  | [] |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 | normalizeMetadata | bool | Should normalized metadata be returned? |  | False | True |
@@ -828,7 +828,7 @@ print(result)
 | addresses | List of str | The addresses to get metadata for |  |  | [] |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  |  | True |
+| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | False | True |
 
 
 

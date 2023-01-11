@@ -85,13 +85,13 @@ class Log(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+                    *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                     **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
                 ) -> 'topic1':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                         **kwargs,
                     )
@@ -124,13 +124,13 @@ class Log(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+                    *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                     **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
                 ) -> 'topic2':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                         **kwargs,
                     )
@@ -163,13 +163,13 @@ class Log(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+                    *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                     **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
                 ) -> 'topic3':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                         **kwargs,
                     )
@@ -288,7 +288,7 @@ class Log(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         address: typing.Union[MetaOapg.properties.address, str, ],
         topic0: typing.Union[MetaOapg.properties.topic0, str, ],
         data: typing.Union[MetaOapg.properties.data, str, ],
@@ -306,7 +306,7 @@ class Log(
     ) -> 'Log':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             address=address,
             topic0=topic0,
             data=data,

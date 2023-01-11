@@ -83,7 +83,7 @@ class AdvancedOptions(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         topic0: typing.Union[MetaOapg.properties.topic0, str, ],
         filter: typing.Union['StreamsFilter', schemas.Unset] = schemas.unset,
         includeNativeTxs: typing.Union[MetaOapg.properties.includeNativeTxs, bool, schemas.Unset] = schemas.unset,
@@ -91,7 +91,7 @@ class AdvancedOptions(
     ) -> 'AdvancedOptions':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             topic0=topic0,
             filter=filter,
             includeNativeTxs=includeNativeTxs,

@@ -97,7 +97,7 @@ class Erc20Price(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         usdPrice: typing.Union[MetaOapg.properties.usdPrice, decimal.Decimal, int, float, ],
         nativePrice: typing.Union['NativeErc20Price', schemas.Unset] = schemas.unset,
         exchangeAddress: typing.Union[MetaOapg.properties.exchangeAddress, str, schemas.Unset] = schemas.unset,
@@ -107,7 +107,7 @@ class Erc20Price(
     ) -> 'Erc20Price':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             usdPrice=usdPrice,
             nativePrice=nativePrice,
             exchangeAddress=exchangeAddress,

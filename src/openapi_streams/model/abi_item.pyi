@@ -59,12 +59,12 @@ class AbiItem(
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple['AbiInput'], typing.List['AbiInput']],
+                    arg: typing.Union[typing.Tuple['AbiInput'], typing.List['AbiInput']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'inputs':
                     return super().__new__(
                         cls,
-                        _arg,
+                        arg,
                         _configuration=_configuration,
                     )
             
@@ -86,12 +86,12 @@ class AbiItem(
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple['AbiOutput'], typing.List['AbiOutput']],
+                    arg: typing.Union[typing.Tuple['AbiOutput'], typing.List['AbiOutput']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'outputs':
                     return super().__new__(
                         cls,
-                        _arg,
+                        arg,
                         _configuration=_configuration,
                     )
             
@@ -178,7 +178,7 @@ class AbiItem(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         type: typing.Union[MetaOapg.properties.type, str, ],
         anonymous: typing.Union[MetaOapg.properties.anonymous, bool, schemas.Unset] = schemas.unset,
         constant: typing.Union[MetaOapg.properties.constant, bool, schemas.Unset] = schemas.unset,
@@ -192,7 +192,7 @@ class AbiItem(
     ) -> 'AbiItem':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             type=type,
             anonymous=anonymous,
             constant=constant,

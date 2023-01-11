@@ -8,4 +8,3 @@ def get_common_headers():
         "x-moralis-platform-version": __version__,
         "x-moralis-build-target": 'python',
     }
-

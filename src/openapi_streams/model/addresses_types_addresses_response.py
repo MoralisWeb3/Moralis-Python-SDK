@@ -55,12 +55,12 @@ class AddressesTypesAddressesResponse(
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple['Addresses'], typing.List['Addresses']],
+                    arg: typing.Union[typing.Tuple['Addresses'], typing.List['Addresses']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'result':
                     return super().__new__(
                         cls,
-                        _arg,
+                        arg,
                         _configuration=_configuration,
                     )
             
@@ -105,7 +105,7 @@ class AddressesTypesAddressesResponse(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         result: typing.Union[MetaOapg.properties.result, list, tuple, ],
         total: typing.Union[MetaOapg.properties.total, decimal.Decimal, int, float, ],
         cursor: typing.Union[MetaOapg.properties.cursor, str, schemas.Unset] = schemas.unset,
@@ -113,7 +113,7 @@ class AddressesTypesAddressesResponse(
     ) -> 'AddressesTypesAddressesResponse':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             result=result,
             total=total,
             cursor=cursor,

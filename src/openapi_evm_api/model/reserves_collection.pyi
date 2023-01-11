@@ -146,7 +146,7 @@ class ReservesCollection(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[dict, frozendict.frozendict, ],
+                    *args: typing.Union[dict, frozendict.frozendict, ],
                     address: typing.Union[MetaOapg.properties.address, str, schemas.Unset] = schemas.unset,
                     name: typing.Union[MetaOapg.properties.name, str, schemas.Unset] = schemas.unset,
                     symbol: typing.Union[MetaOapg.properties.symbol, str, schemas.Unset] = schemas.unset,
@@ -162,7 +162,7 @@ class ReservesCollection(
                 ) -> 'token0':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         address=address,
                         name=name,
                         symbol=symbol,
@@ -286,7 +286,7 @@ class ReservesCollection(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[dict, frozendict.frozendict, ],
+                    *args: typing.Union[dict, frozendict.frozendict, ],
                     address: typing.Union[MetaOapg.properties.address, str, schemas.Unset] = schemas.unset,
                     name: typing.Union[MetaOapg.properties.name, str, schemas.Unset] = schemas.unset,
                     symbol: typing.Union[MetaOapg.properties.symbol, str, schemas.Unset] = schemas.unset,
@@ -302,7 +302,7 @@ class ReservesCollection(
                 ) -> 'token1':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         address=address,
                         name=name,
                         symbol=symbol,
@@ -358,7 +358,7 @@ class ReservesCollection(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         token0: typing.Union[MetaOapg.properties.token0, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
         token1: typing.Union[MetaOapg.properties.token1, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
         pairAddress: typing.Union[MetaOapg.properties.pairAddress, str, schemas.Unset] = schemas.unset,
@@ -367,7 +367,7 @@ class ReservesCollection(
     ) -> 'ReservesCollection':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             token0=token0,
             token1=token1,
             pairAddress=pairAddress,

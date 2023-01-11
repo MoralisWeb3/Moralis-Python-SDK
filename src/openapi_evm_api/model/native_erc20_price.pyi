@@ -100,7 +100,7 @@ class NativeErc20Price(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         symbol: typing.Union[MetaOapg.properties.symbol, str, ],
         decimals: typing.Union[MetaOapg.properties.decimals, decimal.Decimal, int, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
@@ -110,7 +110,7 @@ class NativeErc20Price(
     ) -> 'NativeErc20Price':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             symbol=symbol,
             decimals=decimals,
             name=name,

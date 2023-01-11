@@ -180,7 +180,7 @@ class LogEventByAddress(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         topic1: typing.Union[MetaOapg.properties.topic1, str, ],
         topic2: typing.Union[MetaOapg.properties.topic2, str, ],
         address: typing.Union[MetaOapg.properties.address, str, ],
@@ -198,7 +198,7 @@ class LogEventByAddress(
     ) -> 'LogEventByAddress':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             topic1=topic1,
             topic2=topic2,
             address=address,

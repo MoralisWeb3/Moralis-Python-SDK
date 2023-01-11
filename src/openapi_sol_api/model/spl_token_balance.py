@@ -129,7 +129,7 @@ class SPLTokenBalance(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         mint: typing.Union[MetaOapg.properties.mint, str, ],
         symbol: typing.Union[MetaOapg.properties.symbol, str, ],
         amount: typing.Union[MetaOapg.properties.amount, str, ],
@@ -142,7 +142,7 @@ class SPLTokenBalance(
     ) -> 'SPLTokenBalance':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             mint=mint,
             symbol=symbol,
             amount=amount,

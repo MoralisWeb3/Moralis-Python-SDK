@@ -62,12 +62,12 @@ class Log(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[None, str, ],
+                    *args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'topic0':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             
@@ -82,12 +82,12 @@ class Log(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[None, str, ],
+                    *args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'topic1':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             
@@ -102,12 +102,12 @@ class Log(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[None, str, ],
+                    *args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'topic2':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             
@@ -122,12 +122,12 @@ class Log(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[None, str, ],
+                    *args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'topic3':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             
@@ -145,12 +145,12 @@ class Log(
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple['TriggerOutput'], typing.List['TriggerOutput']],
+                    arg: typing.Union[typing.Tuple['TriggerOutput'], typing.List['TriggerOutput']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'triggers':
                     return super().__new__(
                         cls,
-                        _arg,
+                        arg,
                         _configuration=_configuration,
                     )
             
@@ -241,7 +241,7 @@ class Log(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         topic1: typing.Union[MetaOapg.properties.topic1, None, str, ],
         topic2: typing.Union[MetaOapg.properties.topic2, None, str, ],
         address: typing.Union[MetaOapg.properties.address, str, ],
@@ -255,7 +255,7 @@ class Log(
     ) -> 'Log':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             topic1=topic1,
             topic2=topic2,
             address=address,

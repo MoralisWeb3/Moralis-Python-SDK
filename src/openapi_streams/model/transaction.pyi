@@ -69,12 +69,12 @@ class Transaction(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[None, str, ],
+                    *args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'gas':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             
@@ -89,12 +89,12 @@ class Transaction(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[None, str, ],
+                    *args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'gasPrice':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             
@@ -109,12 +109,12 @@ class Transaction(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[None, str, ],
+                    *args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'nonce':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             
@@ -129,12 +129,12 @@ class Transaction(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[None, str, ],
+                    *args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'input':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             transactionIndex = schemas.StrSchema
@@ -151,12 +151,12 @@ class Transaction(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[None, str, ],
+                    *args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'toAddress':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             
@@ -171,12 +171,12 @@ class Transaction(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[None, str, ],
+                    *args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'value':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             
@@ -191,12 +191,12 @@ class Transaction(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[None, str, ],
+                    *args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'type':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             
@@ -211,12 +211,12 @@ class Transaction(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[None, str, ],
+                    *args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'v':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             
@@ -231,12 +231,12 @@ class Transaction(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[None, str, ],
+                    *args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'r':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             
@@ -251,12 +251,12 @@ class Transaction(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[None, str, ],
+                    *args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 's':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             
@@ -271,12 +271,12 @@ class Transaction(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[None, str, ],
+                    *args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'receiptCumulativeGasUsed':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             
@@ -291,12 +291,12 @@ class Transaction(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[None, str, ],
+                    *args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'receiptGasUsed':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             
@@ -311,12 +311,12 @@ class Transaction(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[None, str, ],
+                    *args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'receiptContractAddress':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             
@@ -331,12 +331,12 @@ class Transaction(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[None, str, ],
+                    *args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'receiptRoot':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             
@@ -351,12 +351,12 @@ class Transaction(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[None, str, ],
+                    *args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'receiptStatus':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             
@@ -374,12 +374,12 @@ class Transaction(
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple['TriggerOutput'], typing.List['TriggerOutput']],
+                    arg: typing.Union[typing.Tuple['TriggerOutput'], typing.List['TriggerOutput']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'triggers':
                     return super().__new__(
                         cls,
-                        _arg,
+                        arg,
                         _configuration=_configuration,
                     )
             
@@ -550,7 +550,7 @@ class Transaction(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         receiptGasUsed: typing.Union[MetaOapg.properties.receiptGasUsed, None, str, ],
         transactionIndex: typing.Union[MetaOapg.properties.transactionIndex, str, ],
         type: typing.Union[MetaOapg.properties.type, None, str, ],
@@ -574,7 +574,7 @@ class Transaction(
     ) -> 'Transaction':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             receiptGasUsed=receiptGasUsed,
             transactionIndex=transactionIndex,
             type=type,

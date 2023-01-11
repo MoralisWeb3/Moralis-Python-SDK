@@ -102,7 +102,7 @@ class WebhookTypesITinyPayload(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         retries: typing.Union[MetaOapg.properties.retries, decimal.Decimal, int, float, ],
         chainId: typing.Union[MetaOapg.properties.chainId, str, ],
         records: typing.Union[MetaOapg.properties.records, decimal.Decimal, int, float, ],
@@ -112,7 +112,7 @@ class WebhookTypesITinyPayload(
     ) -> 'WebhookTypesITinyPayload':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             retries=retries,
             chainId=chainId,
             records=records,

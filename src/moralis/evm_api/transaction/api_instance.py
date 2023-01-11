@@ -14,4 +14,3 @@ def get_api_instance(api_key):
     api_client.close()
 
     return api_instance
-

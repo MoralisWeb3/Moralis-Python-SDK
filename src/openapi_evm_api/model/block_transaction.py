@@ -85,13 +85,13 @@ class BlockTransaction(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+                    *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                     **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
                 ) -> 'to_address':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                         **kwargs,
                     )
@@ -134,13 +134,13 @@ class BlockTransaction(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+                    *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                     **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
                 ) -> 'receipt_contract_address':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                         **kwargs,
                     )
@@ -173,13 +173,13 @@ class BlockTransaction(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+                    *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                     **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
                 ) -> 'receipt_root':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                         **kwargs,
                     )
@@ -198,12 +198,12 @@ class BlockTransaction(
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple['Log'], typing.List['Log']],
+                    arg: typing.Union[typing.Tuple['Log'], typing.List['Log']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'logs':
                     return super().__new__(
                         cls,
-                        _arg,
+                        arg,
                         _configuration=_configuration,
                     )
             
@@ -371,7 +371,7 @@ class BlockTransaction(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         gas_price: typing.Union[MetaOapg.properties.gas_price, str, ],
         receipt_status: typing.Union[MetaOapg.properties.receipt_status, str, ],
         receipt_cumulative_gas_used: typing.Union[MetaOapg.properties.receipt_cumulative_gas_used, str, ],
@@ -395,7 +395,7 @@ class BlockTransaction(
     ) -> 'BlockTransaction':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             gas_price=gas_price,
             receipt_status=receipt_status,
             receipt_cumulative_gas_used=receipt_cumulative_gas_used,

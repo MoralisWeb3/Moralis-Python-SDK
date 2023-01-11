@@ -99,7 +99,7 @@ class SPLNFT(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         mint: typing.Union[MetaOapg.properties.mint, str, ],
         symbol: typing.Union[MetaOapg.properties.symbol, str, ],
         associatedTokenAddress: typing.Union[MetaOapg.properties.associatedTokenAddress, str, ],
@@ -109,7 +109,7 @@ class SPLNFT(
     ) -> 'SPLNFT':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             mint=mint,
             symbol=symbol,
             associatedTokenAddress=associatedTokenAddress,

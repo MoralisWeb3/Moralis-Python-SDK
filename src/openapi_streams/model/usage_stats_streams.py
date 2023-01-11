@@ -112,7 +112,7 @@ class UsageStatsStreams(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         totalWebhooksDelivered: typing.Union[MetaOapg.properties.totalWebhooksDelivered, decimal.Decimal, int, float, ],
         totalTxsProcessed: typing.Union[MetaOapg.properties.totalTxsProcessed, decimal.Decimal, int, float, ],
         streamId: typing.Union[MetaOapg.properties.streamId, str, ],
@@ -123,7 +123,7 @@ class UsageStatsStreams(
     ) -> 'UsageStatsStreams':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             totalWebhooksDelivered=totalWebhooksDelivered,
             totalTxsProcessed=totalTxsProcessed,
             streamId=streamId,

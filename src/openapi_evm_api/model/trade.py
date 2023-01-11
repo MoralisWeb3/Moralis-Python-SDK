@@ -63,12 +63,12 @@ class Trade(
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+                    arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'token_ids':
                     return super().__new__(
                         cls,
-                        _arg,
+                        arg,
                         _configuration=_configuration,
                     )
             
@@ -184,7 +184,7 @@ class Trade(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         token_ids: typing.Union[MetaOapg.properties.token_ids, list, tuple, ],
         buyer_address: typing.Union[MetaOapg.properties.buyer_address, str, ],
         price: typing.Union[MetaOapg.properties.price, str, ],
@@ -201,7 +201,7 @@ class Trade(
     ) -> 'Trade':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             token_ids=token_ids,
             buyer_address=buyer_address,
             price=price,

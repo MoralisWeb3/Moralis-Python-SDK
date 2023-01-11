@@ -6,11 +6,12 @@
 # if you have many models here with many references from one model to another this may
 # raise a RecursionError
 # to avoid this, import only the models that you directly need like:
-# from openapi_evm_api.model.pet import Pet
+# from from openapi_evm_api.model.pet import Pet
 # or import this package, but before doing it, use:
 # import sys
 # sys.setrecursionlimit(n)
 
+from openapi_evm_api.model.addresses_set import AddressesSet
 from openapi_evm_api.model.block import Block
 from openapi_evm_api.model.block_date import BlockDate
 from openapi_evm_api.model.block_transaction import BlockTransaction
@@ -34,6 +35,7 @@ from openapi_evm_api.model.log_event import LogEvent
 from openapi_evm_api.model.log_event_by_address import LogEventByAddress
 from openapi_evm_api.model.metadata_resync import MetadataResync
 from openapi_evm_api.model.native_balance import NativeBalance
+from openapi_evm_api.model.native_balances import NativeBalances
 from openapi_evm_api.model.native_erc20_price import NativeErc20Price
 from openapi_evm_api.model.nft import Nft
 from openapi_evm_api.model.nft_collection import NftCollection
