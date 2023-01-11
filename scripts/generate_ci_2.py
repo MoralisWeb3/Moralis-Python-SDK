@@ -6,12 +6,10 @@ from generate.generate_cleanup import generate_cleanup
 
 def generate():
     '''
-    Phase 2/2 on ci: Generate the moralis modules and docs
+    Phase 2/2 on ci: Generate the moralis modules and docs + cleanup
     '''
     print("🚀 Generating Moralis Python SDK phase 2...")
-    generate_prepare()
     generate_lib()
-    generate_openapi_clients()
     generate_docs()
     generate_cleanup()
     print("🏁 Done Moralis Python SDK phase 2...")
