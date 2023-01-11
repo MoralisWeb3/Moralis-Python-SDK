@@ -9,10 +9,25 @@ from .paths import root_path, moralis_modules_root_path, docs_path, docs_snippet
 
 nl = '\n'
 quote = '"'
-
 code_snippets = {}
-
 camel_to_snake_map = {}
+
+
+def generate_docs():
+    '''
+    Part 3/3 of generation process
+    Generate docs and code snippets
+    '''
+    print(f"⏳ Generating docs...")
+    apis = json.load(open(root_path / 'api-config.json'))
+    modules = [api["name"] for api in apis]
+    groups = {}
+    for module in modules:
+        module_groups, module_name = generate_docs_for_module(module)
+        groups[module_name] = module_groups
+    generate_root_readme(modules, groups)
+    save_snippets()
+    print(f"🏁 Generated docs")
 
 
 def camel_to_snake(string):
@@ -46,7 +61,6 @@ def save_snippets():
     with open(docs_snippet_path, 'w') as outfile:
         json.dump(code_snippets, outfile, indent=4)
     print(f"✅ Saving snippets complete")
-
 
 
 def generate_operation_params_row(param, swagger):
@@ -313,16 +327,3 @@ Now you can import the correct module from the SDK and call the method you need.
 ## API References
 ''' + generate_modules_list(modules, groups))
         print(f"✅ Generatied docs for root")
-
-
-def generate_docs():
-    print(f"⏳ Generating docs...")
-    apis = json.load(open(root_path / 'api-config.json'))
-    modules = [api["name"] for api in apis]
-    groups = {}
-    for module in modules:
-        module_groups, module_name = generate_docs_for_module(module)
-        groups[module_name] = module_groups
-    generate_root_readme(modules, groups)
-    save_snippets()
-    print(f"🏁 Generated docs")

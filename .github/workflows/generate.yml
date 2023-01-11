@@ -3,7 +3,7 @@ name: Generate
 on:
   schedule:
     # Runs "At every 30th minute" (see https://crontab.guru)
-    - cron: '*/30 * * * *'
+    - cron: "*/30 * * * *"
   push:
     branches:
       - main
@@ -20,11 +20,24 @@ jobs:
           ref: main
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: "3.10"
       - name: Install dependencies
         uses: py-actions/py-dependency-install@v4
-      - name: 'Generate'
-        run: 'python scripts/generate.py'
+      - name: "Generate: prepare"
+        run: "python scripts/generate/generate_prepare.py"
+      - name: "Generate: openapi clients"
+        run: "python scripts/generate/generate_openapi_clients.py"
+      # Make sure we can access the generated packages in the next step
+      - name: Install Python local dependency
+        run: |
+          pip install -e .
+      - name: "Generate: lib"
+        run: "python scripts/generate/generate_lib.py"
+      - name: "Generate: docs"
+        run: "python scripts/generate/generate_docs.py"
+      - name: "Generate: cleanup"
+        run: "python scripts/generate/generate_cleanup.py"
+
       - name: "File changes detected: Create PR"
         id: create-pr
         uses: peter-evans/create-pull-request@v4
@@ -32,11 +45,11 @@ jobs:
           add-paths: |
             src/**/*
             docs/**/*
-          commit-message: 'fix: automatic api update'
-          committer: 'Moralis CI/CD <noreply@github.com>'
+          commit-message: "fix: automatic api update"
+          committer: "Moralis CI/CD <noreply@github.com>"
           branch: generate
           base: main
-          title: 'Update SDK'
+          title: "Update SDK"
           body: |
             This PR was automatically opened via Github Actions.
 
@@ -47,12 +60,9 @@ jobs:
             3. Wait for the next Github Action to do an automatic release
 
             **Note that this PR is automatically updated when more changes are made to the APIs.**
-          labels: 'Automated PR'
+          labels: "Automated PR"
           team-reviewers: |
             owners
             maintainers
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
-
