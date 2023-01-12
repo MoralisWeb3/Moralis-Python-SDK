@@ -27,15 +27,38 @@ from openapi_evm_api import schemas  # noqa: F401
 
 from openapi_evm_api.model.native_balances import NativeBalances
 from openapi_evm_api.model.chain_list import ChainList
-from openapi_evm_api.model.addresses_set import AddressesSet
 
 # Query params
 ChainSchema = ChainList
 ProviderUrlSchema = schemas.StrSchema
 ToBlockSchema = schemas.NumberSchema
+
+
+class WalletAddressesSchema(
+    schemas.ListSchema
+):
+
+
+    class MetaOapg:
+        items = schemas.StrSchema
+
+    def __new__(
+        cls,
+        arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+        _configuration: typing.Optional[schemas.Configuration] = None,
+    ) -> 'WalletAddressesSchema':
+        return super().__new__(
+            cls,
+            arg,
+            _configuration=_configuration,
+        )
+
+    def __getitem__(self, i: int) -> MetaOapg.items:
+        return super().__getitem__(i)
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
+        'wallet_addresses': typing.Union[WalletAddressesSchema, list, tuple, ],
     }
 )
 RequestOptionalQueryParams = typing_extensions.TypedDict(
@@ -71,16 +94,12 @@ request_query_to_block = api_client.QueryParameter(
     schema=ToBlockSchema,
     explode=True,
 )
-# body param
-SchemaForRequestBodyApplicationJson = AddressesSet
-
-
-request_body_addresses_set = api_client.RequestBody(
-    content={
-        'application/json': api_client.MediaType(
-            schema=SchemaForRequestBodyApplicationJson),
-    },
+request_query_wallet_addresses = api_client.QueryParameter(
+    name="wallet_addresses",
+    style=api_client.ParameterStyle.FORM,
+    schema=WalletAddressesSchema,
     required=True,
+    explode=True,
 )
 SchemaFor200ResponseBodyApplicationJson = NativeBalances
 
@@ -110,8 +129,6 @@ class BaseApi(api_client.Api):
     @typing.overload
     def _get_native_balances_for_addresses_oapg(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,],
-        content_type: typing_extensions.Literal["application/json"] = ...,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -124,24 +141,7 @@ class BaseApi(api_client.Api):
     @typing.overload
     def _get_native_balances_for_addresses_oapg(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,],
-        content_type: str = ...,
-        query_params: RequestQueryParams = frozendict.frozendict(),
-        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-        skip_deserialization: typing_extensions.Literal[False] = ...,
-    ) -> typing.Union[
-        ApiResponseFor200,
-    ]: ...
-
-
-    @typing.overload
-    def _get_native_balances_for_addresses_oapg(
-        self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,],
         skip_deserialization: typing_extensions.Literal[True],
-        content_type: str = ...,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -151,8 +151,6 @@ class BaseApi(api_client.Api):
     @typing.overload
     def _get_native_balances_for_addresses_oapg(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,],
-        content_type: str = ...,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -165,8 +163,6 @@ class BaseApi(api_client.Api):
 
     def _get_native_balances_for_addresses_oapg(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,],
-        content_type: str = 'application/json',
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -187,6 +183,7 @@ class BaseApi(api_client.Api):
             request_query_chain,
             request_query_provider_url,
             request_query_to_block,
+            request_query_wallet_addresses,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -203,23 +200,10 @@ class BaseApi(api_client.Api):
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
 
-        if body is schemas.unset:
-            raise exceptions.ApiValueError(
-                'The required body parameter has an invalid value of: unset. Set a valid value instead')
-        _fields = None
-        _body = None
-        serialized_data = request_body_addresses_set.serialize(body, content_type)
-        _headers.add('Content-Type', content_type)
-        if 'fields' in serialized_data:
-            _fields = serialized_data['fields']
-        elif 'body' in serialized_data:
-            _body = serialized_data['body']
         response = self.api_client.call_api(
             resource_path=used_path,
-            method='post'.upper(),
+            method='get'.upper(),
             headers=_headers,
-            fields=_fields,
-            body=_body,
             auth_settings=_auth,
             stream=stream,
             timeout=timeout,
@@ -246,8 +230,6 @@ class GetNativeBalancesForAddresses(BaseApi):
     @typing.overload
     def get_native_balances_for_addresses(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,],
-        content_type: typing_extensions.Literal["application/json"] = ...,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -260,24 +242,7 @@ class GetNativeBalancesForAddresses(BaseApi):
     @typing.overload
     def get_native_balances_for_addresses(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,],
-        content_type: str = ...,
-        query_params: RequestQueryParams = frozendict.frozendict(),
-        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-        skip_deserialization: typing_extensions.Literal[False] = ...,
-    ) -> typing.Union[
-        ApiResponseFor200,
-    ]: ...
-
-
-    @typing.overload
-    def get_native_balances_for_addresses(
-        self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,],
         skip_deserialization: typing_extensions.Literal[True],
-        content_type: str = ...,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -287,8 +252,6 @@ class GetNativeBalancesForAddresses(BaseApi):
     @typing.overload
     def get_native_balances_for_addresses(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,],
-        content_type: str = ...,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -301,8 +264,6 @@ class GetNativeBalancesForAddresses(BaseApi):
 
     def get_native_balances_for_addresses(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,],
-        content_type: str = 'application/json',
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -310,9 +271,7 @@ class GetNativeBalancesForAddresses(BaseApi):
         skip_deserialization: bool = False,
     ):
         return self._get_native_balances_for_addresses_oapg(
-            body=body,
             query_params=query_params,
-            content_type=content_type,
             accept_content_types=accept_content_types,
             stream=stream,
             timeout=timeout,
@@ -320,14 +279,12 @@ class GetNativeBalancesForAddresses(BaseApi):
         )
 
 
-class ApiForpost(BaseApi):
+class ApiForget(BaseApi):
     # this class is used by api classes that refer to endpoints by path and http method names
 
     @typing.overload
-    def post(
+    def get(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,],
-        content_type: typing_extensions.Literal["application/json"] = ...,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -338,26 +295,9 @@ class ApiForpost(BaseApi):
     ]: ...
 
     @typing.overload
-    def post(
+    def get(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,],
-        content_type: str = ...,
-        query_params: RequestQueryParams = frozendict.frozendict(),
-        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-        skip_deserialization: typing_extensions.Literal[False] = ...,
-    ) -> typing.Union[
-        ApiResponseFor200,
-    ]: ...
-
-
-    @typing.overload
-    def post(
-        self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,],
         skip_deserialization: typing_extensions.Literal[True],
-        content_type: str = ...,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -365,10 +305,8 @@ class ApiForpost(BaseApi):
     ) -> api_client.ApiResponseWithoutDeserialization: ...
 
     @typing.overload
-    def post(
+    def get(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,],
-        content_type: str = ...,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -379,10 +317,8 @@ class ApiForpost(BaseApi):
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
-    def post(
+    def get(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,],
-        content_type: str = 'application/json',
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -390,9 +326,7 @@ class ApiForpost(BaseApi):
         skip_deserialization: bool = False,
     ):
         return self._get_native_balances_for_addresses_oapg(
-            body=body,
             query_params=query_params,
-            content_type=content_type,
             accept_content_types=accept_content_types,
             stream=stream,
             timeout=timeout,
