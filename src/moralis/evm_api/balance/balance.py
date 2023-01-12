@@ -1,1 +1,2 @@
 from .get_native_balance import get_native_balance
+from .get_native_balances_for_addresses import get_native_balances_for_addresses

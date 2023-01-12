@@ -52,12 +52,12 @@ class GetNativeBalances(
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+                    arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'selectors':
                     return super().__new__(
                         cls,
-                        _arg,
+                        arg,
                         _configuration=_configuration,
                     )
             
@@ -134,14 +134,14 @@ class GetNativeBalances(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         selectors: typing.Union[MetaOapg.properties.selectors, list, tuple, ],
         type: typing.Union[MetaOapg.properties.type, str, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'GetNativeBalances':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             selectors=selectors,
             type=type,
             _configuration=_configuration,

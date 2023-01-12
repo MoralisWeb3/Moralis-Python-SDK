@@ -58,12 +58,12 @@ class AbiInput(
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple['AbiInput'], typing.List['AbiInput']],
+                    arg: typing.Union[typing.Tuple['AbiInput'], typing.List['AbiInput']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'components':
                     return super().__new__(
                         cls,
-                        _arg,
+                        arg,
                         _configuration=_configuration,
                     )
             
@@ -121,7 +121,7 @@ class AbiInput(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
         type: typing.Union[MetaOapg.properties.type, str, ],
         indexed: typing.Union[MetaOapg.properties.indexed, bool, schemas.Unset] = schemas.unset,
@@ -131,7 +131,7 @@ class AbiInput(
     ) -> 'AbiInput':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             name=name,
             type=type,
             indexed=indexed,

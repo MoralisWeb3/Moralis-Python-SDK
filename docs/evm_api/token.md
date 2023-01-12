@@ -183,7 +183,6 @@ params = {
     "to_block": 0, 
     "from_date": "", 
     "to_date": "", 
-    "offset": 0, 
     "limit": 0, 
     "disable_total": True, 
     "cursor": "", 
@@ -208,9 +207,8 @@ print(result)
 | to_block | int | The maximum block number from which to get the transfers.<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | 0 |
 | from_date | str | The start date from which to get the transfers (any format that is accepted by momentjs)<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | "" |
 | to_date | str | Get the transfers up to this date (any format that is accepted by momentjs)<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | "" |
-| offset | int | offset |  |  | 0 |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  |  | True |
+| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | False | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 
 
@@ -300,7 +298,7 @@ print(result)
 | from_date | str | The start date from which to get the transactions (any format that is accepted by momentjs)<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | "" |
 | to_date | str | Get the transactions up to this date (any format that is accepted by momentjs)<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | "" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  |  | True |
+| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | False | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 
 

@@ -140,7 +140,7 @@ class Erc20Metadata(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         symbol: typing.Union[MetaOapg.properties.symbol, str, ],
         address: typing.Union[MetaOapg.properties.address, str, ],
         decimals: typing.Union[MetaOapg.properties.decimals, str, ],
@@ -155,7 +155,7 @@ class Erc20Metadata(
     ) -> 'Erc20Metadata':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             symbol=symbol,
             address=address,
             decimals=decimals,

@@ -48,13 +48,13 @@ https://docs.moralis.io/docs/filter-streams
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[MetaOapg.additional_properties, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
     ) -> 'StreamsFilter':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             _configuration=_configuration,
             **kwargs,
         )

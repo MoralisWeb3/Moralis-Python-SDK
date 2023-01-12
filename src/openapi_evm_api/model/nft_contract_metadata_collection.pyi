@@ -60,12 +60,12 @@ class NftContractMetadataCollection(
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple['NftContractMetadata'], typing.List['NftContractMetadata']],
+                    arg: typing.Union[typing.Tuple['NftContractMetadata'], typing.List['NftContractMetadata']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'result':
                     return super().__new__(
                         cls,
-                        _arg,
+                        arg,
                         _configuration=_configuration,
                     )
             
@@ -125,7 +125,7 @@ class NftContractMetadataCollection(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         result: typing.Union[MetaOapg.properties.result, list, tuple, ],
         total: typing.Union[MetaOapg.properties.total, decimal.Decimal, int, ],
         page: typing.Union[MetaOapg.properties.page, decimal.Decimal, int, ],
@@ -135,7 +135,7 @@ class NftContractMetadataCollection(
     ) -> 'NftContractMetadataCollection':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             result=result,
             total=total,
             page=page,

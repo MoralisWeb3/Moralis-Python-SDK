@@ -79,7 +79,7 @@ class NativeBalance(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         lamports: typing.Union[MetaOapg.properties.lamports, str, ],
         solana: typing.Union[MetaOapg.properties.solana, str, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
@@ -87,7 +87,7 @@ class NativeBalance(
     ) -> 'NativeBalance':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             lamports=lamports,
             solana=solana,
             _configuration=_configuration,

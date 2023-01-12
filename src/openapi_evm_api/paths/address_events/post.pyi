@@ -51,13 +51,13 @@ class OffsetSchema(
     schemas.IntSchema
 ):
     pass
-DisableTotalSchema = schemas.BoolSchema
 
 
 class LimitSchema(
     schemas.IntSchema
 ):
     pass
+DisableTotalSchema = schemas.BoolSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -73,8 +73,8 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'from_date': typing.Union[FromDateSchema, str, ],
         'to_date': typing.Union[ToDateSchema, str, ],
         'offset': typing.Union[OffsetSchema, decimal.Decimal, int, ],
-        'disable_total': typing.Union[DisableTotalSchema, bool, ],
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
+        'disable_total': typing.Union[DisableTotalSchema, bool, ],
     },
     total=False
 )
@@ -127,16 +127,16 @@ request_query_offset = api_client.QueryParameter(
     schema=OffsetSchema,
     explode=True,
 )
-request_query_disable_total = api_client.QueryParameter(
-    name="disable_total",
-    style=api_client.ParameterStyle.FORM,
-    schema=DisableTotalSchema,
-    explode=True,
-)
 request_query_limit = api_client.QueryParameter(
     name="limit",
     style=api_client.ParameterStyle.FORM,
     schema=LimitSchema,
+    explode=True,
+)
+request_query_disable_total = api_client.QueryParameter(
+    name="disable_total",
+    style=api_client.ParameterStyle.FORM,
+    schema=DisableTotalSchema,
     explode=True,
 )
 # Path params
@@ -203,12 +203,12 @@ class SchemaFor200ResponseBodyApplicationJson(
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple['LogEvent'], typing.List['LogEvent']],
+                    arg: typing.Union[typing.Tuple['LogEvent'], typing.List['LogEvent']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'result':
                     return super().__new__(
                         cls,
-                        _arg,
+                        arg,
                         _configuration=_configuration,
                     )
             
@@ -262,7 +262,7 @@ class SchemaFor200ResponseBodyApplicationJson(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         total: typing.Union[MetaOapg.properties.total, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         page: typing.Union[MetaOapg.properties.page, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         page_size: typing.Union[MetaOapg.properties.page_size, decimal.Decimal, int, schemas.Unset] = schemas.unset,
@@ -272,7 +272,7 @@ class SchemaFor200ResponseBodyApplicationJson(
     ) -> 'SchemaFor200ResponseBodyApplicationJson':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             total=total,
             page=page,
             page_size=page_size,
@@ -407,8 +407,8 @@ class BaseApi(api_client.Api):
             request_query_to_date,
             request_query_topic,
             request_query_offset,
-            request_query_disable_total,
             request_query_limit,
+            request_query_disable_total,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -455,11 +455,7 @@ class BaseApi(api_client.Api):
                 api_response = api_client.ApiResponseWithoutDeserialization(response=response)
 
         if not 200 <= response.status <= 299:
-            raise exceptions.ApiException(
-                status=response.status,
-                reason=response.reason,
-                api_response=api_response
-            )
+            raise exceptions.ApiException(api_response=api_response)
 
         return api_response
 

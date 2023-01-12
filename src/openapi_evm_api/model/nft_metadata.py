@@ -294,7 +294,7 @@ class NftMetadata(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         block_number_minted: typing.Union[MetaOapg.properties.block_number_minted, str, ],
         metadata: typing.Union[MetaOapg.properties.metadata, str, ],
         syncing: typing.Union[MetaOapg.properties.syncing, decimal.Decimal, int, float, ],
@@ -324,7 +324,7 @@ class NftMetadata(
     ) -> 'NftMetadata':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             block_number_minted=block_number_minted,
             metadata=metadata,
             syncing=syncing,

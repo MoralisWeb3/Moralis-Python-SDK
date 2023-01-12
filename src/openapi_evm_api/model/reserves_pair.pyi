@@ -72,7 +72,7 @@ class ReservesPair(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         reserve0: typing.Union[MetaOapg.properties.reserve0, str, schemas.Unset] = schemas.unset,
         reserve1: typing.Union[MetaOapg.properties.reserve1, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
@@ -80,7 +80,7 @@ class ReservesPair(
     ) -> 'ReservesPair':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             reserve0=reserve0,
             reserve1=reserve1,
             _configuration=_configuration,

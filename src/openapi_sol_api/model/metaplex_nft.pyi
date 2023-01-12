@@ -119,7 +119,7 @@ class MetaplexNFT(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         isMutable: typing.Union[MetaOapg.properties.isMutable, bool, ],
         updateAuthority: typing.Union[MetaOapg.properties.updateAuthority, str, ],
         primarySaleHappened: typing.Union[MetaOapg.properties.primarySaleHappened, bool, ],
@@ -131,7 +131,7 @@ class MetaplexNFT(
     ) -> 'MetaplexNFT':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             isMutable=isMutable,
             updateAuthority=updateAuthority,
             primarySaleHappened=primarySaleHappened,

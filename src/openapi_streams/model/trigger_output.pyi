@@ -79,7 +79,7 @@ class TriggerOutput(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
         value: typing.Union[MetaOapg.properties.value, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
@@ -87,7 +87,7 @@ class TriggerOutput(
     ) -> 'TriggerOutput':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             name=name,
             value=value,
             _configuration=_configuration,

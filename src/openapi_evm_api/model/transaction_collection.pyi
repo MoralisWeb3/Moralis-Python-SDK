@@ -54,12 +54,12 @@ class TransactionCollection(
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple['Transaction'], typing.List['Transaction']],
+                    arg: typing.Union[typing.Tuple['Transaction'], typing.List['Transaction']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'result':
                     return super().__new__(
                         cls,
-                        _arg,
+                        arg,
                         _configuration=_configuration,
                     )
             
@@ -114,7 +114,7 @@ class TransactionCollection(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         total: typing.Union[MetaOapg.properties.total, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         page: typing.Union[MetaOapg.properties.page, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         page_size: typing.Union[MetaOapg.properties.page_size, decimal.Decimal, int, schemas.Unset] = schemas.unset,
@@ -124,7 +124,7 @@ class TransactionCollection(
     ) -> 'TransactionCollection':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             total=total,
             page=page,
             page_size=page_size,

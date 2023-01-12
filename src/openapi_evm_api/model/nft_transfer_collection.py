@@ -62,12 +62,12 @@ class NftTransferCollection(
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple['NftTransfer'], typing.List['NftTransfer']],
+                    arg: typing.Union[typing.Tuple['NftTransfer'], typing.List['NftTransfer']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'result':
                     return super().__new__(
                         cls,
-                        _arg,
+                        arg,
                         _configuration=_configuration,
                     )
             
@@ -151,7 +151,7 @@ class NftTransferCollection(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         cursor: typing.Union[MetaOapg.properties.cursor, str, ],
         result: typing.Union[MetaOapg.properties.result, list, tuple, ],
         total: typing.Union[MetaOapg.properties.total, decimal.Decimal, int, ],
@@ -164,7 +164,7 @@ class NftTransferCollection(
     ) -> 'NftTransferCollection':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             cursor=cursor,
             result=result,
             total=total,

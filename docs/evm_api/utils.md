@@ -77,7 +77,7 @@ Object with the properties:
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-| abi | object | The contract ABI | Yes |  | [] |
+| abi | List of object | The contract ABI | Yes |  | [] |
 | params | object | The params for the given function | Yes |  | {} |
 
 

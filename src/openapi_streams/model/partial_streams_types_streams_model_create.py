@@ -57,12 +57,12 @@ class PartialStreamsTypesStreamsModelCreate(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[list, tuple, None, ],
+                    *args: typing.Union[list, tuple, None, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'topic0':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             allAddresses = schemas.BoolSchema
@@ -84,12 +84,12 @@ class PartialStreamsTypesStreamsModelCreate(
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple['GetNativeBalances'], typing.List['GetNativeBalances']],
+                    arg: typing.Union[typing.Tuple['GetNativeBalances'], typing.List['GetNativeBalances']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'getNativeBalances':
                     return super().__new__(
                         cls,
-                        _arg,
+                        arg,
                         _configuration=_configuration,
                     )
             
@@ -114,12 +114,12 @@ class PartialStreamsTypesStreamsModelCreate(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[list, tuple, None, ],
+                    *args: typing.Union[list, tuple, None, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'abi':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             
@@ -141,12 +141,12 @@ class PartialStreamsTypesStreamsModelCreate(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[list, tuple, None, ],
+                    *args: typing.Union[list, tuple, None, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'advancedOptions':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             
@@ -161,12 +161,12 @@ class PartialStreamsTypesStreamsModelCreate(
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+                    arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'chainIds':
                     return super().__new__(
                         cls,
-                        _arg,
+                        arg,
                         _configuration=_configuration,
                     )
             
@@ -192,12 +192,12 @@ class PartialStreamsTypesStreamsModelCreate(
             
                 def __new__(
                     cls,
-                    *_args: typing.Union[list, tuple, None, ],
+                    *args: typing.Union[list, tuple, None, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'triggers':
                     return super().__new__(
                         cls,
-                        *_args,
+                        *args,
                         _configuration=_configuration,
                     )
             __annotations__ = {
@@ -318,7 +318,7 @@ class PartialStreamsTypesStreamsModelCreate(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         webhookUrl: typing.Union[MetaOapg.properties.webhookUrl, str, schemas.Unset] = schemas.unset,
         description: typing.Union[MetaOapg.properties.description, str, schemas.Unset] = schemas.unset,
         tag: typing.Union[MetaOapg.properties.tag, str, schemas.Unset] = schemas.unset,
@@ -338,7 +338,7 @@ class PartialStreamsTypesStreamsModelCreate(
     ) -> 'PartialStreamsTypesStreamsModelCreate':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             webhookUrl=webhookUrl,
             description=description,
             tag=tag,

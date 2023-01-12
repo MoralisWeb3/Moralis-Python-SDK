@@ -112,7 +112,7 @@ class NFTMetadata(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         standard: typing.Union[MetaOapg.properties.standard, str, ],
         mint: typing.Union[MetaOapg.properties.mint, str, ],
         symbol: typing.Union[MetaOapg.properties.symbol, str, ],
@@ -123,7 +123,7 @@ class NFTMetadata(
     ) -> 'NFTMetadata':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             standard=standard,
             mint=mint,
             symbol=symbol,

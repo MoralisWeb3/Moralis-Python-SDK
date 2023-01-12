@@ -101,7 +101,7 @@ class SolanaChallengeResponseDto(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         profileId: typing.Union[MetaOapg.properties.profileId, str, ],
         id: typing.Union[MetaOapg.properties.id, str, ],
         message: typing.Union[MetaOapg.properties.message, str, ],
@@ -110,7 +110,7 @@ class SolanaChallengeResponseDto(
     ) -> 'SolanaChallengeResponseDto':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             profileId=profileId,
             id=id,
             message=message,

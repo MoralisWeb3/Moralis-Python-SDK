@@ -63,12 +63,12 @@ class UsagestatsTypesUsageStatsModel(
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple['UsageStatsStreams'], typing.List['UsageStatsStreams']],
+                    arg: typing.Union[typing.Tuple['UsageStatsStreams'], typing.List['UsageStatsStreams']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'streams':
                     return super().__new__(
                         cls,
-                        _arg,
+                        arg,
                         _configuration=_configuration,
                     )
             
@@ -151,7 +151,7 @@ class UsagestatsTypesUsageStatsModel(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         totalWebhooksDelivered: typing.Union[MetaOapg.properties.totalWebhooksDelivered, decimal.Decimal, int, float, ],
         totalTxsProcessed: typing.Union[MetaOapg.properties.totalTxsProcessed, decimal.Decimal, int, float, ],
         totalLogsProcessed: typing.Union[MetaOapg.properties.totalLogsProcessed, decimal.Decimal, int, float, ],
@@ -164,7 +164,7 @@ class UsagestatsTypesUsageStatsModel(
     ) -> 'UsagestatsTypesUsageStatsModel':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             totalWebhooksDelivered=totalWebhooksDelivered,
             totalTxsProcessed=totalTxsProcessed,
             totalLogsProcessed=totalLogsProcessed,

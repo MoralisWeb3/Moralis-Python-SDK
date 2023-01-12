@@ -108,7 +108,7 @@ class NftContractMetadata(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         contract_type: typing.Union[MetaOapg.properties.contract_type, str, ],
         symbol: typing.Union[MetaOapg.properties.symbol, str, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
@@ -119,7 +119,7 @@ class NftContractMetadata(
     ) -> 'NftContractMetadata':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             contract_type=contract_type,
             symbol=symbol,
             name=name,

@@ -54,15 +54,6 @@ FromDateSchema = schemas.StrSchema
 ToDateSchema = schemas.StrSchema
 
 
-class OffsetSchema(
-    schemas.IntSchema
-):
-
-
-    class MetaOapg:
-        inclusive_minimum = 0
-
-
 class LimitSchema(
     schemas.IntSchema
 ):
@@ -85,7 +76,6 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'to_block': typing.Union[ToBlockSchema, decimal.Decimal, int, ],
         'from_date': typing.Union[FromDateSchema, str, ],
         'to_date': typing.Union[ToDateSchema, str, ],
-        'offset': typing.Union[OffsetSchema, decimal.Decimal, int, ],
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
         'disable_total': typing.Union[DisableTotalSchema, bool, ],
         'cursor': typing.Union[CursorSchema, str, ],
@@ -126,12 +116,6 @@ request_query_to_date = api_client.QueryParameter(
     name="to_date",
     style=api_client.ParameterStyle.FORM,
     schema=ToDateSchema,
-    explode=True,
-)
-request_query_offset = api_client.QueryParameter(
-    name="offset",
-    style=api_client.ParameterStyle.FORM,
-    schema=OffsetSchema,
     explode=True,
 )
 request_query_limit = api_client.QueryParameter(
@@ -286,7 +270,6 @@ class BaseApi(api_client.Api):
             request_query_to_block,
             request_query_from_date,
             request_query_to_date,
-            request_query_offset,
             request_query_limit,
             request_query_disable_total,
             request_query_cursor,
@@ -325,11 +308,7 @@ class BaseApi(api_client.Api):
                 api_response = api_client.ApiResponseWithoutDeserialization(response=response)
 
         if not 200 <= response.status <= 299:
-            raise exceptions.ApiException(
-                status=response.status,
-                reason=response.reason,
-                api_response=api_response
-            )
+            raise exceptions.ApiException(api_response=api_response)
 
         return api_response
 

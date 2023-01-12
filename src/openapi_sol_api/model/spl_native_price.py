@@ -99,7 +99,7 @@ class SPLNativePrice(
 
     def __new__(
         cls,
-        *_args: typing.Union[dict, frozendict.frozendict, ],
+        *args: typing.Union[dict, frozendict.frozendict, ],
         symbol: typing.Union[MetaOapg.properties.symbol, str, ],
         decimals: typing.Union[MetaOapg.properties.decimals, decimal.Decimal, int, float, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
@@ -109,7 +109,7 @@ class SPLNativePrice(
     ) -> 'SPLNativePrice':
         return super().__new__(
             cls,
-            *_args,
+            *args,
             symbol=symbol,
             decimals=decimals,
             name=name,
