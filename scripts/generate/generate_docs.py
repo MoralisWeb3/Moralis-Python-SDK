@@ -15,7 +15,6 @@ camel_to_snake_map = {}
 
 def generate_docs():
     '''
-    Part 3/3 of generation process
     Generate docs and code snippets
     '''
     print(f"⏳ Generating docs...")
@@ -27,7 +26,7 @@ def generate_docs():
         groups[module_name] = module_groups
     generate_root_readme(modules, groups)
     save_snippets()
-    print(f"🏁 Generated docs")
+    print(f"🏁 Done generating docs\n")
 
 
 def camel_to_snake(string):
@@ -184,7 +183,6 @@ def generate_operation_snippet(module_name, group_name, operation, swagger_path_
 
 
 def generate_group_snippet(module_name, group_name, operations, swagger_path_by_operation, swagger):
-    print(operations)
     return f'''\
 # {group_name} API:
 

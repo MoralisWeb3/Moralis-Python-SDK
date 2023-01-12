@@ -4,6 +4,7 @@ from generate.generate_docs import generate_docs
 from generate.generate_prepare import generate_prepare
 from generate.generate_cleanup import generate_cleanup
 
+
 def generate():
     '''
     Generate the lib and docs locally
@@ -15,6 +16,7 @@ def generate():
     generate_lib()
     generate_docs()
     generate_cleanup()
-    print("🏁 Done Moralis Python SDK...")
+    print("🎉 Done Generating Moralis Python SDK")
+
 
 generate()

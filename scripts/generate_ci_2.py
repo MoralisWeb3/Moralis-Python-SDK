@@ -12,6 +12,6 @@ def generate():
     generate_lib()
     generate_docs()
     generate_cleanup()
-    print("🏁 Done Moralis Python SDK phase 2...")
+    print("🏁 Done Moralis Python SDK phase 2")
 
 generate()

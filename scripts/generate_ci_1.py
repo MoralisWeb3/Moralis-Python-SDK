@@ -12,6 +12,6 @@ def generate():
     print("🚀 Generating Moralis Python SDK phase 1...")
     generate_prepare()
     generate_openapi_clients()
-    print("🏁 Done Moralis Python SDK phase 1...")
+    print("🏁 Done Moralis Python SDK phase 1")
 
 generate()

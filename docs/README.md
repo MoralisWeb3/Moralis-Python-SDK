@@ -40,7 +40,7 @@ Now you can import the correct module from the SDK and call the method you need.
 
 ## streams
 
-- [evm](./streams/evm.md)
+- [evm_streams](./streams/evm_streams.md)
 - [history](./streams/history.md)
 - [project](./streams/project.md)
 - [stats](./streams/stats.md)

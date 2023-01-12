@@ -184,7 +184,7 @@ params = {
     "cursor": "", 
 }
 
-result = streams.evm.get_streams(
+result = streams.evm_streams.get_streams(
     api_key=api_key,
     params=params,
 )
@@ -225,7 +225,7 @@ For more info see [the live docs](https://moralisweb3.github.io/Moralis-Python-S
 
 ## streams
 
-- [evm](./docs/streams/evm.md)
+- [evm_streams](./docs/streams/evm_streams.md)
 - [history](./docs/streams/history.md)
 - [project](./docs/streams/project.md)
 - [stats](./docs/streams/stats.md)
