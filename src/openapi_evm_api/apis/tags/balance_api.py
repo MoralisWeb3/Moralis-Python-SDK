@@ -10,7 +10,7 @@
 """
 
 from openapi_evm_api.paths.address_balance.get import GetNativeBalance
-from openapi_evm_api.paths.native_balances.post import GetNativeBalancesForAddresses
+from openapi_evm_api.paths.wallets_balances.get import GetNativeBalancesForAddresses
 
 
 class BalanceApi(
