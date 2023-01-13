@@ -10,3 +10,8 @@ class PathValues(str, enum.Enum):
     CHALLENGE_VERIFY_EVM = "/challenge/verify/evm"
     CHALLENGE_REQUEST_SOLANA = "/challenge/request/solana"
     CHALLENGE_VERIFY_SOLANA = "/challenge/verify/solana"
+    PROFILE_PROFILE_ID_ADDRESSES = "/profile/{profileId}/addresses"
+    BIND_REQUEST = "/bind/request"
+    BIND_REQUEST_VERIFY = "/bind/request/verify"
+    BIND_REMOVE = "/bind/remove"
+    BIND_REMOVE_VERIFY = "/bind/remove/verify"

@@ -27,7 +27,7 @@ from openapi_evm_api.apis.paths.erc20_metadata_symbols import Erc20MetadataSymbo
 from openapi_evm_api.apis.paths.erc20_address_allowance import Erc20AddressAllowance
 from openapi_evm_api.apis.paths.erc20_address_transfers import Erc20AddressTransfers
 from openapi_evm_api.apis.paths.address_balance import AddressBalance
-from openapi_evm_api.apis.paths.native_balances import NativeBalances
+from openapi_evm_api.apis.paths.wallets_balances import WalletsBalances
 from openapi_evm_api.apis.paths.address import Address
 from openapi_evm_api.apis.paths.address_verbose import AddressVerbose
 from openapi_evm_api.apis.paths.transaction_transaction_hash import TransactionTransactionHash
@@ -73,7 +73,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.ERC20_ADDRESS_ALLOWANCE: Erc20AddressAllowance,
         PathValues.ERC20_ADDRESS_TRANSFERS: Erc20AddressTransfers,
         PathValues.ADDRESS_BALANCE: AddressBalance,
-        PathValues.NATIVE_BALANCES: NativeBalances,
+        PathValues.WALLETS_BALANCES: WalletsBalances,
         PathValues.ADDRESS: Address,
         PathValues.ADDRESS_VERBOSE: AddressVerbose,
         PathValues.TRANSACTION_TRANSACTION_HASH: TransactionTransactionHash,
@@ -120,7 +120,7 @@ path_to_api = PathToApi(
         PathValues.ERC20_ADDRESS_ALLOWANCE: Erc20AddressAllowance,
         PathValues.ERC20_ADDRESS_TRANSFERS: Erc20AddressTransfers,
         PathValues.ADDRESS_BALANCE: AddressBalance,
-        PathValues.NATIVE_BALANCES: NativeBalances,
+        PathValues.WALLETS_BALANCES: WalletsBalances,
         PathValues.ADDRESS: Address,
         PathValues.ADDRESS_VERBOSE: AddressVerbose,
         PathValues.TRANSACTION_TRANSACTION_HASH: TransactionTransactionHash,

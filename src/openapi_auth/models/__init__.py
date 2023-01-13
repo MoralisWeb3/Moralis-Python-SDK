@@ -11,6 +11,15 @@
 # import sys
 # sys.setrecursionlimit(n)
 
+from openapi_auth.model.address_info_dto import AddressInfoDto
+from openapi_auth.model.bind_remove_dto import BindRemoveDto
+from openapi_auth.model.bind_remove_response_dto import BindRemoveResponseDto
+from openapi_auth.model.bind_request_dto import BindRequestDto
+from openapi_auth.model.bind_request_response_dto import BindRequestResponseDto
+from openapi_auth.model.bind_verify_remove_dto import BindVerifyRemoveDto
+from openapi_auth.model.bind_verify_remove_response_dto import BindVerifyRemoveResponseDto
+from openapi_auth.model.bind_verify_request_dto import BindVerifyRequestDto
+from openapi_auth.model.bind_verify_request_response_dto import BindVerifyRequestResponseDto
 from openapi_auth.model.evm_challenge_request_dto import EvmChallengeRequestDto
 from openapi_auth.model.evm_challenge_response_dto import EvmChallengeResponseDto
 from openapi_auth.model.evm_complete_challenge_request_dto import EvmCompleteChallengeRequestDto
@@ -19,3 +28,4 @@ from openapi_auth.model.solana_challenge_request_dto import SolanaChallengeReque
 from openapi_auth.model.solana_challenge_response_dto import SolanaChallengeResponseDto
 from openapi_auth.model.solana_complete_challenge_request_dto import SolanaCompleteChallengeRequestDto
 from openapi_auth.model.solana_complete_challenge_response_dto import SolanaCompleteChallengeResponseDto
+from openapi_auth.model.verification_dto import VerificationDto
