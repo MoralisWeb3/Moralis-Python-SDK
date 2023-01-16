@@ -32,7 +32,7 @@ class PathValues(str, enum.Enum):
     ERC20_ADDRESS_ALLOWANCE = "/erc20/{address}/allowance"
     ERC20_ADDRESS_TRANSFERS = "/erc20/{address}/transfers"
     ADDRESS_BALANCE = "/{address}/balance"
-    NATIVE_BALANCES = "/nativeBalances"
+    WALLETS_BALANCES = "/wallets/balances"
     ADDRESS = "/{address}"
     ADDRESS_VERBOSE = "/{address}/verbose"
     TRANSACTION_TRANSACTION_HASH = "/transaction/{transaction_hash}"

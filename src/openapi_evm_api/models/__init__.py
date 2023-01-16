@@ -11,7 +11,6 @@
 # import sys
 # sys.setrecursionlimit(n)
 
-from openapi_evm_api.model.addresses_set import AddressesSet
 from openapi_evm_api.model.block import Block
 from openapi_evm_api.model.block_date import BlockDate
 from openapi_evm_api.model.block_transaction import BlockTransaction

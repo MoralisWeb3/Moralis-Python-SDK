@@ -1,7 +1,7 @@
 # do not import all endpoints into this module because that uses a lot of memory and stack frames
 # if you need the ability to import all endpoints from this module, import them with
-# from openapi_evm_api.paths.native_balances import Api
+# from openapi_auth.paths.profile_profile_id_addresses import Api
 
-from openapi_evm_api.paths import PathValues
+from openapi_auth.paths import PathValues
 
-path = PathValues.NATIVE_BALANCES
+path = PathValues.PROFILE_PROFILE_ID_ADDRESSES
