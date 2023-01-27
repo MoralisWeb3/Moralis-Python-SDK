@@ -66,6 +66,10 @@ class NftOwner(
             @staticmethod
             def normalized_metadata() -> typing.Type['NormalizedMetadata']:
                 return NormalizedMetadata
+        
+            @staticmethod
+            def media_links() -> typing.Type['Media']:
+                return Media
             amount = schemas.StrSchema
             __annotations__ = {
                 "token_address": token_address,
@@ -82,6 +86,7 @@ class NftOwner(
                 "token_uri": token_uri,
                 "metadata": metadata,
                 "normalized_metadata": normalized_metadata,
+                "media_links": media_links,
                 "amount": amount,
             }
 
@@ -141,12 +146,15 @@ class NftOwner(
     def __getitem__(self, name: typing_extensions.Literal["normalized_metadata"]) -> 'NormalizedMetadata': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["media_links"]) -> 'Media': ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["amount"]) -> MetaOapg.properties.amount: ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "owner_of", "block_number", "block_number_minted", "name", "symbol", "token_hash", "last_token_uri_sync", "last_metadata_sync", "token_uri", "metadata", "normalized_metadata", "amount", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "owner_of", "block_number", "block_number_minted", "name", "symbol", "token_hash", "last_token_uri_sync", "last_metadata_sync", "token_uri", "metadata", "normalized_metadata", "media_links", "amount", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -194,12 +202,15 @@ class NftOwner(
     def get_item_oapg(self, name: typing_extensions.Literal["normalized_metadata"]) -> typing.Union['NormalizedMetadata', schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["media_links"]) -> typing.Union['Media', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["amount"]) -> typing.Union[MetaOapg.properties.amount, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "owner_of", "block_number", "block_number_minted", "name", "symbol", "token_hash", "last_token_uri_sync", "last_metadata_sync", "token_uri", "metadata", "normalized_metadata", "amount", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "owner_of", "block_number", "block_number_minted", "name", "symbol", "token_hash", "last_token_uri_sync", "last_metadata_sync", "token_uri", "metadata", "normalized_metadata", "media_links", "amount", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -220,6 +231,7 @@ class NftOwner(
         token_uri: typing.Union[MetaOapg.properties.token_uri, str, schemas.Unset] = schemas.unset,
         metadata: typing.Union[MetaOapg.properties.metadata, str, schemas.Unset] = schemas.unset,
         normalized_metadata: typing.Union['NormalizedMetadata', schemas.Unset] = schemas.unset,
+        media_links: typing.Union['Media', schemas.Unset] = schemas.unset,
         amount: typing.Union[MetaOapg.properties.amount, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -241,9 +253,11 @@ class NftOwner(
             token_uri=token_uri,
             metadata=metadata,
             normalized_metadata=normalized_metadata,
+            media_links=media_links,
             amount=amount,
             _configuration=_configuration,
             **kwargs,
         )
 
+from openapi_evm_api.model.media import Media
 from openapi_evm_api.model.normalized_metadata import NormalizedMetadata

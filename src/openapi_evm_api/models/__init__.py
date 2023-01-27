@@ -32,6 +32,9 @@ from openapi_evm_api.model.log import Log
 from openapi_evm_api.model.log_collection import LogCollection
 from openapi_evm_api.model.log_event import LogEvent
 from openapi_evm_api.model.log_event_by_address import LogEventByAddress
+from openapi_evm_api.model.media import Media
+from openapi_evm_api.model.media_collection import MediaCollection
+from openapi_evm_api.model.media_item import MediaItem
 from openapi_evm_api.model.metadata_resync import MetadataResync
 from openapi_evm_api.model.native_balance import NativeBalance
 from openapi_evm_api.model.native_balances import NativeBalances
