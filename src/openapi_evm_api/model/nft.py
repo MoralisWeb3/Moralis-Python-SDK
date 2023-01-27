@@ -58,6 +58,10 @@ class Nft(
             @staticmethod
             def normalized_metadata() -> typing.Type['NormalizedMetadata']:
                 return NormalizedMetadata
+        
+            @staticmethod
+            def media_links() -> typing.Type['Media']:
+                return Media
             minter_address = schemas.StrSchema
             last_token_uri_sync = schemas.StrSchema
             last_metadata_sync = schemas.StrSchema
@@ -75,6 +79,7 @@ class Nft(
                 "token_uri": token_uri,
                 "metadata": metadata,
                 "normalized_metadata": normalized_metadata,
+                "media_links": media_links,
                 "minter_address": minter_address,
                 "last_token_uri_sync": last_token_uri_sync,
                 "last_metadata_sync": last_metadata_sync,
@@ -125,6 +130,9 @@ class Nft(
     def __getitem__(self, name: typing_extensions.Literal["normalized_metadata"]) -> 'NormalizedMetadata': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["media_links"]) -> 'Media': ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["minter_address"]) -> MetaOapg.properties.minter_address: ...
     
     @typing.overload
@@ -139,7 +147,7 @@ class Nft(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "name", "symbol", "owner_of", "token_hash", "block_number", "block_number_minted", "token_uri", "metadata", "normalized_metadata", "minter_address", "last_token_uri_sync", "last_metadata_sync", "amount", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "name", "symbol", "owner_of", "token_hash", "block_number", "block_number_minted", "token_uri", "metadata", "normalized_metadata", "media_links", "minter_address", "last_token_uri_sync", "last_metadata_sync", "amount", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -181,6 +189,9 @@ class Nft(
     def get_item_oapg(self, name: typing_extensions.Literal["normalized_metadata"]) -> typing.Union['NormalizedMetadata', schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["media_links"]) -> typing.Union['Media', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["minter_address"]) -> typing.Union[MetaOapg.properties.minter_address, schemas.Unset]: ...
     
     @typing.overload
@@ -195,7 +206,7 @@ class Nft(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "name", "symbol", "owner_of", "token_hash", "block_number", "block_number_minted", "token_uri", "metadata", "normalized_metadata", "minter_address", "last_token_uri_sync", "last_metadata_sync", "amount", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "name", "symbol", "owner_of", "token_hash", "block_number", "block_number_minted", "token_uri", "metadata", "normalized_metadata", "media_links", "minter_address", "last_token_uri_sync", "last_metadata_sync", "amount", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -214,6 +225,7 @@ class Nft(
         token_uri: typing.Union[MetaOapg.properties.token_uri, str, schemas.Unset] = schemas.unset,
         metadata: typing.Union[MetaOapg.properties.metadata, str, schemas.Unset] = schemas.unset,
         normalized_metadata: typing.Union['NormalizedMetadata', schemas.Unset] = schemas.unset,
+        media_links: typing.Union['Media', schemas.Unset] = schemas.unset,
         minter_address: typing.Union[MetaOapg.properties.minter_address, str, schemas.Unset] = schemas.unset,
         last_token_uri_sync: typing.Union[MetaOapg.properties.last_token_uri_sync, str, schemas.Unset] = schemas.unset,
         last_metadata_sync: typing.Union[MetaOapg.properties.last_metadata_sync, str, schemas.Unset] = schemas.unset,
@@ -236,6 +248,7 @@ class Nft(
             token_uri=token_uri,
             metadata=metadata,
             normalized_metadata=normalized_metadata,
+            media_links=media_links,
             minter_address=minter_address,
             last_token_uri_sync=last_token_uri_sync,
             last_metadata_sync=last_metadata_sync,
@@ -244,4 +257,5 @@ class Nft(
             **kwargs,
         )
 
+from openapi_evm_api.model.media import Media
 from openapi_evm_api.model.normalized_metadata import NormalizedMetadata
