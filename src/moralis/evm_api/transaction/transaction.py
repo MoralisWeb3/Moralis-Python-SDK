@@ -1,3 +1,4 @@
 from .get_transaction import get_transaction
+from .get_transaction_verbose import get_transaction_verbose
 from .get_wallet_transactions import get_wallet_transactions
 from .get_wallet_transactions_verbose import get_wallet_transactions_verbose
