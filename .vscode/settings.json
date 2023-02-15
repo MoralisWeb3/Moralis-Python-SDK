@@ -1,6 +1,6 @@
 {
   "editor.formatOnSave": false,
-  "python.analysis.typeCheckingMode": "off",
+  "python.analysis.typeCheckingMode": "basic",
   "[python]": {
     "editor.insertSpaces": true,
     "editor.tabSize": 4  

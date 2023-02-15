@@ -1,10 +1,5 @@
-import json
-from .swagger import generate_swagger
-from .files import ensure_temp_folder, save_json, copy_and_replace_folder, remove_folder
-from .paths import root_path, src_path, temp_swaggers_path, temp_generated_api_path
-from .openapi import generate_openapi
 from .MoralisModule import generate_modules
-from .apply_patches import apply_patches
+from .api_config import get_api_config
 
 
 def generate_lib():
@@ -13,13 +8,11 @@ def generate_lib():
     Note make sure that openapi clients are generated beforehand via `python scripts/generate/generate_openapi.py`
     Note make sure that the generated openapi clients are installed locally beforehand via `pip install -e .` in the root folder
     '''
-    api_definitions = json.load(open(root_path / 'api-config.json'))
-
     print(f"⏳ start generating lib...")
 
-    for api in api_definitions:
+    for api in get_api_config():
         print(f'⏳ start generating lib for {api["name"]}')
-        generate_modules(api["name"], api["security_key"])
+        generate_modules(api["name"], api["security_key"], api["sub_networks"] if "sub_networks" in api else None)
         print(f'⏳ start generating lib for {api["name"]}')
 
     print(f"🏁 done generating lib\n")

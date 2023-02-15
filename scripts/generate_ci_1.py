@@ -1,8 +1,6 @@
-from generate.generate_lib import generate_lib
+from generate.generate_swaggers import generate_swaggers
 from generate.generate_openapi_clients import generate_openapi_clients
-from generate.generate_docs import generate_docs
 from generate.generate_prepare import generate_prepare
-from generate.generate_cleanup import generate_cleanup
 
 def generate():
     '''
@@ -11,6 +9,7 @@ def generate():
     '''
     print("🚀 Generating Moralis Python SDK phase 1...")
     generate_prepare()
+    generate_swaggers()
     generate_openapi_clients()
     print("🏁 Done Moralis Python SDK phase 1")
 

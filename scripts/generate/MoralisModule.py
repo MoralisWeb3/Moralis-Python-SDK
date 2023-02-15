@@ -3,7 +3,7 @@ import importlib
 import inspect
 import re
 from pathlib import Path
-from typing import Type
+from typing import Type, TypedDict, List
 from inspect import signature
 from enum import Enum
 from .paths import moralis_modules_root_path
@@ -11,24 +11,36 @@ from .files import ensure_empty_folder, save_py
 from .Template import useTemplate, Template
 
 
-def generate_modules(api_name: str, security_key: str):
+class NetworkConfig(TypedDict):
+    parameter_value: str
+    base_url: str
+
+
+class SubNetworkConfig(TypedDict):
+    parameter_name: str
+    default_network: str
+    networks: List[NetworkConfig]
+
+
+def generate_modules(api_name: str, security_key: str, subnetworks: SubNetworkConfig | None = None):
     print(f"⏳ Generating modules for {api_name}...")
-    module = MoralisModule(api_name, security_key)
+    module = MoralisModule(api_name, security_key, subnetworks)
     module.clear()
     module.generate_modules()
     print(f"✅ Generated modules for {api_name}")
 
 
-
 class MoralisModule:
-    def __init__(self, api_name, security_key):
+    def __init__(self, api_name: str, security_key: str, subnetworksConfig: SubNetworkConfig | None):
         self.api_name: str = api_name
         self.security_key: str = security_key
+        self.subnetworksConfig = subnetworksConfig
         self.version = self.get_version()
         self.tags: Type[Enum] = getattr(importlib.import_module(
             f'openapi_{api_name}.apis.tags'), "TagValues")
         self.tag_to_api = getattr(importlib.import_module(
             f'openapi_{api_name}.apis.tag_to_api'), "tag_to_api")
+        pass
 
     def clear(self):
         print(f"⏳ Removing modules for {self.api_name}...")
@@ -105,7 +117,14 @@ class MoralisModule:
                 "api_name": self.api_name,
                 "tag": tag,
                 "api_client_name": self.get_api_client_name(tag),
-                "security_key": self.security_key, },
+                "security_key": self.security_key,
+                "subnetworksConfig": {
+                    "host_parameter": self.subnetworksConfig["parameter_name"],
+                    "default_host_name": self.subnetworksConfig["default_network"],
+                    "networks": self.subnetworksConfig["networks"]
+                } if self.subnetworksConfig is not None else None
+
+            },
         )
 
         # Generate files for all opertions
@@ -116,6 +135,11 @@ class MoralisModule:
                 values={
                     **get_operation_data(operation),
                     "operation_name": operation[0],
+                    "subnetworksConfig": {
+                        "host_parameter": self.subnetworksConfig["parameter_name"],
+                        "default_host_name": self.subnetworksConfig["default_network"],
+                        "networks": self.subnetworksConfig["networks"]
+                    } if self.subnetworksConfig is not None else None
                 }
             )
 
@@ -176,20 +200,15 @@ def get_operation_data(operation):
         imports.append(path_params_sig.__name__)
 
     imports = []
-    params = []
     if (has_query_params):
         imports.append("RequestQueryParams")
-        params.append("RequestQueryParams")
     if (has_path_params):
         imports.append("RequestPathParams")
-        params.append("RequestPathParams")
     if (has_body):
         imports.append("SchemaForRequestBodyApplicationJson")
 
     import_statement = f'from {fn_module} import {", ".join(imports)}' if len(
         imports) > 0 else None
-    params_union = f'typing.Union[{", ".join(params)}]' if len(
-        params) > 1 else ", ".join(params)
 
     return {
         "has_any_params": has_any_params,
@@ -198,11 +217,8 @@ def get_operation_data(operation):
         "has_body": has_body,
         "is_json_response": is_json_response,
         "import_statement": import_statement,
-        "imports": imports,
-        "params_union": params_union,
-        "params": params
+        # "imports": imports,
     }
-
 
 
 def api_operation_predicate(o):

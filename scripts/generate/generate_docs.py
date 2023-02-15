@@ -6,6 +6,8 @@ from pathlib import Path
 from .operation_params import get_required_for_param, get_param_details, get_type_for_body, resolve_ref_to_type, get_description_for_param
 from .operations_generation_utils import generate_operation_example
 from .paths import root_path, moralis_modules_root_path, docs_path, docs_snippet_path
+from .api_config import get_api_config
+from .snake_case import to_snake
 
 nl = '\n'
 quote = '"'
@@ -18,24 +20,22 @@ def generate_docs():
     Generate docs and code snippets
     '''
     print(f"⏳ Generating docs...")
-    apis = json.load(open(root_path / 'api-config.json'))
-    modules = [api["name"] for api in apis]
+    apis = get_api_config()
+    api_names = [api["name"] for api in apis]
     groups = {}
-    for module in modules:
-        module_groups, module_name = generate_docs_for_module(module)
+    for api in apis:
+        sub_networks = api["sub_networks"] if "sub_networks" in api else None
+        module_groups, module_name = generate_docs_for_module(
+            api["name"], sub_networks)
         groups[module_name] = module_groups
-    generate_root_readme(modules, groups)
+    generate_root_readme(api_names, groups)
     save_snippets()
     print(f"🏁 Done generating docs\n")
 
 
-def camel_to_snake(string):
-    original = string
-    string = re.sub(r'NFT', 'Nft', string)
-    string = re.sub(r'SPL', 'Spl', string)
+def camel_to_snake(original):
+    out = to_snake(original)
 
-    string = re.sub(r'(?<!^)(?=[A-Z])', '_', string).lower()
-    out = ''.join(string.lower())
     if not out in camel_to_snake_map:
         camel_to_snake_map[out] = original
     return out
@@ -82,7 +82,22 @@ def generate_operation_body_params_row(data, swagger):
     return f'| {name} | {type} | {description} | {required} | {default} | {example} |{nl}'
 
 
-def generate_operation_params(swagger_data, swagger):
+def generate_operation_network_params_row(sub_networks):
+    if not sub_networks:
+        return ""
+    
+    available_networks = "enum[str]: <br/>"+"<br/>".join([f'- "{network["name"]}"' for network in sub_networks["networks"]])
+    parameter_name = sub_networks["parameter_name"]
+    default_network = sub_networks["default_network"]
+    example_network = sub_networks["networks"][0]["name"]
+
+    if(default_network == example_network and len(sub_networks["networks"]) > 1):
+        example_network = sub_networks["networks"][1]["name"]
+
+    return f'| {parameter_name} | {available_networks} | The network to use | No | "{default_network}"  | "{example_network}" |'
+
+
+def generate_operation_params(swagger_data, swagger, sub_networks):
     if not "parameters" in swagger_data or len(swagger_data["parameters"]) == 0:
         return ""
 
@@ -94,6 +109,7 @@ def generate_operation_params(swagger_data, swagger):
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
+{generate_operation_network_params_row(sub_networks)}
 {''.join(
     (map(lambda param: generate_operation_params_row(param, swagger), params)))}
 
@@ -155,12 +171,11 @@ Object with the properties:
 
 '''
 
-
-def generate_operation_snippet(module_name, group_name, operation, swagger_path_by_operation, swagger):
+def generate_operation_snippet(module_name, group_name, operation, swagger_path_by_operation, swagger, sub_networks):
     swagger_data = swagger_path_by_operation[operation]["data"]
 
     snippet = generate_operation_example(
-        module_name, group_name, operation, swagger, swagger_data)
+        module_name, group_name, operation, swagger, swagger_data, sub_networks)
     register_snippet(module_name, group_name, operation, snippet)
 
     return f'''\
@@ -176,13 +191,13 @@ def generate_operation_snippet(module_name, group_name, operation, swagger_path_
 {snippet}
 ```
 
-{generate_operation_params(swagger_data, swagger)}\
+{generate_operation_params(swagger_data, swagger, sub_networks)}\
 {generate_operation_body(swagger_data, swagger)}\
 
 '''
 
 
-def generate_group_snippet(module_name, group_name, operations, swagger_path_by_operation, swagger):
+def generate_group_snippet(module_name, group_name, operations, swagger_path_by_operation, swagger, sub_networks):
     return f'''\
 # {group_name} API:
 
@@ -192,12 +207,12 @@ def generate_group_snippet(module_name, group_name, operations, swagger_path_by_
     lambda operation: f"- [{Path(operation).stem}](#{Path(operation).stem}){nl}", sorted(operations))))}
 
 {''.join(map(lambda operation: generate_operation_snippet(module_name,
-         group_name, Path(operation).stem, swagger_path_by_operation, swagger), sorted(operations)))}
+         group_name, Path(operation).stem, swagger_path_by_operation, swagger, sub_networks), sorted(operations)))}
 
 '''
 
 
-def generate_docs_for_group(module_name, group_name, swagger_path_by_operation, swagger):
+def generate_docs_for_group(module_name, group_name, swagger_path_by_operation, swagger, sub_networks):
     print(f"⏳ Generating docs for group {module_name}.{group_name}...")
 
     module_path = moralis_modules_root_path / module_name
@@ -206,14 +221,14 @@ def generate_docs_for_group(module_name, group_name, swagger_path_by_operation, 
         group_path) if os.path.isfile(group_path / operation) and operation.endswith('.py') and not operation.startswith('__') and not operation == 'api_instance.py' and not operation == f'{group_name}.py']
 
     content = generate_group_snippet(
-        module_name, group_name, operations, swagger_path_by_operation, swagger)
+        module_name, group_name, operations, swagger_path_by_operation, swagger, sub_networks)
     out_path = docs_path / module_name / f'{group_name}.md'
     with open(out_path, "w") as f:
         f.write(content)
     print(f"✅ Generated docs for group {module_name}.{group_name}")
 
 
-def generate_docs_for_module(module_name):
+def generate_docs_for_module(module_name, sub_networks):
     print(f"⏳ Generating docs for module {module_name}...")
     swagger_path = root_path / f'temp/swagger/{module_name}.json'
     swagger_file = open(swagger_path, "r")
@@ -246,7 +261,7 @@ def generate_docs_for_module(module_name):
 
     for group in groups:
         generate_docs_for_group(
-            module_name, group, swagger_path_by_operation, swagger)
+            module_name, group, swagger_path_by_operation, swagger, sub_networks)
 
     print(f"✅ Generated docs for module {module_name}")
     return groups, module_name
@@ -277,30 +292,36 @@ def generate_root_readme(modules, groups):
             flags=re.DOTALL
         )
 
-        new_content = re.sub(
-            pattern=r'<!-- Start: generated:example-evm_api -->(.*?)<!-- End: generated:example-evm_api -->',
-            repl=f'<!-- Start: generated:example-evm_api -->{nl}{nl}```python{nl}{code_snippets["evm_api"]["balance"]["getNativeBalance"]}```{nl}{nl}<!-- End: generated:example-evm_api -->',
-            string=new_content,
-            flags=re.DOTALL
-        )
-        new_content = re.sub(
-            pattern=r'<!-- Start: generated:example-sol_api -->(.*?)<!-- End: generated:example-sol_api -->',
-            repl=f'<!-- Start: generated:example-sol_api -->{nl}{nl}```python{nl}{code_snippets["sol_api"]["account"]["balance"]}```{nl}{nl}<!-- End: generated:example-sol_api -->',
-            string=new_content,
-            flags=re.DOTALL
-        )
-        new_content = re.sub(
-            pattern=r'<!-- Start: generated:example-auth -->(.*?)<!-- End: generated:example-auth -->',
-            repl=f'<!-- Start: generated:example-auth -->{nl}{nl}```python{nl}{code_snippets["auth"]["challenge"]["requestChallengeEvm"]}```{nl}{nl}<!-- End: generated:example-auth -->',
-            string=new_content,
-            flags=re.DOTALL
-        )
-        new_content = re.sub(
-            pattern=r'<!-- Start: generated:example-streams -->(.*?)<!-- End: generated:example-streams -->',
-            repl=f'<!-- Start: generated:example-streams -->{nl}{nl}```python{nl}{code_snippets["streams"]["evm_streams"]["GetStreams"]}```{nl}{nl}<!-- End: generated:example-streams -->',
-            string=new_content,
-            flags=re.DOTALL
-        )
+        if ("evm_api" in code_snippets):
+            new_content = re.sub(
+                pattern=r'<!-- Start: generated:example-evm_api -->(.*?)<!-- End: generated:example-evm_api -->',
+                repl=f'<!-- Start: generated:example-evm_api -->{nl}{nl}```python{nl}{code_snippets["evm_api"]["balance"]["getNativeBalance"]}```{nl}{nl}<!-- End: generated:example-evm_api -->',
+                string=new_content,
+                flags=re.DOTALL
+            )
+        if ("sol_api" in code_snippets):
+            new_content = re.sub(
+                pattern=r'<!-- Start: generated:example-sol_api -->(.*?)<!-- End: generated:example-sol_api -->',
+                repl=f'<!-- Start: generated:example-sol_api -->{nl}{nl}```python{nl}{code_snippets["sol_api"]["account"]["balance"]}```{nl}{nl}<!-- End: generated:example-sol_api -->',
+                string=new_content,
+                flags=re.DOTALL
+            )
+
+        if ("auth" in code_snippets):
+            new_content = re.sub(
+                pattern=r'<!-- Start: generated:example-auth -->(.*?)<!-- End: generated:example-auth -->',
+                repl=f'<!-- Start: generated:example-auth -->{nl}{nl}```python{nl}{code_snippets["auth"]["challenge"]["requestChallengeEvm"]}```{nl}{nl}<!-- End: generated:example-auth -->',
+                string=new_content,
+                flags=re.DOTALL
+            )
+
+        if ("streams" in code_snippets):
+            new_content = re.sub(
+                pattern=r'<!-- Start: generated:example-streams -->(.*?)<!-- End: generated:example-streams -->',
+                repl=f'<!-- Start: generated:example-streams -->{nl}{nl}```python{nl}{code_snippets["streams"]["evm_streams"]["GetStreams"]}```{nl}{nl}<!-- End: generated:example-streams -->',
+                string=new_content,
+                flags=re.DOTALL
+            )
 
         with open(readme_path, 'w') as write_file:
             write_file.write(new_content)

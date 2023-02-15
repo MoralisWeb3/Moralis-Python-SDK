@@ -127,9 +127,24 @@ def resolve_ref_to_type(schema, swagger):
     return value
 
 
+# TODO: refactor and add better support, anyOf can be an object/reference or simple type
+# We need to render them accordingly, for this we probably need to restructure the docs generation
 def resolve_anyof_param(schema, swagger):
-    # TODO: add other members of array to type def as well
+# TODO: add other members of array to type def as well
     return get_type_for_param(schema["anyOf"][0], swagger)
+
+# TODO: refactor and add better support, anyOf can be an object/reference or simple type
+# We need to render them accordingly, for this we probably need to restructure the docs generation
+def resolve_oneof_param(schema, swagger):
+    type = f'One of:<br/>'
+    example = '{}'
+    default = ''
+
+    for oneof_type in schema["oneOf"]:
+        resolved_oneof_type, example, default = get_type_for_param(oneof_type, swagger)
+        type += f'{resolved_oneof_type}<br/>---<br/>'
+
+    return type, example, default
 
 
 def get_type_for_param(schema, swagger):
@@ -149,6 +164,8 @@ def get_type_for_param(schema, swagger):
         return resolve_properties_param(schema, swagger)
     if ('anyOf' in schema):
         return resolve_anyof_param(schema, swagger)
+    if ('oneOf' in schema):
+        return resolve_oneof_param(schema, swagger)
 
     elif ('$ref' in schema):
         return resolve_ref_param(schema, swagger)

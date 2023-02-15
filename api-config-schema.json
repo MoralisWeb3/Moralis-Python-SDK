@@ -1,0 +1,56 @@
+{
+  "type": "object",
+  "properties": {
+    "apis": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "swagger", "security_key"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "swagger": {
+            "type": "string"
+          },
+          "security_key": {
+            "type": "string"
+          },
+          "skip": {
+            "type": "boolean"
+          },
+          "sub_networks": {
+            "type": "object",
+            "properties": {
+              "parameter_name": {
+                "type": "string"
+              },
+              "default_network":{
+                "type": "string"
+              },
+              "networks":{
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required":["name", "host"],
+                  "properties":{
+                    "name": {
+                      "type": "string"
+                    },
+                    "host": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,22 +1,49 @@
-[
-  {
-    "swagger": "https://deep-index.moralis.io/api-docs-2.1/v2.1/swagger.json",
-    "name": "evm_api",
-    "security_key": "ApiKeyAuth"
-  },
-  {
-    "swagger": "https://solana-gateway.moralis.io/api-json",
-    "name": "sol_api",
-    "security_key": "ApiKeyAuth"
-  },
-  {
-    "swagger": "https://authapi.moralis.io/api-docs-json",
-    "name": "auth",
-    "security_key": "ApiKeyAuth"
-  },
-  {
-    "swagger": "https://api.moralis-streams.com/api-docs/swagger.json",
-    "name": "streams",
-    "security_key": "x-api-key"
-  }
-]
+{
+  "$schema": "./api-config-schema.json",
+  "apis": [
+    {
+      "name": "evm_api",
+      "swagger": "https://deep-index.moralis.io/api-docs-2.1/v2.1/swagger.json",
+      "security_key": "ApiKeyAuth",
+      "skip": false
+    },
+    {
+      "name": "sol_api",
+      "swagger": "https://solana-gateway.moralis.io/api-json",
+      "security_key": "ApiKeyAuth",
+      "skip": false
+    },
+    {
+      "name": "auth",
+      "swagger": "https://authapi.moralis.io/api-docs-json",
+      "security_key": "ApiKeyAuth",
+      "skip": false
+    },
+    {
+      "name": "streams",
+      "swagger": "https://api.moralis-streams.com/api-docs/swagger.json",
+      "security_key": "x-api-key",
+      "skip": false
+    },
+    {
+      "name": "aptos_api",
+      "swagger": "./local-swaggers/aptos.json",
+      "security_key": "bearer",
+      "skip": false,
+      "sub_networks": {
+        "parameter_name": "network",
+        "default_network": "mainnet",
+        "networks": [
+          {
+            "name": "mainnet",
+            "host": "https://mainnet-aptos-api.moralis.io"
+          },
+          {
+            "name": "testnet",
+            "host": "https://testnet-aptos-api.moralis.io"
+          }
+        ]
+      }
+    }
+  ]
+}

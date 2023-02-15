@@ -1,19 +1,36 @@
 import json
-from .api_instance import get_api_instance
-{% if has_any_params and params|length > 1  -%}
 import typing
-{%- endif %}
+from .api_instance import get_api_instance
 {% if import_statement -%}
 {{import_statement}}
 {%- endif %}
 
-def {{operation_name}}(api_key: str{%- if has_any_params %}, params: {{params_union}} {%- endif -%} {%- if has_body %}, body: SchemaForRequestBodyApplicationJson {%- endif -%}):
-    api_instance = get_api_instance(api_key)
+{% if subnetworksConfig is not none -%}
+class RequestNetworkQueryParams(typing.TypedDict, total=False):
+    {{subnetworksConfig["host_parameter"]}}: typing.Literal[
+    {%- for network in subnetworksConfig["networks"] -%}
+        "{{network["name"]}}",
+    {%- endfor -%}
+    ]
+{%- endif %}
+
+{% if has_query_params  -%}
+class QueryParams(RequestQueryParams{%- if subnetworksConfig is not none -%}, RequestNetworkQueryParams{%-endif-%}):
+    pass
+{%- endif %}
+
+{% if has_any_params  -%}
+class Params({% if has_query_params  -%}QueryParams,{%-endif-%}{% if has_path_params  -%} RequestPathParams,{%-endif-%}):
+    pass
+{%- endif %}
+
+def {{operation_name}}(api_key: str{%- if has_any_params %}, params: Params{%- endif -%} {%- if has_body %}, body: SchemaForRequestBodyApplicationJson {%- endif -%}):
+    api_instance = get_api_instance(api_key{%- if has_any_params %}, params{%endif%})
     {% if has_query_params -%}
-    query_params = {k: v for k, v in params.items() if k in RequestQueryParams.__annotations__.keys()}
+    query_params: typing.Any = {k: v for k, v in params.items() if k in RequestQueryParams.__annotations__.keys()}
     {% endif -%}
     {% if has_path_params -%}
-    path_params = {k: v for k, v in params.items() if k in RequestPathParams.__annotations__.keys()}
+    path_params: typing.Any = {k: v for k, v in params.items() if k in RequestPathParams.__annotations__.keys()}
     {% endif -%}
 
     api_response = api_instance.{{operation_name}}(
@@ -27,7 +44,9 @@ def {{operation_name}}(api_key: str{%- if has_any_params %}, params: {{params_un
         path_params=path_params,
         {% endif -%}
         {% if is_json_response -%}
-        accept_content_types='application/json; charset=utf-8',
+        accept_content_types=(
+            'application/json; charset=utf-8',
+        ),
         {% endif -%}
         skip_deserialization=True
     )
