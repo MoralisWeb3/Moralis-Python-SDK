@@ -10,12 +10,14 @@
 """
 
 from openapi_evm_api.paths.transaction_transaction_hash.get import GetTransaction
+from openapi_evm_api.paths.transaction_transaction_hash_verbose.get import GetTransactionVerbose
 from openapi_evm_api.paths.address.get import GetWalletTransactions
 from openapi_evm_api.paths.address_verbose.get import GetWalletTransactionsVerbose
 
 
 class TransactionApi(
     GetTransaction,
+    GetTransactionVerbose,
     GetWalletTransactions,
     GetWalletTransactionsVerbose,
 ):
