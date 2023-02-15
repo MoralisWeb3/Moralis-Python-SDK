@@ -94,7 +94,7 @@ def generate_operation_network_params_row(sub_networks):
     if(default_network == example_network and len(sub_networks["networks"]) > 1):
         example_network = sub_networks["networks"][1]["name"]
 
-    return f'| {parameter_name} | {available_networks} | The network to use | No | "{default_network}"  | "{example_network}" |'
+    return f'| {parameter_name} | {available_networks} | The network to use | No | "{default_network}"  | "{example_network}" |{nl}'
 
 
 def generate_operation_params(swagger_data, swagger, sub_networks):
