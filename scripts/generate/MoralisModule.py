@@ -36,8 +36,10 @@ class MoralisModule:
         self.security_key: str = security_key
         self.subnetworksConfig = subnetworksConfig
         self.version = self.get_version()
-        self.tags: Type[Enum] = getattr(importlib.import_module(
+        Tags: Type[Enum] = getattr(importlib.import_module(
             f'openapi_{api_name}.apis.tags'), "TagValues")
+        self.tags = [tag.value for tag in Tags if tag.value is not 'default']
+
         self.tag_to_api = getattr(importlib.import_module(
             f'openapi_{api_name}.apis.tag_to_api'), "tag_to_api")
         pass
@@ -64,7 +66,7 @@ class MoralisModule:
             path=self.modules_path / f'{self.api_name}.py',
             template=Template.API_TAGS,
             values={
-                "tags": map(lambda tag: tag.value, self.tags)
+                "tags": self.tags
             },
         )
 
@@ -83,7 +85,7 @@ class MoralisModule:
 
         # Generate all files for all modules
         for tag in self.tags:
-            self.generate_module(tag.value)
+            self.generate_module(tag)
 
         print(f"✅ Generating modules for {self.api_name} done")
 
