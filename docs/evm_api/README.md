@@ -2,7 +2,6 @@
 
 - [balance](./balance.md)
 - [block](./block.md)
-- [default](./default.md)
 - [defi](./defi.md)
 - [events](./events.md)
 - [ipfs](./ipfs.md)
