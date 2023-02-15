@@ -109,7 +109,7 @@ def generate_operation_params(swagger_data, swagger, sub_networks):
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-{generate_operation_network_params_row(sub_networks)}
+{generate_operation_network_params_row(sub_networks)}\
 {''.join(
     (map(lambda param: generate_operation_params_row(param, swagger), params)))}
 
