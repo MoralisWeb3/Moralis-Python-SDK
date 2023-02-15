@@ -54,8 +54,5 @@ jobs:
 
             **Note that this PR is automatically updated when more changes are made to the APIs.**
           labels: "Automated PR"
-          team-reviewers: |
-            owners
-            maintainers
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
