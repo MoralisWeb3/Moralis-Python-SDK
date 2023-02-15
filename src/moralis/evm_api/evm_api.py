@@ -1,6 +1,5 @@
 from .balance import balance
 from .block import block
-from .default import default
 from .defi import defi
 from .events import events
 from .ipfs import ipfs
