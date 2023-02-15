@@ -48,12 +48,12 @@ class TransactionCollectionVerbose(
                 class MetaOapg:
                     
                     @staticmethod
-                    def items() -> typing.Type['BlockTransaction']:
-                        return BlockTransaction
+                    def items() -> typing.Type['BlockTransactionVerbose']:
+                        return BlockTransactionVerbose
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple['BlockTransaction'], typing.List['BlockTransaction']],
+                    arg: typing.Union[typing.Tuple['BlockTransactionVerbose'], typing.List['BlockTransactionVerbose']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'result':
                     return super().__new__(
@@ -62,7 +62,7 @@ class TransactionCollectionVerbose(
                         _configuration=_configuration,
                     )
             
-                def __getitem__(self, i: int) -> 'BlockTransaction':
+                def __getitem__(self, i: int) -> 'BlockTransactionVerbose':
                     return super().__getitem__(i)
             __annotations__ = {
                 "page": page,
@@ -123,4 +123,4 @@ class TransactionCollectionVerbose(
             **kwargs,
         )
 
-from openapi_evm_api.model.block_transaction import BlockTransaction
+from openapi_evm_api.model.block_transaction_verbose import BlockTransactionVerbose

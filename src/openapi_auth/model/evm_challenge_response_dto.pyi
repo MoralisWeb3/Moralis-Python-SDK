@@ -47,12 +47,12 @@ class EvmChallengeResponseDto(
                 schemas.StrSchema
             ):
                 pass
-            message = schemas.StrSchema
             profileId = schemas.StrSchema
+            message = schemas.StrSchema
             __annotations__ = {
                 "id": id,
-                "message": message,
                 "profileId": profileId,
+                "message": message,
             }
     
     profileId: MetaOapg.properties.profileId
@@ -63,15 +63,15 @@ class EvmChallengeResponseDto(
     def __getitem__(self, name: typing_extensions.Literal["id"]) -> MetaOapg.properties.id: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["message"]) -> MetaOapg.properties.message: ...
+    def __getitem__(self, name: typing_extensions.Literal["profileId"]) -> MetaOapg.properties.profileId: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["profileId"]) -> MetaOapg.properties.profileId: ...
+    def __getitem__(self, name: typing_extensions.Literal["message"]) -> MetaOapg.properties.message: ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "message", "profileId", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "profileId", "message", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -80,15 +80,15 @@ class EvmChallengeResponseDto(
     def get_item_oapg(self, name: typing_extensions.Literal["id"]) -> MetaOapg.properties.id: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["message"]) -> MetaOapg.properties.message: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["profileId"]) -> MetaOapg.properties.profileId: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["profileId"]) -> MetaOapg.properties.profileId: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["message"]) -> MetaOapg.properties.message: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "message", "profileId", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "profileId", "message", ], str]):
         return super().get_item_oapg(name)
     
 

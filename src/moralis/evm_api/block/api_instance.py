@@ -3,7 +3,7 @@ from openapi_evm_api.apis.tags import block_api
 from ..utilities import get_common_headers
 
 
-def get_api_instance(api_key):
+def get_api_instance(api_key, params = None):
     configuration = openapi_evm_api.Configuration()
     configuration.api_key['ApiKeyAuth'] = api_key
     api_client = openapi_evm_api.ApiClient(configuration)

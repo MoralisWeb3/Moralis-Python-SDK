@@ -12,6 +12,10 @@
 # sys.setrecursionlimit(n)
 
 from openapi_auth.model.address_info_dto import AddressInfoDto
+from openapi_auth.model.aptos_challenge_request_dto import AptosChallengeRequestDto
+from openapi_auth.model.aptos_challenge_response_dto import AptosChallengeResponseDto
+from openapi_auth.model.aptos_complete_challenge_request_dto import AptosCompleteChallengeRequestDto
+from openapi_auth.model.aptos_complete_challenge_response_dto import AptosCompleteChallengeResponseDto
 from openapi_auth.model.bind_remove_dto import BindRemoveDto
 from openapi_auth.model.bind_remove_response_dto import BindRemoveResponseDto
 from openapi_auth.model.bind_request_dto import BindRequestDto

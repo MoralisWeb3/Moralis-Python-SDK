@@ -10,6 +10,10 @@ from openapi_streams.apis.paths.streams_evm import StreamsEvm
 from openapi_streams.apis.paths.streams_evm_id import StreamsEvmId
 from openapi_streams.apis.paths.streams_evm_id_status import StreamsEvmIdStatus
 from openapi_streams.apis.paths.streams_evm_id_address import StreamsEvmIdAddress
+from openapi_streams.apis.paths.streams_aptos import StreamsAptos
+from openapi_streams.apis.paths.streams_aptos_id import StreamsAptosId
+from openapi_streams.apis.paths.streams_aptos_id_address import StreamsAptosIdAddress
+from openapi_streams.apis.paths.streams_aptos_id_status import StreamsAptosIdStatus
 
 PathToApi = typing_extensions.TypedDict(
     'PathToApi',
@@ -23,6 +27,10 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.STREAMS_EVM_ID: StreamsEvmId,
         PathValues.STREAMS_EVM_ID_STATUS: StreamsEvmIdStatus,
         PathValues.STREAMS_EVM_ID_ADDRESS: StreamsEvmIdAddress,
+        PathValues.STREAMS_APTOS: StreamsAptos,
+        PathValues.STREAMS_APTOS_ID: StreamsAptosId,
+        PathValues.STREAMS_APTOS_ID_ADDRESS: StreamsAptosIdAddress,
+        PathValues.STREAMS_APTOS_ID_STATUS: StreamsAptosIdStatus,
     }
 )
 
@@ -37,5 +45,9 @@ path_to_api = PathToApi(
         PathValues.STREAMS_EVM_ID: StreamsEvmId,
         PathValues.STREAMS_EVM_ID_STATUS: StreamsEvmIdStatus,
         PathValues.STREAMS_EVM_ID_ADDRESS: StreamsEvmIdAddress,
+        PathValues.STREAMS_APTOS: StreamsAptos,
+        PathValues.STREAMS_APTOS_ID: StreamsAptosId,
+        PathValues.STREAMS_APTOS_ID_ADDRESS: StreamsAptosIdAddress,
+        PathValues.STREAMS_APTOS_ID_STATUS: StreamsAptosIdStatus,
     }
 )

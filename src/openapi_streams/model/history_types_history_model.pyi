@@ -58,10 +58,43 @@ class HistoryTypesHistoryModel(
             webhookUrl = schemas.StrSchema
             streamId = schemas.StrSchema
             tag = schemas.StrSchema
-        
-            @staticmethod
-            def payload() -> typing.Type['WebhookTypesIWebhookUnParsed']:
-                return WebhookTypesIWebhookUnParsed
+            
+            
+            class payload(
+                schemas.ComposedSchema,
+            ):
+            
+            
+                class MetaOapg:
+                    
+                    @classmethod
+                    @functools.lru_cache()
+                    def any_of(cls):
+                        # we need this here to make our import statements work
+                        # we must store _composed_schemas in here so the code is only run
+                        # when we invoke this method. If we kept this at the class
+                        # level we would get an error because the class level
+                        # code would be run when this module is imported, and these composed
+                        # classes don't exist yet because their module has not finished
+                        # loading
+                        return [
+                            WebhookTypesIWebhookUnParsed,
+                            WebhookTypesAptosWebhook,
+                        ]
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                    **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+                ) -> 'payload':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                        **kwargs,
+                    )
             __annotations__ = {
                 "id": id,
                 "date": date,
@@ -104,7 +137,7 @@ class HistoryTypesHistoryModel(
     def __getitem__(self, name: typing_extensions.Literal["webhookUrl"]) -> MetaOapg.properties.webhookUrl: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["payload"]) -> 'WebhookTypesIWebhookUnParsed': ...
+    def __getitem__(self, name: typing_extensions.Literal["payload"]) -> MetaOapg.properties.payload: ...
     
     def __getitem__(self, name: typing.Union[typing_extensions.Literal["date"], typing_extensions.Literal["streamId"], typing_extensions.Literal["tinyPayload"], typing_extensions.Literal["errorMessage"], typing_extensions.Literal["id"], typing_extensions.Literal["tag"], typing_extensions.Literal["webhookUrl"], typing_extensions.Literal["payload"], ]):
         # dict_instance[name] accessor
@@ -132,7 +165,7 @@ class HistoryTypesHistoryModel(
     def get_item_oapg(self, name: typing_extensions.Literal["webhookUrl"]) -> MetaOapg.properties.webhookUrl: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["payload"]) -> typing.Union['WebhookTypesIWebhookUnParsed', schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["payload"]) -> typing.Union[MetaOapg.properties.payload, schemas.Unset]: ...
     
     def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["date"], typing_extensions.Literal["streamId"], typing_extensions.Literal["tinyPayload"], typing_extensions.Literal["errorMessage"], typing_extensions.Literal["id"], typing_extensions.Literal["tag"], typing_extensions.Literal["webhookUrl"], typing_extensions.Literal["payload"], ]):
         return super().get_item_oapg(name)
@@ -147,7 +180,7 @@ class HistoryTypesHistoryModel(
         id: 'UUID',
         tag: typing.Union[MetaOapg.properties.tag, str, ],
         webhookUrl: typing.Union[MetaOapg.properties.webhookUrl, str, ],
-        payload: typing.Union['WebhookTypesIWebhookUnParsed', schemas.Unset] = schemas.unset,
+        payload: typing.Union[MetaOapg.properties.payload, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'HistoryTypesHistoryModel':
         return super().__new__(
@@ -165,5 +198,6 @@ class HistoryTypesHistoryModel(
         )
 
 from openapi_streams.model.uuid import UUID
+from openapi_streams.model.webhook_types_aptos_webhook import WebhookTypesAptosWebhook
 from openapi_streams.model.webhook_types_i_tiny_payload import WebhookTypesITinyPayload
 from openapi_streams.model.webhook_types_i_webhook_un_parsed import WebhookTypesIWebhookUnParsed

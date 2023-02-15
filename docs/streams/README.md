@@ -1,5 +1,6 @@
 # `moralis.streams`
 
+- [aptos_streams](./aptos_streams.md)
 - [evm_streams](./evm_streams.md)
 - [history](./history.md)
 - [project](./project.md)

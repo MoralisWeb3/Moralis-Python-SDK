@@ -53,6 +53,10 @@ class EvmCompleteChallengeResponseDto(
             ):
                 pass
             domain = schemas.StrSchema
+            uri = schemas.StrSchema
+            version = schemas.StrSchema
+            nonce = schemas.StrSchema
+            profileId = schemas.StrSchema
             
             
             class chainId(
@@ -112,10 +116,6 @@ class EvmCompleteChallengeResponseDto(
                 def POSITIVE_11155111(cls):
                     return cls("11155111")
             address = schemas.StrSchema
-            uri = schemas.StrSchema
-            version = schemas.StrSchema
-            nonce = schemas.StrSchema
-            profileId = schemas.StrSchema
             statement = schemas.StrSchema
             expirationTime = schemas.DateTimeSchema
             notBefore = schemas.DateTimeSchema
@@ -145,12 +145,12 @@ class EvmCompleteChallengeResponseDto(
             __annotations__ = {
                 "id": id,
                 "domain": domain,
-                "chainId": chainId,
-                "address": address,
                 "uri": uri,
                 "version": version,
                 "nonce": nonce,
                 "profileId": profileId,
+                "chainId": chainId,
+                "address": address,
                 "statement": statement,
                 "expirationTime": expirationTime,
                 "notBefore": notBefore,
@@ -173,12 +173,6 @@ class EvmCompleteChallengeResponseDto(
     def __getitem__(self, name: typing_extensions.Literal["domain"]) -> MetaOapg.properties.domain: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["chainId"]) -> MetaOapg.properties.chainId: ...
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
-    
-    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["uri"]) -> MetaOapg.properties.uri: ...
     
     @typing.overload
@@ -189,6 +183,12 @@ class EvmCompleteChallengeResponseDto(
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["profileId"]) -> MetaOapg.properties.profileId: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["chainId"]) -> MetaOapg.properties.chainId: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["statement"]) -> MetaOapg.properties.statement: ...
@@ -205,7 +205,7 @@ class EvmCompleteChallengeResponseDto(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "domain", "chainId", "address", "uri", "version", "nonce", "profileId", "statement", "expirationTime", "notBefore", "resources", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "domain", "uri", "version", "nonce", "profileId", "chainId", "address", "statement", "expirationTime", "notBefore", "resources", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -215,12 +215,6 @@ class EvmCompleteChallengeResponseDto(
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["domain"]) -> MetaOapg.properties.domain: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["chainId"]) -> MetaOapg.properties.chainId: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["uri"]) -> MetaOapg.properties.uri: ...
@@ -233,6 +227,12 @@ class EvmCompleteChallengeResponseDto(
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["profileId"]) -> MetaOapg.properties.profileId: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["chainId"]) -> MetaOapg.properties.chainId: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["statement"]) -> typing.Union[MetaOapg.properties.statement, schemas.Unset]: ...
@@ -249,7 +249,7 @@ class EvmCompleteChallengeResponseDto(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "domain", "chainId", "address", "uri", "version", "nonce", "profileId", "statement", "expirationTime", "notBefore", "resources", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "domain", "uri", "version", "nonce", "profileId", "chainId", "address", "statement", "expirationTime", "notBefore", "resources", ], str]):
         return super().get_item_oapg(name)
     
 

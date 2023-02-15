@@ -209,6 +209,32 @@ class BlockTransaction(
             
                 def __getitem__(self, i: int) -> 'Log':
                     return super().__getitem__(i)
+            
+            
+            class internal_transactions(
+                schemas.ListSchema
+            ):
+            
+            
+                class MetaOapg:
+                    
+                    @staticmethod
+                    def items() -> typing.Type['InternalTransaction']:
+                        return InternalTransaction
+            
+                def __new__(
+                    cls,
+                    arg: typing.Union[typing.Tuple['InternalTransaction'], typing.List['InternalTransaction']],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'internal_transactions':
+                    return super().__new__(
+                        cls,
+                        arg,
+                        _configuration=_configuration,
+                    )
+            
+                def __getitem__(self, i: int) -> 'InternalTransaction':
+                    return super().__getitem__(i)
             __annotations__ = {
                 "hash": hash,
                 "nonce": nonce,
@@ -228,6 +254,7 @@ class BlockTransaction(
                 "receipt_contract_address": receipt_contract_address,
                 "receipt_root": receipt_root,
                 "logs": logs,
+                "internal_transactions": internal_transactions,
             }
 
     
@@ -301,9 +328,12 @@ class BlockTransaction(
     def __getitem__(self, name: typing_extensions.Literal["logs"]) -> MetaOapg.properties.logs: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["internal_transactions"]) -> MetaOapg.properties.internal_transactions: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["hash", "nonce", "transaction_index", "from_address", "to_address", "value", "gas_price", "input", "receipt_cumulative_gas_used", "receipt_gas_used", "receipt_status", "block_timestamp", "block_number", "block_hash", "gas", "receipt_contract_address", "receipt_root", "logs", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["hash", "nonce", "transaction_index", "from_address", "to_address", "value", "gas_price", "input", "receipt_cumulative_gas_used", "receipt_gas_used", "receipt_status", "block_timestamp", "block_number", "block_hash", "gas", "receipt_contract_address", "receipt_root", "logs", "internal_transactions", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -363,9 +393,12 @@ class BlockTransaction(
     def get_item_oapg(self, name: typing_extensions.Literal["logs"]) -> typing.Union[MetaOapg.properties.logs, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["internal_transactions"]) -> typing.Union[MetaOapg.properties.internal_transactions, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["hash", "nonce", "transaction_index", "from_address", "to_address", "value", "gas_price", "input", "receipt_cumulative_gas_used", "receipt_gas_used", "receipt_status", "block_timestamp", "block_number", "block_hash", "gas", "receipt_contract_address", "receipt_root", "logs", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["hash", "nonce", "transaction_index", "from_address", "to_address", "value", "gas_price", "input", "receipt_cumulative_gas_used", "receipt_gas_used", "receipt_status", "block_timestamp", "block_number", "block_hash", "gas", "receipt_contract_address", "receipt_root", "logs", "internal_transactions", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -390,6 +423,7 @@ class BlockTransaction(
         receipt_contract_address: typing.Union[MetaOapg.properties.receipt_contract_address, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         receipt_root: typing.Union[MetaOapg.properties.receipt_root, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         logs: typing.Union[MetaOapg.properties.logs, list, tuple, schemas.Unset] = schemas.unset,
+        internal_transactions: typing.Union[MetaOapg.properties.internal_transactions, list, tuple, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'BlockTransaction':
@@ -414,8 +448,10 @@ class BlockTransaction(
             receipt_contract_address=receipt_contract_address,
             receipt_root=receipt_root,
             logs=logs,
+            internal_transactions=internal_transactions,
             _configuration=_configuration,
             **kwargs,
         )
 
+from openapi_evm_api.model.internal_transaction import InternalTransaction
 from openapi_evm_api.model.log import Log

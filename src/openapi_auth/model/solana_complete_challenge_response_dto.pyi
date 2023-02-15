@@ -53,6 +53,10 @@ class SolanaCompleteChallengeResponseDto(
             ):
                 pass
             domain = schemas.StrSchema
+            uri = schemas.StrSchema
+            version = schemas.StrSchema
+            nonce = schemas.StrSchema
+            profileId = schemas.StrSchema
             
             
             class network(
@@ -72,10 +76,6 @@ class SolanaCompleteChallengeResponseDto(
                 def DEVNET(cls):
                     return cls("devnet")
             address = schemas.StrSchema
-            uri = schemas.StrSchema
-            version = schemas.StrSchema
-            nonce = schemas.StrSchema
-            profileId = schemas.StrSchema
             statement = schemas.StrSchema
             expirationTime = schemas.DateTimeSchema
             notBefore = schemas.DateTimeSchema
@@ -105,12 +105,12 @@ class SolanaCompleteChallengeResponseDto(
             __annotations__ = {
                 "id": id,
                 "domain": domain,
-                "network": network,
-                "address": address,
                 "uri": uri,
                 "version": version,
                 "nonce": nonce,
                 "profileId": profileId,
+                "network": network,
+                "address": address,
                 "statement": statement,
                 "expirationTime": expirationTime,
                 "notBefore": notBefore,
@@ -133,12 +133,6 @@ class SolanaCompleteChallengeResponseDto(
     def __getitem__(self, name: typing_extensions.Literal["domain"]) -> MetaOapg.properties.domain: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["network"]) -> MetaOapg.properties.network: ...
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
-    
-    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["uri"]) -> MetaOapg.properties.uri: ...
     
     @typing.overload
@@ -149,6 +143,12 @@ class SolanaCompleteChallengeResponseDto(
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["profileId"]) -> MetaOapg.properties.profileId: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["network"]) -> MetaOapg.properties.network: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["statement"]) -> MetaOapg.properties.statement: ...
@@ -165,7 +165,7 @@ class SolanaCompleteChallengeResponseDto(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "domain", "network", "address", "uri", "version", "nonce", "profileId", "statement", "expirationTime", "notBefore", "resources", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "domain", "uri", "version", "nonce", "profileId", "network", "address", "statement", "expirationTime", "notBefore", "resources", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -175,12 +175,6 @@ class SolanaCompleteChallengeResponseDto(
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["domain"]) -> MetaOapg.properties.domain: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["network"]) -> MetaOapg.properties.network: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["uri"]) -> MetaOapg.properties.uri: ...
@@ -193,6 +187,12 @@ class SolanaCompleteChallengeResponseDto(
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["profileId"]) -> MetaOapg.properties.profileId: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["network"]) -> MetaOapg.properties.network: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["statement"]) -> typing.Union[MetaOapg.properties.statement, schemas.Unset]: ...
@@ -209,7 +209,7 @@ class SolanaCompleteChallengeResponseDto(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "domain", "network", "address", "uri", "version", "nonce", "profileId", "statement", "expirationTime", "notBefore", "resources", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "domain", "uri", "version", "nonce", "profileId", "network", "address", "statement", "expirationTime", "notBefore", "resources", ], str]):
         return super().get_item_oapg(name)
     
 
