@@ -1,5 +1,5 @@
 [bumpver]
-current_version = "0.1.19"
+current_version = "0.1.20"
 version_pattern = "MAJOR.MINOR.PATCH"
 
 [bumpver.file_patterns]
