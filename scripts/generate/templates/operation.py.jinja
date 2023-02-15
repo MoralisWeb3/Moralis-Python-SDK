@@ -1,17 +1,18 @@
 import json
 import typing
+import typing_extensions
 from .api_instance import get_api_instance
 {% if import_statement -%}
 {{import_statement}}
 {%- endif %}
 
 {% if subnetworksConfig is not none -%}
-class RequestNetworkQueryParams(typing.TypedDict, total=False):
-    {{subnetworksConfig["host_parameter"]}}: typing.Literal[
+RequestNetworkQueryParams = typing_extensions.TypedDict("RequestNetworkQueryParams", {
+    "{{subnetworksConfig["host_parameter"]}}": typing.Literal[
     {%- for network in subnetworksConfig["networks"] -%}
         "{{network["name"]}}",
     {%- endfor -%}
-    ]
+    ]}, total=False)
 {%- endif %}
 
 {% if has_query_params  -%}
