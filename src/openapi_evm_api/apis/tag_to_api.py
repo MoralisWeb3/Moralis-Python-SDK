@@ -3,6 +3,7 @@ import typing_extensions
 from openapi_evm_api.apis.tags import TagValues
 from openapi_evm_api.apis.tags.balance_api import BalanceApi
 from openapi_evm_api.apis.tags.block_api import BlockApi
+from openapi_evm_api.apis.tags.default_api import DefaultApi
 from openapi_evm_api.apis.tags.defi_api import DefiApi
 from openapi_evm_api.apis.tags.events_api import EventsApi
 from openapi_evm_api.apis.tags.ipfs_api import IpfsApi
@@ -17,6 +18,7 @@ TagToApi = typing_extensions.TypedDict(
     {
         TagValues.BALANCE: BalanceApi,
         TagValues.BLOCK: BlockApi,
+        TagValues.DEFAULT: DefaultApi,
         TagValues.DEFI: DefiApi,
         TagValues.EVENTS: EventsApi,
         TagValues.IPFS: IpfsApi,
@@ -32,6 +34,7 @@ tag_to_api = TagToApi(
     {
         TagValues.BALANCE: BalanceApi,
         TagValues.BLOCK: BlockApi,
+        TagValues.DEFAULT: DefaultApi,
         TagValues.DEFI: DefiApi,
         TagValues.EVENTS: EventsApi,
         TagValues.IPFS: IpfsApi,

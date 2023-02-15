@@ -30,6 +30,7 @@ from openapi_evm_api.apis.paths.address_balance import AddressBalance
 from openapi_evm_api.apis.paths.wallets_balances import WalletsBalances
 from openapi_evm_api.apis.paths.address import Address
 from openapi_evm_api.apis.paths.address_verbose import AddressVerbose
+from openapi_evm_api.apis.paths.transaction_transaction_hash_internal_transactions import TransactionTransactionHashInternalTransactions
 from openapi_evm_api.apis.paths.transaction_transaction_hash import TransactionTransactionHash
 from openapi_evm_api.apis.paths.block_block_number_or_hash import BlockBlockNumberOrHash
 from openapi_evm_api.apis.paths.date_to_block import DateToBlock
@@ -76,6 +77,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.WALLETS_BALANCES: WalletsBalances,
         PathValues.ADDRESS: Address,
         PathValues.ADDRESS_VERBOSE: AddressVerbose,
+        PathValues.TRANSACTION_TRANSACTION_HASH_INTERNALTRANSACTIONS: TransactionTransactionHashInternalTransactions,
         PathValues.TRANSACTION_TRANSACTION_HASH: TransactionTransactionHash,
         PathValues.BLOCK_BLOCK_NUMBER_OR_HASH: BlockBlockNumberOrHash,
         PathValues.DATE_TO_BLOCK: DateToBlock,
@@ -123,6 +125,7 @@ path_to_api = PathToApi(
         PathValues.WALLETS_BALANCES: WalletsBalances,
         PathValues.ADDRESS: Address,
         PathValues.ADDRESS_VERBOSE: AddressVerbose,
+        PathValues.TRANSACTION_TRANSACTION_HASH_INTERNALTRANSACTIONS: TransactionTransactionHashInternalTransactions,
         PathValues.TRANSACTION_TRANSACTION_HASH: TransactionTransactionHash,
         PathValues.BLOCK_BLOCK_NUMBER_OR_HASH: BlockBlockNumberOrHash,
         PathValues.DATE_TO_BLOCK: DateToBlock,

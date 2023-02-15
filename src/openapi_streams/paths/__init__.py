@@ -15,3 +15,7 @@ class PathValues(str, enum.Enum):
     STREAMS_EVM_ID = "/streams/evm/{id}"
     STREAMS_EVM_ID_STATUS = "/streams/evm/{id}/status"
     STREAMS_EVM_ID_ADDRESS = "/streams/evm/{id}/address"
+    STREAMS_APTOS = "/streams/aptos"
+    STREAMS_APTOS_ID = "/streams/aptos/{id}"
+    STREAMS_APTOS_ID_ADDRESS = "/streams/aptos/{id}/address"
+    STREAMS_APTOS_ID_STATUS = "/streams/aptos/{id}/status"

@@ -3,7 +3,7 @@ from openapi_auth.apis.tags import challenge_api
 from ..utilities import get_common_headers
 
 
-def get_api_instance(api_key):
+def get_api_instance(api_key, params = None):
     configuration = openapi_auth.Configuration()
     configuration.api_key['ApiKeyAuth'] = api_key
     api_client = openapi_auth.ApiClient(configuration)

@@ -23,6 +23,7 @@ api_key = "YOUR_API_KEY"
 body = {
     "blockchainType": "evm", 
     "address": "0x57af6B90c2237d2F888bf4CAe56f25FE1b14e531", 
+    "publicKey": "0xfb2853744bb8afd58d9386d1856afd8e08de135019961dfa3a10d8c9bf83b99d", 
     "profileId": "0xbfbcfab169c67072ff418133124480fea02175f1402aaa497daa4fd09026b0e1", 
 }
 
@@ -40,8 +41,9 @@ Object with the properties:
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-| blockchainType | enum[str]: <br/>- "evm"<br/>- "solana" | The chain in which the address belongs to | Yes |  | "evm" |
-| address | str | Unique identifier with a length of 66 characters | Yes |  | "0x57af6B90c2237d2F888bf4CAe56f25FE1b14e531" |
+| blockchainType | enum[str]: <br/>- "evm"<br/>- "solana"<br/>- "aptos" | The chain in which the address belongs to | Yes |  | "evm" |
+| address | str | Address performing the signing conformant to capitalization encoded checksum specified in EIP-55 where applicable. | Yes |  | "0x57af6B90c2237d2F888bf4CAe56f25FE1b14e531" |
+| publicKey | str | Public key performing the signing conformant. (This is only needed for Aptos address) | Yes |  | "0xfb2853744bb8afd58d9386d1856afd8e08de135019961dfa3a10d8c9bf83b99d" |
 | profileId | str | Unique identifier with a length of 66 characters | Yes |  | "0xbfbcfab169c67072ff418133124480fea02175f1402aaa497daa4fd09026b0e1" |
 
 
@@ -77,7 +79,7 @@ Object with the properties:
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-| addresses | List of object: <br/> - blockchainType: enum[str]: <br/>- "evm"<br/>- "solana"<br/> - address: str | An array of addresses that needs to be bind | Yes |  | [] |
+| addresses | List of object: <br/> - blockchainType: enum[str]: <br/>- "evm"<br/>- "solana"<br/>- "aptos"<br/> - address: str<br/> - publicKey: str | An array of addresses that needs to be bind | Yes |  | [] |
 
 
 ---

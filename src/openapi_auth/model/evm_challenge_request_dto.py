@@ -44,6 +44,17 @@ class EvmChallengeRequestDto(
         
         class properties:
             domain = schemas.StrSchema
+            uri = schemas.StrSchema
+            
+            
+            class timeout(
+                schemas.NumberSchema
+            ):
+            
+            
+                class MetaOapg:
+                    inclusive_maximum = 120
+                    inclusive_minimum = 15
             
             
             class chainId(
@@ -121,17 +132,6 @@ class EvmChallengeRequestDto(
                 def POSITIVE_11155111(cls):
                     return cls("11155111")
             address = schemas.StrSchema
-            uri = schemas.StrSchema
-            
-            
-            class timeout(
-                schemas.NumberSchema
-            ):
-            
-            
-                class MetaOapg:
-                    inclusive_maximum = 120
-                    inclusive_minimum = 15
             statement = schemas.StrSchema
             expirationTime = schemas.DateTimeSchema
             notBefore = schemas.DateTimeSchema
@@ -160,10 +160,10 @@ class EvmChallengeRequestDto(
                     return super().__getitem__(i)
             __annotations__ = {
                 "domain": domain,
-                "chainId": chainId,
-                "address": address,
                 "uri": uri,
                 "timeout": timeout,
+                "chainId": chainId,
+                "address": address,
                 "statement": statement,
                 "expirationTime": expirationTime,
                 "notBefore": notBefore,
@@ -180,16 +180,16 @@ class EvmChallengeRequestDto(
     def __getitem__(self, name: typing_extensions.Literal["domain"]) -> MetaOapg.properties.domain: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["chainId"]) -> MetaOapg.properties.chainId: ...
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
-    
-    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["uri"]) -> MetaOapg.properties.uri: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["timeout"]) -> MetaOapg.properties.timeout: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["chainId"]) -> MetaOapg.properties.chainId: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["statement"]) -> MetaOapg.properties.statement: ...
@@ -206,7 +206,7 @@ class EvmChallengeRequestDto(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["domain", "chainId", "address", "uri", "timeout", "statement", "expirationTime", "notBefore", "resources", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["domain", "uri", "timeout", "chainId", "address", "statement", "expirationTime", "notBefore", "resources", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -215,16 +215,16 @@ class EvmChallengeRequestDto(
     def get_item_oapg(self, name: typing_extensions.Literal["domain"]) -> MetaOapg.properties.domain: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["chainId"]) -> MetaOapg.properties.chainId: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
-    
-    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["uri"]) -> MetaOapg.properties.uri: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["timeout"]) -> MetaOapg.properties.timeout: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["chainId"]) -> MetaOapg.properties.chainId: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["statement"]) -> typing.Union[MetaOapg.properties.statement, schemas.Unset]: ...
@@ -241,7 +241,7 @@ class EvmChallengeRequestDto(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["domain", "chainId", "address", "uri", "timeout", "statement", "expirationTime", "notBefore", "resources", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["domain", "uri", "timeout", "chainId", "address", "statement", "expirationTime", "notBefore", "resources", ], str]):
         return super().get_item_oapg(name)
     
 

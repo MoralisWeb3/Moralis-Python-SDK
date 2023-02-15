@@ -3,7 +3,7 @@ from openapi_sol_api.apis.tags import account_api
 from ..utilities import get_common_headers
 
 
-def get_api_instance(api_key):
+def get_api_instance(api_key, params = None):
     configuration = openapi_sol_api.Configuration()
     configuration.api_key['ApiKeyAuth'] = api_key
     api_client = openapi_sol_api.ApiClient(configuration)

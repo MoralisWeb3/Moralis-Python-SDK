@@ -53,6 +53,7 @@ class BindRemoveDto(
                     enum_value_to_name = {
                         "evm": "EVM",
                         "solana": "SOLANA",
+                        "aptos": "APTOS",
                     }
                 
                 @schemas.classproperty
@@ -62,12 +63,18 @@ class BindRemoveDto(
                 @schemas.classproperty
                 def SOLANA(cls):
                     return cls("solana")
+                
+                @schemas.classproperty
+                def APTOS(cls):
+                    return cls("aptos")
             address = schemas.StrSchema
             profileId = schemas.StrSchema
+            publicKey = schemas.StrSchema
             __annotations__ = {
                 "blockchainType": blockchainType,
                 "address": address,
                 "profileId": profileId,
+                "publicKey": publicKey,
             }
     
     address: MetaOapg.properties.address
@@ -84,9 +91,12 @@ class BindRemoveDto(
     def __getitem__(self, name: typing_extensions.Literal["profileId"]) -> MetaOapg.properties.profileId: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["publicKey"]) -> MetaOapg.properties.publicKey: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["blockchainType", "address", "profileId", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["blockchainType", "address", "profileId", "publicKey", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -101,9 +111,12 @@ class BindRemoveDto(
     def get_item_oapg(self, name: typing_extensions.Literal["profileId"]) -> MetaOapg.properties.profileId: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["publicKey"]) -> typing.Union[MetaOapg.properties.publicKey, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["blockchainType", "address", "profileId", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["blockchainType", "address", "profileId", "publicKey", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -113,6 +126,7 @@ class BindRemoveDto(
         address: typing.Union[MetaOapg.properties.address, str, ],
         blockchainType: typing.Union[MetaOapg.properties.blockchainType, str, ],
         profileId: typing.Union[MetaOapg.properties.profileId, str, ],
+        publicKey: typing.Union[MetaOapg.properties.publicKey, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'BindRemoveDto':
@@ -122,6 +136,7 @@ class BindRemoveDto(
             address=address,
             blockchainType=blockchainType,
             profileId=profileId,
+            publicKey=publicKey,
             _configuration=_configuration,
             **kwargs,
         )

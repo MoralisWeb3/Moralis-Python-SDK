@@ -110,7 +110,7 @@ conf = openapi_streams.Configuration(
                  ):
         """Constructor
         """
-        self._base_path = "https://api.moralis-streams.com" if host is None else host
+        self._base_path = "http://localhost" if host is None else host
         """Default Base url
         """
         self.server_index = 0 if server_index is None and host is None else server_index
@@ -413,7 +413,7 @@ conf = openapi_streams.Configuration(
         """
         return [
             {
-                'url': "https://api.moralis-streams.com",
+                'url': "",
                 'description': "No description provided",
             }
         ]

@@ -54,10 +54,16 @@ class AddressInfoDto(
                 @schemas.classproperty
                 def SOLANA(cls):
                     return cls("solana")
+                
+                @schemas.classproperty
+                def APTOS(cls):
+                    return cls("aptos")
             address = schemas.StrSchema
+            publicKey = schemas.StrSchema
             __annotations__ = {
                 "blockchainType": blockchainType,
                 "address": address,
+                "publicKey": publicKey,
             }
     
     address: MetaOapg.properties.address
@@ -70,9 +76,12 @@ class AddressInfoDto(
     def __getitem__(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["publicKey"]) -> MetaOapg.properties.publicKey: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["blockchainType", "address", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["blockchainType", "address", "publicKey", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -84,9 +93,12 @@ class AddressInfoDto(
     def get_item_oapg(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["publicKey"]) -> typing.Union[MetaOapg.properties.publicKey, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["blockchainType", "address", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["blockchainType", "address", "publicKey", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -95,6 +107,7 @@ class AddressInfoDto(
         *args: typing.Union[dict, frozendict.frozendict, ],
         address: typing.Union[MetaOapg.properties.address, str, ],
         blockchainType: typing.Union[MetaOapg.properties.blockchainType, str, ],
+        publicKey: typing.Union[MetaOapg.properties.publicKey, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'AddressInfoDto':
@@ -103,6 +116,7 @@ class AddressInfoDto(
             *args,
             address=address,
             blockchainType=blockchainType,
+            publicKey=publicKey,
             _configuration=_configuration,
             **kwargs,
         )

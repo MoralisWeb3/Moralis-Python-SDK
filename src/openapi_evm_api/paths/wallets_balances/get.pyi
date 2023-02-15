@@ -30,7 +30,6 @@ from openapi_evm_api.model.chain_list import ChainList
 
 # Query params
 ChainSchema = ChainList
-ProviderUrlSchema = schemas.StrSchema
 ToBlockSchema = schemas.NumberSchema
 
 
@@ -65,7 +64,6 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
     'RequestOptionalQueryParams',
     {
         'chain': typing.Union[ChainSchema, ],
-        'providerUrl': typing.Union[ProviderUrlSchema, str, ],
         'to_block': typing.Union[ToBlockSchema, decimal.Decimal, int, float, ],
     },
     total=False
@@ -80,12 +78,6 @@ request_query_chain = api_client.QueryParameter(
     name="chain",
     style=api_client.ParameterStyle.FORM,
     schema=ChainSchema,
-    explode=True,
-)
-request_query_provider_url = api_client.QueryParameter(
-    name="providerUrl",
-    style=api_client.ParameterStyle.FORM,
-    schema=ProviderUrlSchema,
     explode=True,
 )
 request_query_to_block = api_client.QueryParameter(
@@ -181,7 +173,6 @@ class BaseApi(api_client.Api):
         prefix_separator_iterator = None
         for parameter in (
             request_query_chain,
-            request_query_provider_url,
             request_query_to_block,
             request_query_wallet_addresses,
         ):

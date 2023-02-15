@@ -107,7 +107,7 @@ Object with the properties:
 | tag | str | A user-provided tag that will be send along the webhook, the user can use this tag to identify the specific stream if multiple streams are present | Yes |  | "" |
 | topic0 | List of str | An Array of topic0's in string-signature format ex: ['FunctionName(address,uint256)'] | Yes |  | [] |
 | allAddresses | bool | Include events for all addresses (only applied when abi and topic0 is provided) | Yes |  | True |
-| includeNativeTxs | bool | Include or not native transactions defaults to false (only applied when type:contract) | Yes |  | True |
+| includeNativeTxs | bool | Include or not native transactions defaults to false | Yes |  | True |
 | includeContractLogs | bool | Include or not logs of contract interactions defaults to false | Yes |  | True |
 | includeInternalTxs | bool | Include or not include internal transactions defaults to false | Yes |  | True |
 | getNativeBalances | List of object: <br/> - selectors: List of str<br/> - type: enum[str]: <br/>- "tx"<br/>- "log"<br/>- "erc20transfer"<br/>- "erc20approval"<br/>- "nfttransfer"<br/>- "internalTx" | Include native balances for each address in the webhook | Yes |  | [] |
@@ -365,7 +365,7 @@ Object with the properties:
 | tag | str | A user-provided tag that will be send along the webhook, the user can use this tag to identify the specific stream if multiple streams are present | Yes |  | "" |
 | topic0 | List of str | An Array of topic0's in string-signature format ex: ['FunctionName(address,uint256)'] | Yes |  | [] |
 | allAddresses | bool | Include events for all addresses (only applied when abi and topic0 is provided) | Yes |  | True |
-| includeNativeTxs | bool | Include or not native transactions defaults to false (only applied when type:contract) | Yes |  | True |
+| includeNativeTxs | bool | Include or not native transactions defaults to false | Yes |  | True |
 | includeContractLogs | bool | Include or not logs of contract interactions defaults to false | Yes |  | True |
 | includeInternalTxs | bool | Include or not include internal transactions defaults to false | Yes |  | True |
 | getNativeBalances | List of object: <br/> - selectors: List of str<br/> - type: enum[str]: <br/>- "tx"<br/>- "log"<br/>- "erc20transfer"<br/>- "erc20approval"<br/>- "nfttransfer"<br/>- "internalTx" | Include native balances for each address in the webhook | Yes |  | [] |

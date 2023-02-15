@@ -25,11 +25,13 @@ import frozendict  # noqa: F401
 
 from openapi_evm_api import schemas  # noqa: F401
 
+from openapi_evm_api.model.include_list import IncludeList
 from openapi_evm_api.model.chain_list import ChainList
 from openapi_evm_api.model.block import Block
 
 # Query params
 ChainSchema = ChainList
+IncludeSchema = IncludeList
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -39,6 +41,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
     'RequestOptionalQueryParams',
     {
         'chain': typing.Union[ChainSchema, ],
+        'include': typing.Union[IncludeSchema, ],
     },
     total=False
 )
@@ -52,6 +55,12 @@ request_query_chain = api_client.QueryParameter(
     name="chain",
     style=api_client.ParameterStyle.FORM,
     schema=ChainSchema,
+    explode=True,
+)
+request_query_include = api_client.QueryParameter(
+    name="include",
+    style=api_client.ParameterStyle.FORM,
+    schema=IncludeSchema,
     explode=True,
 )
 # Path params
@@ -178,6 +187,7 @@ class BaseApi(api_client.Api):
         prefix_separator_iterator = None
         for parameter in (
             request_query_chain,
+            request_query_include,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:

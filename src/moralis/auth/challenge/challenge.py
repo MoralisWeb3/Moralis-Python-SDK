@@ -1,4 +1,6 @@
+from .request_challenge_aptos import request_challenge_aptos
 from .request_challenge_evm import request_challenge_evm
 from .request_challenge_solana import request_challenge_solana
+from .verify_challenge_aptos import verify_challenge_aptos
 from .verify_challenge_evm import verify_challenge_evm
 from .verify_challenge_solana import verify_challenge_solana

@@ -3,7 +3,7 @@ from openapi_streams.apis.tags import stats_api
 from ..utilities import get_common_headers
 
 
-def get_api_instance(api_key):
+def get_api_instance(api_key, params = None):
     configuration = openapi_streams.Configuration()
     configuration.api_key['x-api-key'] = api_key
     api_client = openapi_streams.ApiClient(configuration)
