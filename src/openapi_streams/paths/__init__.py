@@ -8,6 +8,7 @@ import enum
 class PathValues(str, enum.Enum):
     HISTORY = "/history"
     HISTORY_REPLAY_STREAM_ID_ID = "/history/replay/{streamId}/{id}"
+    HISTORY_LOGS = "/history/logs"
     SETTINGS = "/settings"
     STATS = "/stats"
     STATS_STREAM_ID = "/stats/{streamId}"

@@ -3,6 +3,7 @@ import typing_extensions
 from openapi_streams.paths import PathValues
 from openapi_streams.apis.paths.history import History
 from openapi_streams.apis.paths.history_replay_stream_id_id import HistoryReplayStreamIdId
+from openapi_streams.apis.paths.history_logs import HistoryLogs
 from openapi_streams.apis.paths.settings import Settings
 from openapi_streams.apis.paths.stats import Stats
 from openapi_streams.apis.paths.stats_stream_id import StatsStreamId
@@ -20,6 +21,7 @@ PathToApi = typing_extensions.TypedDict(
     {
         PathValues.HISTORY: History,
         PathValues.HISTORY_REPLAY_STREAM_ID_ID: HistoryReplayStreamIdId,
+        PathValues.HISTORY_LOGS: HistoryLogs,
         PathValues.SETTINGS: Settings,
         PathValues.STATS: Stats,
         PathValues.STATS_STREAM_ID: StatsStreamId,
@@ -38,6 +40,7 @@ path_to_api = PathToApi(
     {
         PathValues.HISTORY: History,
         PathValues.HISTORY_REPLAY_STREAM_ID_ID: HistoryReplayStreamIdId,
+        PathValues.HISTORY_LOGS: HistoryLogs,
         PathValues.SETTINGS: Settings,
         PathValues.STATS: Stats,
         PathValues.STATS_STREAM_ID: StatsStreamId,
