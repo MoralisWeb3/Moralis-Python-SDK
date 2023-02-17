@@ -11,7 +11,7 @@ import typing_extensions
 import urllib3
 from urllib3._collections import HTTPHeaderDict
 
-from openapi_evm_api import api_client, exceptions
+from openapi_streams import api_client, exceptions
 from datetime import date, datetime  # noqa: F401
 import decimal  # noqa: F401
 import functools  # noqa: F401
@@ -23,51 +23,25 @@ import uuid  # noqa: F401
 
 import frozendict  # noqa: F401
 
-from openapi_evm_api import schemas  # noqa: F401
+from openapi_streams import schemas  # noqa: F401
 
-from openapi_evm_api.model.chain_list import ChainList
-from openapi_evm_api.model.transaction_collection_verbose import TransactionCollectionVerbose
+from openapi_streams.model.history_types_i_webhook_delivery_logs_response import HistoryTypesIWebhookDeliveryLogsResponse
+
+from . import path
 
 # Query params
-ChainSchema = ChainList
-
-
-class FromBlockSchema(
-    schemas.IntSchema
-):
-    pass
-
-
-class ToBlockSchema(
-    schemas.IntSchema
-):
-    pass
-FromDateSchema = schemas.StrSchema
-ToDateSchema = schemas.StrSchema
+LimitSchema = schemas.Float64Schema
 CursorSchema = schemas.StrSchema
-
-
-class LimitSchema(
-    schemas.IntSchema
-):
-    pass
-DisableTotalSchema = schemas.BoolSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
+        'limit': typing.Union[LimitSchema, decimal.Decimal, int, float, ],
     }
 )
 RequestOptionalQueryParams = typing_extensions.TypedDict(
     'RequestOptionalQueryParams',
     {
-        'chain': typing.Union[ChainSchema, ],
-        'from_block': typing.Union[FromBlockSchema, decimal.Decimal, int, ],
-        'to_block': typing.Union[ToBlockSchema, decimal.Decimal, int, ],
-        'from_date': typing.Union[FromDateSchema, str, ],
-        'to_date': typing.Union[ToDateSchema, str, ],
         'cursor': typing.Union[CursorSchema, str, ],
-        'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
-        'disable_total': typing.Union[DisableTotalSchema, bool, ],
     },
     total=False
 )
@@ -77,34 +51,11 @@ class RequestQueryParams(RequestRequiredQueryParams, RequestOptionalQueryParams)
     pass
 
 
-request_query_chain = api_client.QueryParameter(
-    name="chain",
+request_query_limit = api_client.QueryParameter(
+    name="limit",
     style=api_client.ParameterStyle.FORM,
-    schema=ChainSchema,
-    explode=True,
-)
-request_query_from_block = api_client.QueryParameter(
-    name="from_block",
-    style=api_client.ParameterStyle.FORM,
-    schema=FromBlockSchema,
-    explode=True,
-)
-request_query_to_block = api_client.QueryParameter(
-    name="to_block",
-    style=api_client.ParameterStyle.FORM,
-    schema=ToBlockSchema,
-    explode=True,
-)
-request_query_from_date = api_client.QueryParameter(
-    name="from_date",
-    style=api_client.ParameterStyle.FORM,
-    schema=FromDateSchema,
-    explode=True,
-)
-request_query_to_date = api_client.QueryParameter(
-    name="to_date",
-    style=api_client.ParameterStyle.FORM,
-    schema=ToDateSchema,
+    schema=LimitSchema,
+    required=True,
     explode=True,
 )
 request_query_cursor = api_client.QueryParameter(
@@ -113,45 +64,10 @@ request_query_cursor = api_client.QueryParameter(
     schema=CursorSchema,
     explode=True,
 )
-request_query_limit = api_client.QueryParameter(
-    name="limit",
-    style=api_client.ParameterStyle.FORM,
-    schema=LimitSchema,
-    explode=True,
-)
-request_query_disable_total = api_client.QueryParameter(
-    name="disable_total",
-    style=api_client.ParameterStyle.FORM,
-    schema=DisableTotalSchema,
-    explode=True,
-)
-# Path params
-AddressSchema = schemas.StrSchema
-RequestRequiredPathParams = typing_extensions.TypedDict(
-    'RequestRequiredPathParams',
-    {
-        'address': typing.Union[AddressSchema, str, ],
-    }
-)
-RequestOptionalPathParams = typing_extensions.TypedDict(
-    'RequestOptionalPathParams',
-    {
-    },
-    total=False
-)
-
-
-class RequestPathParams(RequestRequiredPathParams, RequestOptionalPathParams):
-    pass
-
-
-request_path_address = api_client.PathParameter(
-    name="address",
-    style=api_client.ParameterStyle.SIMPLE,
-    schema=AddressSchema,
-    required=True,
-)
-SchemaFor200ResponseBodyApplicationJson = TransactionCollectionVerbose
+_auth = [
+    'x-api-key',
+]
+SchemaFor200ResponseBodyApplicationJson = HistoryTypesIWebhookDeliveryLogsResponse
 
 
 @dataclass
@@ -170,6 +86,9 @@ _response_for_200 = api_client.OpenApiResponse(
             schema=SchemaFor200ResponseBodyApplicationJson),
     },
 )
+_status_code_to_response = {
+    '200': _response_for_200,
+}
 _all_accept_content_types = (
     'application/json',
 )
@@ -177,10 +96,9 @@ _all_accept_content_types = (
 
 class BaseApi(api_client.Api):
     @typing.overload
-    def _get_wallet_transactions_verbose_oapg(
+    def _get_logs_oapg(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
@@ -190,21 +108,19 @@ class BaseApi(api_client.Api):
     ]: ...
 
     @typing.overload
-    def _get_wallet_transactions_verbose_oapg(
+    def _get_logs_oapg(
         self,
         skip_deserialization: typing_extensions.Literal[True],
         query_params: RequestQueryParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
     ) -> api_client.ApiResponseWithoutDeserialization: ...
 
     @typing.overload
-    def _get_wallet_transactions_verbose_oapg(
+    def _get_logs_oapg(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
@@ -214,48 +130,27 @@ class BaseApi(api_client.Api):
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
-    def _get_wallet_transactions_verbose_oapg(
+    def _get_logs_oapg(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ):
         """
-        Get decoded transactions by wallet
+        Get logs
         :param skip_deserialization: If true then api_response.response will be set but
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
         """
         self._verify_typed_dict_inputs_oapg(RequestQueryParams, query_params)
-        self._verify_typed_dict_inputs_oapg(RequestPathParams, path_params)
         used_path = path.value
-
-        _path_params = {}
-        for parameter in (
-            request_path_address,
-        ):
-            parameter_data = path_params.get(parameter.name, schemas.unset)
-            if parameter_data is schemas.unset:
-                continue
-            serialized_data = parameter.serialize(parameter_data)
-            _path_params.update(serialized_data)
-
-        for k, v in _path_params.items():
-            used_path = used_path.replace('{%s}' % k, v)
 
         prefix_separator_iterator = None
         for parameter in (
-            request_query_chain,
-            request_query_from_block,
-            request_query_to_block,
-            request_query_from_date,
-            request_query_to_date,
-            request_query_cursor,
             request_query_limit,
-            request_query_disable_total,
+            request_query_cursor,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -296,14 +191,13 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class GetWalletTransactionsVerbose(BaseApi):
+class GetLogs(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
     @typing.overload
-    def get_wallet_transactions_verbose(
+    def get_logs(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
@@ -313,21 +207,19 @@ class GetWalletTransactionsVerbose(BaseApi):
     ]: ...
 
     @typing.overload
-    def get_wallet_transactions_verbose(
+    def get_logs(
         self,
         skip_deserialization: typing_extensions.Literal[True],
         query_params: RequestQueryParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
     ) -> api_client.ApiResponseWithoutDeserialization: ...
 
     @typing.overload
-    def get_wallet_transactions_verbose(
+    def get_logs(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
@@ -337,18 +229,16 @@ class GetWalletTransactionsVerbose(BaseApi):
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
-    def get_wallet_transactions_verbose(
+    def get_logs(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ):
-        return self._get_wallet_transactions_verbose_oapg(
+        return self._get_logs_oapg(
             query_params=query_params,
-            path_params=path_params,
             accept_content_types=accept_content_types,
             stream=stream,
             timeout=timeout,
@@ -363,7 +253,6 @@ class ApiForget(BaseApi):
     def get(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
@@ -377,7 +266,6 @@ class ApiForget(BaseApi):
         self,
         skip_deserialization: typing_extensions.Literal[True],
         query_params: RequestQueryParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
@@ -387,7 +275,6 @@ class ApiForget(BaseApi):
     def get(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
@@ -400,15 +287,13 @@ class ApiForget(BaseApi):
     def get(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ):
-        return self._get_wallet_transactions_verbose_oapg(
+        return self._get_logs_oapg(
             query_params=query_params,
-            path_params=path_params,
             accept_content_types=accept_content_types,
             stream=stream,
             timeout=timeout,
