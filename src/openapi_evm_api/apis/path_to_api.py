@@ -26,6 +26,10 @@ from openapi_evm_api.apis.paths.erc20_metadata import Erc20Metadata
 from openapi_evm_api.apis.paths.erc20_metadata_symbols import Erc20MetadataSymbols
 from openapi_evm_api.apis.paths.erc20_address_allowance import Erc20AddressAllowance
 from openapi_evm_api.apis.paths.erc20_address_transfers import Erc20AddressTransfers
+from openapi_evm_api.apis.paths.erc20_transfers import Erc20Transfers
+from openapi_evm_api.apis.paths.erc20_mints import Erc20Mints
+from openapi_evm_api.apis.paths.erc20_burns import Erc20Burns
+from openapi_evm_api.apis.paths.erc20_approvals import Erc20Approvals
 from openapi_evm_api.apis.paths.address_balance import AddressBalance
 from openapi_evm_api.apis.paths.wallets_balances import WalletsBalances
 from openapi_evm_api.apis.paths.address import Address
@@ -34,7 +38,7 @@ from openapi_evm_api.apis.paths.transaction_transaction_hash_internal_transactio
 from openapi_evm_api.apis.paths.transaction_transaction_hash import TransactionTransactionHash
 from openapi_evm_api.apis.paths.transaction_transaction_hash_verbose import TransactionTransactionHashVerbose
 from openapi_evm_api.apis.paths.block_block_number_or_hash import BlockBlockNumberOrHash
-from openapi_evm_api.apis.paths.date_to_block import DateToBlock
+from openapi_evm_api.apis.paths.dateto_block import DatetoBlock
 from openapi_evm_api.apis.paths.address_logs import AddressLogs
 from openapi_evm_api.apis.paths.address_events import AddressEvents
 from openapi_evm_api.apis.paths.address_function import AddressFunction
@@ -74,6 +78,10 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.ERC20_METADATA_SYMBOLS: Erc20MetadataSymbols,
         PathValues.ERC20_ADDRESS_ALLOWANCE: Erc20AddressAllowance,
         PathValues.ERC20_ADDRESS_TRANSFERS: Erc20AddressTransfers,
+        PathValues.ERC20_TRANSFERS: Erc20Transfers,
+        PathValues.ERC20_MINTS: Erc20Mints,
+        PathValues.ERC20_BURNS: Erc20Burns,
+        PathValues.ERC20_APPROVALS: Erc20Approvals,
         PathValues.ADDRESS_BALANCE: AddressBalance,
         PathValues.WALLETS_BALANCES: WalletsBalances,
         PathValues.ADDRESS: Address,
@@ -82,7 +90,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.TRANSACTION_TRANSACTION_HASH: TransactionTransactionHash,
         PathValues.TRANSACTION_TRANSACTION_HASH_VERBOSE: TransactionTransactionHashVerbose,
         PathValues.BLOCK_BLOCK_NUMBER_OR_HASH: BlockBlockNumberOrHash,
-        PathValues.DATE_TO_BLOCK: DateToBlock,
+        PathValues.DATETO_BLOCK: DatetoBlock,
         PathValues.ADDRESS_LOGS: AddressLogs,
         PathValues.ADDRESS_EVENTS: AddressEvents,
         PathValues.ADDRESS_FUNCTION: AddressFunction,
@@ -123,6 +131,10 @@ path_to_api = PathToApi(
         PathValues.ERC20_METADATA_SYMBOLS: Erc20MetadataSymbols,
         PathValues.ERC20_ADDRESS_ALLOWANCE: Erc20AddressAllowance,
         PathValues.ERC20_ADDRESS_TRANSFERS: Erc20AddressTransfers,
+        PathValues.ERC20_TRANSFERS: Erc20Transfers,
+        PathValues.ERC20_MINTS: Erc20Mints,
+        PathValues.ERC20_BURNS: Erc20Burns,
+        PathValues.ERC20_APPROVALS: Erc20Approvals,
         PathValues.ADDRESS_BALANCE: AddressBalance,
         PathValues.WALLETS_BALANCES: WalletsBalances,
         PathValues.ADDRESS: Address,
@@ -131,7 +143,7 @@ path_to_api = PathToApi(
         PathValues.TRANSACTION_TRANSACTION_HASH: TransactionTransactionHash,
         PathValues.TRANSACTION_TRANSACTION_HASH_VERBOSE: TransactionTransactionHashVerbose,
         PathValues.BLOCK_BLOCK_NUMBER_OR_HASH: BlockBlockNumberOrHash,
-        PathValues.DATE_TO_BLOCK: DateToBlock,
+        PathValues.DATETO_BLOCK: DatetoBlock,
         PathValues.ADDRESS_LOGS: AddressLogs,
         PathValues.ADDRESS_EVENTS: AddressEvents,
         PathValues.ADDRESS_FUNCTION: AddressFunction,

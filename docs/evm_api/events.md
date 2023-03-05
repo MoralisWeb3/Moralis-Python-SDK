@@ -63,7 +63,7 @@ print(result)
 
 | Type | Description | Required |
 |------|-------------|----------|
-| object | ABI of the specific event | No |
+| object | ABI of the specific event | Yes |
 
 
 ---

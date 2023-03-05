@@ -2,7 +2,7 @@ import json
 import typing
 import typing_extensions
 from .api_instance import get_api_instance
-from openapi_evm_api.paths.date_to_block.get import RequestQueryParams
+from openapi_evm_api.paths.dateto_block.get import RequestQueryParams
 
 
 

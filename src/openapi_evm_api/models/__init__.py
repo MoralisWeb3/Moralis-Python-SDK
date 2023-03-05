@@ -22,11 +22,19 @@ from openapi_evm_api.model.decoded_event import DecodedEvent
 from openapi_evm_api.model.endpoint_weights import EndpointWeights
 from openapi_evm_api.model.ens import Ens
 from openapi_evm_api.model.erc20_allowance import Erc20Allowance
+from openapi_evm_api.model.erc20_approval import Erc20Approval
+from openapi_evm_api.model.erc20_approval_response import Erc20ApprovalResponse
+from openapi_evm_api.model.erc20_burn import Erc20Burn
+from openapi_evm_api.model.erc20_burn_response import Erc20BurnResponse
 from openapi_evm_api.model.erc20_metadata import Erc20Metadata
+from openapi_evm_api.model.erc20_mint import Erc20Mint
+from openapi_evm_api.model.erc20_mint_response import Erc20MintResponse
 from openapi_evm_api.model.erc20_price import Erc20Price
 from openapi_evm_api.model.erc20_token_balance import Erc20TokenBalance
 from openapi_evm_api.model.erc20_transaction import Erc20Transaction
 from openapi_evm_api.model.erc20_transaction_collection import Erc20TransactionCollection
+from openapi_evm_api.model.erc20_transfer import Erc20Transfer
+from openapi_evm_api.model.erc20_transfers_response import Erc20TransfersResponse
 from openapi_evm_api.model.erc721_metadata import Erc721Metadata
 from openapi_evm_api.model.get_multiple_nfts_dto import GetMultipleNftsDto
 from openapi_evm_api.model.historical_nft_transfer import HistoricalNftTransfer
@@ -38,6 +46,7 @@ from openapi_evm_api.model.log import Log
 from openapi_evm_api.model.log_collection import LogCollection
 from openapi_evm_api.model.log_event import LogEvent
 from openapi_evm_api.model.log_event_by_address import LogEventByAddress
+from openapi_evm_api.model.log_response import LogResponse
 from openapi_evm_api.model.log_verbose import LogVerbose
 from openapi_evm_api.model.media import Media
 from openapi_evm_api.model.media_collection import MediaCollection
