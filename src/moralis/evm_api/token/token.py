@@ -1,3 +1,7 @@
+from .get_erc20_approvals import get_erc20_approvals
+from .get_erc20_burns import get_erc20_burns
+from .get_erc20_mints import get_erc20_mints
+from .get_erc20_transfers import get_erc20_transfers
 from .get_token_allowance import get_token_allowance
 from .get_token_metadata import get_token_metadata
 from .get_token_metadata_by_symbol import get_token_metadata_by_symbol
