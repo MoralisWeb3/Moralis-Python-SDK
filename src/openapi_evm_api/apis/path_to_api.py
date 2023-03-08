@@ -38,7 +38,7 @@ from openapi_evm_api.apis.paths.transaction_transaction_hash_internal_transactio
 from openapi_evm_api.apis.paths.transaction_transaction_hash import TransactionTransactionHash
 from openapi_evm_api.apis.paths.transaction_transaction_hash_verbose import TransactionTransactionHashVerbose
 from openapi_evm_api.apis.paths.block_block_number_or_hash import BlockBlockNumberOrHash
-from openapi_evm_api.apis.paths.dateto_block import DatetoBlock
+from openapi_evm_api.apis.paths.date_to_block import DateToBlock
 from openapi_evm_api.apis.paths.address_logs import AddressLogs
 from openapi_evm_api.apis.paths.address_events import AddressEvents
 from openapi_evm_api.apis.paths.address_function import AddressFunction
@@ -90,7 +90,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.TRANSACTION_TRANSACTION_HASH: TransactionTransactionHash,
         PathValues.TRANSACTION_TRANSACTION_HASH_VERBOSE: TransactionTransactionHashVerbose,
         PathValues.BLOCK_BLOCK_NUMBER_OR_HASH: BlockBlockNumberOrHash,
-        PathValues.DATETO_BLOCK: DatetoBlock,
+        PathValues.DATE_TO_BLOCK: DateToBlock,
         PathValues.ADDRESS_LOGS: AddressLogs,
         PathValues.ADDRESS_EVENTS: AddressEvents,
         PathValues.ADDRESS_FUNCTION: AddressFunction,
@@ -143,7 +143,7 @@ path_to_api = PathToApi(
         PathValues.TRANSACTION_TRANSACTION_HASH: TransactionTransactionHash,
         PathValues.TRANSACTION_TRANSACTION_HASH_VERBOSE: TransactionTransactionHashVerbose,
         PathValues.BLOCK_BLOCK_NUMBER_OR_HASH: BlockBlockNumberOrHash,
-        PathValues.DATETO_BLOCK: DatetoBlock,
+        PathValues.DATE_TO_BLOCK: DateToBlock,
         PathValues.ADDRESS_LOGS: AddressLogs,
         PathValues.ADDRESS_EVENTS: AddressEvents,
         PathValues.ADDRESS_FUNCTION: AddressFunction,

@@ -43,7 +43,7 @@ class PathValues(str, enum.Enum):
     TRANSACTION_TRANSACTION_HASH = "/transaction/{transaction_hash}"
     TRANSACTION_TRANSACTION_HASH_VERBOSE = "/transaction/{transaction_hash}/verbose"
     BLOCK_BLOCK_NUMBER_OR_HASH = "/block/{block_number_or_hash}"
-    DATETO_BLOCK = "/dateto_block"
+    DATE_TO_BLOCK = "/dateToBlock"
     ADDRESS_LOGS = "/{address}/logs"
     ADDRESS_EVENTS = "/{address}/events"
     ADDRESS_FUNCTION = "/{address}/function"

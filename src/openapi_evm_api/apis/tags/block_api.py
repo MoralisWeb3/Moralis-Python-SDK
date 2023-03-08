@@ -10,7 +10,7 @@
 """
 
 from openapi_evm_api.paths.block_block_number_or_hash.get import GetBlock
-from openapi_evm_api.paths.dateto_block.get import GetDateToBlock
+from openapi_evm_api.paths.date_to_block.get import GetDateToBlock
 
 
 class BlockApi(
