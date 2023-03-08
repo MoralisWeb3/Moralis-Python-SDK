@@ -11,7 +11,7 @@ REQUIRES = [
 
 setup(
     name="moralis",
-    version="0.1.25",
+    version="0.1.26",
     description="The official Moralis Python SDK",
     keywords=["Moralis", "Moralis SDK", "Moralis Python SDK", "Web3", "Crypto", "Ethereum", "Avalanche",
               "Blockchain", "Contracts", "Eth", "Evm", "Fantom", "Nft", "Dapps", "Binance", "Solana"],
