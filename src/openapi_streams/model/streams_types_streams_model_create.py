@@ -96,6 +96,7 @@ class StreamsTypesStreamsModelCreate(
             includeNativeTxs = schemas.BoolSchema
             includeContractLogs = schemas.BoolSchema
             includeInternalTxs = schemas.BoolSchema
+            includeAllTxLogs = schemas.BoolSchema
             
             
             class getNativeBalances(
@@ -214,6 +215,7 @@ class StreamsTypesStreamsModelCreate(
                 "includeNativeTxs": includeNativeTxs,
                 "includeContractLogs": includeContractLogs,
                 "includeInternalTxs": includeInternalTxs,
+                "includeAllTxLogs": includeAllTxLogs,
                 "getNativeBalances": getNativeBalances,
                 "abi": abi,
                 "advancedOptions": advancedOptions,
@@ -255,6 +257,9 @@ class StreamsTypesStreamsModelCreate(
     def __getitem__(self, name: typing_extensions.Literal["includeInternalTxs"]) -> MetaOapg.properties.includeInternalTxs: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["includeAllTxLogs"]) -> MetaOapg.properties.includeAllTxLogs: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["getNativeBalances"]) -> MetaOapg.properties.getNativeBalances: ...
     
     @typing.overload
@@ -269,7 +274,7 @@ class StreamsTypesStreamsModelCreate(
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["triggers"]) -> MetaOapg.properties.triggers: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["description"], typing_extensions.Literal["chainIds"], typing_extensions.Literal["tag"], typing_extensions.Literal["webhookUrl"], typing_extensions.Literal["topic0"], typing_extensions.Literal["allAddresses"], typing_extensions.Literal["includeNativeTxs"], typing_extensions.Literal["includeContractLogs"], typing_extensions.Literal["includeInternalTxs"], typing_extensions.Literal["getNativeBalances"], typing_extensions.Literal["abi"], typing_extensions.Literal["advancedOptions"], typing_extensions.Literal["demo"], typing_extensions.Literal["triggers"], ]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["description"], typing_extensions.Literal["chainIds"], typing_extensions.Literal["tag"], typing_extensions.Literal["webhookUrl"], typing_extensions.Literal["topic0"], typing_extensions.Literal["allAddresses"], typing_extensions.Literal["includeNativeTxs"], typing_extensions.Literal["includeContractLogs"], typing_extensions.Literal["includeInternalTxs"], typing_extensions.Literal["includeAllTxLogs"], typing_extensions.Literal["getNativeBalances"], typing_extensions.Literal["abi"], typing_extensions.Literal["advancedOptions"], typing_extensions.Literal["demo"], typing_extensions.Literal["triggers"], ]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -301,6 +306,9 @@ class StreamsTypesStreamsModelCreate(
     def get_item_oapg(self, name: typing_extensions.Literal["includeInternalTxs"]) -> typing.Union[MetaOapg.properties.includeInternalTxs, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["includeAllTxLogs"]) -> typing.Union[MetaOapg.properties.includeAllTxLogs, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["getNativeBalances"]) -> typing.Union[MetaOapg.properties.getNativeBalances, schemas.Unset]: ...
     
     @typing.overload
@@ -315,7 +323,7 @@ class StreamsTypesStreamsModelCreate(
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["triggers"]) -> typing.Union[MetaOapg.properties.triggers, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["description"], typing_extensions.Literal["chainIds"], typing_extensions.Literal["tag"], typing_extensions.Literal["webhookUrl"], typing_extensions.Literal["topic0"], typing_extensions.Literal["allAddresses"], typing_extensions.Literal["includeNativeTxs"], typing_extensions.Literal["includeContractLogs"], typing_extensions.Literal["includeInternalTxs"], typing_extensions.Literal["getNativeBalances"], typing_extensions.Literal["abi"], typing_extensions.Literal["advancedOptions"], typing_extensions.Literal["demo"], typing_extensions.Literal["triggers"], ]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["description"], typing_extensions.Literal["chainIds"], typing_extensions.Literal["tag"], typing_extensions.Literal["webhookUrl"], typing_extensions.Literal["topic0"], typing_extensions.Literal["allAddresses"], typing_extensions.Literal["includeNativeTxs"], typing_extensions.Literal["includeContractLogs"], typing_extensions.Literal["includeInternalTxs"], typing_extensions.Literal["includeAllTxLogs"], typing_extensions.Literal["getNativeBalances"], typing_extensions.Literal["abi"], typing_extensions.Literal["advancedOptions"], typing_extensions.Literal["demo"], typing_extensions.Literal["triggers"], ]):
         return super().get_item_oapg(name)
 
     def __new__(
@@ -330,6 +338,7 @@ class StreamsTypesStreamsModelCreate(
         includeNativeTxs: typing.Union[MetaOapg.properties.includeNativeTxs, bool, schemas.Unset] = schemas.unset,
         includeContractLogs: typing.Union[MetaOapg.properties.includeContractLogs, bool, schemas.Unset] = schemas.unset,
         includeInternalTxs: typing.Union[MetaOapg.properties.includeInternalTxs, bool, schemas.Unset] = schemas.unset,
+        includeAllTxLogs: typing.Union[MetaOapg.properties.includeAllTxLogs, bool, schemas.Unset] = schemas.unset,
         getNativeBalances: typing.Union[MetaOapg.properties.getNativeBalances, list, tuple, schemas.Unset] = schemas.unset,
         abi: typing.Union[MetaOapg.properties.abi, list, tuple, None, schemas.Unset] = schemas.unset,
         advancedOptions: typing.Union[MetaOapg.properties.advancedOptions, list, tuple, None, schemas.Unset] = schemas.unset,
@@ -349,6 +358,7 @@ class StreamsTypesStreamsModelCreate(
             includeNativeTxs=includeNativeTxs,
             includeContractLogs=includeContractLogs,
             includeInternalTxs=includeInternalTxs,
+            includeAllTxLogs=includeAllTxLogs,
             getNativeBalances=getNativeBalances,
             abi=abi,
             advancedOptions=advancedOptions,

@@ -62,11 +62,64 @@ class WebhookTypesAptosWebhook(
             
             
                 class MetaOapg:
-                    items = schemas.AnyTypeSchema
+                    
+                    
+                    class items(
+                        schemas.DictSchema
+                    ):
+                    
+                    
+                        class MetaOapg:
+                            required = {
+                                "txHash",
+                            }
+                            
+                            class properties:
+                                txHash = schemas.StrSchema
+                                __annotations__ = {
+                                    "txHash": txHash,
+                                }
+                            additional_properties = schemas.AnyTypeSchema
+                        
+                        txHash: MetaOapg.properties.txHash
+                        
+                        @typing.overload
+                        def __getitem__(self, name: typing_extensions.Literal["txHash"]) -> MetaOapg.properties.txHash: ...
+                        
+                        @typing.overload
+                        def __getitem__(self, name: str) -> MetaOapg.additional_properties: ...
+                        
+                        def __getitem__(self, name: typing.Union[typing_extensions.Literal["txHash"], str, ]):
+                            # dict_instance[name] accessor
+                            return super().__getitem__(name)
+                        
+                        @typing.overload
+                        def get_item_oapg(self, name: typing_extensions.Literal["txHash"]) -> MetaOapg.properties.txHash: ...
+                        
+                        @typing.overload
+                        def get_item_oapg(self, name: str) -> typing.Union[MetaOapg.additional_properties, schemas.Unset]: ...
+                        
+                        def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["txHash"], str, ]):
+                            return super().get_item_oapg(name)
+                    
+                        def __new__(
+                            cls,
+                            *args: typing.Union[dict, frozendict.frozendict, ],
+                            txHash: typing.Union[MetaOapg.properties.txHash, str, ],
+                            _configuration: typing.Optional[schemas.Configuration] = None,
+                            **kwargs: typing.Union[MetaOapg.additional_properties, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+                        ) -> 'items':
+                            return super().__new__(
+                                cls,
+                                *args,
+                                txHash=txHash,
+                                _configuration=_configuration,
+                                **kwargs,
+                            )
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ]], typing.List[typing.Union[MetaOapg.items, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ]]],
+                    arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, dict, frozendict.frozendict, ]], typing.List[typing.Union[MetaOapg.items, dict, frozendict.frozendict, ]]],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'changes':
                     return super().__new__(
@@ -163,11 +216,64 @@ class WebhookTypesAptosWebhook(
             
             
                 class MetaOapg:
-                    items = schemas.AnyTypeSchema
+                    
+                    
+                    class items(
+                        schemas.DictSchema
+                    ):
+                    
+                    
+                        class MetaOapg:
+                            required = {
+                                "txHash",
+                            }
+                            
+                            class properties:
+                                txHash = schemas.StrSchema
+                                __annotations__ = {
+                                    "txHash": txHash,
+                                }
+                            additional_properties = schemas.AnyTypeSchema
+                        
+                        txHash: MetaOapg.properties.txHash
+                        
+                        @typing.overload
+                        def __getitem__(self, name: typing_extensions.Literal["txHash"]) -> MetaOapg.properties.txHash: ...
+                        
+                        @typing.overload
+                        def __getitem__(self, name: str) -> MetaOapg.additional_properties: ...
+                        
+                        def __getitem__(self, name: typing.Union[typing_extensions.Literal["txHash"], str, ]):
+                            # dict_instance[name] accessor
+                            return super().__getitem__(name)
+                        
+                        @typing.overload
+                        def get_item_oapg(self, name: typing_extensions.Literal["txHash"]) -> MetaOapg.properties.txHash: ...
+                        
+                        @typing.overload
+                        def get_item_oapg(self, name: str) -> typing.Union[MetaOapg.additional_properties, schemas.Unset]: ...
+                        
+                        def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["txHash"], str, ]):
+                            return super().get_item_oapg(name)
+                    
+                        def __new__(
+                            cls,
+                            *args: typing.Union[dict, frozendict.frozendict, ],
+                            txHash: typing.Union[MetaOapg.properties.txHash, str, ],
+                            _configuration: typing.Optional[schemas.Configuration] = None,
+                            **kwargs: typing.Union[MetaOapg.additional_properties, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+                        ) -> 'items':
+                            return super().__new__(
+                                cls,
+                                *args,
+                                txHash=txHash,
+                                _configuration=_configuration,
+                                **kwargs,
+                            )
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ]], typing.List[typing.Union[MetaOapg.items, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ]]],
+                    arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, dict, frozendict.frozendict, ]], typing.List[typing.Union[MetaOapg.items, dict, frozendict.frozendict, ]]],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'events':
                     return super().__new__(
@@ -207,11 +313,64 @@ class WebhookTypesAptosWebhook(
             
             
                 class MetaOapg:
-                    items = schemas.AnyTypeSchema
+                    
+                    
+                    class items(
+                        schemas.DictSchema
+                    ):
+                    
+                    
+                        class MetaOapg:
+                            required = {
+                                "txHash",
+                            }
+                            
+                            class properties:
+                                txHash = schemas.StrSchema
+                                __annotations__ = {
+                                    "txHash": txHash,
+                                }
+                            additional_properties = schemas.AnyTypeSchema
+                        
+                        txHash: MetaOapg.properties.txHash
+                        
+                        @typing.overload
+                        def __getitem__(self, name: typing_extensions.Literal["txHash"]) -> MetaOapg.properties.txHash: ...
+                        
+                        @typing.overload
+                        def __getitem__(self, name: str) -> MetaOapg.additional_properties: ...
+                        
+                        def __getitem__(self, name: typing.Union[typing_extensions.Literal["txHash"], str, ]):
+                            # dict_instance[name] accessor
+                            return super().__getitem__(name)
+                        
+                        @typing.overload
+                        def get_item_oapg(self, name: typing_extensions.Literal["txHash"]) -> MetaOapg.properties.txHash: ...
+                        
+                        @typing.overload
+                        def get_item_oapg(self, name: str) -> typing.Union[MetaOapg.additional_properties, schemas.Unset]: ...
+                        
+                        def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["txHash"], str, ]):
+                            return super().get_item_oapg(name)
+                    
+                        def __new__(
+                            cls,
+                            *args: typing.Union[dict, frozendict.frozendict, ],
+                            txHash: typing.Union[MetaOapg.properties.txHash, str, ],
+                            _configuration: typing.Optional[schemas.Configuration] = None,
+                            **kwargs: typing.Union[MetaOapg.additional_properties, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+                        ) -> 'items':
+                            return super().__new__(
+                                cls,
+                                *args,
+                                txHash=txHash,
+                                _configuration=_configuration,
+                                **kwargs,
+                            )
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ]], typing.List[typing.Union[MetaOapg.items, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ]]],
+                    arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, dict, frozendict.frozendict, ]], typing.List[typing.Union[MetaOapg.items, dict, frozendict.frozendict, ]]],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'payloads':
                     return super().__new__(

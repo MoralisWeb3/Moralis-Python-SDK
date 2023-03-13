@@ -38,12 +38,14 @@ class AptosCoinTransfer(
             "valueWithDecimals",
             "from",
             "to",
+            "txHash",
             "value",
             "transaction",
             "coin",
         }
         
         class properties:
+            txHash = schemas.StrSchema
             transaction = schemas.StrSchema
             valueWithDecimals = schemas.Float64Schema
             _from = schemas.StrSchema
@@ -54,6 +56,7 @@ class AptosCoinTransfer(
             def coin() -> typing.Type['AptosCoin']:
                 return AptosCoin
             __annotations__ = {
+                "txHash": txHash,
                 "transaction": transaction,
                 "valueWithDecimals": valueWithDecimals,
                 "from": _from,
@@ -64,9 +67,13 @@ class AptosCoinTransfer(
     
     valueWithDecimals: MetaOapg.properties.valueWithDecimals
     to: MetaOapg.properties.to
+    txHash: MetaOapg.properties.txHash
     value: MetaOapg.properties.value
     transaction: MetaOapg.properties.transaction
     coin: 'AptosCoin'
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["txHash"]) -> MetaOapg.properties.txHash: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["transaction"]) -> MetaOapg.properties.transaction: ...
@@ -89,10 +96,13 @@ class AptosCoinTransfer(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["transaction", "valueWithDecimals", "from", "value", "to", "coin", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["txHash", "transaction", "valueWithDecimals", "from", "value", "to", "coin", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["txHash"]) -> MetaOapg.properties.txHash: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["transaction"]) -> MetaOapg.properties.transaction: ...
@@ -115,7 +125,7 @@ class AptosCoinTransfer(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["transaction", "valueWithDecimals", "from", "value", "to", "coin", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["txHash", "transaction", "valueWithDecimals", "from", "value", "to", "coin", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -124,6 +134,7 @@ class AptosCoinTransfer(
         *args: typing.Union[dict, frozendict.frozendict, ],
         valueWithDecimals: typing.Union[MetaOapg.properties.valueWithDecimals, decimal.Decimal, int, float, ],
         to: typing.Union[MetaOapg.properties.to, str, ],
+        txHash: typing.Union[MetaOapg.properties.txHash, str, ],
         value: typing.Union[MetaOapg.properties.value, str, ],
         transaction: typing.Union[MetaOapg.properties.transaction, str, ],
         coin: 'AptosCoin',
@@ -135,6 +146,7 @@ class AptosCoinTransfer(
             *args,
             valueWithDecimals=valueWithDecimals,
             to=to,
+            txHash=txHash,
             value=value,
             transaction=transaction,
             coin=coin,
