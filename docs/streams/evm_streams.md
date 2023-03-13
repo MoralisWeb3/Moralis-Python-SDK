@@ -80,6 +80,7 @@ body = {
     "includeNativeTxs": True, 
     "includeContractLogs": True, 
     "includeInternalTxs": True, 
+    "includeAllTxLogs": True, 
     "getNativeBalances": [], 
     "abi": [], 
     "advancedOptions": [], 
@@ -110,6 +111,7 @@ Object with the properties:
 | includeNativeTxs | bool | Include or not native transactions defaults to false | Yes |  | True |
 | includeContractLogs | bool | Include or not logs of contract interactions defaults to false | Yes |  | True |
 | includeInternalTxs | bool | Include or not include internal transactions defaults to false | Yes |  | True |
+| includeAllTxLogs | bool | Include all logs if atleast one value in tx or log matches stream config | Yes |  | True |
 | getNativeBalances | List of object: <br/> - selectors: List of str<br/> - type: enum[str]: <br/>- "tx"<br/>- "log"<br/>- "erc20transfer"<br/>- "erc20approval"<br/>- "nfttransfer"<br/>- "internalTx" | Include native balances for each address in the webhook | Yes |  | [] |
 | abi | List of object: <br/> - anonymous: bool<br/> - constant: bool<br/> - inputs: List of AbiInput<br/> - name: str<br/> - outputs: List of AbiOutput<br/> - payable: bool<br/> - stateMutability: str<br/> - type: str<br/> - gas: float |  | Yes |  | [] |
 | advancedOptions | List of object: <br/> - topic0: str<br/> - filter: object: <br/><br/> - includeNativeTxs: bool |  | Yes |  | [] |
@@ -330,6 +332,7 @@ body = {
     "includeNativeTxs": True, 
     "includeContractLogs": True, 
     "includeInternalTxs": True, 
+    "includeAllTxLogs": True, 
     "getNativeBalances": [], 
     "abi": [], 
     "advancedOptions": [], 
@@ -368,6 +371,7 @@ Object with the properties:
 | includeNativeTxs | bool | Include or not native transactions defaults to false | Yes |  | True |
 | includeContractLogs | bool | Include or not logs of contract interactions defaults to false | Yes |  | True |
 | includeInternalTxs | bool | Include or not include internal transactions defaults to false | Yes |  | True |
+| includeAllTxLogs | bool | Include all logs if atleast one value in tx or log matches stream config | Yes |  | True |
 | getNativeBalances | List of object: <br/> - selectors: List of str<br/> - type: enum[str]: <br/>- "tx"<br/>- "log"<br/>- "erc20transfer"<br/>- "erc20approval"<br/>- "nfttransfer"<br/>- "internalTx" | Include native balances for each address in the webhook | Yes |  | [] |
 | abi | List of object: <br/> - anonymous: bool<br/> - constant: bool<br/> - inputs: List of AbiInput<br/> - name: str<br/> - outputs: List of AbiOutput<br/> - payable: bool<br/> - stateMutability: str<br/> - type: str<br/> - gas: float |  | Yes |  | [] |
 | advancedOptions | List of object: <br/> - topic0: str<br/> - filter: object: <br/><br/> - includeNativeTxs: bool |  | Yes |  | [] |

@@ -38,11 +38,13 @@ class AptosCoinDeposit(
             "sequenceNumber",
             "address",
             "valueWithDecimals",
+            "txHash",
             "value",
             "coin",
         }
         
         class properties:
+            txHash = schemas.StrSchema
             sequenceNumber = schemas.StrSchema
             valueWithDecimals = schemas.StrSchema
         
@@ -52,6 +54,7 @@ class AptosCoinDeposit(
             address = schemas.StrSchema
             value = schemas.StrSchema
             __annotations__ = {
+                "txHash": txHash,
                 "sequenceNumber": sequenceNumber,
                 "valueWithDecimals": valueWithDecimals,
                 "coin": coin,
@@ -62,8 +65,12 @@ class AptosCoinDeposit(
     sequenceNumber: MetaOapg.properties.sequenceNumber
     address: MetaOapg.properties.address
     valueWithDecimals: MetaOapg.properties.valueWithDecimals
+    txHash: MetaOapg.properties.txHash
     value: MetaOapg.properties.value
     coin: 'AptosCoin'
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["txHash"]) -> MetaOapg.properties.txHash: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["sequenceNumber"]) -> MetaOapg.properties.sequenceNumber: ...
@@ -83,10 +90,13 @@ class AptosCoinDeposit(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["sequenceNumber", "valueWithDecimals", "coin", "address", "value", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["txHash", "sequenceNumber", "valueWithDecimals", "coin", "address", "value", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["txHash"]) -> MetaOapg.properties.txHash: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["sequenceNumber"]) -> MetaOapg.properties.sequenceNumber: ...
@@ -106,7 +116,7 @@ class AptosCoinDeposit(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["sequenceNumber", "valueWithDecimals", "coin", "address", "value", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["txHash", "sequenceNumber", "valueWithDecimals", "coin", "address", "value", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -116,6 +126,7 @@ class AptosCoinDeposit(
         sequenceNumber: typing.Union[MetaOapg.properties.sequenceNumber, str, ],
         address: typing.Union[MetaOapg.properties.address, str, ],
         valueWithDecimals: typing.Union[MetaOapg.properties.valueWithDecimals, str, ],
+        txHash: typing.Union[MetaOapg.properties.txHash, str, ],
         value: typing.Union[MetaOapg.properties.value, str, ],
         coin: 'AptosCoin',
         _configuration: typing.Optional[schemas.Configuration] = None,
@@ -127,6 +138,7 @@ class AptosCoinDeposit(
             sequenceNumber=sequenceNumber,
             address=address,
             valueWithDecimals=valueWithDecimals,
+            txHash=txHash,
             value=value,
             coin=coin,
             _configuration=_configuration,
