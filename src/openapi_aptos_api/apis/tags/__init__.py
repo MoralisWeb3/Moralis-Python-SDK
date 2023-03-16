@@ -7,9 +7,9 @@ import enum
 
 class TagValues(str, enum.Enum):
     ACCOUNTS = "accounts"
+    BLOCKS = "blocks"
     COINS = "coins"
     COLLECTIONS = "collections"
-    DEFAULT = "default"
     NFTS = "nfts"
     TRANSACTIONS = "transactions"
     WALLETS = "wallets"

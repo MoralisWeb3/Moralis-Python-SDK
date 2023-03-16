@@ -236,7 +236,7 @@ print(result)
 
 > `aptos_api.nfts.get_nft_transfers_by_ids()`
 
-Get NFT Transferss by Token ids
+Get NFT Transfers by Token ids
 
 ### Example
 ```python
