@@ -22,6 +22,7 @@
     {
       "name": "streams",
       "swagger": "https://api.moralis-streams.com/api-docs/swagger.json",
+      "overwrite_host": "https://api.moralis-streams.com",
       "security_key": "x-api-key",
       "skip": false
     },

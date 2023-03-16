@@ -6,11 +6,11 @@ from .snake_case import to_snake, convert_abbreviations
 
 http = urllib3.PoolManager()
 
-def generate_swagger(swagger_url: str, api_name: str):
+def generate_swagger(swagger_url: str, api_name: str, overwrite_host: str | None = None):
     print(f"⏳ Generating swagger for {api_name}...")
 
     swagger_content = fetch_swagger(swagger_url)
-    swagger_content = process_swagger(swagger_content)
+    swagger_content = process_swagger(swagger_content, overwrite_host)
 
     print(f"✅ Generating swagger for {api_name} done")
 
@@ -59,6 +59,13 @@ def replace_tags(swagger_content: str):
 
     return swagger_content
 
+def overwrite_host_url(swagger_json: dict, overwrite_host: str | None = None):
+    if overwrite_host and swagger_json["servers"] :
+        swagger_json['servers'] = [{"url": overwrite_host}]
+
+    return swagger_json
+    
+
 
 def remove_invalid_attributes(swagger_json: dict):
     # 'default' is added in streams, but it's an invalid openapi specification
@@ -68,7 +75,7 @@ def remove_invalid_attributes(swagger_json: dict):
     return swagger_json
     
 
-def process_swagger(swagger_content: str):
+def process_swagger(swagger_content: str, overwrite_host: str | None = None):
     '''
     Process the swagger according to the needs to be used by the SDK. This includes:
     - transform "x-tag-sdk" to "tags" for every operation, this is a specific attribute,
@@ -79,6 +86,7 @@ def process_swagger(swagger_content: str):
     swagger_content = replace_tags(swagger_content)
     swagger_json = json.loads(swagger_content)
     swagger_json = remove_invalid_attributes(swagger_json)
+    swagger_json = overwrite_host_url(swagger_json, overwrite_host)
 
     print("✅ Processing swagger done")
     return swagger_json
