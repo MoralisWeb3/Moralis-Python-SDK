@@ -35,7 +35,6 @@ class DeleteTableItemChange(
 
     class MetaOapg:
         required = {
-            "address",
             "data",
             "state_key_hash",
             "handle",
@@ -45,7 +44,6 @@ class DeleteTableItemChange(
         
         class properties:
             type = schemas.StrSchema
-            address = schemas.DictSchema
             state_key_hash = schemas.StrSchema
             handle = schemas.DictSchema
             key = schemas.DictSchema
@@ -87,14 +85,12 @@ class DeleteTableItemChange(
                     )
             __annotations__ = {
                 "type": type,
-                "address": address,
                 "state_key_hash": state_key_hash,
                 "handle": handle,
                 "key": key,
                 "data": data,
             }
     
-    address: MetaOapg.properties.address
     data: MetaOapg.properties.data
     state_key_hash: MetaOapg.properties.state_key_hash
     handle: MetaOapg.properties.handle
@@ -103,9 +99,6 @@ class DeleteTableItemChange(
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["type"]) -> MetaOapg.properties.type: ...
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["state_key_hash"]) -> MetaOapg.properties.state_key_hash: ...
@@ -122,16 +115,13 @@ class DeleteTableItemChange(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["type", "address", "state_key_hash", "handle", "key", "data", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["type", "state_key_hash", "handle", "key", "data", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["type"]) -> MetaOapg.properties.type: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["state_key_hash"]) -> MetaOapg.properties.state_key_hash: ...
@@ -148,14 +138,13 @@ class DeleteTableItemChange(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["type", "address", "state_key_hash", "handle", "key", "data", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["type", "state_key_hash", "handle", "key", "data", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        address: typing.Union[MetaOapg.properties.address, dict, frozendict.frozendict, ],
         data: typing.Union[MetaOapg.properties.data, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         state_key_hash: typing.Union[MetaOapg.properties.state_key_hash, str, ],
         handle: typing.Union[MetaOapg.properties.handle, dict, frozendict.frozendict, ],
@@ -167,7 +156,6 @@ class DeleteTableItemChange(
         return super().__new__(
             cls,
             *args,
-            address=address,
             data=data,
             state_key_hash=state_key_hash,
             handle=handle,

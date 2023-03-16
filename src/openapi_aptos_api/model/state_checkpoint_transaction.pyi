@@ -68,11 +68,51 @@ class StateCheckpointTransaction(
             
             
                 class MetaOapg:
-                    items = schemas.StrSchema
+                    
+                    
+                    class items(
+                        schemas.ComposedSchema,
+                    ):
+                    
+                    
+                        class MetaOapg:
+                            
+                            @classmethod
+                            @functools.lru_cache()
+                            def any_of(cls):
+                                # we need this here to make our import statements work
+                                # we must store _composed_schemas in here so the code is only run
+                                # when we invoke this method. If we kept this at the class
+                                # level we would get an error because the class level
+                                # code would be run when this module is imported, and these composed
+                                # classes don't exist yet because their module has not finished
+                                # loading
+                                return [
+                                    DeleteModuleChange,
+                                    DeleteResourceChange,
+                                    DeleteTableItemChange,
+                                    WriteOrUpdateModuleChange,
+                                    WriteResourceChange,
+                                    WriteTableChangeSetChange,
+                                ]
+                    
+                    
+                        def __new__(
+                            cls,
+                            *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+                            _configuration: typing.Optional[schemas.Configuration] = None,
+                            **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+                        ) -> 'items':
+                            return super().__new__(
+                                cls,
+                                *args,
+                                _configuration=_configuration,
+                                **kwargs,
+                            )
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+                    arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ]], typing.List[typing.Union[MetaOapg.items, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ]]],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'changes':
                     return super().__new__(
@@ -235,3 +275,10 @@ class StateCheckpointTransaction(
             _configuration=_configuration,
             **kwargs,
         )
+
+from openapi_aptos_api.model.delete_module_change import DeleteModuleChange
+from openapi_aptos_api.model.delete_resource_change import DeleteResourceChange
+from openapi_aptos_api.model.delete_table_item_change import DeleteTableItemChange
+from openapi_aptos_api.model.write_or_update_module_change import WriteOrUpdateModuleChange
+from openapi_aptos_api.model.write_resource_change import WriteResourceChange
+from openapi_aptos_api.model.write_table_change_set_change import WriteTableChangeSetChange

@@ -1,4 +1,5 @@
 from .accounts import accounts
+from .blocks import blocks
 from .coins import coins
 from .collections import collections
 from .nfts import nfts
