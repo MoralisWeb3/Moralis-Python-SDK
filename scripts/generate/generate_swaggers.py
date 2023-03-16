@@ -1,8 +1,9 @@
 import json
 from .swagger import generate_swagger
 from .files import save_json
-from .paths import  temp_swaggers_path
+from .paths import temp_swaggers_path
 from .api_config import get_api_config
+
 
 def generate_swaggers():
     '''
@@ -16,7 +17,11 @@ def generate_swaggers():
 
     for api in get_api_config():
         print(f'⏳ start generating swagger  for {api["name"]}')
-        swagger_content = generate_swagger(api["swagger"], api["name"])
+        swagger_content = generate_swagger(
+            swagger_url=api["swagger"],
+            api_name=api["name"],
+            overwrite_host=api["overwrite_host"] if "overwrite_host" in api else None
+        )
         save_json(swagger_content, temp_swaggers_path, api["name"])
         print(f'⏳ start generating swagger  for {api["name"]}')
 
