@@ -12,12 +12,12 @@
 import unittest
 
 import openapi_evm_api
-from openapi_evm_api.model.erc20_approval_response import Erc20ApprovalResponse
+from openapi_evm_api.model.erc20_approvals_response import Erc20ApprovalsResponse
 from openapi_evm_api import configuration
 
 
-class TestErc20ApprovalResponse(unittest.TestCase):
-    """Erc20ApprovalResponse unit test stubs"""
+class TestErc20ApprovalsResponse(unittest.TestCase):
+    """Erc20ApprovalsResponse unit test stubs"""
     _configuration = configuration.Configuration()
 
 

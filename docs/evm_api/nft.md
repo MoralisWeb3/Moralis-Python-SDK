@@ -47,6 +47,7 @@ params = {
     "range": 0, 
     "cursor": "", 
     "normalizeMetadata": True, 
+    "media_items": True, 
 }
 
 result = evm_api.nft.get_contract_nfts(
@@ -71,6 +72,7 @@ print(result)
 | range | int | The desired subrange to query |  |  | 0 |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 | normalizeMetadata | bool | Should normalized metadata be returned? |  | False | True |
+| media_items | bool | Should preview media data be returned? |  | False | True |
 
 
 
@@ -96,6 +98,7 @@ params = {
 body = {
     "tokens": [{'token_address': '0xa4991609c508b6d4fb7156426db0bd49fe298bd8', 'token_id': '12'}, {'token_address': '0x3c64dc415ebb4690d1df2b6216148c8de6dd29f7', 'token_id': '1'}, {'token_address': '0x3c64dc415ebb4690d1df2b6216148c8de6dd29f7', 'token_id': '200'}], 
     "normalizeMetadata": False, 
+    "media_items": False, 
 }
 
 result = evm_api.nft.get_multiple_nfts(
@@ -122,6 +125,7 @@ Object with the properties:
 |------|------|-------------|----------|---------|---------|
 | tokens | List of object: <br/> - token_address: str<br/> - token_id: str | The tokens to be fetched (max 25 tokens) | Yes |  | [{'token_address': '0xa4991609c508b6d4fb7156426db0bd49fe298bd8', 'token_id': '12'}, {'token_address': '0x3c64dc415ebb4690d1df2b6216148c8de6dd29f7', 'token_id': '1'}, {'token_address': '0x3c64dc415ebb4690d1df2b6216148c8de6dd29f7', 'token_id': '200'}] |
 | normalizeMetadata | bool | Should normalized metadata be returned? | Yes |  | False |
+| media_items | bool | Should preview media data be returned? | Yes |  | False |
 
 
 ---
@@ -275,6 +279,7 @@ params = {
     "chain": "eth", 
     "format": "decimal", 
     "normalizeMetadata": True, 
+    "media_items": True, 
 }
 
 result = evm_api.nft.get_nft_metadata(
@@ -295,6 +300,7 @@ print(result)
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "avalanche testnet"<br/>- "0xa869"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "cronos testnet"<br/>- "0x152"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 | format | enum[str]: <br/>- "decimal"<br/>- "hex" | The format of the token ID |  | "decimal" | "decimal" |
 | normalizeMetadata | bool | Should normalized metadata be returned? |  | False | True |
+| media_items | bool | Should preview media data be returned? |  | False | True |
 
 
 
@@ -320,6 +326,7 @@ params = {
     "disable_total": True, 
     "cursor": "", 
     "normalizeMetadata": True, 
+    "media_items": True, 
 }
 
 result = evm_api.nft.get_nft_owners(
@@ -342,6 +349,7 @@ print(result)
 | disable_total | bool | If the result should skip returning the total count (Improves performance). |  | True | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 | normalizeMetadata | bool | Should normalized metadata be returned? |  | False | True |
+| media_items | bool | Should preview media data be returned? |  | False | True |
 
 
 
@@ -369,6 +377,7 @@ params = {
     "disable_total": True, 
     "cursor": "", 
     "normalizeMetadata": True, 
+    "media_items": True, 
 }
 
 result = evm_api.nft.get_nft_token_id_owners(
@@ -392,6 +401,7 @@ print(result)
 | disable_total | bool | If the result should skip returning the total count (Improves performance). |  | True | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 | normalizeMetadata | bool | Should normalized metadata be returned? |  | False | True |
+| media_items | bool | Should preview media data be returned? |  | False | True |
 
 
 
@@ -703,6 +713,7 @@ params = {
     "token_addresses": [], 
     "cursor": "", 
     "normalizeMetadata": True, 
+    "media_items": True, 
 }
 
 result = evm_api.nft.get_wallet_nfts(
@@ -726,6 +737,7 @@ print(result)
 | token_addresses | List of str | The addresses to get balances for (optional) |  |  | [] |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 | normalizeMetadata | bool | Should normalized metadata be returned? |  | False | True |
+| media_items | bool | Should preview media data be returned? |  | False | True |
 
 
 

@@ -54,6 +54,7 @@ class FormatSchema(
     def HEX(cls):
         return cls("hex")
 NormalizeMetadataSchema = schemas.BoolSchema
+MediaItemsSchema = schemas.BoolSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -65,6 +66,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'chain': typing.Union[ChainSchema, ],
         'format': typing.Union[FormatSchema, str, ],
         'normalizeMetadata': typing.Union[NormalizeMetadataSchema, bool, ],
+        'media_items': typing.Union[MediaItemsSchema, bool, ],
     },
     total=False
 )
@@ -90,6 +92,12 @@ request_query_normalize_metadata = api_client.QueryParameter(
     name="normalizeMetadata",
     style=api_client.ParameterStyle.FORM,
     schema=NormalizeMetadataSchema,
+    explode=True,
+)
+request_query_media_items = api_client.QueryParameter(
+    name="media_items",
+    style=api_client.ParameterStyle.FORM,
+    schema=MediaItemsSchema,
     explode=True,
 )
 # Path params
@@ -233,6 +241,7 @@ class BaseApi(api_client.Api):
             request_query_chain,
             request_query_format,
             request_query_normalize_metadata,
+            request_query_media_items,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:

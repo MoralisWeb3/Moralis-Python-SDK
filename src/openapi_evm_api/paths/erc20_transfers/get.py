@@ -25,8 +25,8 @@ import frozendict  # noqa: F401
 
 from openapi_evm_api import schemas  # noqa: F401
 
+from openapi_evm_api.model.erc20_transfers_response import Erc20TransfersResponse
 from openapi_evm_api.model.chain_list import ChainList
-from openapi_evm_api.model.erc20_transfer import Erc20Transfer
 
 from . import path
 
@@ -224,7 +224,7 @@ request_query_cursor = api_client.QueryParameter(
 _auth = [
     'ApiKeyAuth',
 ]
-SchemaFor200ResponseBodyApplicationJson = Erc20Transfer
+SchemaFor200ResponseBodyApplicationJson = Erc20TransfersResponse
 
 
 @dataclass

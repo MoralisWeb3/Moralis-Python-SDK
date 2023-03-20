@@ -23,12 +23,12 @@ from openapi_evm_api.model.endpoint_weights import EndpointWeights
 from openapi_evm_api.model.ens import Ens
 from openapi_evm_api.model.erc20_allowance import Erc20Allowance
 from openapi_evm_api.model.erc20_approval import Erc20Approval
-from openapi_evm_api.model.erc20_approval_response import Erc20ApprovalResponse
+from openapi_evm_api.model.erc20_approvals_response import Erc20ApprovalsResponse
 from openapi_evm_api.model.erc20_burn import Erc20Burn
-from openapi_evm_api.model.erc20_burn_response import Erc20BurnResponse
+from openapi_evm_api.model.erc20_burns_response import Erc20BurnsResponse
 from openapi_evm_api.model.erc20_metadata import Erc20Metadata
 from openapi_evm_api.model.erc20_mint import Erc20Mint
-from openapi_evm_api.model.erc20_mint_response import Erc20MintResponse
+from openapi_evm_api.model.erc20_mints_response import Erc20MintsResponse
 from openapi_evm_api.model.erc20_price import Erc20Price
 from openapi_evm_api.model.erc20_token_balance import Erc20TokenBalance
 from openapi_evm_api.model.erc20_transaction import Erc20Transaction

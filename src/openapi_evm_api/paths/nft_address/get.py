@@ -83,6 +83,7 @@ class RangeSchema(
         inclusive_minimum = 1
 CursorSchema = schemas.StrSchema
 NormalizeMetadataSchema = schemas.BoolSchema
+MediaItemsSchema = schemas.BoolSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -99,6 +100,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'range': typing.Union[RangeSchema, decimal.Decimal, int, ],
         'cursor': typing.Union[CursorSchema, str, ],
         'normalizeMetadata': typing.Union[NormalizeMetadataSchema, bool, ],
+        'media_items': typing.Union[MediaItemsSchema, bool, ],
     },
     total=False
 )
@@ -154,6 +156,12 @@ request_query_normalize_metadata = api_client.QueryParameter(
     name="normalizeMetadata",
     style=api_client.ParameterStyle.FORM,
     schema=NormalizeMetadataSchema,
+    explode=True,
+)
+request_query_media_items = api_client.QueryParameter(
+    name="media_items",
+    style=api_client.ParameterStyle.FORM,
+    schema=MediaItemsSchema,
     explode=True,
 )
 # Path params
@@ -293,6 +301,7 @@ class BaseApi(api_client.Api):
             request_query_range,
             request_query_cursor,
             request_query_normalize_metadata,
+            request_query_media_items,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
