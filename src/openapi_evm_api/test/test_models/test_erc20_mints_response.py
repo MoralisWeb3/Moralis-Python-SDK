@@ -12,12 +12,12 @@
 import unittest
 
 import openapi_evm_api
-from openapi_evm_api.model.erc20_mint_response import Erc20MintResponse
+from openapi_evm_api.model.erc20_mints_response import Erc20MintsResponse
 from openapi_evm_api import configuration
 
 
-class TestErc20MintResponse(unittest.TestCase):
-    """Erc20MintResponse unit test stubs"""
+class TestErc20MintsResponse(unittest.TestCase):
+    """Erc20MintsResponse unit test stubs"""
     _configuration = configuration.Configuration()
 
 

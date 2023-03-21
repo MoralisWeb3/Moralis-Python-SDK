@@ -26,7 +26,7 @@ import frozendict  # noqa: F401
 from openapi_evm_api import schemas  # noqa: F401
 
 from openapi_evm_api.model.chain_list import ChainList
-from openapi_evm_api.model.erc20_approval import Erc20Approval
+from openapi_evm_api.model.erc20_approvals_response import Erc20ApprovalsResponse
 
 # Query params
 ChainSchema = ChainList
@@ -211,7 +211,7 @@ request_query_cursor = api_client.QueryParameter(
     schema=CursorSchema,
     explode=True,
 )
-SchemaFor200ResponseBodyApplicationJson = Erc20Approval
+SchemaFor200ResponseBodyApplicationJson = Erc20ApprovalsResponse
 
 
 @dataclass

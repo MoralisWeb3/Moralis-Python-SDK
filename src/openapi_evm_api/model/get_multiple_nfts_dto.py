@@ -67,9 +67,11 @@ class GetMultipleNftsDto(
                 def __getitem__(self, i: int) -> 'TokenItem':
                     return super().__getitem__(i)
             normalizeMetadata = schemas.BoolSchema
+            media_items = schemas.BoolSchema
             __annotations__ = {
                 "tokens": tokens,
                 "normalizeMetadata": normalizeMetadata,
+                "media_items": media_items,
             }
 
     
@@ -82,9 +84,12 @@ class GetMultipleNftsDto(
     def __getitem__(self, name: typing_extensions.Literal["normalizeMetadata"]) -> MetaOapg.properties.normalizeMetadata: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["media_items"]) -> MetaOapg.properties.media_items: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tokens", "normalizeMetadata", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tokens", "normalizeMetadata", "media_items", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -96,9 +101,12 @@ class GetMultipleNftsDto(
     def get_item_oapg(self, name: typing_extensions.Literal["normalizeMetadata"]) -> typing.Union[MetaOapg.properties.normalizeMetadata, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["media_items"]) -> typing.Union[MetaOapg.properties.media_items, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tokens", "normalizeMetadata", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tokens", "normalizeMetadata", "media_items", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -107,6 +115,7 @@ class GetMultipleNftsDto(
         *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         tokens: typing.Union[MetaOapg.properties.tokens, list, tuple, ],
         normalizeMetadata: typing.Union[MetaOapg.properties.normalizeMetadata, bool, schemas.Unset] = schemas.unset,
+        media_items: typing.Union[MetaOapg.properties.media_items, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'GetMultipleNftsDto':
@@ -115,6 +124,7 @@ class GetMultipleNftsDto(
             *args,
             tokens=tokens,
             normalizeMetadata=normalizeMetadata,
+            media_items=media_items,
             _configuration=_configuration,
             **kwargs,
         )

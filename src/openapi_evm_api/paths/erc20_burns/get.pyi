@@ -26,7 +26,7 @@ import frozendict  # noqa: F401
 from openapi_evm_api import schemas  # noqa: F401
 
 from openapi_evm_api.model.chain_list import ChainList
-from openapi_evm_api.model.erc20_burn import Erc20Burn
+from openapi_evm_api.model.erc20_burns_response import Erc20BurnsResponse
 
 # Query params
 ChainSchema = ChainList
@@ -211,7 +211,7 @@ request_query_cursor = api_client.QueryParameter(
     schema=CursorSchema,
     explode=True,
 )
-SchemaFor200ResponseBodyApplicationJson = Erc20Burn
+SchemaFor200ResponseBodyApplicationJson = Erc20BurnsResponse
 
 
 @dataclass
