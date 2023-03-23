@@ -36,11 +36,11 @@ class AptosChallengeRequestDto(
     class MetaOapg:
         required = {
             "address",
-            "chainId",
             "domain",
             "publicKey",
             "uri",
             "timeout",
+            "network",
         }
         
         class properties:
@@ -54,18 +54,18 @@ class AptosChallengeRequestDto(
                 pass
             
             
-            class chainId(
+            class network(
                 schemas.EnumBase,
                 schemas.StrSchema
             ):
                 
                 @schemas.classproperty
-                def POSITIVE_1(cls):
-                    return cls("1")
+                def MAINNET(cls):
+                    return cls("mainnet")
                 
                 @schemas.classproperty
-                def POSITIVE_2(cls):
-                    return cls("2")
+                def TESTNET(cls):
+                    return cls("testnet")
             address = schemas.StrSchema
             publicKey = schemas.StrSchema
             statement = schemas.StrSchema
@@ -98,7 +98,7 @@ class AptosChallengeRequestDto(
                 "domain": domain,
                 "uri": uri,
                 "timeout": timeout,
-                "chainId": chainId,
+                "network": network,
                 "address": address,
                 "publicKey": publicKey,
                 "statement": statement,
@@ -108,11 +108,11 @@ class AptosChallengeRequestDto(
             }
     
     address: MetaOapg.properties.address
-    chainId: MetaOapg.properties.chainId
     domain: MetaOapg.properties.domain
     publicKey: MetaOapg.properties.publicKey
     uri: MetaOapg.properties.uri
     timeout: MetaOapg.properties.timeout
+    network: MetaOapg.properties.network
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["domain"]) -> MetaOapg.properties.domain: ...
@@ -124,7 +124,7 @@ class AptosChallengeRequestDto(
     def __getitem__(self, name: typing_extensions.Literal["timeout"]) -> MetaOapg.properties.timeout: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["chainId"]) -> MetaOapg.properties.chainId: ...
+    def __getitem__(self, name: typing_extensions.Literal["network"]) -> MetaOapg.properties.network: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
@@ -147,7 +147,7 @@ class AptosChallengeRequestDto(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["domain", "uri", "timeout", "chainId", "address", "publicKey", "statement", "expirationTime", "notBefore", "resources", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["domain", "uri", "timeout", "network", "address", "publicKey", "statement", "expirationTime", "notBefore", "resources", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -162,7 +162,7 @@ class AptosChallengeRequestDto(
     def get_item_oapg(self, name: typing_extensions.Literal["timeout"]) -> MetaOapg.properties.timeout: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["chainId"]) -> MetaOapg.properties.chainId: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["network"]) -> MetaOapg.properties.network: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
@@ -185,7 +185,7 @@ class AptosChallengeRequestDto(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["domain", "uri", "timeout", "chainId", "address", "publicKey", "statement", "expirationTime", "notBefore", "resources", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["domain", "uri", "timeout", "network", "address", "publicKey", "statement", "expirationTime", "notBefore", "resources", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -193,11 +193,11 @@ class AptosChallengeRequestDto(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
         address: typing.Union[MetaOapg.properties.address, str, ],
-        chainId: typing.Union[MetaOapg.properties.chainId, str, ],
         domain: typing.Union[MetaOapg.properties.domain, str, ],
         publicKey: typing.Union[MetaOapg.properties.publicKey, str, ],
         uri: typing.Union[MetaOapg.properties.uri, str, ],
         timeout: typing.Union[MetaOapg.properties.timeout, decimal.Decimal, int, float, ],
+        network: typing.Union[MetaOapg.properties.network, str, ],
         statement: typing.Union[MetaOapg.properties.statement, str, schemas.Unset] = schemas.unset,
         expirationTime: typing.Union[MetaOapg.properties.expirationTime, str, datetime, schemas.Unset] = schemas.unset,
         notBefore: typing.Union[MetaOapg.properties.notBefore, str, datetime, schemas.Unset] = schemas.unset,
@@ -209,11 +209,11 @@ class AptosChallengeRequestDto(
             cls,
             *args,
             address=address,
-            chainId=chainId,
             domain=domain,
             publicKey=publicKey,
             uri=uri,
             timeout=timeout,
+            network=network,
             statement=statement,
             expirationTime=expirationTime,
             notBefore=notBefore,

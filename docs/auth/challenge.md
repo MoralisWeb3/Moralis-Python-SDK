@@ -30,7 +30,7 @@ body = {
     "notBefore": "2020-01-01T00:00:00.000Z", 
     "resources": ['https://docs.moralis.io/'], 
     "timeout": 15, 
-    "chainId": "1", 
+    "network": "mainnet", 
     "address": "0xfb2853744bb8afd58d9386d1856afd8e08de135019961dfa3a10d8c9bf83b99d", 
     "publicKey": "0xfb2853744bb8afd58d9386d1856afd8e08de135019961dfa3a10d8c9bf83b99d", 
 }
@@ -56,7 +56,7 @@ Object with the properties:
 | notBefore | str | ISO 8601 datetime string that, if present, indicates when the signed authentication message will become valid. | Yes |  | "2020-01-01T00:00:00.000Z" |
 | resources | List of str | List of information or references to information the user wishes to have resolved as part of authentication by the relying party. They are expressed as RFC 3986 URIs separated by new lines. | Yes |  | ['https://docs.moralis.io/'] |
 | timeout | float | Time in seconds before the challenge is expired | Yes | 15 | 15 |
-| chainId | enum[str]: <br/>- "1"<br/>- "2" | Chain ID to which the session is bound, and the network where Contract Accounts must be resolved. | Yes |  | "1" |
+| network | enum[str]: <br/>- "mainnet"<br/>- "testnet" | The network where Contract Accounts must be resolved. | Yes |  | "mainnet" |
 | address | str | Aptos address performing the signing conformant. | Yes |  | "0xfb2853744bb8afd58d9386d1856afd8e08de135019961dfa3a10d8c9bf83b99d" |
 | publicKey | str | Aptos public key performing the signing conformant. | Yes |  | "0xfb2853744bb8afd58d9386d1856afd8e08de135019961dfa3a10d8c9bf83b99d" |
 
