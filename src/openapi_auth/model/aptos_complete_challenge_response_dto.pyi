@@ -36,7 +36,6 @@ class AptosCompleteChallengeResponseDto(
     class MetaOapg:
         required = {
             "address",
-            "chainId",
             "profileId",
             "domain",
             "id",
@@ -44,6 +43,7 @@ class AptosCompleteChallengeResponseDto(
             "nonce",
             "uri",
             "version",
+            "network",
         }
         
         class properties:
@@ -60,18 +60,18 @@ class AptosCompleteChallengeResponseDto(
             profileId = schemas.StrSchema
             
             
-            class chainId(
+            class network(
                 schemas.EnumBase,
                 schemas.StrSchema
             ):
                 
                 @schemas.classproperty
-                def POSITIVE_1(cls):
-                    return cls("1")
+                def MAINNET(cls):
+                    return cls("mainnet")
                 
                 @schemas.classproperty
-                def POSITIVE_2(cls):
-                    return cls("2")
+                def TESTNET(cls):
+                    return cls("testnet")
             address = schemas.StrSchema
             publicKey = schemas.StrSchema
             statement = schemas.StrSchema
@@ -107,7 +107,7 @@ class AptosCompleteChallengeResponseDto(
                 "version": version,
                 "nonce": nonce,
                 "profileId": profileId,
-                "chainId": chainId,
+                "network": network,
                 "address": address,
                 "publicKey": publicKey,
                 "statement": statement,
@@ -117,7 +117,6 @@ class AptosCompleteChallengeResponseDto(
             }
     
     address: MetaOapg.properties.address
-    chainId: MetaOapg.properties.chainId
     profileId: MetaOapg.properties.profileId
     domain: MetaOapg.properties.domain
     id: MetaOapg.properties.id
@@ -125,6 +124,7 @@ class AptosCompleteChallengeResponseDto(
     nonce: MetaOapg.properties.nonce
     uri: MetaOapg.properties.uri
     version: MetaOapg.properties.version
+    network: MetaOapg.properties.network
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["id"]) -> MetaOapg.properties.id: ...
@@ -145,7 +145,7 @@ class AptosCompleteChallengeResponseDto(
     def __getitem__(self, name: typing_extensions.Literal["profileId"]) -> MetaOapg.properties.profileId: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["chainId"]) -> MetaOapg.properties.chainId: ...
+    def __getitem__(self, name: typing_extensions.Literal["network"]) -> MetaOapg.properties.network: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
@@ -168,7 +168,7 @@ class AptosCompleteChallengeResponseDto(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "domain", "uri", "version", "nonce", "profileId", "chainId", "address", "publicKey", "statement", "expirationTime", "notBefore", "resources", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "domain", "uri", "version", "nonce", "profileId", "network", "address", "publicKey", "statement", "expirationTime", "notBefore", "resources", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -192,7 +192,7 @@ class AptosCompleteChallengeResponseDto(
     def get_item_oapg(self, name: typing_extensions.Literal["profileId"]) -> MetaOapg.properties.profileId: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["chainId"]) -> MetaOapg.properties.chainId: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["network"]) -> MetaOapg.properties.network: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
@@ -215,7 +215,7 @@ class AptosCompleteChallengeResponseDto(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "domain", "uri", "version", "nonce", "profileId", "chainId", "address", "publicKey", "statement", "expirationTime", "notBefore", "resources", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "domain", "uri", "version", "nonce", "profileId", "network", "address", "publicKey", "statement", "expirationTime", "notBefore", "resources", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -223,7 +223,6 @@ class AptosCompleteChallengeResponseDto(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
         address: typing.Union[MetaOapg.properties.address, str, ],
-        chainId: typing.Union[MetaOapg.properties.chainId, str, ],
         profileId: typing.Union[MetaOapg.properties.profileId, str, ],
         domain: typing.Union[MetaOapg.properties.domain, str, ],
         id: typing.Union[MetaOapg.properties.id, str, ],
@@ -231,6 +230,7 @@ class AptosCompleteChallengeResponseDto(
         nonce: typing.Union[MetaOapg.properties.nonce, str, ],
         uri: typing.Union[MetaOapg.properties.uri, str, ],
         version: typing.Union[MetaOapg.properties.version, str, ],
+        network: typing.Union[MetaOapg.properties.network, str, ],
         statement: typing.Union[MetaOapg.properties.statement, str, schemas.Unset] = schemas.unset,
         expirationTime: typing.Union[MetaOapg.properties.expirationTime, str, datetime, schemas.Unset] = schemas.unset,
         notBefore: typing.Union[MetaOapg.properties.notBefore, str, datetime, schemas.Unset] = schemas.unset,
@@ -242,7 +242,6 @@ class AptosCompleteChallengeResponseDto(
             cls,
             *args,
             address=address,
-            chainId=chainId,
             profileId=profileId,
             domain=domain,
             id=id,
@@ -250,6 +249,7 @@ class AptosCompleteChallengeResponseDto(
             nonce=nonce,
             uri=uri,
             version=version,
+            network=network,
             statement=statement,
             expirationTime=expirationTime,
             notBefore=notBefore,
