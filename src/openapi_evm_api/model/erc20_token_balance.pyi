@@ -37,6 +37,7 @@ class Erc20TokenBalance(
         required = {
             "symbol",
             "balance",
+            "possible_spam",
             "decimals",
             "name",
             "token_address",
@@ -48,6 +49,7 @@ class Erc20TokenBalance(
             symbol = schemas.StrSchema
             decimals = schemas.IntSchema
             balance = schemas.StrSchema
+            possible_spam = schemas.BoolSchema
             logo = schemas.StrSchema
             thumbnail = schemas.StrSchema
             __annotations__ = {
@@ -56,6 +58,7 @@ class Erc20TokenBalance(
                 "symbol": symbol,
                 "decimals": decimals,
                 "balance": balance,
+                "possible_spam": possible_spam,
                 "logo": logo,
                 "thumbnail": thumbnail,
             }
@@ -63,6 +66,7 @@ class Erc20TokenBalance(
     
     symbol: MetaOapg.properties.symbol
     balance: MetaOapg.properties.balance
+    possible_spam: MetaOapg.properties.possible_spam
     decimals: MetaOapg.properties.decimals
     name: MetaOapg.properties.name
     token_address: MetaOapg.properties.token_address
@@ -83,6 +87,9 @@ class Erc20TokenBalance(
     def __getitem__(self, name: typing_extensions.Literal["balance"]) -> MetaOapg.properties.balance: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["logo"]) -> MetaOapg.properties.logo: ...
     
     @typing.overload
@@ -91,7 +98,7 @@ class Erc20TokenBalance(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "name", "symbol", "decimals", "balance", "logo", "thumbnail", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "name", "symbol", "decimals", "balance", "possible_spam", "logo", "thumbnail", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -112,6 +119,9 @@ class Erc20TokenBalance(
     def get_item_oapg(self, name: typing_extensions.Literal["balance"]) -> MetaOapg.properties.balance: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["logo"]) -> typing.Union[MetaOapg.properties.logo, schemas.Unset]: ...
     
     @typing.overload
@@ -120,7 +130,7 @@ class Erc20TokenBalance(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "name", "symbol", "decimals", "balance", "logo", "thumbnail", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "name", "symbol", "decimals", "balance", "possible_spam", "logo", "thumbnail", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -129,6 +139,7 @@ class Erc20TokenBalance(
         *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         symbol: typing.Union[MetaOapg.properties.symbol, str, ],
         balance: typing.Union[MetaOapg.properties.balance, str, ],
+        possible_spam: typing.Union[MetaOapg.properties.possible_spam, bool, ],
         decimals: typing.Union[MetaOapg.properties.decimals, decimal.Decimal, int, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
         token_address: typing.Union[MetaOapg.properties.token_address, str, ],
@@ -142,6 +153,7 @@ class Erc20TokenBalance(
             *args,
             symbol=symbol,
             balance=balance,
+            possible_spam=possible_spam,
             decimals=decimals,
             name=name,
             token_address=token_address,

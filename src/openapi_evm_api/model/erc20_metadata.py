@@ -37,6 +37,7 @@ class Erc20Metadata(
         required = {
             "symbol",
             "address",
+            "possible_spam",
             "decimals",
             "name",
         }
@@ -46,6 +47,7 @@ class Erc20Metadata(
             name = schemas.StrSchema
             symbol = schemas.StrSchema
             decimals = schemas.StrSchema
+            possible_spam = schemas.BoolSchema
             logo = schemas.StrSchema
             logo_hash = schemas.StrSchema
             thumbnail = schemas.StrSchema
@@ -56,6 +58,7 @@ class Erc20Metadata(
                 "name": name,
                 "symbol": symbol,
                 "decimals": decimals,
+                "possible_spam": possible_spam,
                 "logo": logo,
                 "logo_hash": logo_hash,
                 "thumbnail": thumbnail,
@@ -66,6 +69,7 @@ class Erc20Metadata(
     
     symbol: MetaOapg.properties.symbol
     address: MetaOapg.properties.address
+    possible_spam: MetaOapg.properties.possible_spam
     decimals: MetaOapg.properties.decimals
     name: MetaOapg.properties.name
     
@@ -80,6 +84,9 @@ class Erc20Metadata(
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["decimals"]) -> MetaOapg.properties.decimals: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["logo"]) -> MetaOapg.properties.logo: ...
@@ -99,7 +106,7 @@ class Erc20Metadata(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["address", "name", "symbol", "decimals", "logo", "logo_hash", "thumbnail", "block_number", "validated", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["address", "name", "symbol", "decimals", "possible_spam", "logo", "logo_hash", "thumbnail", "block_number", "validated", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -115,6 +122,9 @@ class Erc20Metadata(
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["decimals"]) -> MetaOapg.properties.decimals: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["logo"]) -> typing.Union[MetaOapg.properties.logo, schemas.Unset]: ...
@@ -134,7 +144,7 @@ class Erc20Metadata(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["address", "name", "symbol", "decimals", "logo", "logo_hash", "thumbnail", "block_number", "validated", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["address", "name", "symbol", "decimals", "possible_spam", "logo", "logo_hash", "thumbnail", "block_number", "validated", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -143,6 +153,7 @@ class Erc20Metadata(
         *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         symbol: typing.Union[MetaOapg.properties.symbol, str, ],
         address: typing.Union[MetaOapg.properties.address, str, ],
+        possible_spam: typing.Union[MetaOapg.properties.possible_spam, bool, ],
         decimals: typing.Union[MetaOapg.properties.decimals, str, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
         logo: typing.Union[MetaOapg.properties.logo, str, schemas.Unset] = schemas.unset,
@@ -158,6 +169,7 @@ class Erc20Metadata(
             *args,
             symbol=symbol,
             address=address,
+            possible_spam=possible_spam,
             decimals=decimals,
             name=name,
             logo=logo,

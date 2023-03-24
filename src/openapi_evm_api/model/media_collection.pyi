@@ -44,10 +44,6 @@ class MediaCollection(
         class properties:
         
             @staticmethod
-            def original() -> typing.Type['MediaItem']:
-                return MediaItem
-        
-            @staticmethod
             def low() -> typing.Type['MediaItem']:
                 return MediaItem
         
@@ -59,7 +55,6 @@ class MediaCollection(
             def high() -> typing.Type['MediaItem']:
                 return MediaItem
             __annotations__ = {
-                "original": original,
                 "low": low,
                 "medium": medium,
                 "high": high,
@@ -67,12 +62,9 @@ class MediaCollection(
 
     
     high: 'MediaItem'
-    original: 'MediaItem'
+    original: schemas.AnyTypeSchema
     low: 'MediaItem'
     medium: 'MediaItem'
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["original"]) -> 'MediaItem': ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["low"]) -> 'MediaItem': ...
@@ -86,13 +78,10 @@ class MediaCollection(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["original", "low", "medium", "high", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["low", "medium", "high", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["original"]) -> 'MediaItem': ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["low"]) -> 'MediaItem': ...
@@ -106,7 +95,7 @@ class MediaCollection(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["original", "low", "medium", "high", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["low", "medium", "high", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -114,7 +103,7 @@ class MediaCollection(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         high: 'MediaItem',
-        original: 'MediaItem',
+        original: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         low: 'MediaItem',
         medium: 'MediaItem',
         _configuration: typing.Optional[schemas.Configuration] = None,
