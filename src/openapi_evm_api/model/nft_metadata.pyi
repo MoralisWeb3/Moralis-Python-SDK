@@ -48,6 +48,7 @@ class NftMetadata(
             "metadata_name",
             "token_uri",
             "token_hash",
+            "possible_spam",
             "token_id",
             "metadata_attributes",
             "is_valid",
@@ -80,6 +81,7 @@ class NftMetadata(
             last_metadata_sync = schemas.StrSchema
             createdAt = schemas.DateTimeSchema
             updatedAt = schemas.DateTimeSchema
+            possible_spam = schemas.BoolSchema
             opensea_lookup = schemas.DictSchema
             frozen_log_index = schemas.DictSchema
             imported = schemas.DictSchema
@@ -105,6 +107,7 @@ class NftMetadata(
                 "last_metadata_sync": last_metadata_sync,
                 "createdAt": createdAt,
                 "updatedAt": updatedAt,
+                "possible_spam": possible_spam,
                 "opensea_lookup": opensea_lookup,
                 "frozen_log_index": frozen_log_index,
                 "imported": imported,
@@ -124,6 +127,7 @@ class NftMetadata(
     metadata_name: MetaOapg.properties.metadata_name
     token_uri: MetaOapg.properties.token_uri
     token_hash: MetaOapg.properties.token_hash
+    possible_spam: MetaOapg.properties.possible_spam
     token_id: MetaOapg.properties.token_id
     metadata_attributes: MetaOapg.properties.metadata_attributes
     is_valid: MetaOapg.properties.is_valid
@@ -197,6 +201,9 @@ class NftMetadata(
     def __getitem__(self, name: typing_extensions.Literal["updatedAt"]) -> MetaOapg.properties.updatedAt: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["opensea_lookup"]) -> MetaOapg.properties.opensea_lookup: ...
     
     @typing.overload
@@ -208,7 +215,7 @@ class NftMetadata(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_id", "token_address", "token_uri", "metadata", "is_valid", "syncing", "frozen", "resyncing", "contract_type", "token_hash", "batch_id", "metadata_name", "metadata_description", "metadata_attributes", "block_number_minted", "minter_address", "transaction_minted", "last_token_uri_sync", "last_metadata_sync", "createdAt", "updatedAt", "opensea_lookup", "frozen_log_index", "imported", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_id", "token_address", "token_uri", "metadata", "is_valid", "syncing", "frozen", "resyncing", "contract_type", "token_hash", "batch_id", "metadata_name", "metadata_description", "metadata_attributes", "block_number_minted", "minter_address", "transaction_minted", "last_token_uri_sync", "last_metadata_sync", "createdAt", "updatedAt", "possible_spam", "opensea_lookup", "frozen_log_index", "imported", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -277,6 +284,9 @@ class NftMetadata(
     def get_item_oapg(self, name: typing_extensions.Literal["updatedAt"]) -> MetaOapg.properties.updatedAt: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["opensea_lookup"]) -> typing.Union[MetaOapg.properties.opensea_lookup, schemas.Unset]: ...
     
     @typing.overload
@@ -288,7 +298,7 @@ class NftMetadata(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_id", "token_address", "token_uri", "metadata", "is_valid", "syncing", "frozen", "resyncing", "contract_type", "token_hash", "batch_id", "metadata_name", "metadata_description", "metadata_attributes", "block_number_minted", "minter_address", "transaction_minted", "last_token_uri_sync", "last_metadata_sync", "createdAt", "updatedAt", "opensea_lookup", "frozen_log_index", "imported", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_id", "token_address", "token_uri", "metadata", "is_valid", "syncing", "frozen", "resyncing", "contract_type", "token_hash", "batch_id", "metadata_name", "metadata_description", "metadata_attributes", "block_number_minted", "minter_address", "transaction_minted", "last_token_uri_sync", "last_metadata_sync", "createdAt", "updatedAt", "possible_spam", "opensea_lookup", "frozen_log_index", "imported", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -308,6 +318,7 @@ class NftMetadata(
         metadata_name: typing.Union[MetaOapg.properties.metadata_name, str, ],
         token_uri: typing.Union[MetaOapg.properties.token_uri, str, ],
         token_hash: typing.Union[MetaOapg.properties.token_hash, str, ],
+        possible_spam: typing.Union[MetaOapg.properties.possible_spam, bool, ],
         token_id: typing.Union[MetaOapg.properties.token_id, str, ],
         metadata_attributes: typing.Union[MetaOapg.properties.metadata_attributes, str, ],
         is_valid: typing.Union[MetaOapg.properties.is_valid, decimal.Decimal, int, float, ],
@@ -338,6 +349,7 @@ class NftMetadata(
             metadata_name=metadata_name,
             token_uri=token_uri,
             token_hash=token_hash,
+            possible_spam=possible_spam,
             token_id=token_id,
             metadata_attributes=metadata_attributes,
             is_valid=is_valid,

@@ -37,6 +37,7 @@ class Nft(
         required = {
             "contract_type",
             "symbol",
+            "possible_spam",
             "token_id",
             "name",
             "token_address",
@@ -48,6 +49,7 @@ class Nft(
             contract_type = schemas.StrSchema
             name = schemas.StrSchema
             symbol = schemas.StrSchema
+            possible_spam = schemas.BoolSchema
             owner_of = schemas.StrSchema
             token_hash = schemas.StrSchema
             block_number = schemas.StrSchema
@@ -72,6 +74,7 @@ class Nft(
                 "contract_type": contract_type,
                 "name": name,
                 "symbol": symbol,
+                "possible_spam": possible_spam,
                 "owner_of": owner_of,
                 "token_hash": token_hash,
                 "block_number": block_number,
@@ -89,6 +92,7 @@ class Nft(
     
     contract_type: MetaOapg.properties.contract_type
     symbol: MetaOapg.properties.symbol
+    possible_spam: MetaOapg.properties.possible_spam
     token_id: MetaOapg.properties.token_id
     name: MetaOapg.properties.name
     token_address: MetaOapg.properties.token_address
@@ -107,6 +111,9 @@ class Nft(
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["symbol"]) -> MetaOapg.properties.symbol: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["owner_of"]) -> MetaOapg.properties.owner_of: ...
@@ -147,7 +154,7 @@ class Nft(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "name", "symbol", "owner_of", "token_hash", "block_number", "block_number_minted", "token_uri", "metadata", "normalized_metadata", "media", "minter_address", "last_token_uri_sync", "last_metadata_sync", "amount", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "name", "symbol", "possible_spam", "owner_of", "token_hash", "block_number", "block_number_minted", "token_uri", "metadata", "normalized_metadata", "media", "minter_address", "last_token_uri_sync", "last_metadata_sync", "amount", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -166,6 +173,9 @@ class Nft(
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["symbol"]) -> MetaOapg.properties.symbol: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["owner_of"]) -> typing.Union[MetaOapg.properties.owner_of, schemas.Unset]: ...
@@ -206,7 +216,7 @@ class Nft(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "name", "symbol", "owner_of", "token_hash", "block_number", "block_number_minted", "token_uri", "metadata", "normalized_metadata", "media", "minter_address", "last_token_uri_sync", "last_metadata_sync", "amount", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "name", "symbol", "possible_spam", "owner_of", "token_hash", "block_number", "block_number_minted", "token_uri", "metadata", "normalized_metadata", "media", "minter_address", "last_token_uri_sync", "last_metadata_sync", "amount", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -215,6 +225,7 @@ class Nft(
         *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         contract_type: typing.Union[MetaOapg.properties.contract_type, str, ],
         symbol: typing.Union[MetaOapg.properties.symbol, str, ],
+        possible_spam: typing.Union[MetaOapg.properties.possible_spam, bool, ],
         token_id: typing.Union[MetaOapg.properties.token_id, str, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
         token_address: typing.Union[MetaOapg.properties.token_address, str, ],
@@ -238,6 +249,7 @@ class Nft(
             *args,
             contract_type=contract_type,
             symbol=symbol,
+            possible_spam=possible_spam,
             token_id=token_id,
             name=name,
             token_address=token_address,
