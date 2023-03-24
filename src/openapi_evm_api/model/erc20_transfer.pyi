@@ -37,6 +37,7 @@ class Erc20Transfer(
         required = {
             "to_wallet",
             "from_wallet",
+            "possible_spam",
             "block_timestamp",
             "block_hash",
             "block_number",
@@ -58,6 +59,7 @@ class Erc20Transfer(
             from_wallet = schemas.StrSchema
             to_wallet = schemas.StrSchema
             value = schemas.StrSchema
+            possible_spam = schemas.BoolSchema
             __annotations__ = {
                 "contract_address": contract_address,
                 "transaction_hash": transaction_hash,
@@ -69,11 +71,13 @@ class Erc20Transfer(
                 "from_wallet": from_wallet,
                 "to_wallet": to_wallet,
                 "value": value,
+                "possible_spam": possible_spam,
             }
 
     
     to_wallet: MetaOapg.properties.to_wallet
     from_wallet: MetaOapg.properties.from_wallet
+    possible_spam: MetaOapg.properties.possible_spam
     block_timestamp: MetaOapg.properties.block_timestamp
     block_hash: MetaOapg.properties.block_hash
     block_number: MetaOapg.properties.block_number
@@ -114,9 +118,12 @@ class Erc20Transfer(
     def __getitem__(self, name: typing_extensions.Literal["value"]) -> MetaOapg.properties.value: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["contract_address", "transaction_hash", "transaction_index", "log_index", "block_timestamp", "block_number", "block_hash", "from_wallet", "to_wallet", "value", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["contract_address", "transaction_hash", "transaction_index", "log_index", "block_timestamp", "block_number", "block_hash", "from_wallet", "to_wallet", "value", "possible_spam", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -152,9 +159,12 @@ class Erc20Transfer(
     def get_item_oapg(self, name: typing_extensions.Literal["value"]) -> MetaOapg.properties.value: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["contract_address", "transaction_hash", "transaction_index", "log_index", "block_timestamp", "block_number", "block_hash", "from_wallet", "to_wallet", "value", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["contract_address", "transaction_hash", "transaction_index", "log_index", "block_timestamp", "block_number", "block_hash", "from_wallet", "to_wallet", "value", "possible_spam", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -163,6 +173,7 @@ class Erc20Transfer(
         *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         to_wallet: typing.Union[MetaOapg.properties.to_wallet, str, ],
         from_wallet: typing.Union[MetaOapg.properties.from_wallet, str, ],
+        possible_spam: typing.Union[MetaOapg.properties.possible_spam, bool, ],
         block_timestamp: typing.Union[MetaOapg.properties.block_timestamp, str, ],
         block_hash: typing.Union[MetaOapg.properties.block_hash, str, ],
         block_number: typing.Union[MetaOapg.properties.block_number, decimal.Decimal, int, ],
@@ -179,6 +190,7 @@ class Erc20Transfer(
             *args,
             to_wallet=to_wallet,
             from_wallet=from_wallet,
+            possible_spam=possible_spam,
             block_timestamp=block_timestamp,
             block_hash=block_hash,
             block_number=block_number,
