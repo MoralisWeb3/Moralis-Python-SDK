@@ -36,6 +36,7 @@ class NftTransfer(
     class MetaOapg:
         required = {
             "contract_type",
+            "possible_spam",
             "token_id",
             "block_timestamp",
             "block_hash",
@@ -56,6 +57,7 @@ class NftTransfer(
             block_hash = schemas.StrSchema
             transaction_hash = schemas.StrSchema
             log_index = schemas.IntSchema
+            possible_spam = schemas.BoolSchema
             from_address = schemas.StrSchema
             value = schemas.StrSchema
             amount = schemas.StrSchema
@@ -72,6 +74,7 @@ class NftTransfer(
                 "block_hash": block_hash,
                 "transaction_hash": transaction_hash,
                 "log_index": log_index,
+                "possible_spam": possible_spam,
                 "from_address": from_address,
                 "value": value,
                 "amount": amount,
@@ -82,6 +85,7 @@ class NftTransfer(
 
     
     contract_type: MetaOapg.properties.contract_type
+    possible_spam: MetaOapg.properties.possible_spam
     token_id: MetaOapg.properties.token_id
     block_timestamp: MetaOapg.properties.block_timestamp
     block_hash: MetaOapg.properties.block_hash
@@ -119,6 +123,9 @@ class NftTransfer(
     def __getitem__(self, name: typing_extensions.Literal["log_index"]) -> MetaOapg.properties.log_index: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["from_address"]) -> MetaOapg.properties.from_address: ...
     
     @typing.overload
@@ -139,7 +146,7 @@ class NftTransfer(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "to_address", "contract_type", "block_number", "block_timestamp", "block_hash", "transaction_hash", "log_index", "from_address", "value", "amount", "transaction_type", "transaction_index", "operator", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "to_address", "contract_type", "block_number", "block_timestamp", "block_hash", "transaction_hash", "log_index", "possible_spam", "from_address", "value", "amount", "transaction_type", "transaction_index", "operator", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -172,6 +179,9 @@ class NftTransfer(
     def get_item_oapg(self, name: typing_extensions.Literal["log_index"]) -> MetaOapg.properties.log_index: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["from_address"]) -> typing.Union[MetaOapg.properties.from_address, schemas.Unset]: ...
     
     @typing.overload
@@ -192,7 +202,7 @@ class NftTransfer(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "to_address", "contract_type", "block_number", "block_timestamp", "block_hash", "transaction_hash", "log_index", "from_address", "value", "amount", "transaction_type", "transaction_index", "operator", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "to_address", "contract_type", "block_number", "block_timestamp", "block_hash", "transaction_hash", "log_index", "possible_spam", "from_address", "value", "amount", "transaction_type", "transaction_index", "operator", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -200,6 +210,7 @@ class NftTransfer(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         contract_type: typing.Union[MetaOapg.properties.contract_type, str, ],
+        possible_spam: typing.Union[MetaOapg.properties.possible_spam, bool, ],
         token_id: typing.Union[MetaOapg.properties.token_id, str, ],
         block_timestamp: typing.Union[MetaOapg.properties.block_timestamp, str, ],
         block_hash: typing.Union[MetaOapg.properties.block_hash, str, ],
@@ -221,6 +232,7 @@ class NftTransfer(
             cls,
             *args,
             contract_type=contract_type,
+            possible_spam=possible_spam,
             token_id=token_id,
             block_timestamp=block_timestamp,
             block_hash=block_hash,
