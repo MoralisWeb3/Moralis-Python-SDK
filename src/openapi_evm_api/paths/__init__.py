@@ -51,6 +51,7 @@ class PathValues(str, enum.Enum):
     INFO_ENDPOINT_WEIGHTS = "/info/endpointWeights"
     RESOLVE_ADDRESS_REVERSE = "/resolve/{address}/reverse"
     RESOLVE_DOMAIN = "/resolve/{domain}"
+    RESOLVE_ENS_DOMAIN = "/resolve/ens/{domain}"
     PAIR_ADDRESS_RESERVES = "/{pair_address}/reserves"
     TOKEN0_ADDRESS_TOKEN1_ADDRESS_PAIR_ADDRESS = "/{token0_address}/{token1_address}/pairAddress"
     IPFS_UPLOAD_FOLDER = "/ipfs/uploadFolder"

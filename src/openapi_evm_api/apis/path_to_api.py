@@ -46,6 +46,7 @@ from openapi_evm_api.apis.paths.web3_version import Web3Version
 from openapi_evm_api.apis.paths.info_endpoint_weights import InfoEndpointWeights
 from openapi_evm_api.apis.paths.resolve_address_reverse import ResolveAddressReverse
 from openapi_evm_api.apis.paths.resolve_domain import ResolveDomain
+from openapi_evm_api.apis.paths.resolve_ens_domain import ResolveEnsDomain
 from openapi_evm_api.apis.paths.pair_address_reserves import PairAddressReserves
 from openapi_evm_api.apis.paths.token0_address_token1_address_pair_address import Token0AddressToken1AddressPairAddress
 from openapi_evm_api.apis.paths.ipfs_upload_folder import IpfsUploadFolder
@@ -98,6 +99,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.INFO_ENDPOINT_WEIGHTS: InfoEndpointWeights,
         PathValues.RESOLVE_ADDRESS_REVERSE: ResolveAddressReverse,
         PathValues.RESOLVE_DOMAIN: ResolveDomain,
+        PathValues.RESOLVE_ENS_DOMAIN: ResolveEnsDomain,
         PathValues.PAIR_ADDRESS_RESERVES: PairAddressReserves,
         PathValues.TOKEN0_ADDRESS_TOKEN1_ADDRESS_PAIR_ADDRESS: Token0AddressToken1AddressPairAddress,
         PathValues.IPFS_UPLOAD_FOLDER: IpfsUploadFolder,
@@ -151,6 +153,7 @@ path_to_api = PathToApi(
         PathValues.INFO_ENDPOINT_WEIGHTS: InfoEndpointWeights,
         PathValues.RESOLVE_ADDRESS_REVERSE: ResolveAddressReverse,
         PathValues.RESOLVE_DOMAIN: ResolveDomain,
+        PathValues.RESOLVE_ENS_DOMAIN: ResolveEnsDomain,
         PathValues.PAIR_ADDRESS_RESERVES: PairAddressReserves,
         PathValues.TOKEN0_ADDRESS_TOKEN1_ADDRESS_PAIR_ADDRESS: Token0AddressToken1AddressPairAddress,
         PathValues.IPFS_UPLOAD_FOLDER: IpfsUploadFolder,
