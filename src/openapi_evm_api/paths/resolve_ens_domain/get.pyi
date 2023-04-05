@@ -25,14 +25,14 @@ import frozendict  # noqa: F401
 
 from openapi_evm_api import schemas  # noqa: F401
 
-from openapi_evm_api.model.ens import Ens
+from openapi_evm_api.model.resolve import Resolve
 
 # Path params
-AddressSchema = schemas.StrSchema
+DomainSchema = schemas.StrSchema
 RequestRequiredPathParams = typing_extensions.TypedDict(
     'RequestRequiredPathParams',
     {
-        'address': typing.Union[AddressSchema, str, ],
+        'domain': typing.Union[DomainSchema, str, ],
     }
 )
 RequestOptionalPathParams = typing_extensions.TypedDict(
@@ -47,13 +47,13 @@ class RequestPathParams(RequestRequiredPathParams, RequestOptionalPathParams):
     pass
 
 
-request_path_address = api_client.PathParameter(
-    name="address",
+request_path_domain = api_client.PathParameter(
+    name="domain",
     style=api_client.ParameterStyle.SIMPLE,
-    schema=AddressSchema,
+    schema=DomainSchema,
     required=True,
 )
-SchemaFor200ResponseBodyApplicationJson = Ens
+SchemaFor200ResponseBodyApplicationJson = Resolve
 
 
 @dataclass
@@ -72,6 +72,25 @@ _response_for_200 = api_client.OpenApiResponse(
             schema=SchemaFor200ResponseBodyApplicationJson),
     },
 )
+SchemaFor404ResponseBodyApplicationJson = schemas.DictSchema
+
+
+@dataclass
+class ApiResponseFor404(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: typing.Union[
+        SchemaFor404ResponseBodyApplicationJson,
+    ]
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_404 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor404,
+    content={
+        'application/json': api_client.MediaType(
+            schema=SchemaFor404ResponseBodyApplicationJson),
+    },
+)
 _all_accept_content_types = (
     'application/json',
 )
@@ -79,7 +98,7 @@ _all_accept_content_types = (
 
 class BaseApi(api_client.Api):
     @typing.overload
-    def _resolve_address_oapg(
+    def _resolve_ens_domain_oapg(
         self,
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -91,7 +110,7 @@ class BaseApi(api_client.Api):
     ]: ...
 
     @typing.overload
-    def _resolve_address_oapg(
+    def _resolve_ens_domain_oapg(
         self,
         skip_deserialization: typing_extensions.Literal[True],
         path_params: RequestPathParams = frozendict.frozendict(),
@@ -101,7 +120,7 @@ class BaseApi(api_client.Api):
     ) -> api_client.ApiResponseWithoutDeserialization: ...
 
     @typing.overload
-    def _resolve_address_oapg(
+    def _resolve_ens_domain_oapg(
         self,
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -113,7 +132,7 @@ class BaseApi(api_client.Api):
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
-    def _resolve_address_oapg(
+    def _resolve_ens_domain_oapg(
         self,
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -122,7 +141,7 @@ class BaseApi(api_client.Api):
         skip_deserialization: bool = False,
     ):
         """
-        ENS lookup by address
+        ENS lookup by domain
         :param skip_deserialization: If true then api_response.response will be set but
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
@@ -132,7 +151,7 @@ class BaseApi(api_client.Api):
 
         _path_params = {}
         for parameter in (
-            request_path_address,
+            request_path_domain,
         ):
             parameter_data = path_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -173,11 +192,11 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class ResolveAddress(BaseApi):
+class ResolveEnsDomain(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
     @typing.overload
-    def resolve_address(
+    def resolve_ens_domain(
         self,
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -189,7 +208,7 @@ class ResolveAddress(BaseApi):
     ]: ...
 
     @typing.overload
-    def resolve_address(
+    def resolve_ens_domain(
         self,
         skip_deserialization: typing_extensions.Literal[True],
         path_params: RequestPathParams = frozendict.frozendict(),
@@ -199,7 +218,7 @@ class ResolveAddress(BaseApi):
     ) -> api_client.ApiResponseWithoutDeserialization: ...
 
     @typing.overload
-    def resolve_address(
+    def resolve_ens_domain(
         self,
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -211,7 +230,7 @@ class ResolveAddress(BaseApi):
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
-    def resolve_address(
+    def resolve_ens_domain(
         self,
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -219,7 +238,7 @@ class ResolveAddress(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ):
-        return self._resolve_address_oapg(
+        return self._resolve_ens_domain_oapg(
             path_params=path_params,
             accept_content_types=accept_content_types,
             stream=stream,
@@ -274,7 +293,7 @@ class ApiForget(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ):
-        return self._resolve_address_oapg(
+        return self._resolve_ens_domain_oapg(
             path_params=path_params,
             accept_content_types=accept_content_types,
             stream=stream,

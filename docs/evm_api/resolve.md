@@ -4,6 +4,7 @@
 
 - [resolve_address](#resolve_address)
 - [resolve_domain](#resolve_domain)
+- [resolve_ens_domain](#resolve_ens_domain)
 
 
 ---
@@ -73,6 +74,40 @@ print(result)
 |------|------|-------------|----------|---------|---------|
 | domain | str | The domain to be resolved | Yes |  | "brad.crypto" |
 | currency | enum[str]: <br/>- "eth"<br/>- "0x1" | The currency to query |  | "eth" | "eth" |
+
+
+
+---
+## resolve_ens_domain
+
+> `evm_api.resolve.resolve_ens_domain()`
+
+Resolve a specific ENS domain to its address.
+
+
+### Example
+```python
+from moralis import evm_api
+
+api_key = "YOUR_API_KEY"
+params = {
+    "domain": "vitalik.eth", 
+}
+
+result = evm_api.resolve.resolve_ens_domain(
+    api_key=api_key,
+    params=params,
+)
+
+print(result)
+
+```
+
+### Parameters
+
+| Name | Type | Description | Required | Default | Example |
+|------|------|-------------|----------|---------|---------|
+| domain | str | The domain to be resolved | Yes |  | "vitalik.eth" |
 
 
 
