@@ -12,7 +12,7 @@
     <a href="https://forum.moralis.io" target="_blank">
       <img alt="Discourse posts" src="https://img.shields.io/discourse/posts?color=B7E803&label=Forum&logo=discourse&server=https%3A%2F%2Fforum.moralis.io">
     </a><br/>
-    <img alt="npm" src="https://img.shields.io/pypi/v/moralis?label=version">
+    <a href="https://pypi.org/project/moralis/"><img alt="pypi" src="https://img.shields.io/pypi/v/moralis?label=version"></a>
     <img src="https://img.shields.io/github/last-commit/MoralisWeb3/Moralis-Python-SDK">
   <p>
   </p>
