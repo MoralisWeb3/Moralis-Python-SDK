@@ -14,10 +14,16 @@ block_response = evm_api.block.get_block(api_key, {
     'block_number_or_hash': '1000000'
 })
 
-print(block_response)
+print('🌕 block hash: {}'.format(block_response['hash']))
 
 ens_domain_response = evm_api.resolve.resolve_ens_domain(api_key, {
     'domain': 'nick.eth'
 })
 
-print(ens_domain_response)
+print('🌞 end domain: {}'.format(ens_domain_response['address']))
+
+nft_trades = evm_api.nft.get_nft_trades(api_key, {
+    'address': '0x9c57d0278199c931cf149cc769f37bb7847091e7',
+})
+
+print('🌚 nft trade price: {}'.format(nft_trades['result'][0]['price']))
