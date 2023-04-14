@@ -81,6 +81,7 @@ class Trade(
             block_timestamp = schemas.StrSchema
             block_number = schemas.StrSchema
             block_hash = schemas.StrSchema
+            price_token_address = schemas.StrSchema
             __annotations__ = {
                 "transaction_hash": transaction_hash,
                 "transaction_index": transaction_index,
@@ -92,6 +93,7 @@ class Trade(
                 "block_timestamp": block_timestamp,
                 "block_number": block_number,
                 "block_hash": block_hash,
+                "price_token_address": price_token_address,
             }
 
     
@@ -138,9 +140,12 @@ class Trade(
     def __getitem__(self, name: typing_extensions.Literal["block_hash"]) -> MetaOapg.properties.block_hash: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["price_token_address"]) -> MetaOapg.properties.price_token_address: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["transaction_hash", "transaction_index", "token_ids", "seller_address", "buyer_address", "marketplace_address", "price", "block_timestamp", "block_number", "block_hash", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["transaction_hash", "transaction_index", "token_ids", "seller_address", "buyer_address", "marketplace_address", "price", "block_timestamp", "block_number", "block_hash", "price_token_address", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -176,9 +181,12 @@ class Trade(
     def get_item_oapg(self, name: typing_extensions.Literal["block_hash"]) -> MetaOapg.properties.block_hash: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["price_token_address"]) -> typing.Union[MetaOapg.properties.price_token_address, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["transaction_hash", "transaction_index", "token_ids", "seller_address", "buyer_address", "marketplace_address", "price", "block_timestamp", "block_number", "block_hash", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["transaction_hash", "transaction_index", "token_ids", "seller_address", "buyer_address", "marketplace_address", "price", "block_timestamp", "block_number", "block_hash", "price_token_address", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -196,6 +204,7 @@ class Trade(
         transaction_index: typing.Union[MetaOapg.properties.transaction_index, str, ],
         seller_address: typing.Union[MetaOapg.properties.seller_address, str, ],
         transaction_hash: typing.Union[MetaOapg.properties.transaction_hash, str, ],
+        price_token_address: typing.Union[MetaOapg.properties.price_token_address, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'Trade':
@@ -213,6 +222,7 @@ class Trade(
             transaction_index=transaction_index,
             seller_address=seller_address,
             transaction_hash=transaction_hash,
+            price_token_address=price_token_address,
             _configuration=_configuration,
             **kwargs,
         )
