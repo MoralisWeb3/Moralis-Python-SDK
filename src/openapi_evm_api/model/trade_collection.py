@@ -39,6 +39,7 @@ class TradeCollection(
             total = schemas.IntSchema
             page = schemas.IntSchema
             page_size = schemas.IntSchema
+            cursor = schemas.StrSchema
             
             
             class result(
@@ -69,6 +70,7 @@ class TradeCollection(
                 "total": total,
                 "page": page,
                 "page_size": page_size,
+                "cursor": cursor,
                 "result": result,
             }
 
@@ -83,12 +85,15 @@ class TradeCollection(
     def __getitem__(self, name: typing_extensions.Literal["page_size"]) -> MetaOapg.properties.page_size: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["cursor"]) -> MetaOapg.properties.cursor: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["result"]) -> MetaOapg.properties.result: ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["total", "page", "page_size", "result", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["total", "page", "page_size", "cursor", "result", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -103,12 +108,15 @@ class TradeCollection(
     def get_item_oapg(self, name: typing_extensions.Literal["page_size"]) -> typing.Union[MetaOapg.properties.page_size, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["cursor"]) -> typing.Union[MetaOapg.properties.cursor, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["result"]) -> typing.Union[MetaOapg.properties.result, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["total", "page", "page_size", "result", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["total", "page", "page_size", "cursor", "result", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -118,6 +126,7 @@ class TradeCollection(
         total: typing.Union[MetaOapg.properties.total, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         page: typing.Union[MetaOapg.properties.page, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         page_size: typing.Union[MetaOapg.properties.page_size, decimal.Decimal, int, schemas.Unset] = schemas.unset,
+        cursor: typing.Union[MetaOapg.properties.cursor, str, schemas.Unset] = schemas.unset,
         result: typing.Union[MetaOapg.properties.result, list, tuple, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -128,6 +137,7 @@ class TradeCollection(
             total=total,
             page=page,
             page_size=page_size,
+            cursor=cursor,
             result=result,
             _configuration=_configuration,
             **kwargs,

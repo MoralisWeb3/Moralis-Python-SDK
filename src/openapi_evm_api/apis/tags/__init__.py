@@ -12,6 +12,7 @@ class TagValues(str, enum.Enum):
     DEFI = "defi"
     EVENTS = "events"
     IPFS = "ipfs"
+    MARKET_DATA = "market_data"
     NFT = "nft"
     RESOLVE = "resolve"
     TOKEN = "token"

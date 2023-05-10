@@ -3,6 +3,7 @@ from .block import block
 from .defi import defi
 from .events import events
 from .ipfs import ipfs
+from .market_data import market_data
 from .nft import nft
 from .resolve import resolve
 from .token import token

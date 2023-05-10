@@ -36,6 +36,7 @@ class NativeErc20Price(
     class MetaOapg:
         required = {
             "symbol",
+            "address",
             "decimals",
             "name",
             "value",
@@ -46,15 +47,18 @@ class NativeErc20Price(
             decimals = schemas.IntSchema
             name = schemas.StrSchema
             symbol = schemas.StrSchema
+            address = schemas.StrSchema
             __annotations__ = {
                 "value": value,
                 "decimals": decimals,
                 "name": name,
                 "symbol": symbol,
+                "address": address,
             }
 
     
     symbol: MetaOapg.properties.symbol
+    address: MetaOapg.properties.address
     decimals: MetaOapg.properties.decimals
     name: MetaOapg.properties.name
     value: MetaOapg.properties.value
@@ -72,9 +76,12 @@ class NativeErc20Price(
     def __getitem__(self, name: typing_extensions.Literal["symbol"]) -> MetaOapg.properties.symbol: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["value", "decimals", "name", "symbol", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["value", "decimals", "name", "symbol", "address", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -92,9 +99,12 @@ class NativeErc20Price(
     def get_item_oapg(self, name: typing_extensions.Literal["symbol"]) -> MetaOapg.properties.symbol: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["value", "decimals", "name", "symbol", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["value", "decimals", "name", "symbol", "address", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -102,6 +112,7 @@ class NativeErc20Price(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         symbol: typing.Union[MetaOapg.properties.symbol, str, ],
+        address: typing.Union[MetaOapg.properties.address, str, ],
         decimals: typing.Union[MetaOapg.properties.decimals, decimal.Decimal, int, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
         value: typing.Union[MetaOapg.properties.value, str, ],
@@ -112,6 +123,7 @@ class NativeErc20Price(
             cls,
             *args,
             symbol=symbol,
+            address=address,
             decimals=decimals,
             name=name,
             value=value,

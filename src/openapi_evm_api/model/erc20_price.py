@@ -40,17 +40,27 @@ class Erc20Price(
         
         class properties:
             usdPrice = schemas.Float64Schema
+            tokenName = schemas.StrSchema
+            tokenSymbol = schemas.StrSchema
+            tokenLogo = schemas.StrSchema
+            tokenDecimals = schemas.StrSchema
         
             @staticmethod
             def nativePrice() -> typing.Type['NativeErc20Price']:
                 return NativeErc20Price
             exchangeAddress = schemas.StrSchema
             exchangeName = schemas.StrSchema
+            tokenAddress = schemas.StrSchema
             __annotations__ = {
                 "usdPrice": usdPrice,
+                "tokenName": tokenName,
+                "tokenSymbol": tokenSymbol,
+                "tokenLogo": tokenLogo,
+                "tokenDecimals": tokenDecimals,
                 "nativePrice": nativePrice,
                 "exchangeAddress": exchangeAddress,
                 "exchangeName": exchangeName,
+                "tokenAddress": tokenAddress,
             }
 
     
@@ -58,6 +68,18 @@ class Erc20Price(
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["usdPrice"]) -> MetaOapg.properties.usdPrice: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["tokenName"]) -> MetaOapg.properties.tokenName: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["tokenSymbol"]) -> MetaOapg.properties.tokenSymbol: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["tokenLogo"]) -> MetaOapg.properties.tokenLogo: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["tokenDecimals"]) -> MetaOapg.properties.tokenDecimals: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["nativePrice"]) -> 'NativeErc20Price': ...
@@ -69,15 +91,30 @@ class Erc20Price(
     def __getitem__(self, name: typing_extensions.Literal["exchangeName"]) -> MetaOapg.properties.exchangeName: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["tokenAddress"]) -> MetaOapg.properties.tokenAddress: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["usdPrice", "nativePrice", "exchangeAddress", "exchangeName", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["usdPrice", "tokenName", "tokenSymbol", "tokenLogo", "tokenDecimals", "nativePrice", "exchangeAddress", "exchangeName", "tokenAddress", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["usdPrice"]) -> MetaOapg.properties.usdPrice: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["tokenName"]) -> typing.Union[MetaOapg.properties.tokenName, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["tokenSymbol"]) -> typing.Union[MetaOapg.properties.tokenSymbol, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["tokenLogo"]) -> typing.Union[MetaOapg.properties.tokenLogo, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["tokenDecimals"]) -> typing.Union[MetaOapg.properties.tokenDecimals, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["nativePrice"]) -> typing.Union['NativeErc20Price', schemas.Unset]: ...
@@ -89,9 +126,12 @@ class Erc20Price(
     def get_item_oapg(self, name: typing_extensions.Literal["exchangeName"]) -> typing.Union[MetaOapg.properties.exchangeName, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["tokenAddress"]) -> typing.Union[MetaOapg.properties.tokenAddress, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["usdPrice", "nativePrice", "exchangeAddress", "exchangeName", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["usdPrice", "tokenName", "tokenSymbol", "tokenLogo", "tokenDecimals", "nativePrice", "exchangeAddress", "exchangeName", "tokenAddress", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -99,9 +139,14 @@ class Erc20Price(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         usdPrice: typing.Union[MetaOapg.properties.usdPrice, decimal.Decimal, int, float, ],
+        tokenName: typing.Union[MetaOapg.properties.tokenName, str, schemas.Unset] = schemas.unset,
+        tokenSymbol: typing.Union[MetaOapg.properties.tokenSymbol, str, schemas.Unset] = schemas.unset,
+        tokenLogo: typing.Union[MetaOapg.properties.tokenLogo, str, schemas.Unset] = schemas.unset,
+        tokenDecimals: typing.Union[MetaOapg.properties.tokenDecimals, str, schemas.Unset] = schemas.unset,
         nativePrice: typing.Union['NativeErc20Price', schemas.Unset] = schemas.unset,
         exchangeAddress: typing.Union[MetaOapg.properties.exchangeAddress, str, schemas.Unset] = schemas.unset,
         exchangeName: typing.Union[MetaOapg.properties.exchangeName, str, schemas.Unset] = schemas.unset,
+        tokenAddress: typing.Union[MetaOapg.properties.tokenAddress, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'Erc20Price':
@@ -109,9 +154,14 @@ class Erc20Price(
             cls,
             *args,
             usdPrice=usdPrice,
+            tokenName=tokenName,
+            tokenSymbol=tokenSymbol,
+            tokenLogo=tokenLogo,
+            tokenDecimals=tokenDecimals,
             nativePrice=nativePrice,
             exchangeAddress=exchangeAddress,
             exchangeName=exchangeName,
+            tokenAddress=tokenAddress,
             _configuration=_configuration,
             **kwargs,
         )
