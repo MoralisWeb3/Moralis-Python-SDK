@@ -69,6 +69,8 @@ class FromBlockSchema(
 ):
     pass
 ToBlockSchema = schemas.StrSchema
+FromDateSchema = schemas.StrSchema
+ToDateSchema = schemas.StrSchema
 
 
 class LimitSchema(
@@ -90,6 +92,8 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'direction': typing.Union[DirectionSchema, str, ],
         'from_block': typing.Union[FromBlockSchema, decimal.Decimal, int, ],
         'to_block': typing.Union[ToBlockSchema, str, ],
+        'from_date': typing.Union[FromDateSchema, str, ],
+        'to_date': typing.Union[ToDateSchema, str, ],
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
         'disable_total': typing.Union[DisableTotalSchema, bool, ],
         'cursor': typing.Union[CursorSchema, str, ],
@@ -130,6 +134,18 @@ request_query_to_block = api_client.QueryParameter(
     name="to_block",
     style=api_client.ParameterStyle.FORM,
     schema=ToBlockSchema,
+    explode=True,
+)
+request_query_from_date = api_client.QueryParameter(
+    name="from_date",
+    style=api_client.ParameterStyle.FORM,
+    schema=FromDateSchema,
+    explode=True,
+)
+request_query_to_date = api_client.QueryParameter(
+    name="to_date",
+    style=api_client.ParameterStyle.FORM,
+    schema=ToDateSchema,
     explode=True,
 )
 request_query_limit = api_client.QueryParameter(
@@ -278,6 +294,8 @@ class BaseApi(api_client.Api):
             request_query_direction,
             request_query_from_block,
             request_query_to_block,
+            request_query_from_date,
+            request_query_to_date,
             request_query_limit,
             request_query_disable_total,
             request_query_cursor,

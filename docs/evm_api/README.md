@@ -5,6 +5,7 @@
 - [defi](./defi.md)
 - [events](./events.md)
 - [ipfs](./ipfs.md)
+- [market_data](./market_data.md)
 - [nft](./nft.md)
 - [resolve](./resolve.md)
 - [token](./token.md)

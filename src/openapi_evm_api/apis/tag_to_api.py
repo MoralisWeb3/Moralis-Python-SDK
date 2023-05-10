@@ -7,6 +7,7 @@ from openapi_evm_api.apis.tags.default_api import DefaultApi
 from openapi_evm_api.apis.tags.defi_api import DefiApi
 from openapi_evm_api.apis.tags.events_api import EventsApi
 from openapi_evm_api.apis.tags.ipfs_api import IpfsApi
+from openapi_evm_api.apis.tags.market_data_api import MarketDataApi
 from openapi_evm_api.apis.tags.nft_api import NftApi
 from openapi_evm_api.apis.tags.resolve_api import ResolveApi
 from openapi_evm_api.apis.tags.token_api import TokenApi
@@ -22,6 +23,7 @@ TagToApi = typing_extensions.TypedDict(
         TagValues.DEFI: DefiApi,
         TagValues.EVENTS: EventsApi,
         TagValues.IPFS: IpfsApi,
+        TagValues.MARKET_DATA: MarketDataApi,
         TagValues.NFT: NftApi,
         TagValues.RESOLVE: ResolveApi,
         TagValues.TOKEN: TokenApi,
@@ -38,6 +40,7 @@ tag_to_api = TagToApi(
         TagValues.DEFI: DefiApi,
         TagValues.EVENTS: EventsApi,
         TagValues.IPFS: IpfsApi,
+        TagValues.MARKET_DATA: MarketDataApi,
         TagValues.NFT: NftApi,
         TagValues.RESOLVE: ResolveApi,
         TagValues.TOKEN: TokenApi,

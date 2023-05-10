@@ -55,3 +55,7 @@ class PathValues(str, enum.Enum):
     PAIR_ADDRESS_RESERVES = "/{pair_address}/reserves"
     TOKEN0_ADDRESS_TOKEN1_ADDRESS_PAIR_ADDRESS = "/{token0_address}/{token1_address}/pairAddress"
     IPFS_UPLOAD_FOLDER = "/ipfs/uploadFolder"
+    MARKETDATA_ERC20S_TOPTOKENS = "/market-data/erc20s/top-tokens"
+    MARKETDATA_ERC20S_TOPMOVERS = "/market-data/erc20s/top-movers"
+    MARKETDATA_NFTS_TOPCOLLECTIONS = "/market-data/nfts/top-collections"
+    MARKETDATA_NFTS_HOTTESTCOLLECTIONS = "/market-data/nfts/hottest-collections"

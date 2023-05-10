@@ -657,6 +657,8 @@ params = {
     "direction": "both", 
     "from_block": 0, 
     "to_block": "", 
+    "from_date": "", 
+    "to_date": "", 
     "limit": 0, 
     "disable_total": True, 
     "cursor": "", 
@@ -681,6 +683,8 @@ print(result)
 | direction | enum[str]: <br/>- "both"<br/>- "to"<br/>- "from" | The transfer direction |  | "both" | "both" |
 | from_block | int | The minimum block number from which to get the transfers<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | 0 |
 | to_block | str | To get the reserves at this block number |  |  | "" |
+| from_date | str | The date from where to get the transfers (any format that is accepted by momentjs)<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | "" |
+| to_date | str | Get transfers up until this date (any format that is accepted by momentjs)<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | "" |
 | limit | int | The desired page size of the result. |  |  | 0 |
 | disable_total | bool | If the result should skip returning the total count (Improves performance). |  | True | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |

@@ -35,32 +35,44 @@ class Erc20Transfer(
 
     class MetaOapg:
         required = {
-            "to_wallet",
             "from_wallet",
-            "possible_spam",
-            "block_timestamp",
             "block_hash",
             "block_number",
             "transaction_index",
             "contract_address",
             "log_index",
+            "to_wallet",
+            "possible_spam",
+            "block_timestamp",
+            "token_name",
+            "token_decimals",
+            "token_symbol",
             "value",
             "transaction_hash",
+            "value_decimal",
         }
         
         class properties:
+            token_name = schemas.StrSchema
+            token_symbol = schemas.StrSchema
+            token_decimals = schemas.StrSchema
             contract_address = schemas.StrSchema
             transaction_hash = schemas.StrSchema
-            transaction_index = schemas.IntSchema
-            log_index = schemas.IntSchema
+            transaction_index = schemas.StrSchema
+            log_index = schemas.StrSchema
             block_timestamp = schemas.StrSchema
-            block_number = schemas.IntSchema
+            block_number = schemas.StrSchema
             block_hash = schemas.StrSchema
             from_wallet = schemas.StrSchema
             to_wallet = schemas.StrSchema
             value = schemas.StrSchema
+            value_decimal = schemas.StrSchema
             possible_spam = schemas.BoolSchema
+            token_logo = schemas.StrSchema
             __annotations__ = {
+                "token_name": token_name,
+                "token_symbol": token_symbol,
+                "token_decimals": token_decimals,
                 "contract_address": contract_address,
                 "transaction_hash": transaction_hash,
                 "transaction_index": transaction_index,
@@ -71,21 +83,36 @@ class Erc20Transfer(
                 "from_wallet": from_wallet,
                 "to_wallet": to_wallet,
                 "value": value,
+                "value_decimal": value_decimal,
                 "possible_spam": possible_spam,
+                "token_logo": token_logo,
             }
 
     
-    to_wallet: MetaOapg.properties.to_wallet
     from_wallet: MetaOapg.properties.from_wallet
-    possible_spam: MetaOapg.properties.possible_spam
-    block_timestamp: MetaOapg.properties.block_timestamp
     block_hash: MetaOapg.properties.block_hash
     block_number: MetaOapg.properties.block_number
     transaction_index: MetaOapg.properties.transaction_index
     contract_address: MetaOapg.properties.contract_address
     log_index: MetaOapg.properties.log_index
+    to_wallet: MetaOapg.properties.to_wallet
+    possible_spam: MetaOapg.properties.possible_spam
+    block_timestamp: MetaOapg.properties.block_timestamp
+    token_name: MetaOapg.properties.token_name
+    token_decimals: MetaOapg.properties.token_decimals
+    token_symbol: MetaOapg.properties.token_symbol
     value: MetaOapg.properties.value
     transaction_hash: MetaOapg.properties.transaction_hash
+    value_decimal: MetaOapg.properties.value_decimal
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["token_name"]) -> MetaOapg.properties.token_name: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["token_symbol"]) -> MetaOapg.properties.token_symbol: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["token_decimals"]) -> MetaOapg.properties.token_decimals: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["contract_address"]) -> MetaOapg.properties.contract_address: ...
@@ -118,15 +145,30 @@ class Erc20Transfer(
     def __getitem__(self, name: typing_extensions.Literal["value"]) -> MetaOapg.properties.value: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["value_decimal"]) -> MetaOapg.properties.value_decimal: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["token_logo"]) -> MetaOapg.properties.token_logo: ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["contract_address", "transaction_hash", "transaction_index", "log_index", "block_timestamp", "block_number", "block_hash", "from_wallet", "to_wallet", "value", "possible_spam", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_name", "token_symbol", "token_decimals", "contract_address", "transaction_hash", "transaction_index", "log_index", "block_timestamp", "block_number", "block_hash", "from_wallet", "to_wallet", "value", "value_decimal", "possible_spam", "token_logo", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["token_name"]) -> MetaOapg.properties.token_name: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["token_symbol"]) -> MetaOapg.properties.token_symbol: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["token_decimals"]) -> MetaOapg.properties.token_decimals: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["contract_address"]) -> MetaOapg.properties.contract_address: ...
@@ -159,46 +201,62 @@ class Erc20Transfer(
     def get_item_oapg(self, name: typing_extensions.Literal["value"]) -> MetaOapg.properties.value: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["value_decimal"]) -> MetaOapg.properties.value_decimal: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["token_logo"]) -> typing.Union[MetaOapg.properties.token_logo, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["contract_address", "transaction_hash", "transaction_index", "log_index", "block_timestamp", "block_number", "block_hash", "from_wallet", "to_wallet", "value", "possible_spam", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_name", "token_symbol", "token_decimals", "contract_address", "transaction_hash", "transaction_index", "log_index", "block_timestamp", "block_number", "block_hash", "from_wallet", "to_wallet", "value", "value_decimal", "possible_spam", "token_logo", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
-        to_wallet: typing.Union[MetaOapg.properties.to_wallet, str, ],
         from_wallet: typing.Union[MetaOapg.properties.from_wallet, str, ],
+        block_hash: typing.Union[MetaOapg.properties.block_hash, str, ],
+        block_number: typing.Union[MetaOapg.properties.block_number, str, ],
+        transaction_index: typing.Union[MetaOapg.properties.transaction_index, str, ],
+        contract_address: typing.Union[MetaOapg.properties.contract_address, str, ],
+        log_index: typing.Union[MetaOapg.properties.log_index, str, ],
+        to_wallet: typing.Union[MetaOapg.properties.to_wallet, str, ],
         possible_spam: typing.Union[MetaOapg.properties.possible_spam, bool, ],
         block_timestamp: typing.Union[MetaOapg.properties.block_timestamp, str, ],
-        block_hash: typing.Union[MetaOapg.properties.block_hash, str, ],
-        block_number: typing.Union[MetaOapg.properties.block_number, decimal.Decimal, int, ],
-        transaction_index: typing.Union[MetaOapg.properties.transaction_index, decimal.Decimal, int, ],
-        contract_address: typing.Union[MetaOapg.properties.contract_address, str, ],
-        log_index: typing.Union[MetaOapg.properties.log_index, decimal.Decimal, int, ],
+        token_name: typing.Union[MetaOapg.properties.token_name, str, ],
+        token_decimals: typing.Union[MetaOapg.properties.token_decimals, str, ],
+        token_symbol: typing.Union[MetaOapg.properties.token_symbol, str, ],
         value: typing.Union[MetaOapg.properties.value, str, ],
         transaction_hash: typing.Union[MetaOapg.properties.transaction_hash, str, ],
+        value_decimal: typing.Union[MetaOapg.properties.value_decimal, str, ],
+        token_logo: typing.Union[MetaOapg.properties.token_logo, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'Erc20Transfer':
         return super().__new__(
             cls,
             *args,
-            to_wallet=to_wallet,
             from_wallet=from_wallet,
-            possible_spam=possible_spam,
-            block_timestamp=block_timestamp,
             block_hash=block_hash,
             block_number=block_number,
             transaction_index=transaction_index,
             contract_address=contract_address,
             log_index=log_index,
+            to_wallet=to_wallet,
+            possible_spam=possible_spam,
+            block_timestamp=block_timestamp,
+            token_name=token_name,
+            token_decimals=token_decimals,
+            token_symbol=token_symbol,
             value=value,
             transaction_hash=transaction_hash,
+            value_decimal=value_decimal,
+            token_logo=token_logo,
             _configuration=_configuration,
             **kwargs,
         )

@@ -48,6 +48,10 @@ from openapi_evm_api.model.log_event import LogEvent
 from openapi_evm_api.model.log_event_by_address import LogEventByAddress
 from openapi_evm_api.model.log_response import LogResponse
 from openapi_evm_api.model.log_verbose import LogVerbose
+from openapi_evm_api.model.market_data_erc20_token import MarketDataERC20Token
+from openapi_evm_api.model.market_data_erc20_tokens_by_price_movers import MarketDataERC20TokensByPriceMovers
+from openapi_evm_api.model.market_data_hottest_nft_collection_by_trading_volume import MarketDataHottestNFTCollectionByTradingVolume
+from openapi_evm_api.model.market_data_top_nft_collection_by_market_cap import MarketDataTopNFTCollectionByMarketCap
 from openapi_evm_api.model.media import Media
 from openapi_evm_api.model.media_collection import MediaCollection
 from openapi_evm_api.model.media_item import MediaItem
@@ -79,4 +83,5 @@ from openapi_evm_api.model.trade_collection import TradeCollection
 from openapi_evm_api.model.transaction import Transaction
 from openapi_evm_api.model.transaction_collection import TransactionCollection
 from openapi_evm_api.model.transaction_collection_verbose import TransactionCollectionVerbose
+from openapi_evm_api.model.wallet_net_worth import WalletNetWorth
 from openapi_evm_api.model.web3version import Web3version

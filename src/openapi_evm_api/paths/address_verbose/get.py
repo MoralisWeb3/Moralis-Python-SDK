@@ -25,6 +25,7 @@ import frozendict  # noqa: F401
 
 from openapi_evm_api import schemas  # noqa: F401
 
+from openapi_evm_api.model.include_list import IncludeList
 from openapi_evm_api.model.chain_list import ChainList
 from openapi_evm_api.model.transaction_collection_verbose import TransactionCollectionVerbose
 
@@ -52,6 +53,7 @@ class ToBlockSchema(
         inclusive_minimum = 0
 FromDateSchema = schemas.StrSchema
 ToDateSchema = schemas.StrSchema
+IncludeSchema = IncludeList
 CursorSchema = schemas.StrSchema
 
 
@@ -76,6 +78,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'to_block': typing.Union[ToBlockSchema, decimal.Decimal, int, ],
         'from_date': typing.Union[FromDateSchema, str, ],
         'to_date': typing.Union[ToDateSchema, str, ],
+        'include': typing.Union[IncludeSchema, ],
         'cursor': typing.Union[CursorSchema, str, ],
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
         'disable_total': typing.Union[DisableTotalSchema, bool, ],
@@ -116,6 +119,12 @@ request_query_to_date = api_client.QueryParameter(
     name="to_date",
     style=api_client.ParameterStyle.FORM,
     schema=ToDateSchema,
+    explode=True,
+)
+request_query_include = api_client.QueryParameter(
+    name="include",
+    style=api_client.ParameterStyle.FORM,
+    schema=IncludeSchema,
     explode=True,
 )
 request_query_cursor = api_client.QueryParameter(
@@ -270,6 +279,7 @@ class BaseApi(api_client.Api):
             request_query_to_block,
             request_query_from_date,
             request_query_to_date,
+            request_query_include,
             request_query_cursor,
             request_query_limit,
             request_query_disable_total,

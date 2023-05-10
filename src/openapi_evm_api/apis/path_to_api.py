@@ -50,6 +50,10 @@ from openapi_evm_api.apis.paths.resolve_ens_domain import ResolveEnsDomain
 from openapi_evm_api.apis.paths.pair_address_reserves import PairAddressReserves
 from openapi_evm_api.apis.paths.token0_address_token1_address_pair_address import Token0AddressToken1AddressPairAddress
 from openapi_evm_api.apis.paths.ipfs_upload_folder import IpfsUploadFolder
+from openapi_evm_api.apis.paths.market_data_erc20s_top_tokens import MarketDataErc20sTopTokens
+from openapi_evm_api.apis.paths.market_data_erc20s_top_movers import MarketDataErc20sTopMovers
+from openapi_evm_api.apis.paths.market_data_nfts_top_collections import MarketDataNftsTopCollections
+from openapi_evm_api.apis.paths.market_data_nfts_hottest_collections import MarketDataNftsHottestCollections
 
 PathToApi = typing_extensions.TypedDict(
     'PathToApi',
@@ -103,6 +107,10 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.PAIR_ADDRESS_RESERVES: PairAddressReserves,
         PathValues.TOKEN0_ADDRESS_TOKEN1_ADDRESS_PAIR_ADDRESS: Token0AddressToken1AddressPairAddress,
         PathValues.IPFS_UPLOAD_FOLDER: IpfsUploadFolder,
+        PathValues.MARKETDATA_ERC20S_TOPTOKENS: MarketDataErc20sTopTokens,
+        PathValues.MARKETDATA_ERC20S_TOPMOVERS: MarketDataErc20sTopMovers,
+        PathValues.MARKETDATA_NFTS_TOPCOLLECTIONS: MarketDataNftsTopCollections,
+        PathValues.MARKETDATA_NFTS_HOTTESTCOLLECTIONS: MarketDataNftsHottestCollections,
     }
 )
 
@@ -157,5 +165,9 @@ path_to_api = PathToApi(
         PathValues.PAIR_ADDRESS_RESERVES: PairAddressReserves,
         PathValues.TOKEN0_ADDRESS_TOKEN1_ADDRESS_PAIR_ADDRESS: Token0AddressToken1AddressPairAddress,
         PathValues.IPFS_UPLOAD_FOLDER: IpfsUploadFolder,
+        PathValues.MARKETDATA_ERC20S_TOPTOKENS: MarketDataErc20sTopTokens,
+        PathValues.MARKETDATA_ERC20S_TOPMOVERS: MarketDataErc20sTopMovers,
+        PathValues.MARKETDATA_NFTS_TOPCOLLECTIONS: MarketDataNftsTopCollections,
+        PathValues.MARKETDATA_NFTS_HOTTESTCOLLECTIONS: MarketDataNftsHottestCollections,
     }
 )
