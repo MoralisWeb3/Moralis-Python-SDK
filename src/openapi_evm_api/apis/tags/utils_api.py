@@ -10,12 +10,14 @@
 """
 
 from openapi_evm_api.paths.info_endpoint_weights.get import EndpointWeights
+from openapi_evm_api.paths.contracts_review.post import ReviewContracts
 from openapi_evm_api.paths.address_function.post import RunContractFunction
 from openapi_evm_api.paths.web3_version.get import Web3ApiVersion
 
 
 class UtilsApi(
     EndpointWeights,
+    ReviewContracts,
     RunContractFunction,
     Web3ApiVersion,
 ):

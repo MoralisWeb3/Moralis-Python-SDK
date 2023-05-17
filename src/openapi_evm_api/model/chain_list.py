@@ -52,16 +52,12 @@ class ChainList(
             "0x61": "X61",
             "avalanche": "AVALANCHE",
             "0xa86a": "XA86A",
-            "avalanche testnet": "AVALANCHE_TESTNET",
-            "0xa869": "XA869",
             "fantom": "FANTOM",
             "0xfa": "XFA",
             "palm": "PALM",
             "0x2a15c308d": "X2A15C308D",
             "cronos": "CRONOS",
             "0x19": "X19",
-            "cronos testnet": "CRONOS_TESTNET",
-            "0x152": "X152",
             "arbitrum": "ARBITRUM",
             "0xa4b1": "XA4B1",
         }
@@ -131,14 +127,6 @@ class ChainList(
         return cls("0xa86a")
     
     @schemas.classproperty
-    def AVALANCHE_TESTNET(cls):
-        return cls("avalanche testnet")
-    
-    @schemas.classproperty
-    def XA869(cls):
-        return cls("0xa869")
-    
-    @schemas.classproperty
     def FANTOM(cls):
         return cls("fantom")
     
@@ -161,14 +149,6 @@ class ChainList(
     @schemas.classproperty
     def X19(cls):
         return cls("0x19")
-    
-    @schemas.classproperty
-    def CRONOS_TESTNET(cls):
-        return cls("cronos testnet")
-    
-    @schemas.classproperty
-    def X152(cls):
-        return cls("0x152")
     
     @schemas.classproperty
     def ARBITRUM(cls):

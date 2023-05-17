@@ -98,14 +98,6 @@ class ChainList(
         return cls("0xa86a")
     
     @schemas.classproperty
-    def AVALANCHE_TESTNET(cls):
-        return cls("avalanche testnet")
-    
-    @schemas.classproperty
-    def XA869(cls):
-        return cls("0xa869")
-    
-    @schemas.classproperty
     def FANTOM(cls):
         return cls("fantom")
     
@@ -128,14 +120,6 @@ class ChainList(
     @schemas.classproperty
     def X19(cls):
         return cls("0x19")
-    
-    @schemas.classproperty
-    def CRONOS_TESTNET(cls):
-        return cls("cronos testnet")
-    
-    @schemas.classproperty
-    def X152(cls):
-        return cls("0x152")
     
     @schemas.classproperty
     def ARBITRUM(cls):

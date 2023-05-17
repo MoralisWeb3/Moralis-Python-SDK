@@ -11,7 +11,7 @@ import typing_extensions
 import urllib3
 from urllib3._collections import HTTPHeaderDict
 
-from openapi_aptos_api import api_client, exceptions
+from openapi_evm_api import api_client, exceptions
 from datetime import date, datetime  # noqa: F401
 import decimal  # noqa: F401
 import functools  # noqa: F401
@@ -23,145 +23,22 @@ import uuid  # noqa: F401
 
 import frozendict  # noqa: F401
 
-from openapi_aptos_api import schemas  # noqa: F401
+from openapi_evm_api import schemas  # noqa: F401
 
-from openapi_aptos_api.model.bad_request_response import BadRequestResponse
-from openapi_aptos_api.model.nft_transfers_by_tokens_response import NFTTransfersByTokensResponse
-
-from . import path
+from openapi_evm_api.model.chain_list import ChainList
+from openapi_evm_api.model.contracts_review_dto import ContractsReviewDto
 
 # Query params
-
-
-class LimitSchema(
-    schemas.NumberSchema
-):
-
-
-    class MetaOapg:
-        inclusive_maximum = 100
-        inclusive_minimum = 1
-
-
-class OffsetSchema(
-    schemas.NumberSchema
-):
-
-
-    class MetaOapg:
-        inclusive_maximum = 100
-        inclusive_minimum = 0
-
-
-class CursorSchema(
-    schemas.StrBase,
-    schemas.NoneBase,
-    schemas.Schema,
-    schemas.NoneStrMixin
-):
-
-
-    def __new__(
-        cls,
-        *args: typing.Union[None, str, ],
-        _configuration: typing.Optional[schemas.Configuration] = None,
-    ) -> 'CursorSchema':
-        return super().__new__(
-            cls,
-            *args,
-            _configuration=_configuration,
-        )
-
-
-class WalletBlacklistSchema(
-    schemas.ListBase,
-    schemas.NoneBase,
-    schemas.Schema,
-    schemas.NoneTupleMixin
-):
-
-
-    class MetaOapg:
-        items = schemas.StrSchema
-        max_items = 25
-        min_items = 1
-
-
-    def __new__(
-        cls,
-        *args: typing.Union[list, tuple, None, ],
-        _configuration: typing.Optional[schemas.Configuration] = None,
-    ) -> 'WalletBlacklistSchema':
-        return super().__new__(
-            cls,
-            *args,
-            _configuration=_configuration,
-        )
-
-
-class WalletWhitelistSchema(
-    schemas.ListBase,
-    schemas.NoneBase,
-    schemas.Schema,
-    schemas.NoneTupleMixin
-):
-
-
-    class MetaOapg:
-        items = schemas.StrSchema
-        max_items = 25
-        min_items = 1
-
-
-    def __new__(
-        cls,
-        *args: typing.Union[list, tuple, None, ],
-        _configuration: typing.Optional[schemas.Configuration] = None,
-    ) -> 'WalletWhitelistSchema':
-        return super().__new__(
-            cls,
-            *args,
-            _configuration=_configuration,
-        )
-
-
-class TokenIdsSchema(
-    schemas.ListSchema
-):
-
-
-    class MetaOapg:
-        max_items = 25
-        min_items = 1
-        items = schemas.StrSchema
-
-    def __new__(
-        cls,
-        arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
-        _configuration: typing.Optional[schemas.Configuration] = None,
-    ) -> 'TokenIdsSchema':
-        return super().__new__(
-            cls,
-            arg,
-            _configuration=_configuration,
-        )
-
-    def __getitem__(self, i: int) -> MetaOapg.items:
-        return super().__getitem__(i)
+ChainSchema = ChainList
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
-        'limit': typing.Union[LimitSchema, decimal.Decimal, int, float, ],
-        'token_ids': typing.Union[TokenIdsSchema, list, tuple, ],
     }
 )
 RequestOptionalQueryParams = typing_extensions.TypedDict(
     'RequestOptionalQueryParams',
     {
-        'offset': typing.Union[OffsetSchema, decimal.Decimal, int, float, ],
-        'cursor': typing.Union[CursorSchema, None, str, ],
-        'wallet_blacklist': typing.Union[WalletBlacklistSchema, list, tuple, None, ],
-        'wallet_whitelist': typing.Union[WalletWhitelistSchema, list, tuple, None, ],
+        'chain': typing.Union[ChainSchema, ],
     },
     total=False
 )
@@ -171,48 +48,73 @@ class RequestQueryParams(RequestRequiredQueryParams, RequestOptionalQueryParams)
     pass
 
 
-request_query_limit = api_client.QueryParameter(
-    name="limit",
+request_query_chain = api_client.QueryParameter(
+    name="chain",
     style=api_client.ParameterStyle.FORM,
-    schema=LimitSchema,
+    schema=ChainSchema,
+    explode=True,
+)
+# body param
+SchemaForRequestBodyApplicationJson = ContractsReviewDto
+
+
+request_body_contracts_review_dto = api_client.RequestBody(
+    content={
+        'application/json': api_client.MediaType(
+            schema=SchemaForRequestBodyApplicationJson),
+    },
     required=True,
-    explode=True,
 )
-request_query_offset = api_client.QueryParameter(
-    name="offset",
-    style=api_client.ParameterStyle.FORM,
-    schema=OffsetSchema,
-    explode=True,
-)
-request_query_cursor = api_client.QueryParameter(
-    name="cursor",
-    style=api_client.ParameterStyle.FORM,
-    schema=CursorSchema,
-    explode=True,
-)
-request_query_wallet_blacklist = api_client.QueryParameter(
-    name="wallet_blacklist",
-    style=api_client.ParameterStyle.FORM,
-    schema=WalletBlacklistSchema,
-    explode=True,
-)
-request_query_wallet_whitelist = api_client.QueryParameter(
-    name="wallet_whitelist",
-    style=api_client.ParameterStyle.FORM,
-    schema=WalletWhitelistSchema,
-    explode=True,
-)
-request_query_token_ids = api_client.QueryParameter(
-    name="token_ids",
-    style=api_client.ParameterStyle.FORM,
-    schema=TokenIdsSchema,
-    required=True,
-    explode=True,
-)
-_auth = [
-    'bearer',
-]
-SchemaFor200ResponseBodyApplicationJson = NFTTransfersByTokensResponse
+
+
+class SchemaFor200ResponseBodyApplicationJson(
+    schemas.DictSchema
+):
+
+
+    class MetaOapg:
+        
+        class properties:
+            message = schemas.StrSchema
+            __annotations__ = {
+                "message": message,
+            }
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["message"]) -> MetaOapg.properties.message: ...
+    
+    @typing.overload
+    def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
+    
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["message", ], str]):
+        # dict_instance[name] accessor
+        return super().__getitem__(name)
+    
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["message"]) -> typing.Union[MetaOapg.properties.message, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
+    
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["message", ], str]):
+        return super().get_item_oapg(name)
+    
+
+    def __new__(
+        cls,
+        *args: typing.Union[dict, frozendict.frozendict, ],
+        message: typing.Union[MetaOapg.properties.message, str, schemas.Unset] = schemas.unset,
+        _configuration: typing.Optional[schemas.Configuration] = None,
+        **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+    ) -> 'SchemaFor200ResponseBodyApplicationJson':
+        return super().__new__(
+            cls,
+            *args,
+            message=message,
+            _configuration=_configuration,
+            **kwargs,
+        )
 
 
 @dataclass
@@ -231,29 +133,6 @@ _response_for_200 = api_client.OpenApiResponse(
             schema=SchemaFor200ResponseBodyApplicationJson),
     },
 )
-SchemaFor400ResponseBodyApplicationJson = BadRequestResponse
-
-
-@dataclass
-class ApiResponseFor400(api_client.ApiResponse):
-    response: urllib3.HTTPResponse
-    body: typing.Union[
-        SchemaFor400ResponseBodyApplicationJson,
-    ]
-    headers: schemas.Unset = schemas.unset
-
-
-_response_for_400 = api_client.OpenApiResponse(
-    response_cls=ApiResponseFor400,
-    content={
-        'application/json': api_client.MediaType(
-            schema=SchemaFor400ResponseBodyApplicationJson),
-    },
-)
-_status_code_to_response = {
-    '200': _response_for_200,
-    '400': _response_for_400,
-}
 _all_accept_content_types = (
     'application/json',
 )
@@ -261,8 +140,10 @@ _all_accept_content_types = (
 
 class BaseApi(api_client.Api):
     @typing.overload
-    def _get_nft_transfers_by_ids_oapg(
+    def _review_contracts_oapg(
         self,
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
+        content_type: typing_extensions.Literal["application/json"] = ...,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -273,9 +154,26 @@ class BaseApi(api_client.Api):
     ]: ...
 
     @typing.overload
-    def _get_nft_transfers_by_ids_oapg(
+    def _review_contracts_oapg(
         self,
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
+        content_type: str = ...,
+        query_params: RequestQueryParams = frozendict.frozendict(),
+        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
+        stream: bool = False,
+        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        skip_deserialization: typing_extensions.Literal[False] = ...,
+    ) -> typing.Union[
+        ApiResponseFor200,
+    ]: ...
+
+
+    @typing.overload
+    def _review_contracts_oapg(
+        self,
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
         skip_deserialization: typing_extensions.Literal[True],
+        content_type: str = ...,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -283,8 +181,10 @@ class BaseApi(api_client.Api):
     ) -> api_client.ApiResponseWithoutDeserialization: ...
 
     @typing.overload
-    def _get_nft_transfers_by_ids_oapg(
+    def _review_contracts_oapg(
         self,
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
+        content_type: str = ...,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -295,8 +195,10 @@ class BaseApi(api_client.Api):
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
-    def _get_nft_transfers_by_ids_oapg(
+    def _review_contracts_oapg(
         self,
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
+        content_type: str = 'application/json',
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -304,7 +206,7 @@ class BaseApi(api_client.Api):
         skip_deserialization: bool = False,
     ):
         """
-        Get NFT Transfers by Token ids
+        Review contracts
         :param skip_deserialization: If true then api_response.response will be set but
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
@@ -314,12 +216,7 @@ class BaseApi(api_client.Api):
 
         prefix_separator_iterator = None
         for parameter in (
-            request_query_limit,
-            request_query_offset,
-            request_query_cursor,
-            request_query_wallet_blacklist,
-            request_query_wallet_whitelist,
-            request_query_token_ids,
+            request_query_chain,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -336,10 +233,23 @@ class BaseApi(api_client.Api):
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
 
+        if body is schemas.unset:
+            raise exceptions.ApiValueError(
+                'The required body parameter has an invalid value of: unset. Set a valid value instead')
+        _fields = None
+        _body = None
+        serialized_data = request_body_contracts_review_dto.serialize(body, content_type)
+        _headers.add('Content-Type', content_type)
+        if 'fields' in serialized_data:
+            _fields = serialized_data['fields']
+        elif 'body' in serialized_data:
+            _body = serialized_data['body']
         response = self.api_client.call_api(
             resource_path=used_path,
-            method='get'.upper(),
+            method='post'.upper(),
             headers=_headers,
+            fields=_fields,
+            body=_body,
             auth_settings=_auth,
             stream=stream,
             timeout=timeout,
@@ -360,12 +270,14 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class GetNftTransfersByIds(BaseApi):
+class ReviewContracts(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
     @typing.overload
-    def get_nft_transfers_by_ids(
+    def review_contracts(
         self,
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
+        content_type: typing_extensions.Literal["application/json"] = ...,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -376,9 +288,26 @@ class GetNftTransfersByIds(BaseApi):
     ]: ...
 
     @typing.overload
-    def get_nft_transfers_by_ids(
+    def review_contracts(
         self,
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
+        content_type: str = ...,
+        query_params: RequestQueryParams = frozendict.frozendict(),
+        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
+        stream: bool = False,
+        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        skip_deserialization: typing_extensions.Literal[False] = ...,
+    ) -> typing.Union[
+        ApiResponseFor200,
+    ]: ...
+
+
+    @typing.overload
+    def review_contracts(
+        self,
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
         skip_deserialization: typing_extensions.Literal[True],
+        content_type: str = ...,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -386,8 +315,10 @@ class GetNftTransfersByIds(BaseApi):
     ) -> api_client.ApiResponseWithoutDeserialization: ...
 
     @typing.overload
-    def get_nft_transfers_by_ids(
+    def review_contracts(
         self,
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
+        content_type: str = ...,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -398,16 +329,20 @@ class GetNftTransfersByIds(BaseApi):
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
-    def get_nft_transfers_by_ids(
+    def review_contracts(
         self,
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
+        content_type: str = 'application/json',
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ):
-        return self._get_nft_transfers_by_ids_oapg(
+        return self._review_contracts_oapg(
+            body=body,
             query_params=query_params,
+            content_type=content_type,
             accept_content_types=accept_content_types,
             stream=stream,
             timeout=timeout,
@@ -415,12 +350,14 @@ class GetNftTransfersByIds(BaseApi):
         )
 
 
-class ApiForget(BaseApi):
+class ApiForpost(BaseApi):
     # this class is used by api classes that refer to endpoints by path and http method names
 
     @typing.overload
-    def get(
+    def post(
         self,
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
+        content_type: typing_extensions.Literal["application/json"] = ...,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -431,9 +368,26 @@ class ApiForget(BaseApi):
     ]: ...
 
     @typing.overload
-    def get(
+    def post(
         self,
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
+        content_type: str = ...,
+        query_params: RequestQueryParams = frozendict.frozendict(),
+        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
+        stream: bool = False,
+        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        skip_deserialization: typing_extensions.Literal[False] = ...,
+    ) -> typing.Union[
+        ApiResponseFor200,
+    ]: ...
+
+
+    @typing.overload
+    def post(
+        self,
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
         skip_deserialization: typing_extensions.Literal[True],
+        content_type: str = ...,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -441,8 +395,10 @@ class ApiForget(BaseApi):
     ) -> api_client.ApiResponseWithoutDeserialization: ...
 
     @typing.overload
-    def get(
+    def post(
         self,
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
+        content_type: str = ...,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -453,16 +409,20 @@ class ApiForget(BaseApi):
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
-    def get(
+    def post(
         self,
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
+        content_type: str = 'application/json',
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ):
-        return self._get_nft_transfers_by_ids_oapg(
+        return self._review_contracts_oapg(
+            body=body,
             query_params=query_params,
+            content_type=content_type,
             accept_content_types=accept_content_types,
             stream=stream,
             timeout=timeout,

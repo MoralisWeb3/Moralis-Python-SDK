@@ -54,6 +54,7 @@ from openapi_evm_api.apis.paths.market_data_erc20s_top_tokens import MarketDataE
 from openapi_evm_api.apis.paths.market_data_erc20s_top_movers import MarketDataErc20sTopMovers
 from openapi_evm_api.apis.paths.market_data_nfts_top_collections import MarketDataNftsTopCollections
 from openapi_evm_api.apis.paths.market_data_nfts_hottest_collections import MarketDataNftsHottestCollections
+from openapi_evm_api.apis.paths.contracts_review import ContractsReview
 
 PathToApi = typing_extensions.TypedDict(
     'PathToApi',
@@ -111,6 +112,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.MARKETDATA_ERC20S_TOPMOVERS: MarketDataErc20sTopMovers,
         PathValues.MARKETDATA_NFTS_TOPCOLLECTIONS: MarketDataNftsTopCollections,
         PathValues.MARKETDATA_NFTS_HOTTESTCOLLECTIONS: MarketDataNftsHottestCollections,
+        PathValues.CONTRACTSREVIEW: ContractsReview,
     }
 )
 
@@ -169,5 +171,6 @@ path_to_api = PathToApi(
         PathValues.MARKETDATA_ERC20S_TOPMOVERS: MarketDataErc20sTopMovers,
         PathValues.MARKETDATA_NFTS_TOPCOLLECTIONS: MarketDataNftsTopCollections,
         PathValues.MARKETDATA_NFTS_HOTTESTCOLLECTIONS: MarketDataNftsHottestCollections,
+        PathValues.CONTRACTSREVIEW: ContractsReview,
     }
 )

@@ -44,6 +44,7 @@ from moralis import streams
 api_key = "YOUR_API_KEY"
 body = {
     "region": "", 
+    "secretKey": "", 
 }
 
 result = streams.project.set_settings(
@@ -61,6 +62,7 @@ Object with the properties:
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
 | region | enum[str]: <br/>- "us-east-1"<br/>- "us-west-2"<br/>- "eu-central-1"<br/>- "ap-southeast-1" | The region from where all the webhooks will be posted for this project | Yes |  | "" |
+| secretKey | str | The secret key to validate the webhooks | Yes |  | "" |
 
 
 
