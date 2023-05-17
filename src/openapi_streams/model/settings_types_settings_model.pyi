@@ -40,34 +40,44 @@ class SettingsTypesSettingsModel(
             @staticmethod
             def region() -> typing.Type['SettingsRegion']:
                 return SettingsRegion
+            secretKey = schemas.StrSchema
             __annotations__ = {
                 "region": region,
+                "secretKey": secretKey,
             }
         additional_properties = schemas.NotAnyTypeSchema
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["region"]) -> 'SettingsRegion': ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["region"], ]):
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["secretKey"]) -> MetaOapg.properties.secretKey: ...
+    
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["region"], typing_extensions.Literal["secretKey"], ]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["region"]) -> typing.Union['SettingsRegion', schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["region"], ]):
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["secretKey"]) -> typing.Union[MetaOapg.properties.secretKey, schemas.Unset]: ...
+    
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["region"], typing_extensions.Literal["secretKey"], ]):
         return super().get_item_oapg(name)
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
         region: typing.Union['SettingsRegion', schemas.Unset] = schemas.unset,
+        secretKey: typing.Union[MetaOapg.properties.secretKey, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'SettingsTypesSettingsModel':
         return super().__new__(
             cls,
             *args,
             region=region,
+            secretKey=secretKey,
             _configuration=_configuration,
         )
 

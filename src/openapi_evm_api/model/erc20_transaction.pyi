@@ -36,19 +36,26 @@ class Erc20Transaction(
     class MetaOapg:
         required = {
             "address",
-            "possible_spam",
-            "block_timestamp",
             "block_hash",
             "block_number",
             "to_address",
             "transaction_index",
-            "from_address",
             "log_index",
+            "possible_spam",
+            "block_timestamp",
+            "token_name",
+            "token_decimals",
+            "token_symbol",
+            "from_address",
             "value",
             "transaction_hash",
+            "value_decimal",
         }
         
         class properties:
+            token_name = schemas.StrSchema
+            token_symbol = schemas.StrSchema
+            token_decimals = schemas.StrSchema
             transaction_hash = schemas.StrSchema
             address = schemas.StrSchema
             block_timestamp = schemas.StrSchema
@@ -60,7 +67,11 @@ class Erc20Transaction(
             transaction_index = schemas.IntSchema
             log_index = schemas.IntSchema
             possible_spam = schemas.BoolSchema
+            token_logo = schemas.StrSchema
             __annotations__ = {
+                "token_name": token_name,
+                "token_symbol": token_symbol,
+                "token_decimals": token_decimals,
                 "transaction_hash": transaction_hash,
                 "address": address,
                 "block_timestamp": block_timestamp,
@@ -72,20 +83,34 @@ class Erc20Transaction(
                 "transaction_index": transaction_index,
                 "log_index": log_index,
                 "possible_spam": possible_spam,
+                "token_logo": token_logo,
             }
 
     
     address: MetaOapg.properties.address
-    possible_spam: MetaOapg.properties.possible_spam
-    block_timestamp: MetaOapg.properties.block_timestamp
     block_hash: MetaOapg.properties.block_hash
     block_number: MetaOapg.properties.block_number
     to_address: MetaOapg.properties.to_address
     transaction_index: MetaOapg.properties.transaction_index
-    from_address: MetaOapg.properties.from_address
     log_index: MetaOapg.properties.log_index
+    possible_spam: MetaOapg.properties.possible_spam
+    block_timestamp: MetaOapg.properties.block_timestamp
+    token_name: MetaOapg.properties.token_name
+    token_decimals: MetaOapg.properties.token_decimals
+    token_symbol: MetaOapg.properties.token_symbol
+    from_address: MetaOapg.properties.from_address
     value: MetaOapg.properties.value
     transaction_hash: MetaOapg.properties.transaction_hash
+    value_decimal: schemas.AnyTypeSchema
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["token_name"]) -> MetaOapg.properties.token_name: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["token_symbol"]) -> MetaOapg.properties.token_symbol: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["token_decimals"]) -> MetaOapg.properties.token_decimals: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["transaction_hash"]) -> MetaOapg.properties.transaction_hash: ...
@@ -121,12 +146,24 @@ class Erc20Transaction(
     def __getitem__(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["token_logo"]) -> MetaOapg.properties.token_logo: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["transaction_hash", "address", "block_timestamp", "block_number", "block_hash", "to_address", "from_address", "value", "transaction_index", "log_index", "possible_spam", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_name", "token_symbol", "token_decimals", "transaction_hash", "address", "block_timestamp", "block_number", "block_hash", "to_address", "from_address", "value", "transaction_index", "log_index", "possible_spam", "token_logo", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["token_name"]) -> MetaOapg.properties.token_name: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["token_symbol"]) -> MetaOapg.properties.token_symbol: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["token_decimals"]) -> MetaOapg.properties.token_decimals: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["transaction_hash"]) -> MetaOapg.properties.transaction_hash: ...
@@ -162,9 +199,12 @@ class Erc20Transaction(
     def get_item_oapg(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["token_logo"]) -> typing.Union[MetaOapg.properties.token_logo, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["transaction_hash", "address", "block_timestamp", "block_number", "block_hash", "to_address", "from_address", "value", "transaction_index", "log_index", "possible_spam", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_name", "token_symbol", "token_decimals", "transaction_hash", "address", "block_timestamp", "block_number", "block_hash", "to_address", "from_address", "value", "transaction_index", "log_index", "possible_spam", "token_logo", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -172,16 +212,21 @@ class Erc20Transaction(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         address: typing.Union[MetaOapg.properties.address, str, ],
-        possible_spam: typing.Union[MetaOapg.properties.possible_spam, bool, ],
-        block_timestamp: typing.Union[MetaOapg.properties.block_timestamp, str, ],
         block_hash: typing.Union[MetaOapg.properties.block_hash, str, ],
         block_number: typing.Union[MetaOapg.properties.block_number, str, ],
         to_address: typing.Union[MetaOapg.properties.to_address, str, ],
         transaction_index: typing.Union[MetaOapg.properties.transaction_index, decimal.Decimal, int, ],
-        from_address: typing.Union[MetaOapg.properties.from_address, str, ],
         log_index: typing.Union[MetaOapg.properties.log_index, decimal.Decimal, int, ],
+        possible_spam: typing.Union[MetaOapg.properties.possible_spam, bool, ],
+        block_timestamp: typing.Union[MetaOapg.properties.block_timestamp, str, ],
+        token_name: typing.Union[MetaOapg.properties.token_name, str, ],
+        token_decimals: typing.Union[MetaOapg.properties.token_decimals, str, ],
+        token_symbol: typing.Union[MetaOapg.properties.token_symbol, str, ],
+        from_address: typing.Union[MetaOapg.properties.from_address, str, ],
         value: typing.Union[MetaOapg.properties.value, str, ],
         transaction_hash: typing.Union[MetaOapg.properties.transaction_hash, str, ],
+        value_decimal: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        token_logo: typing.Union[MetaOapg.properties.token_logo, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'Erc20Transaction':
@@ -189,16 +234,21 @@ class Erc20Transaction(
             cls,
             *args,
             address=address,
-            possible_spam=possible_spam,
-            block_timestamp=block_timestamp,
             block_hash=block_hash,
             block_number=block_number,
             to_address=to_address,
             transaction_index=transaction_index,
-            from_address=from_address,
             log_index=log_index,
+            possible_spam=possible_spam,
+            block_timestamp=block_timestamp,
+            token_name=token_name,
+            token_decimals=token_decimals,
+            token_symbol=token_symbol,
+            from_address=from_address,
             value=value,
             transaction_hash=transaction_hash,
+            value_decimal=value_decimal,
+            token_logo=token_logo,
             _configuration=_configuration,
             **kwargs,
         )

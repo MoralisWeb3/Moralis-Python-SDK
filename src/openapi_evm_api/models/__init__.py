@@ -17,6 +17,8 @@ from openapi_evm_api.model.block_transaction import BlockTransaction
 from openapi_evm_api.model.block_transaction_decoded import BlockTransactionDecoded
 from openapi_evm_api.model.block_transaction_verbose import BlockTransactionVerbose
 from openapi_evm_api.model.chain_list import ChainList
+from openapi_evm_api.model.contracts_review_dto import ContractsReviewDto
+from openapi_evm_api.model.contracts_review_item import ContractsReviewItem
 from openapi_evm_api.model.decoded_call import DecodedCall
 from openapi_evm_api.model.decoded_event import DecodedEvent
 from openapi_evm_api.model.endpoint_weights import EndpointWeights

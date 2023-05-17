@@ -193,32 +193,7 @@ request_query_token_ids = api_client.QueryParameter(
     required=True,
     explode=True,
 )
-
-
-class SchemaFor200ResponseBodyApplicationJson(
-    schemas.ListSchema
-):
-
-
-    class MetaOapg:
-        
-        @staticmethod
-        def items() -> typing.Type['NFTTransfersByTokensResponse']:
-            return NFTTransfersByTokensResponse
-
-    def __new__(
-        cls,
-        arg: typing.Union[typing.Tuple['NFTTransfersByTokensResponse'], typing.List['NFTTransfersByTokensResponse']],
-        _configuration: typing.Optional[schemas.Configuration] = None,
-    ) -> 'SchemaFor200ResponseBodyApplicationJson':
-        return super().__new__(
-            cls,
-            arg,
-            _configuration=_configuration,
-        )
-
-    def __getitem__(self, i: int) -> 'NFTTransfersByTokensResponse':
-        return super().__getitem__(i)
+SchemaFor200ResponseBodyApplicationJson = NFTTransfersByTokensResponse
 
 
 @dataclass

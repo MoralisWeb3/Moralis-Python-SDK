@@ -59,3 +59,4 @@ class PathValues(str, enum.Enum):
     MARKETDATA_ERC20S_TOPMOVERS = "/market-data/erc20s/top-movers"
     MARKETDATA_NFTS_TOPCOLLECTIONS = "/market-data/nfts/top-collections"
     MARKETDATA_NFTS_HOTTESTCOLLECTIONS = "/market-data/nfts/hottest-collections"
+    CONTRACTSREVIEW = "/contracts-review"
