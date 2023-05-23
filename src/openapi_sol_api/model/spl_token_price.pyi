@@ -37,32 +37,27 @@ class SPLTokenPrice(
         required = {
             "usdPrice",
             "exchangeAddress",
-            "nativePrice",
             "exchangeName",
         }
         
         class properties:
+            usdPrice = schemas.NumberSchema
+            exchangeAddress = schemas.StrSchema
+            exchangeName = schemas.StrSchema
         
             @staticmethod
             def nativePrice() -> typing.Type['SPLNativePrice']:
                 return SPLNativePrice
-            usdPrice = schemas.NumberSchema
-            exchangeAddress = schemas.StrSchema
-            exchangeName = schemas.StrSchema
             __annotations__ = {
-                "nativePrice": nativePrice,
                 "usdPrice": usdPrice,
                 "exchangeAddress": exchangeAddress,
                 "exchangeName": exchangeName,
+                "nativePrice": nativePrice,
             }
     
     usdPrice: MetaOapg.properties.usdPrice
     exchangeAddress: MetaOapg.properties.exchangeAddress
-    nativePrice: 'SPLNativePrice'
     exchangeName: MetaOapg.properties.exchangeName
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["nativePrice"]) -> 'SPLNativePrice': ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["usdPrice"]) -> MetaOapg.properties.usdPrice: ...
@@ -74,15 +69,15 @@ class SPLTokenPrice(
     def __getitem__(self, name: typing_extensions.Literal["exchangeName"]) -> MetaOapg.properties.exchangeName: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["nativePrice"]) -> 'SPLNativePrice': ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["nativePrice", "usdPrice", "exchangeAddress", "exchangeName", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["usdPrice", "exchangeAddress", "exchangeName", "nativePrice", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["nativePrice"]) -> 'SPLNativePrice': ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["usdPrice"]) -> MetaOapg.properties.usdPrice: ...
@@ -94,9 +89,12 @@ class SPLTokenPrice(
     def get_item_oapg(self, name: typing_extensions.Literal["exchangeName"]) -> MetaOapg.properties.exchangeName: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["nativePrice"]) -> typing.Union['SPLNativePrice', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["nativePrice", "usdPrice", "exchangeAddress", "exchangeName", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["usdPrice", "exchangeAddress", "exchangeName", "nativePrice", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -105,8 +103,8 @@ class SPLTokenPrice(
         *args: typing.Union[dict, frozendict.frozendict, ],
         usdPrice: typing.Union[MetaOapg.properties.usdPrice, decimal.Decimal, int, float, ],
         exchangeAddress: typing.Union[MetaOapg.properties.exchangeAddress, str, ],
-        nativePrice: 'SPLNativePrice',
         exchangeName: typing.Union[MetaOapg.properties.exchangeName, str, ],
+        nativePrice: typing.Union['SPLNativePrice', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'SPLTokenPrice':
@@ -115,8 +113,8 @@ class SPLTokenPrice(
             *args,
             usdPrice=usdPrice,
             exchangeAddress=exchangeAddress,
-            nativePrice=nativePrice,
             exchangeName=exchangeName,
+            nativePrice=nativePrice,
             _configuration=_configuration,
             **kwargs,
         )

@@ -48,6 +48,7 @@ class Erc20Price(
             @staticmethod
             def nativePrice() -> typing.Type['NativeErc20Price']:
                 return NativeErc20Price
+            usdPriceFormatted = schemas.StrSchema
             exchangeAddress = schemas.StrSchema
             exchangeName = schemas.StrSchema
             tokenAddress = schemas.StrSchema
@@ -58,6 +59,7 @@ class Erc20Price(
                 "tokenLogo": tokenLogo,
                 "tokenDecimals": tokenDecimals,
                 "nativePrice": nativePrice,
+                "usdPriceFormatted": usdPriceFormatted,
                 "exchangeAddress": exchangeAddress,
                 "exchangeName": exchangeName,
                 "tokenAddress": tokenAddress,
@@ -85,6 +87,9 @@ class Erc20Price(
     def __getitem__(self, name: typing_extensions.Literal["nativePrice"]) -> 'NativeErc20Price': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["usdPriceFormatted"]) -> MetaOapg.properties.usdPriceFormatted: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["exchangeAddress"]) -> MetaOapg.properties.exchangeAddress: ...
     
     @typing.overload
@@ -96,7 +101,7 @@ class Erc20Price(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["usdPrice", "tokenName", "tokenSymbol", "tokenLogo", "tokenDecimals", "nativePrice", "exchangeAddress", "exchangeName", "tokenAddress", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["usdPrice", "tokenName", "tokenSymbol", "tokenLogo", "tokenDecimals", "nativePrice", "usdPriceFormatted", "exchangeAddress", "exchangeName", "tokenAddress", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -120,6 +125,9 @@ class Erc20Price(
     def get_item_oapg(self, name: typing_extensions.Literal["nativePrice"]) -> typing.Union['NativeErc20Price', schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["usdPriceFormatted"]) -> typing.Union[MetaOapg.properties.usdPriceFormatted, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["exchangeAddress"]) -> typing.Union[MetaOapg.properties.exchangeAddress, schemas.Unset]: ...
     
     @typing.overload
@@ -131,7 +139,7 @@ class Erc20Price(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["usdPrice", "tokenName", "tokenSymbol", "tokenLogo", "tokenDecimals", "nativePrice", "exchangeAddress", "exchangeName", "tokenAddress", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["usdPrice", "tokenName", "tokenSymbol", "tokenLogo", "tokenDecimals", "nativePrice", "usdPriceFormatted", "exchangeAddress", "exchangeName", "tokenAddress", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -144,6 +152,7 @@ class Erc20Price(
         tokenLogo: typing.Union[MetaOapg.properties.tokenLogo, str, schemas.Unset] = schemas.unset,
         tokenDecimals: typing.Union[MetaOapg.properties.tokenDecimals, str, schemas.Unset] = schemas.unset,
         nativePrice: typing.Union['NativeErc20Price', schemas.Unset] = schemas.unset,
+        usdPriceFormatted: typing.Union[MetaOapg.properties.usdPriceFormatted, str, schemas.Unset] = schemas.unset,
         exchangeAddress: typing.Union[MetaOapg.properties.exchangeAddress, str, schemas.Unset] = schemas.unset,
         exchangeName: typing.Union[MetaOapg.properties.exchangeName, str, schemas.Unset] = schemas.unset,
         tokenAddress: typing.Union[MetaOapg.properties.tokenAddress, str, schemas.Unset] = schemas.unset,
@@ -159,6 +168,7 @@ class Erc20Price(
             tokenLogo=tokenLogo,
             tokenDecimals=tokenDecimals,
             nativePrice=nativePrice,
+            usdPriceFormatted=usdPriceFormatted,
             exchangeAddress=exchangeAddress,
             exchangeName=exchangeName,
             tokenAddress=tokenAddress,

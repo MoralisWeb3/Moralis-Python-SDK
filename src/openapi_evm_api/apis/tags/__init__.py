@@ -8,7 +8,6 @@ import enum
 class TagValues(str, enum.Enum):
     BALANCE = "balance"
     BLOCK = "block"
-    DEFAULT = "default"
     DEFI = "defi"
     EVENTS = "events"
     IPFS = "ipfs"
