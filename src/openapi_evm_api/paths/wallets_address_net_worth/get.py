@@ -25,28 +25,54 @@ import frozendict  # noqa: F401
 
 from openapi_evm_api import schemas  # noqa: F401
 
-from openapi_evm_api.model.erc20_price import Erc20Price
 from openapi_evm_api.model.chain_list import ChainList
+from openapi_evm_api.model.wallet_net_worth import WalletNetWorth
+
+from . import path
 
 # Query params
-ChainSchema = ChainList
-ExchangeSchema = schemas.StrSchema
 
 
-class ToBlockSchema(
-    schemas.IntSchema
+class ChainsSchema(
+    schemas.ListSchema
 ):
-    pass
+
+
+    class MetaOapg:
+        
+        @staticmethod
+        def items() -> typing.Type['ChainList']:
+            return ChainList
+
+    def __new__(
+        cls,
+        arg: typing.Union[typing.Tuple['ChainList'], typing.List['ChainList']],
+        _configuration: typing.Optional[schemas.Configuration] = None,
+    ) -> 'ChainsSchema':
+        return super().__new__(
+            cls,
+            arg,
+            _configuration=_configuration,
+        )
+
+    def __getitem__(self, i: int) -> 'ChainList':
+        return super().__getitem__(i)
 
 
 class IncludeSchema(
     schemas.EnumBase,
     schemas.StrSchema
 ):
+
+
+    class MetaOapg:
+        enum_value_to_name = {
+            "possible_spam": "POSSIBLE_SPAM",
+        }
     
     @schemas.classproperty
-    def PERCENT_CHANGE(cls):
-        return cls("percent_change")
+    def POSSIBLE_SPAM(cls):
+        return cls("possible_spam")
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -55,9 +81,7 @@ RequestRequiredQueryParams = typing_extensions.TypedDict(
 RequestOptionalQueryParams = typing_extensions.TypedDict(
     'RequestOptionalQueryParams',
     {
-        'chain': typing.Union[ChainSchema, ],
-        'exchange': typing.Union[ExchangeSchema, str, ],
-        'to_block': typing.Union[ToBlockSchema, decimal.Decimal, int, ],
+        'chains': typing.Union[ChainsSchema, list, tuple, ],
         'include': typing.Union[IncludeSchema, str, ],
     },
     total=False
@@ -68,22 +92,10 @@ class RequestQueryParams(RequestRequiredQueryParams, RequestOptionalQueryParams)
     pass
 
 
-request_query_chain = api_client.QueryParameter(
-    name="chain",
+request_query_chains = api_client.QueryParameter(
+    name="chains",
     style=api_client.ParameterStyle.FORM,
-    schema=ChainSchema,
-    explode=True,
-)
-request_query_exchange = api_client.QueryParameter(
-    name="exchange",
-    style=api_client.ParameterStyle.FORM,
-    schema=ExchangeSchema,
-    explode=True,
-)
-request_query_to_block = api_client.QueryParameter(
-    name="to_block",
-    style=api_client.ParameterStyle.FORM,
-    schema=ToBlockSchema,
+    schema=ChainsSchema,
     explode=True,
 )
 request_query_include = api_client.QueryParameter(
@@ -118,7 +130,102 @@ request_path_address = api_client.PathParameter(
     schema=AddressSchema,
     required=True,
 )
-SchemaFor200ResponseBodyApplicationJson = Erc20Price
+_auth = [
+    'ApiKeyAuth',
+]
+
+
+class SchemaFor200ResponseBodyApplicationJson(
+    schemas.AnyTypeSchema,
+):
+
+
+    class MetaOapg:
+        required = {
+            "chains",
+            "total_networth_usd",
+        }
+        
+        class properties:
+            total_networth_usd = schemas.StrSchema
+            
+            
+            class chains(
+                schemas.ListSchema
+            ):
+            
+            
+                class MetaOapg:
+                    
+                    @staticmethod
+                    def items() -> typing.Type['WalletNetWorth']:
+                        return WalletNetWorth
+            
+                def __new__(
+                    cls,
+                    arg: typing.Union[typing.Tuple['WalletNetWorth'], typing.List['WalletNetWorth']],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'chains':
+                    return super().__new__(
+                        cls,
+                        arg,
+                        _configuration=_configuration,
+                    )
+            
+                def __getitem__(self, i: int) -> 'WalletNetWorth':
+                    return super().__getitem__(i)
+            __annotations__ = {
+                "total_networth_usd": total_networth_usd,
+                "chains": chains,
+            }
+
+    
+    chains: MetaOapg.properties.chains
+    total_networth_usd: MetaOapg.properties.total_networth_usd
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["total_networth_usd"]) -> MetaOapg.properties.total_networth_usd: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["chains"]) -> MetaOapg.properties.chains: ...
+    
+    @typing.overload
+    def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
+    
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["total_networth_usd", "chains", ], str]):
+        # dict_instance[name] accessor
+        return super().__getitem__(name)
+    
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["total_networth_usd"]) -> MetaOapg.properties.total_networth_usd: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["chains"]) -> MetaOapg.properties.chains: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
+    
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["total_networth_usd", "chains", ], str]):
+        return super().get_item_oapg(name)
+    
+
+    def __new__(
+        cls,
+        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        chains: typing.Union[MetaOapg.properties.chains, list, tuple, ],
+        total_networth_usd: typing.Union[MetaOapg.properties.total_networth_usd, str, ],
+        _configuration: typing.Optional[schemas.Configuration] = None,
+        **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+    ) -> 'SchemaFor200ResponseBodyApplicationJson':
+        return super().__new__(
+            cls,
+            *args,
+            chains=chains,
+            total_networth_usd=total_networth_usd,
+            _configuration=_configuration,
+            **kwargs,
+        )
 
 
 @dataclass
@@ -137,6 +244,9 @@ _response_for_200 = api_client.OpenApiResponse(
             schema=SchemaFor200ResponseBodyApplicationJson),
     },
 )
+_status_code_to_response = {
+    '200': _response_for_200,
+}
 _all_accept_content_types = (
     'application/json',
 )
@@ -144,7 +254,7 @@ _all_accept_content_types = (
 
 class BaseApi(api_client.Api):
     @typing.overload
-    def _get_token_price_oapg(
+    def _get_wallet_net_worth_oapg(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
@@ -157,7 +267,7 @@ class BaseApi(api_client.Api):
     ]: ...
 
     @typing.overload
-    def _get_token_price_oapg(
+    def _get_wallet_net_worth_oapg(
         self,
         skip_deserialization: typing_extensions.Literal[True],
         query_params: RequestQueryParams = frozendict.frozendict(),
@@ -168,7 +278,7 @@ class BaseApi(api_client.Api):
     ) -> api_client.ApiResponseWithoutDeserialization: ...
 
     @typing.overload
-    def _get_token_price_oapg(
+    def _get_wallet_net_worth_oapg(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
@@ -181,7 +291,7 @@ class BaseApi(api_client.Api):
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
-    def _get_token_price_oapg(
+    def _get_wallet_net_worth_oapg(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
@@ -191,7 +301,7 @@ class BaseApi(api_client.Api):
         skip_deserialization: bool = False,
     ):
         """
-        Get ERC20 token price
+        Get wallet net worth
         :param skip_deserialization: If true then api_response.response will be set but
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
@@ -215,9 +325,7 @@ class BaseApi(api_client.Api):
 
         prefix_separator_iterator = None
         for parameter in (
-            request_query_chain,
-            request_query_exchange,
-            request_query_to_block,
+            request_query_chains,
             request_query_include,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
@@ -259,11 +367,11 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class GetTokenPrice(BaseApi):
+class GetWalletNetWorth(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
     @typing.overload
-    def get_token_price(
+    def get_wallet_net_worth(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
@@ -276,7 +384,7 @@ class GetTokenPrice(BaseApi):
     ]: ...
 
     @typing.overload
-    def get_token_price(
+    def get_wallet_net_worth(
         self,
         skip_deserialization: typing_extensions.Literal[True],
         query_params: RequestQueryParams = frozendict.frozendict(),
@@ -287,7 +395,7 @@ class GetTokenPrice(BaseApi):
     ) -> api_client.ApiResponseWithoutDeserialization: ...
 
     @typing.overload
-    def get_token_price(
+    def get_wallet_net_worth(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
@@ -300,7 +408,7 @@ class GetTokenPrice(BaseApi):
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
-    def get_token_price(
+    def get_wallet_net_worth(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
@@ -309,7 +417,7 @@ class GetTokenPrice(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ):
-        return self._get_token_price_oapg(
+        return self._get_wallet_net_worth_oapg(
             query_params=query_params,
             path_params=path_params,
             accept_content_types=accept_content_types,
@@ -369,7 +477,7 @@ class ApiForget(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ):
-        return self._get_token_price_oapg(
+        return self._get_wallet_net_worth_oapg(
             query_params=query_params,
             path_params=path_params,
             accept_content_types=accept_content_types,

@@ -13,6 +13,7 @@ from openapi_evm_api.paths.erc20_approvals.get import GetErc20Approvals
 from openapi_evm_api.paths.erc20_burns.get import GetErc20Burns
 from openapi_evm_api.paths.erc20_mints.get import GetErc20Mints
 from openapi_evm_api.paths.erc20_transfers.get import GetErc20Transfers
+from openapi_evm_api.paths.erc20_prices.post import GetMultipleTokenPrices
 from openapi_evm_api.paths.erc20_address_allowance.get import GetTokenAllowance
 from openapi_evm_api.paths.erc20_metadata.get import GetTokenMetadata
 from openapi_evm_api.paths.erc20_metadata_symbols.get import GetTokenMetadataBySymbol
@@ -27,6 +28,7 @@ class TokenApi(
     GetErc20Burns,
     GetErc20Mints,
     GetErc20Transfers,
+    GetMultipleTokenPrices,
     GetTokenAllowance,
     GetTokenMetadata,
     GetTokenMetadataBySymbol,

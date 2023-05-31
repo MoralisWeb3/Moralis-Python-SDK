@@ -11,3 +11,4 @@
 - [token](./token.md)
 - [transaction](./transaction.md)
 - [utils](./utils.md)
+- [wallets](./wallets.md)

@@ -6,6 +6,7 @@
 - [get_erc20_burns](#get_erc20_burns)
 - [get_erc20_mints](#get_erc20_mints)
 - [get_erc20_transfers](#get_erc20_transfers)
+- [get_multiple_token_prices](#get_multiple_token_prices)
 - [get_token_allowance](#get_token_allowance)
 - [get_token_metadata](#get_token_metadata)
 - [get_token_metadata_by_symbol](#get_token_metadata_by_symbol)
@@ -216,6 +217,53 @@ print(result)
 
 
 ---
+## get_multiple_token_prices
+
+> `evm_api.token.get_multiple_token_prices()`
+
+Returns an array of token prices denominated in the blockchain's native token and USD for a given token contract address
+
+
+### Example
+```python
+from moralis import evm_api
+
+api_key = "YOUR_API_KEY"
+params = {
+    "chain": "eth", 
+    "include": "", 
+}
+body = {
+    "tokens": [{'token_address': '0xdac17f958d2ee523a2206206994597c13d831ec7'}, {'token_address': '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'}, {'token_address': '0xae7ab96520de3a18e5e111b5eaab095312d7fe84', 'exchange': 'uniswapv2', 'to_block': '16314545'}, {'token_address': '0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0'}], 
+}
+
+result = evm_api.token.get_multiple_token_prices(
+    api_key=api_key,
+    params=params,
+    body=body,
+)
+
+print(result)
+
+```
+
+### Parameters
+
+| Name | Type | Description | Required | Default | Example |
+|------|------|-------------|----------|---------|---------|
+| chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
+| include | enum[str]: <br/>- "percent_change" | If the result should contain the 24hr percent change |  | "" | "" |
+
+
+### Body
+Object with the properties:
+
+| Name | Type | Description | Required | Default | Example |
+|------|------|-------------|----------|---------|---------|
+| tokens | List of object: <br/> - token_address: str<br/> - exchange: str<br/> - to_block: str | The tokens to be fetched | Yes |  | [{'token_address': '0xdac17f958d2ee523a2206206994597c13d831ec7'}, {'token_address': '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'}, {'token_address': '0xae7ab96520de3a18e5e111b5eaab095312d7fe84', 'exchange': 'uniswapv2', 'to_block': '16314545'}, {'token_address': '0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0'}] |
+
+
+---
 ## get_token_allowance
 
 > `evm_api.token.get_token_allowance()`
@@ -345,6 +393,7 @@ params = {
     "chain": "eth", 
     "exchange": "", 
     "to_block": 0, 
+    "include": "", 
 }
 
 result = evm_api.token.get_token_price(
@@ -364,6 +413,7 @@ print(result)
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 | exchange | str | The factory name or address of the token exchange |  |  | "" |
 | to_block | int | The block number from which the token price should be checked |  |  | 0 |
+| include | enum[str]: <br/>- "percent_change" | If the result should contain the 24hr percent change |  | "" | "" |
 
 
 

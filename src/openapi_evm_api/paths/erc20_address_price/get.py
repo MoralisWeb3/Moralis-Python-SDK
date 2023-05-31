@@ -42,6 +42,22 @@ class ToBlockSchema(
 
     class MetaOapg:
         inclusive_minimum = 0
+
+
+class IncludeSchema(
+    schemas.EnumBase,
+    schemas.StrSchema
+):
+
+
+    class MetaOapg:
+        enum_value_to_name = {
+            "percent_change": "PERCENT_CHANGE",
+        }
+    
+    @schemas.classproperty
+    def PERCENT_CHANGE(cls):
+        return cls("percent_change")
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -53,6 +69,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'chain': typing.Union[ChainSchema, ],
         'exchange': typing.Union[ExchangeSchema, str, ],
         'to_block': typing.Union[ToBlockSchema, decimal.Decimal, int, ],
+        'include': typing.Union[IncludeSchema, str, ],
     },
     total=False
 )
@@ -78,6 +95,12 @@ request_query_to_block = api_client.QueryParameter(
     name="to_block",
     style=api_client.ParameterStyle.FORM,
     schema=ToBlockSchema,
+    explode=True,
+)
+request_query_include = api_client.QueryParameter(
+    name="include",
+    style=api_client.ParameterStyle.FORM,
+    schema=IncludeSchema,
     explode=True,
 )
 # Path params
@@ -212,6 +235,7 @@ class BaseApi(api_client.Api):
             request_query_chain,
             request_query_exchange,
             request_query_to_block,
+            request_query_include,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:

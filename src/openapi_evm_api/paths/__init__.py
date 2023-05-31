@@ -25,6 +25,7 @@ class PathValues(str, enum.Enum):
     NFT_ADDRESS_LOWESTPRICE = "/nft/{address}/lowestprice"
     NFT_SEARCH = "/nft/search"
     ERC20_ADDRESS_PRICE = "/erc20/{address}/price"
+    ERC20_PRICES = "/erc20/prices"
     ADDRESS_ERC20 = "/{address}/erc20"
     ADDRESS_ERC20_TRANSFERS = "/{address}/erc20/transfers"
     ERC20_METADATA = "/erc20/metadata"
@@ -60,3 +61,5 @@ class PathValues(str, enum.Enum):
     MARKETDATA_NFTS_TOPCOLLECTIONS = "/market-data/nfts/top-collections"
     MARKETDATA_NFTS_HOTTESTCOLLECTIONS = "/market-data/nfts/hottest-collections"
     CONTRACTSREVIEW = "/contracts-review"
+    WALLETS_ADDRESS_NETWORTH = "/wallets/{address}/net-worth"
+    WALLETS_ADDRESS_CHAINS = "/wallets/{address}/chains"

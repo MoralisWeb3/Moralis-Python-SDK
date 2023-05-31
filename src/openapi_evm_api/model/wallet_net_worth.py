@@ -35,29 +35,36 @@ class WalletNetWorth(
 
     class MetaOapg:
         required = {
+            "chain",
             "native_balance",
-            "total_networth_usd",
             "native_balance_decimals",
             "native_balance_usd",
+            "networth_usd",
         }
         
         class properties:
+            chain = schemas.StrSchema
             native_balance = schemas.StrSchema
             native_balance_decimals = schemas.IntSchema
             native_balance_usd = schemas.StrSchema
-            total_networth_usd = schemas.StrSchema
+            networth_usd = schemas.StrSchema
             __annotations__ = {
+                "chain": chain,
                 "native_balance": native_balance,
                 "native_balance_decimals": native_balance_decimals,
                 "native_balance_usd": native_balance_usd,
-                "total_networth_usd": total_networth_usd,
+                "networth_usd": networth_usd,
             }
 
     
+    chain: MetaOapg.properties.chain
     native_balance: MetaOapg.properties.native_balance
-    total_networth_usd: MetaOapg.properties.total_networth_usd
     native_balance_decimals: MetaOapg.properties.native_balance_decimals
     native_balance_usd: MetaOapg.properties.native_balance_usd
+    networth_usd: MetaOapg.properties.networth_usd
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["chain"]) -> MetaOapg.properties.chain: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["native_balance"]) -> MetaOapg.properties.native_balance: ...
@@ -69,15 +76,18 @@ class WalletNetWorth(
     def __getitem__(self, name: typing_extensions.Literal["native_balance_usd"]) -> MetaOapg.properties.native_balance_usd: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["total_networth_usd"]) -> MetaOapg.properties.total_networth_usd: ...
+    def __getitem__(self, name: typing_extensions.Literal["networth_usd"]) -> MetaOapg.properties.networth_usd: ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["native_balance", "native_balance_decimals", "native_balance_usd", "total_networth_usd", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["chain", "native_balance", "native_balance_decimals", "native_balance_usd", "networth_usd", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["chain"]) -> MetaOapg.properties.chain: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["native_balance"]) -> MetaOapg.properties.native_balance: ...
@@ -89,32 +99,34 @@ class WalletNetWorth(
     def get_item_oapg(self, name: typing_extensions.Literal["native_balance_usd"]) -> MetaOapg.properties.native_balance_usd: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["total_networth_usd"]) -> MetaOapg.properties.total_networth_usd: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["networth_usd"]) -> MetaOapg.properties.networth_usd: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["native_balance", "native_balance_decimals", "native_balance_usd", "total_networth_usd", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["chain", "native_balance", "native_balance_decimals", "native_balance_usd", "networth_usd", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        chain: typing.Union[MetaOapg.properties.chain, str, ],
         native_balance: typing.Union[MetaOapg.properties.native_balance, str, ],
-        total_networth_usd: typing.Union[MetaOapg.properties.total_networth_usd, str, ],
         native_balance_decimals: typing.Union[MetaOapg.properties.native_balance_decimals, decimal.Decimal, int, ],
         native_balance_usd: typing.Union[MetaOapg.properties.native_balance_usd, str, ],
+        networth_usd: typing.Union[MetaOapg.properties.networth_usd, str, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'WalletNetWorth':
         return super().__new__(
             cls,
             *args,
+            chain=chain,
             native_balance=native_balance,
-            total_networth_usd=total_networth_usd,
             native_balance_decimals=native_balance_decimals,
             native_balance_usd=native_balance_usd,
+            networth_usd=networth_usd,
             _configuration=_configuration,
             **kwargs,
         )

@@ -39,6 +39,7 @@ from openapi_evm_api.model.erc20_transfer import Erc20Transfer
 from openapi_evm_api.model.erc20_transfers_response import Erc20TransfersResponse
 from openapi_evm_api.model.erc721_metadata import Erc721Metadata
 from openapi_evm_api.model.get_multiple_nfts_dto import GetMultipleNftsDto
+from openapi_evm_api.model.get_multiple_token_prices_dto import GetMultipleTokenPricesDto
 from openapi_evm_api.model.historical_nft_transfer import HistoricalNftTransfer
 from openapi_evm_api.model.include_list import IncludeList
 from openapi_evm_api.model.internal_transaction import InternalTransaction
@@ -80,10 +81,14 @@ from openapi_evm_api.model.reserves_pair import ReservesPair
 from openapi_evm_api.model.resolve import Resolve
 from openapi_evm_api.model.run_contract_dto import RunContractDto
 from openapi_evm_api.model.token_item import TokenItem
+from openapi_evm_api.model.token_price_item import TokenPriceItem
 from openapi_evm_api.model.trade import Trade
 from openapi_evm_api.model.trade_collection import TradeCollection
 from openapi_evm_api.model.transaction import Transaction
 from openapi_evm_api.model.transaction_collection import TransactionCollection
 from openapi_evm_api.model.transaction_collection_verbose import TransactionCollectionVerbose
+from openapi_evm_api.model.transaction_timestamp import TransactionTimestamp
+from openapi_evm_api.model.wallet_active_chain import WalletActiveChain
+from openapi_evm_api.model.wallet_active_chains import WalletActiveChains
 from openapi_evm_api.model.wallet_net_worth import WalletNetWorth
 from openapi_evm_api.model.web3version import Web3version

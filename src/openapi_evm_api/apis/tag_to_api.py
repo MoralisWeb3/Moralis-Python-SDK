@@ -12,6 +12,7 @@ from openapi_evm_api.apis.tags.resolve_api import ResolveApi
 from openapi_evm_api.apis.tags.token_api import TokenApi
 from openapi_evm_api.apis.tags.transaction_api import TransactionApi
 from openapi_evm_api.apis.tags.utils_api import UtilsApi
+from openapi_evm_api.apis.tags.wallets_api import WalletsApi
 
 TagToApi = typing_extensions.TypedDict(
     'TagToApi',
@@ -27,6 +28,7 @@ TagToApi = typing_extensions.TypedDict(
         TagValues.TOKEN: TokenApi,
         TagValues.TRANSACTION: TransactionApi,
         TagValues.UTILS: UtilsApi,
+        TagValues.WALLETS: WalletsApi,
     }
 )
 
@@ -43,5 +45,6 @@ tag_to_api = TagToApi(
         TagValues.TOKEN: TokenApi,
         TagValues.TRANSACTION: TransactionApi,
         TagValues.UTILS: UtilsApi,
+        TagValues.WALLETS: WalletsApi,
     }
 )
