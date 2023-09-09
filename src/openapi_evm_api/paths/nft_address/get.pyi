@@ -50,7 +50,6 @@ class LimitSchema(
     schemas.IntSchema
 ):
     pass
-DisableTotalSchema = schemas.BoolSchema
 
 
 class TotalRangesSchema(
@@ -77,7 +76,6 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'chain': typing.Union[ChainSchema, ],
         'format': typing.Union[FormatSchema, str, ],
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
-        'disable_total': typing.Union[DisableTotalSchema, bool, ],
         'totalRanges': typing.Union[TotalRangesSchema, decimal.Decimal, int, ],
         'range': typing.Union[RangeSchema, decimal.Decimal, int, ],
         'cursor': typing.Union[CursorSchema, str, ],
@@ -108,12 +106,6 @@ request_query_limit = api_client.QueryParameter(
     name="limit",
     style=api_client.ParameterStyle.FORM,
     schema=LimitSchema,
-    explode=True,
-)
-request_query_disable_total = api_client.QueryParameter(
-    name="disable_total",
-    style=api_client.ParameterStyle.FORM,
-    schema=DisableTotalSchema,
     explode=True,
 )
 request_query_total_ranges = api_client.QueryParameter(
@@ -272,7 +264,6 @@ class BaseApi(api_client.Api):
             request_query_chain,
             request_query_format,
             request_query_limit,
-            request_query_disable_total,
             request_query_total_ranges,
             request_query_range,
             request_query_cursor,

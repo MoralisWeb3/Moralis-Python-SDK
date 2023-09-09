@@ -36,20 +36,17 @@ ToBlockSchema = schemas.StrSchema
 FromDateSchema = schemas.StrSchema
 ToDateSchema = schemas.StrSchema
 Topic0Schema = schemas.StrSchema
-Topic1Schema = schemas.StrSchema
-Topic2Schema = schemas.StrSchema
-Topic3Schema = schemas.StrSchema
 
 
 class LimitSchema(
     schemas.IntSchema
 ):
     pass
-DisableTotalSchema = schemas.BoolSchema
 CursorSchema = schemas.StrSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
+        'topic0': typing.Union[Topic0Schema, str, ],
     }
 )
 RequestOptionalQueryParams = typing_extensions.TypedDict(
@@ -61,12 +58,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'to_block': typing.Union[ToBlockSchema, str, ],
         'from_date': typing.Union[FromDateSchema, str, ],
         'to_date': typing.Union[ToDateSchema, str, ],
-        'topic0': typing.Union[Topic0Schema, str, ],
-        'topic1': typing.Union[Topic1Schema, str, ],
-        'topic2': typing.Union[Topic2Schema, str, ],
-        'topic3': typing.Union[Topic3Schema, str, ],
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
-        'disable_total': typing.Union[DisableTotalSchema, bool, ],
         'cursor': typing.Union[CursorSchema, str, ],
     },
     total=False
@@ -117,36 +109,13 @@ request_query_topic0 = api_client.QueryParameter(
     name="topic0",
     style=api_client.ParameterStyle.FORM,
     schema=Topic0Schema,
-    explode=True,
-)
-request_query_topic1 = api_client.QueryParameter(
-    name="topic1",
-    style=api_client.ParameterStyle.FORM,
-    schema=Topic1Schema,
-    explode=True,
-)
-request_query_topic2 = api_client.QueryParameter(
-    name="topic2",
-    style=api_client.ParameterStyle.FORM,
-    schema=Topic2Schema,
-    explode=True,
-)
-request_query_topic3 = api_client.QueryParameter(
-    name="topic3",
-    style=api_client.ParameterStyle.FORM,
-    schema=Topic3Schema,
+    required=True,
     explode=True,
 )
 request_query_limit = api_client.QueryParameter(
     name="limit",
     style=api_client.ParameterStyle.FORM,
     schema=LimitSchema,
-    explode=True,
-)
-request_query_disable_total = api_client.QueryParameter(
-    name="disable_total",
-    style=api_client.ParameterStyle.FORM,
-    schema=DisableTotalSchema,
     explode=True,
 )
 request_query_cursor = api_client.QueryParameter(
@@ -285,11 +254,7 @@ class BaseApi(api_client.Api):
             request_query_from_date,
             request_query_to_date,
             request_query_topic0,
-            request_query_topic1,
-            request_query_topic2,
-            request_query_topic3,
             request_query_limit,
-            request_query_disable_total,
             request_query_cursor,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)

@@ -46,24 +46,6 @@ class FormatSchema(
         return cls("hex")
 
 
-class DirectionSchema(
-    schemas.EnumBase,
-    schemas.StrSchema
-):
-    
-    @schemas.classproperty
-    def BOTH(cls):
-        return cls("both")
-    
-    @schemas.classproperty
-    def TO(cls):
-        return cls("to")
-    
-    @schemas.classproperty
-    def FROM(cls):
-        return cls("from")
-
-
 class FromBlockSchema(
     schemas.IntSchema
 ):
@@ -77,7 +59,6 @@ class LimitSchema(
     schemas.IntSchema
 ):
     pass
-DisableTotalSchema = schemas.BoolSchema
 CursorSchema = schemas.StrSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
@@ -89,13 +70,11 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
     {
         'chain': typing.Union[ChainSchema, ],
         'format': typing.Union[FormatSchema, str, ],
-        'direction': typing.Union[DirectionSchema, str, ],
         'from_block': typing.Union[FromBlockSchema, decimal.Decimal, int, ],
         'to_block': typing.Union[ToBlockSchema, str, ],
         'from_date': typing.Union[FromDateSchema, str, ],
         'to_date': typing.Union[ToDateSchema, str, ],
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
-        'disable_total': typing.Union[DisableTotalSchema, bool, ],
         'cursor': typing.Union[CursorSchema, str, ],
     },
     total=False
@@ -116,12 +95,6 @@ request_query_format = api_client.QueryParameter(
     name="format",
     style=api_client.ParameterStyle.FORM,
     schema=FormatSchema,
-    explode=True,
-)
-request_query_direction = api_client.QueryParameter(
-    name="direction",
-    style=api_client.ParameterStyle.FORM,
-    schema=DirectionSchema,
     explode=True,
 )
 request_query_from_block = api_client.QueryParameter(
@@ -152,12 +125,6 @@ request_query_limit = api_client.QueryParameter(
     name="limit",
     style=api_client.ParameterStyle.FORM,
     schema=LimitSchema,
-    explode=True,
-)
-request_query_disable_total = api_client.QueryParameter(
-    name="disable_total",
-    style=api_client.ParameterStyle.FORM,
-    schema=DisableTotalSchema,
     explode=True,
 )
 request_query_cursor = api_client.QueryParameter(
@@ -291,13 +258,11 @@ class BaseApi(api_client.Api):
         for parameter in (
             request_query_chain,
             request_query_format,
-            request_query_direction,
             request_query_from_block,
             request_query_to_block,
             request_query_from_date,
             request_query_to_date,
             request_query_limit,
-            request_query_disable_total,
             request_query_cursor,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)

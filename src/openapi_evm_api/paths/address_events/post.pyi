@@ -51,13 +51,14 @@ class OffsetSchema(
     schemas.IntSchema
 ):
     pass
+CursorSchema = schemas.StrSchema
 
 
 class LimitSchema(
     schemas.IntSchema
 ):
     pass
-DisableTotalSchema = schemas.BoolSchema
+CursorSchema = schemas.StrSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -73,8 +74,9 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'from_date': typing.Union[FromDateSchema, str, ],
         'to_date': typing.Union[ToDateSchema, str, ],
         'offset': typing.Union[OffsetSchema, decimal.Decimal, int, ],
+        'cursor': typing.Union[CursorSchema, str, ],
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
-        'disable_total': typing.Union[DisableTotalSchema, bool, ],
+        'cursor': typing.Union[CursorSchema, str, ],
     },
     total=False
 )
@@ -127,16 +129,22 @@ request_query_offset = api_client.QueryParameter(
     schema=OffsetSchema,
     explode=True,
 )
+request_query_cursor = api_client.QueryParameter(
+    name="cursor",
+    style=api_client.ParameterStyle.FORM,
+    schema=CursorSchema,
+    explode=True,
+)
 request_query_limit = api_client.QueryParameter(
     name="limit",
     style=api_client.ParameterStyle.FORM,
     schema=LimitSchema,
     explode=True,
 )
-request_query_disable_total = api_client.QueryParameter(
-    name="disable_total",
+request_query_cursor2 = api_client.QueryParameter(
+    name="cursor",
     style=api_client.ParameterStyle.FORM,
-    schema=DisableTotalSchema,
+    schema=CursorSchema,
     explode=True,
 )
 # Path params
@@ -184,9 +192,11 @@ class SchemaFor200ResponseBodyApplicationJson(
 
 
     class MetaOapg:
+        required = {
+            "result",
+        }
         
         class properties:
-            total = schemas.IntSchema
             page = schemas.IntSchema
             page_size = schemas.IntSchema
             
@@ -216,14 +226,12 @@ class SchemaFor200ResponseBodyApplicationJson(
                 def __getitem__(self, i: int) -> 'LogEvent':
                     return super().__getitem__(i)
             __annotations__ = {
-                "total": total,
                 "page": page,
                 "page_size": page_size,
                 "result": result,
             }
     
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["total"]) -> MetaOapg.properties.total: ...
+    result: MetaOapg.properties.result
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["page"]) -> MetaOapg.properties.page: ...
@@ -237,13 +245,10 @@ class SchemaFor200ResponseBodyApplicationJson(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["total", "page", "page_size", "result", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["page", "page_size", "result", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["total"]) -> typing.Union[MetaOapg.properties.total, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["page"]) -> typing.Union[MetaOapg.properties.page, schemas.Unset]: ...
@@ -252,32 +257,30 @@ class SchemaFor200ResponseBodyApplicationJson(
     def get_item_oapg(self, name: typing_extensions.Literal["page_size"]) -> typing.Union[MetaOapg.properties.page_size, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["result"]) -> typing.Union[MetaOapg.properties.result, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["result"]) -> MetaOapg.properties.result: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["total", "page", "page_size", "result", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["page", "page_size", "result", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        total: typing.Union[MetaOapg.properties.total, decimal.Decimal, int, schemas.Unset] = schemas.unset,
+        result: typing.Union[MetaOapg.properties.result, list, tuple, ],
         page: typing.Union[MetaOapg.properties.page, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         page_size: typing.Union[MetaOapg.properties.page_size, decimal.Decimal, int, schemas.Unset] = schemas.unset,
-        result: typing.Union[MetaOapg.properties.result, list, tuple, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'SchemaFor200ResponseBodyApplicationJson':
         return super().__new__(
             cls,
             *args,
-            total=total,
+            result=result,
             page=page,
             page_size=page_size,
-            result=result,
             _configuration=_configuration,
             **kwargs,
         )
@@ -408,8 +411,9 @@ class BaseApi(api_client.Api):
             request_query_to_date,
             request_query_topic,
             request_query_offset,
+            request_query_cursor,
             request_query_limit,
-            request_query_disable_total,
+            request_query_cursor2,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:

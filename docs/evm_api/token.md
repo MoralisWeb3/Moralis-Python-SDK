@@ -2,25 +2,23 @@
 
 > `evm_api.token`
 
-- [get_erc20_approvals](#get_erc20_approvals)
-- [get_erc20_burns](#get_erc20_burns)
-- [get_erc20_mints](#get_erc20_mints)
-- [get_erc20_transfers](#get_erc20_transfers)
+- [get_multiple_token_prices](#get_multiple_token_prices)
 - [get_token_allowance](#get_token_allowance)
 - [get_token_metadata](#get_token_metadata)
 - [get_token_metadata_by_symbol](#get_token_metadata_by_symbol)
 - [get_token_price](#get_token_price)
+- [get_token_stats](#get_token_stats)
 - [get_token_transfers](#get_token_transfers)
 - [get_wallet_token_balances](#get_wallet_token_balances)
 - [get_wallet_token_transfers](#get_wallet_token_transfers)
 
 
 ---
-## get_erc20_approvals
+## get_multiple_token_prices
 
-> `evm_api.token.get_erc20_approvals()`
+> `evm_api.token.get_multiple_token_prices()`
 
-
+Returns an array of token prices denominated in the blockchain's native token and USD for a given token contract address
 
 
 ### Example
@@ -30,19 +28,16 @@ from moralis import evm_api
 api_key = "YOUR_API_KEY"
 params = {
     "chain": "eth", 
-    "from_block": 0, 
-    "to_block": 0, 
-    "limit": 0, 
-    "contract_addresses": [], 
-    "exclude_contracts": [], 
-    "wallet_addresses": [], 
-    "exclude_wallets": [], 
-    "cursor": "", 
+    "include": "", 
+}
+body = {
+    "tokens": [{'token_address': '0xdac17f958d2ee523a2206206994597c13d831ec7'}, {'token_address': '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'}, {'token_address': '0xae7ab96520de3a18e5e111b5eaab095312d7fe84', 'exchange': 'uniswapv2', 'to_block': '16314545'}, {'token_address': '0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0'}], 
 }
 
-result = evm_api.token.get_erc20_approvals(
+result = evm_api.token.get_multiple_token_prices(
     api_key=api_key,
     params=params,
+    body=body,
 )
 
 print(result)
@@ -54,165 +49,15 @@ print(result)
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
-| from_block | int | The block number from which the approvals will be returned |  |  | 0 |
-| to_block | int | The block number to which the approvals will be returned |  |  | 0 |
-| limit | int | The desired page size of the result. |  |  | 0 |
-| contract_addresses | List of str | Contract addresses to only include |  |  | [] |
-| exclude_contracts | List of str | Contract addresses to ignore |  |  | [] |
-| wallet_addresses | List of str | Wallet addresses to only include |  |  | [] |
-| exclude_wallets | List of str | Wallet addresses to ignore |  |  | [] |
-| cursor | str | The cursor returned in the previous response (used to getting the next page). |  |  | "" |
+| include | enum[str]: <br/>- "percent_change" | If the result should contain the 24hr percent change |  | "" | "" |
 
 
-
----
-## get_erc20_burns
-
-> `evm_api.token.get_erc20_burns()`
-
-
-
-
-### Example
-```python
-from moralis import evm_api
-
-api_key = "YOUR_API_KEY"
-params = {
-    "chain": "eth", 
-    "from_block": 0, 
-    "to_block": 0, 
-    "limit": 0, 
-    "contract_addresses": [], 
-    "exclude_contracts": [], 
-    "wallet_addresses": [], 
-    "exclude_wallets": [], 
-    "cursor": "", 
-}
-
-result = evm_api.token.get_erc20_burns(
-    api_key=api_key,
-    params=params,
-)
-
-print(result)
-
-```
-
-### Parameters
+### Body
+Object with the properties:
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-| chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
-| from_block | int | The block number from which the burns will be returned |  |  | 0 |
-| to_block | int | The block number to which the burns will be returned |  |  | 0 |
-| limit | int | The desired page size of the result. |  |  | 0 |
-| contract_addresses | List of str | Contract addresses to only include |  |  | [] |
-| exclude_contracts | List of str | Contract addresses to ignore |  |  | [] |
-| wallet_addresses | List of str | Wallet addresses to only include |  |  | [] |
-| exclude_wallets | List of str | Wallet addresses to ignore |  |  | [] |
-| cursor | str | The cursor returned in the previous response (used to getting the next page). |  |  | "" |
-
-
-
----
-## get_erc20_mints
-
-> `evm_api.token.get_erc20_mints()`
-
-
-
-
-### Example
-```python
-from moralis import evm_api
-
-api_key = "YOUR_API_KEY"
-params = {
-    "chain": "eth", 
-    "from_block": 0, 
-    "to_block": 0, 
-    "limit": 0, 
-    "contract_addresses": [], 
-    "exclude_contracts": [], 
-    "wallet_addresses": [], 
-    "exclude_wallets": [], 
-    "cursor": "", 
-}
-
-result = evm_api.token.get_erc20_mints(
-    api_key=api_key,
-    params=params,
-)
-
-print(result)
-
-```
-
-### Parameters
-
-| Name | Type | Description | Required | Default | Example |
-|------|------|-------------|----------|---------|---------|
-| chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
-| from_block | int | The block number from which the mints will be returned |  |  | 0 |
-| to_block | int | The block number to which the mints will be returned |  |  | 0 |
-| limit | int | The desired page size of the result. |  |  | 0 |
-| contract_addresses | List of str | Contract addresses to only include |  |  | [] |
-| exclude_contracts | List of str | Contract addresses to ignore |  |  | [] |
-| wallet_addresses | List of str | Wallet addresses to only include |  |  | [] |
-| exclude_wallets | List of str | Wallet addresses to ignore |  |  | [] |
-| cursor | str | The cursor returned in the previous response (used to getting the next page). |  |  | "" |
-
-
-
----
-## get_erc20_transfers
-
-> `evm_api.token.get_erc20_transfers()`
-
-
-
-
-### Example
-```python
-from moralis import evm_api
-
-api_key = "YOUR_API_KEY"
-params = {
-    "chain": "eth", 
-    "from_block": 0, 
-    "to_block": 0, 
-    "limit": 0, 
-    "contract_addresses": [], 
-    "exclude_contracts": [], 
-    "wallet_addresses": [], 
-    "exclude_wallets": [], 
-    "cursor": "", 
-}
-
-result = evm_api.token.get_erc20_transfers(
-    api_key=api_key,
-    params=params,
-)
-
-print(result)
-
-```
-
-### Parameters
-
-| Name | Type | Description | Required | Default | Example |
-|------|------|-------------|----------|---------|---------|
-| chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
-| from_block | int | The block number from which the transfers will be returned |  |  | 0 |
-| to_block | int | The block number to which the transfers will be returned |  |  | 0 |
-| limit | int | The desired page size of the result. |  |  | 0 |
-| contract_addresses | List of str | Contract addresses to only include |  |  | [] |
-| exclude_contracts | List of str | Contract addresses to ignore |  |  | [] |
-| wallet_addresses | List of str | Wallet addresses to only include |  |  | [] |
-| exclude_wallets | List of str | Wallet addresses to ignore |  |  | [] |
-| cursor | str | The cursor returned in the previous response (used to getting the next page). |  |  | "" |
-
+| tokens | List of object: <br/> - token_address: str<br/> - exchange: str<br/> - to_block: str | The tokens to be fetched | Yes |  | [{'token_address': '0xdac17f958d2ee523a2206206994597c13d831ec7'}, {'token_address': '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'}, {'token_address': '0xae7ab96520de3a18e5e111b5eaab095312d7fe84', 'exchange': 'uniswapv2', 'to_block': '16314545'}, {'token_address': '0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0'}] |
 
 
 ---
@@ -345,6 +190,7 @@ params = {
     "chain": "eth", 
     "exchange": "", 
     "to_block": 0, 
+    "include": "", 
 }
 
 result = evm_api.token.get_token_price(
@@ -364,6 +210,43 @@ print(result)
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 | exchange | str | The factory name or address of the token exchange |  |  | "" |
 | to_block | int | The block number from which the token price should be checked |  |  | 0 |
+| include | enum[str]: <br/>- "percent_change" | If the result should contain the 24hr percent change |  | "" | "" |
+
+
+
+---
+## get_token_stats
+
+> `evm_api.token.get_token_stats()`
+
+Get the stats for a erc20 token
+
+
+### Example
+```python
+from moralis import evm_api
+
+api_key = "YOUR_API_KEY"
+params = {
+    "address": "", 
+    "chain": "eth", 
+}
+
+result = evm_api.token.get_token_stats(
+    api_key=api_key,
+    params=params,
+)
+
+print(result)
+
+```
+
+### Parameters
+
+| Name | Type | Description | Required | Default | Example |
+|------|------|-------------|----------|---------|---------|
+| address | str | The address of the erc20 token | Yes |  | "" |
+| chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 
 
 
@@ -388,7 +271,6 @@ params = {
     "from_date": "", 
     "to_date": "", 
     "limit": 0, 
-    "disable_total": True, 
     "cursor": "", 
 }
 
@@ -412,7 +294,6 @@ print(result)
 | from_date | str | The start date from which to get the transfers (any format that is accepted by momentjs)<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | "" |
 | to_date | str | Get transfers up until this date (any format that is accepted by momentjs)<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | "" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | True | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 
 
@@ -478,7 +359,6 @@ params = {
     "from_date": "", 
     "to_date": "", 
     "limit": 0, 
-    "disable_total": True, 
     "cursor": "", 
 }
 
@@ -502,7 +382,6 @@ print(result)
 | from_date | str | The start date from which to get the transactions (any format that is accepted by momentjs)<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | "" |
 | to_date | str | Get the transactions up to this date (any format that is accepted by momentjs)<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | "" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | True | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 
 

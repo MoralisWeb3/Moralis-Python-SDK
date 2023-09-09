@@ -9,3 +9,4 @@ from .resolve import resolve
 from .token import token
 from .transaction import transaction
 from .utils import utils
+from .wallets import wallets
