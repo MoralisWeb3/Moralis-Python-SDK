@@ -4,12 +4,14 @@
 
 - [get_contract_nfts](#get_contract_nfts)
 - [get_multiple_nfts](#get_multiple_nfts)
+- [get_nft_collection_stats](#get_nft_collection_stats)
 - [get_nft_contract_metadata](#get_nft_contract_metadata)
 - [get_nft_contract_transfers](#get_nft_contract_transfers)
 - [get_nft_lowest_price](#get_nft_lowest_price)
 - [get_nft_metadata](#get_nft_metadata)
 - [get_nft_owners](#get_nft_owners)
 - [get_nft_token_id_owners](#get_nft_token_id_owners)
+- [get_nft_token_stats](#get_nft_token_stats)
 - [get_nft_trades](#get_nft_trades)
 - [get_nft_transfers](#get_nft_transfers)
 - [get_nft_transfers_by_block](#get_nft_transfers_by_block)
@@ -18,7 +20,6 @@
 - [get_wallet_nft_transfers](#get_wallet_nft_transfers)
 - [get_wallet_nfts](#get_wallet_nfts)
 - [re_sync_metadata](#re_sync_metadata)
-- [search_nfts](#search_nfts)
 - [sync_nft_contract](#sync_nft_contract)
 
 
@@ -42,7 +43,6 @@ params = {
     "chain": "eth", 
     "format": "decimal", 
     "limit": 0, 
-    "disable_total": True, 
     "totalRanges": 0, 
     "range": 0, 
     "cursor": "", 
@@ -67,7 +67,6 @@ print(result)
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 | format | enum[str]: <br/>- "decimal"<br/>- "hex" | The format of the token ID |  | "decimal" | "decimal" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | True | True |
 | totalRanges | int | The number of subranges to split the results into |  |  | 0 |
 | range | int | The desired subrange to query |  |  | 0 |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
@@ -126,6 +125,42 @@ Object with the properties:
 | tokens | List of object: <br/> - token_address: str<br/> - token_id: str | The tokens to be fetched (max 25 tokens) | Yes |  | [{'token_address': '0xa4991609c508b6d4fb7156426db0bd49fe298bd8', 'token_id': '12'}, {'token_address': '0x3c64dc415ebb4690d1df2b6216148c8de6dd29f7', 'token_id': '1'}, {'token_address': '0x3c64dc415ebb4690d1df2b6216148c8de6dd29f7', 'token_id': '200'}] |
 | normalizeMetadata | bool | Should normalized metadata be returned? | Yes |  | False |
 | media_items | bool | Should preview media data be returned? | Yes |  | False |
+
+
+---
+## get_nft_collection_stats
+
+> `evm_api.nft.get_nft_collection_stats()`
+
+Get the stats for a nft collection address.
+
+
+### Example
+```python
+from moralis import evm_api
+
+api_key = "YOUR_API_KEY"
+params = {
+    "address": "", 
+    "chain": "eth", 
+}
+
+result = evm_api.nft.get_nft_collection_stats(
+    api_key=api_key,
+    params=params,
+)
+
+print(result)
+
+```
+
+### Parameters
+
+| Name | Type | Description | Required | Default | Example |
+|------|------|-------------|----------|---------|---------|
+| address | str | The address of the NFT collection | Yes |  | "" |
+| chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
+
 
 
 ---
@@ -188,7 +223,6 @@ params = {
     "to_date": "", 
     "format": "decimal", 
     "limit": 0, 
-    "disable_total": True, 
     "cursor": "", 
 }
 
@@ -213,7 +247,6 @@ print(result)
 | to_date | str | Get transfers up until this date (any format that is accepted by momentjs)<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | "" |
 | format | enum[str]: <br/>- "decimal"<br/>- "hex" | The format of the token ID |  | "decimal" | "decimal" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | True | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 
 
@@ -323,7 +356,6 @@ params = {
     "chain": "eth", 
     "format": "decimal", 
     "limit": 0, 
-    "disable_total": True, 
     "cursor": "", 
     "normalizeMetadata": True, 
     "media_items": True, 
@@ -346,7 +378,6 @@ print(result)
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 | format | enum[str]: <br/>- "decimal"<br/>- "hex" | The format of the token ID |  | "decimal" | "decimal" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | True | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 | normalizeMetadata | bool | Should normalized metadata be returned? |  | False | True |
 | media_items | bool | Should preview media data be returned? |  | False | True |
@@ -374,7 +405,6 @@ params = {
     "chain": "eth", 
     "format": "decimal", 
     "limit": 0, 
-    "disable_total": True, 
     "cursor": "", 
     "normalizeMetadata": True, 
     "media_items": True, 
@@ -398,10 +428,47 @@ print(result)
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 | format | enum[str]: <br/>- "decimal"<br/>- "hex" | The format of the token ID |  | "decimal" | "decimal" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | True | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 | normalizeMetadata | bool | Should normalized metadata be returned? |  | False | True |
 | media_items | bool | Should preview media data be returned? |  | False | True |
+
+
+
+---
+## get_nft_token_stats
+
+> `evm_api.nft.get_nft_token_stats()`
+
+Get the stats for a nft token
+
+
+### Example
+```python
+from moralis import evm_api
+
+api_key = "YOUR_API_KEY"
+params = {
+    "address": "", 
+    "token_id": "", 
+    "chain": "eth", 
+}
+
+result = evm_api.nft.get_nft_token_stats(
+    api_key=api_key,
+    params=params,
+)
+
+print(result)
+
+```
+
+### Parameters
+
+| Name | Type | Description | Required | Default | Example |
+|------|------|-------------|----------|---------|---------|
+| address | str | The address of the NFT collection | Yes |  | "" |
+| token_id | str | The token id of the NFT collection | Yes |  | "" |
+| chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 
 
 
@@ -428,7 +495,6 @@ params = {
     "marketplace": "opensea", 
     "cursor": "", 
     "limit": 0, 
-    "disable_total": True, 
 }
 
 result = evm_api.nft.get_nft_trades(
@@ -453,7 +519,6 @@ print(result)
 | marketplace | enum[str]: <br/>- "opensea" | Marketplace from which to get the trades (only OpenSea is supported at the moment) |  | "opensea" | "opensea" |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | True | True |
 
 
 
@@ -476,7 +541,6 @@ params = {
     "chain": "eth", 
     "format": "decimal", 
     "limit": 0, 
-    "disable_total": True, 
     "cursor": "", 
 }
 
@@ -498,7 +562,6 @@ print(result)
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 | format | enum[str]: <br/>- "decimal"<br/>- "hex" | The format of the token ID |  | "decimal" | "decimal" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | True | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 
 
@@ -520,7 +583,6 @@ params = {
     "block_number_or_hash": "15846571", 
     "chain": "eth", 
     "limit": 0, 
-    "disable_total": True, 
     "cursor": "", 
 }
 
@@ -540,7 +602,6 @@ print(result)
 | block_number_or_hash | str | The block number or block hash | Yes |  | "15846571" |
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 | limit | int | The desired page size of the result. |  | 100 | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | True | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 
 
@@ -566,7 +627,6 @@ params = {
     "to_date": "", 
     "format": "decimal", 
     "limit": 0, 
-    "disable_total": True, 
     "cursor": "", 
 }
 
@@ -590,7 +650,6 @@ print(result)
 | to_date | str | The end date from which to get the transfers (any format that is accepted by momentjs)<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | "" |
 | format | enum[str]: <br/>- "decimal"<br/>- "hex" | The format of the token ID |  | "decimal" | "decimal" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | True | True |
 | cursor | str | The cursor returned in the previous response (for getting the next page)<br/> |  |  | "" |
 
 
@@ -612,7 +671,7 @@ params = {
     "address": "0xd8da6bf26964af9d7eed9e03e53415d37aa96045", 
     "chain": "eth", 
     "limit": 0, 
-    "disable_total": True, 
+    "exclude_spam": True, 
     "cursor": "", 
 }
 
@@ -632,7 +691,7 @@ print(result)
 | address | str | The wallet address of the owner of NFTs in the collections | Yes |  | "0xd8da6bf26964af9d7eed9e03e53415d37aa96045" |
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | True | True |
+| exclude_spam | bool | Should spam NFTs be excluded from the result? |  | False | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 
 
@@ -654,13 +713,11 @@ params = {
     "address": "0xd8da6bf26964af9d7eed9e03e53415d37aa96045", 
     "chain": "eth", 
     "format": "decimal", 
-    "direction": "both", 
     "from_block": 0, 
     "to_block": "", 
     "from_date": "", 
     "to_date": "", 
     "limit": 0, 
-    "disable_total": True, 
     "cursor": "", 
 }
 
@@ -680,13 +737,11 @@ print(result)
 | address | str | The wallet address of the sender or recipient of the transfers | Yes |  | "0xd8da6bf26964af9d7eed9e03e53415d37aa96045" |
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 | format | enum[str]: <br/>- "decimal"<br/>- "hex" | The format of the token ID |  | "decimal" | "decimal" |
-| direction | enum[str]: <br/>- "both"<br/>- "to"<br/>- "from" | The transfer direction |  | "both" | "both" |
 | from_block | int | The minimum block number from which to get the transfers<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | 0 |
 | to_block | str | To get the reserves at this block number |  |  | "" |
 | from_date | str | The date from where to get the transfers (any format that is accepted by momentjs)<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | "" |
 | to_date | str | Get transfers up until this date (any format that is accepted by momentjs)<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | "" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | True | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 
 
@@ -713,7 +768,7 @@ params = {
     "chain": "eth", 
     "format": "decimal", 
     "limit": 0, 
-    "disable_total": True, 
+    "exclude_spam": True, 
     "token_addresses": [], 
     "cursor": "", 
     "normalizeMetadata": True, 
@@ -737,7 +792,7 @@ print(result)
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 | format | enum[str]: <br/>- "decimal"<br/>- "hex" | The format of the token ID |  | "decimal" | "decimal" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | True | True |
+| exclude_spam | bool | Should spam NFTs be excluded from the result? |  | False | True |
 | token_addresses | List of str | The addresses to get balances for (optional) |  |  | [] |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 | normalizeMetadata | bool | Should normalized metadata be returned? |  | False | True |
@@ -789,62 +844,6 @@ print(result)
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
 | flag | enum[str]: <br/>- "uri"<br/>- "metadata" | The type of resync to operate |  | "uri" | "uri" |
 | mode | enum[str]: <br/>- "async"<br/>- "sync" | To define the behaviour of the endpoint |  | "async" | "sync" |
-
-
-
----
-## search_nfts
-
-> `evm_api.nft.search_nfts()`
-
-Get NFTs that match a given metadata search query.
-
-
-### Example
-```python
-from moralis import evm_api
-
-api_key = "YOUR_API_KEY"
-params = {
-    "q": "", 
-    "chain": "eth", 
-    "format": "decimal", 
-    "filter": "name", 
-    "from_block": 0, 
-    "to_block": 0, 
-    "from_date": "", 
-    "to_date": "", 
-    "addresses": [], 
-    "cursor": "", 
-    "limit": 0, 
-    "disable_total": True, 
-}
-
-result = evm_api.nft.search_nfts(
-    api_key=api_key,
-    params=params,
-)
-
-print(result)
-
-```
-
-### Parameters
-
-| Name | Type | Description | Required | Default | Example |
-|------|------|-------------|----------|---------|---------|
-| q | str | The search string | Yes |  | "" |
-| chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1" | The chain to query |  | "eth" | "eth" |
-| format | enum[str]: <br/>- "decimal"<br/>- "hex" | The format of the token ID |  | "decimal" | "decimal" |
-| filter | enum[str]: <br/>- "name"<br/>- "description"<br/>- "attributes"<br/>- "global"<br/>- "name,description"<br/>- "name,attributes"<br/>- "description,attributes"<br/>- "name,description,attributes" | What fields the search should match on. To look into the entire metadata set the value to 'global'. To have a better response time you can look into a specific field like name |  | "global" | "name" |
-| from_block | int | The minimum block number from which to start the search<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | 0 |
-| to_block | int | The maximum block number from which to end the search<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | 0 |
-| from_date | str | The date from which to start the search (any format that is accepted by momentjs)<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | "" |
-| to_date | str | Get search results up until this date (any format that is accepted by momentjs)<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | "" |
-| addresses | List of str | The addresses to get metadata for |  |  | [] |
-| cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
-| limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | True | True |
 
 
 

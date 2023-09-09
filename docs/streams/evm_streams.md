@@ -82,7 +82,7 @@ body = {
     "includeInternalTxs": True, 
     "includeAllTxLogs": True, 
     "getNativeBalances": [], 
-    "abi": [], 
+    "abi": {}, 
     "advancedOptions": [], 
     "chainIds": [], 
     "demo": True, 
@@ -113,7 +113,7 @@ Object with the properties:
 | includeInternalTxs | bool | Include or not include internal transactions defaults to false | Yes |  | True |
 | includeAllTxLogs | bool | Include all logs if atleast one value in tx or log matches stream config | Yes |  | True |
 | getNativeBalances | List of object: <br/> - selectors: List of str<br/> - type: enum[str]: <br/>- "tx"<br/>- "log"<br/>- "erc20transfer"<br/>- "erc20approval"<br/>- "nfttransfer"<br/>- "internalTx" | Include native balances for each address in the webhook | Yes |  | [] |
-| abi | List of object: <br/> - anonymous: bool<br/> - constant: bool<br/> - inputs: List of AbiInput<br/> - name: str<br/> - outputs: List of AbiOutput<br/> - payable: bool<br/> - stateMutability: str<br/> - type: str<br/> - gas: float |  | Yes |  | [] |
+| abi | object |  | Yes |  | {} |
 | advancedOptions | List of object: <br/> - topic0: str<br/> - filter: object: <br/><br/> - includeNativeTxs: bool |  | Yes |  | [] |
 | chainIds | List of str | The ids of the chains for this stream in hex Ex: ["0x1","0x38"] | Yes |  | [] |
 | demo | bool | Indicator if it is a demo stream | Yes |  | True |
@@ -334,7 +334,7 @@ body = {
     "includeInternalTxs": True, 
     "includeAllTxLogs": True, 
     "getNativeBalances": [], 
-    "abi": [], 
+    "abi": {}, 
     "advancedOptions": [], 
     "chainIds": [], 
     "demo": True, 
@@ -373,7 +373,7 @@ Object with the properties:
 | includeInternalTxs | bool | Include or not include internal transactions defaults to false | Yes |  | True |
 | includeAllTxLogs | bool | Include all logs if atleast one value in tx or log matches stream config | Yes |  | True |
 | getNativeBalances | List of object: <br/> - selectors: List of str<br/> - type: enum[str]: <br/>- "tx"<br/>- "log"<br/>- "erc20transfer"<br/>- "erc20approval"<br/>- "nfttransfer"<br/>- "internalTx" | Include native balances for each address in the webhook | Yes |  | [] |
-| abi | List of object: <br/> - anonymous: bool<br/> - constant: bool<br/> - inputs: List of AbiInput<br/> - name: str<br/> - outputs: List of AbiOutput<br/> - payable: bool<br/> - stateMutability: str<br/> - type: str<br/> - gas: float |  | Yes |  | [] |
+| abi | object |  | Yes |  | {} |
 | advancedOptions | List of object: <br/> - topic0: str<br/> - filter: object: <br/><br/> - includeNativeTxs: bool |  | Yes |  | [] |
 | chainIds | List of str | The ids of the chains for this stream in hex Ex: ["0x1","0x38"] | Yes |  | [] |
 | demo | bool | Indicator if it is a demo stream | Yes |  | True |

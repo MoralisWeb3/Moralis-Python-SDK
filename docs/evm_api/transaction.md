@@ -143,7 +143,6 @@ params = {
     "to_date": "", 
     "cursor": "", 
     "limit": 0, 
-    "disable_total": True, 
     "include": "", 
 }
 
@@ -168,7 +167,6 @@ print(result)
 | to_date | str | Get the transactions up to this date (any format that is accepted by momentjs)<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | "" |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | True | True |
 | include | enum[str]: <br/>- "internal_transactions" | If the result should contain the internal transactions. |  | "" | "" |
 
 
@@ -196,7 +194,6 @@ params = {
     "include": "", 
     "cursor": "", 
     "limit": 0, 
-    "disable_total": True, 
 }
 
 result = evm_api.transaction.get_wallet_transactions_verbose(
@@ -221,7 +218,6 @@ print(result)
 | include | enum[str]: <br/>- "internal_transactions" | If the result should contain the internal transactions. |  | "" | "" |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 | limit | int | The desired page size of the result. |  |  | 0 |
-| disable_total | bool | If the result should skip returning the total count (Improves performance). |  | True | True |
 
 
 

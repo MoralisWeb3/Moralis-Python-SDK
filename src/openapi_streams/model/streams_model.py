@@ -138,29 +138,24 @@ class StreamsModel(
             
             
             class abi(
-                schemas.ListBase,
+                schemas.DictBase,
                 schemas.NoneBase,
                 schemas.Schema,
-                schemas.NoneTupleMixin
+                schemas.NoneFrozenDictMixin
             ):
-            
-            
-                class MetaOapg:
-                    
-                    @staticmethod
-                    def items() -> typing.Type['AbiItem']:
-                        return AbiItem
             
             
                 def __new__(
                     cls,
-                    *args: typing.Union[list, tuple, None, ],
+                    *args: typing.Union[dict, frozendict.frozendict, None, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
+                    **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
                 ) -> 'abi':
                     return super().__new__(
                         cls,
                         *args,
                         _configuration=_configuration,
+                        **kwargs,
                     )
             
             
@@ -379,7 +374,7 @@ class StreamsModel(
         includeInternalTxs: typing.Union[MetaOapg.properties.includeInternalTxs, bool, schemas.Unset] = schemas.unset,
         includeAllTxLogs: typing.Union[MetaOapg.properties.includeAllTxLogs, bool, schemas.Unset] = schemas.unset,
         getNativeBalances: typing.Union[MetaOapg.properties.getNativeBalances, list, tuple, schemas.Unset] = schemas.unset,
-        abi: typing.Union[MetaOapg.properties.abi, list, tuple, None, schemas.Unset] = schemas.unset,
+        abi: typing.Union[MetaOapg.properties.abi, dict, frozendict.frozendict, None, schemas.Unset] = schemas.unset,
         advancedOptions: typing.Union[MetaOapg.properties.advancedOptions, list, tuple, None, schemas.Unset] = schemas.unset,
         demo: typing.Union[MetaOapg.properties.demo, bool, schemas.Unset] = schemas.unset,
         triggers: typing.Union[MetaOapg.properties.triggers, list, tuple, None, schemas.Unset] = schemas.unset,
@@ -409,7 +404,6 @@ class StreamsModel(
             _configuration=_configuration,
         )
 
-from openapi_streams.model.abi_item import AbiItem
 from openapi_streams.model.advanced_options import AdvancedOptions
 from openapi_streams.model.get_native_balances import GetNativeBalances
 from openapi_streams.model.streams_status import StreamsStatus

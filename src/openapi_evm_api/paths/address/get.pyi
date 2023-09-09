@@ -52,7 +52,6 @@ class LimitSchema(
     schemas.IntSchema
 ):
     pass
-DisableTotalSchema = schemas.BoolSchema
 IncludeSchema = IncludeList
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
@@ -69,7 +68,6 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'to_date': typing.Union[ToDateSchema, str, ],
         'cursor': typing.Union[CursorSchema, str, ],
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
-        'disable_total': typing.Union[DisableTotalSchema, bool, ],
         'include': typing.Union[IncludeSchema, ],
     },
     total=False
@@ -120,12 +118,6 @@ request_query_limit = api_client.QueryParameter(
     name="limit",
     style=api_client.ParameterStyle.FORM,
     schema=LimitSchema,
-    explode=True,
-)
-request_query_disable_total = api_client.QueryParameter(
-    name="disable_total",
-    style=api_client.ParameterStyle.FORM,
-    schema=DisableTotalSchema,
     explode=True,
 )
 request_query_include = api_client.QueryParameter(
@@ -264,7 +256,6 @@ class BaseApi(api_client.Api):
             request_query_to_date,
             request_query_cursor,
             request_query_limit,
-            request_query_disable_total,
             request_query_include,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)

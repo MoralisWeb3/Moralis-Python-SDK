@@ -17,3 +17,4 @@ class TagValues(str, enum.Enum):
     TOKEN = "token"
     TRANSACTION = "transaction"
     UTILS = "utils"
+    WALLETS = "wallets"

@@ -3,6 +3,7 @@
 > `evm_api.resolve`
 
 - [resolve_address](#resolve_address)
+- [resolve_address_to_domain](#resolve_address_to_domain)
 - [resolve_domain](#resolve_domain)
 - [resolve_ens_domain](#resolve_ens_domain)
 
@@ -38,6 +39,40 @@ print(result)
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
 | address | str | The address to be resolved | Yes |  | "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045" |
+
+
+
+---
+## resolve_address_to_domain
+
+> `evm_api.resolve.resolve_address_to_domain()`
+
+Resolve a specific address to its Unstoppable domain
+
+
+### Example
+```python
+from moralis import evm_api
+
+api_key = "YOUR_API_KEY"
+params = {
+    "address": "0x94ef5300cbc0aa600a821ccbc561b057e456ab23", 
+}
+
+result = evm_api.resolve.resolve_address_to_domain(
+    api_key=api_key,
+    params=params,
+)
+
+print(result)
+
+```
+
+### Parameters
+
+| Name | Type | Description | Required | Default | Example |
+|------|------|-------------|----------|---------|---------|
+| address | str | The address to be resolved | Yes |  | "0x94ef5300cbc0aa600a821ccbc561b057e456ab23" |
 
 
 

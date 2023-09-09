@@ -25,9 +25,9 @@ import frozendict  # noqa: F401
 
 from openapi_evm_api import schemas  # noqa: F401
 
+from openapi_evm_api.model.block_transaction_verbose import BlockTransactionVerbose
 from openapi_evm_api.model.include_list import IncludeList
 from openapi_evm_api.model.chain_list import ChainList
-from openapi_evm_api.model.block_transaction import BlockTransaction
 
 # Query params
 ChainSchema = ChainList
@@ -89,7 +89,7 @@ request_path_transaction_hash = api_client.PathParameter(
     schema=TransactionHashSchema,
     required=True,
 )
-SchemaFor200ResponseBodyApplicationJson = BlockTransaction
+SchemaFor200ResponseBodyApplicationJson = BlockTransactionVerbose
 
 
 @dataclass
