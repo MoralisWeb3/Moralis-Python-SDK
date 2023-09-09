@@ -3,7 +3,7 @@
   "apis": [
     {
       "name": "evm_api",
-      "swagger": "https://deep-index.moralis.io/api-docs-2.1/v2.1/swagger.json",
+      "swagger": "https://deep-index.moralis.io/api-docs-2.2/v2.2/swagger.json",
       "security_key": "ApiKeyAuth",
       "skip": false
     },
@@ -21,7 +21,7 @@
     },
     {
       "name": "streams",
-      "swagger": "https://api.moralis-streams.com/api-docs/swagger.json",
+      "swagger": "./local-swaggers/streams.json",
       "overwrite_host": "https://api.moralis-streams.com",
       "security_key": "x-api-key",
       "skip": false
