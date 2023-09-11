@@ -51,7 +51,6 @@ class OffsetSchema(
     schemas.IntSchema
 ):
     pass
-CursorSchema = schemas.StrSchema
 
 
 class LimitSchema(
@@ -74,7 +73,6 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'from_date': typing.Union[FromDateSchema, str, ],
         'to_date': typing.Union[ToDateSchema, str, ],
         'offset': typing.Union[OffsetSchema, decimal.Decimal, int, ],
-        'cursor': typing.Union[CursorSchema, str, ],
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
         'cursor': typing.Union[CursorSchema, str, ],
     },
@@ -129,19 +127,13 @@ request_query_offset = api_client.QueryParameter(
     schema=OffsetSchema,
     explode=True,
 )
-request_query_cursor = api_client.QueryParameter(
-    name="cursor",
-    style=api_client.ParameterStyle.FORM,
-    schema=CursorSchema,
-    explode=True,
-)
 request_query_limit = api_client.QueryParameter(
     name="limit",
     style=api_client.ParameterStyle.FORM,
     schema=LimitSchema,
     explode=True,
 )
-request_query_cursor2 = api_client.QueryParameter(
+request_query_cursor = api_client.QueryParameter(
     name="cursor",
     style=api_client.ParameterStyle.FORM,
     schema=CursorSchema,
@@ -411,9 +403,8 @@ class BaseApi(api_client.Api):
             request_query_to_date,
             request_query_topic,
             request_query_offset,
-            request_query_cursor,
             request_query_limit,
-            request_query_cursor2,
+            request_query_cursor,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:

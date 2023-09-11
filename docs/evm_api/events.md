@@ -28,7 +28,6 @@ params = {
     "from_date": "", 
     "to_date": "", 
     "offset": 0, 
-    "cursor": "", 
     "limit": 0, 
     "cursor": "", 
 }
@@ -56,7 +55,6 @@ print(result)
 | from_date | str | The start date from which to get the logs (any format that is accepted by momentjs)<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | "" |
 | to_date | str | Get the logs up to this date (any format that is accepted by momentjs)<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | "" |
 | offset | int | offset |  |  | 0 |
-| cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 | limit | int | The desired page size of the result. |  |  | 0 |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 
