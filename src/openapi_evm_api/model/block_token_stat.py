@@ -151,70 +151,14 @@ class BlockTokenStat(
                         _configuration=_configuration,
                         **kwargs,
                     )
-            
-            
-            class token_transfers(
-                schemas.DictSchema
-            ):
-            
-            
-                class MetaOapg:
-                    required = {
-                        "total",
-                    }
-                    
-                    class properties:
-                        total = schemas.StrSchema
-                        __annotations__ = {
-                            "total": total,
-                        }
-                
-                total: MetaOapg.properties.total
-                
-                @typing.overload
-                def __getitem__(self, name: typing_extensions.Literal["total"]) -> MetaOapg.properties.total: ...
-                
-                @typing.overload
-                def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
-                
-                def __getitem__(self, name: typing.Union[typing_extensions.Literal["total", ], str]):
-                    # dict_instance[name] accessor
-                    return super().__getitem__(name)
-                
-                
-                @typing.overload
-                def get_item_oapg(self, name: typing_extensions.Literal["total"]) -> MetaOapg.properties.total: ...
-                
-                @typing.overload
-                def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
-                
-                def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["total", ], str]):
-                    return super().get_item_oapg(name)
-                
-            
-                def __new__(
-                    cls,
-                    *args: typing.Union[dict, frozendict.frozendict, ],
-                    total: typing.Union[MetaOapg.properties.total, str, ],
-                    _configuration: typing.Optional[schemas.Configuration] = None,
-                    **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
-                ) -> 'token_transfers':
-                    return super().__new__(
-                        cls,
-                        *args,
-                        total=total,
-                        _configuration=_configuration,
-                        **kwargs,
-                    )
             __annotations__ = {
                 "transactions": transactions,
                 "nft_transfers": nft_transfers,
-                "token_transfers": token_transfers,
             }
 
     
     nft_transfers: MetaOapg.properties.nft_transfers
-    token_transfers: MetaOapg.properties.token_transfers
+    token_transfers: schemas.AnyTypeSchema
     transactions: MetaOapg.properties.transactions
     
     @typing.overload
@@ -224,12 +168,9 @@ class BlockTokenStat(
     def __getitem__(self, name: typing_extensions.Literal["nft_transfers"]) -> MetaOapg.properties.nft_transfers: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["token_transfers"]) -> MetaOapg.properties.token_transfers: ...
-    
-    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["transactions", "nft_transfers", "token_transfers", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["transactions", "nft_transfers", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -241,12 +182,9 @@ class BlockTokenStat(
     def get_item_oapg(self, name: typing_extensions.Literal["nft_transfers"]) -> MetaOapg.properties.nft_transfers: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["token_transfers"]) -> MetaOapg.properties.token_transfers: ...
-    
-    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["transactions", "nft_transfers", "token_transfers", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["transactions", "nft_transfers", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -254,7 +192,7 @@ class BlockTokenStat(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         nft_transfers: typing.Union[MetaOapg.properties.nft_transfers, dict, frozendict.frozendict, ],
-        token_transfers: typing.Union[MetaOapg.properties.token_transfers, dict, frozendict.frozendict, ],
+        token_transfers: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         transactions: typing.Union[MetaOapg.properties.transactions, dict, frozendict.frozendict, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
