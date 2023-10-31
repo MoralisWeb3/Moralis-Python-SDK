@@ -58,6 +58,13 @@ from openapi_evm_api.apis.paths.nft_address_stats import NftAddressStats
 from openapi_evm_api.apis.paths.nft_address_token_id_stats import NftAddressTokenIdStats
 from openapi_evm_api.apis.paths.erc20_address_stats import Erc20AddressStats
 from openapi_evm_api.apis.paths.block_block_number_or_hash_stats import BlockBlockNumberOrHashStats
+from openapi_evm_api.apis.paths.discovery_tokens_rising_liquidity import DiscoveryTokensRisingLiquidity
+from openapi_evm_api.apis.paths.discovery_tokens_buying_pressure import DiscoveryTokensBuyingPressure
+from openapi_evm_api.apis.paths.discovery_tokens_solid_performers import DiscoveryTokensSolidPerformers
+from openapi_evm_api.apis.paths.discovery_tokens_experienced_buyers import DiscoveryTokensExperiencedBuyers
+from openapi_evm_api.apis.paths.discovery_tokens_risky_bets import DiscoveryTokensRiskyBets
+from openapi_evm_api.apis.paths.discovery_tokens_blue_chip import DiscoveryTokensBlueChip
+from openapi_evm_api.apis.paths.discovery_token import DiscoveryToken
 
 PathToApi = typing_extensions.TypedDict(
     'PathToApi',
@@ -119,6 +126,13 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.NFT_ADDRESS_TOKEN_ID_STATS: NftAddressTokenIdStats,
         PathValues.ERC20_ADDRESS_STATS: Erc20AddressStats,
         PathValues.BLOCK_BLOCK_NUMBER_OR_HASH_STATS: BlockBlockNumberOrHashStats,
+        PathValues.DISCOVERY_TOKENS_RISINGLIQUIDITY: DiscoveryTokensRisingLiquidity,
+        PathValues.DISCOVERY_TOKENS_BUYINGPRESSURE: DiscoveryTokensBuyingPressure,
+        PathValues.DISCOVERY_TOKENS_SOLIDPERFORMERS: DiscoveryTokensSolidPerformers,
+        PathValues.DISCOVERY_TOKENS_EXPERIENCEDBUYERS: DiscoveryTokensExperiencedBuyers,
+        PathValues.DISCOVERY_TOKENS_RISKYBETS: DiscoveryTokensRiskyBets,
+        PathValues.DISCOVERY_TOKENS_BLUECHIP: DiscoveryTokensBlueChip,
+        PathValues.DISCOVERY_TOKEN: DiscoveryToken,
     }
 )
 
@@ -181,5 +195,12 @@ path_to_api = PathToApi(
         PathValues.NFT_ADDRESS_TOKEN_ID_STATS: NftAddressTokenIdStats,
         PathValues.ERC20_ADDRESS_STATS: Erc20AddressStats,
         PathValues.BLOCK_BLOCK_NUMBER_OR_HASH_STATS: BlockBlockNumberOrHashStats,
+        PathValues.DISCOVERY_TOKENS_RISINGLIQUIDITY: DiscoveryTokensRisingLiquidity,
+        PathValues.DISCOVERY_TOKENS_BUYINGPRESSURE: DiscoveryTokensBuyingPressure,
+        PathValues.DISCOVERY_TOKENS_SOLIDPERFORMERS: DiscoveryTokensSolidPerformers,
+        PathValues.DISCOVERY_TOKENS_EXPERIENCEDBUYERS: DiscoveryTokensExperiencedBuyers,
+        PathValues.DISCOVERY_TOKENS_RISKYBETS: DiscoveryTokensRiskyBets,
+        PathValues.DISCOVERY_TOKENS_BLUECHIP: DiscoveryTokensBlueChip,
+        PathValues.DISCOVERY_TOKEN: DiscoveryToken,
     }
 )

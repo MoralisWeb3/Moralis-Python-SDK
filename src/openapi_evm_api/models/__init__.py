@@ -22,6 +22,10 @@ from openapi_evm_api.model.contracts_review_dto import ContractsReviewDto
 from openapi_evm_api.model.contracts_review_item import ContractsReviewItem
 from openapi_evm_api.model.decoded_call import DecodedCall
 from openapi_evm_api.model.decoded_event import DecodedEvent
+from openapi_evm_api.model.discovery_api_chains_list import DiscoveryApiChainsList
+from openapi_evm_api.model.discovery_token import DiscoveryToken
+from openapi_evm_api.model.discovery_token_links import DiscoveryTokenLinks
+from openapi_evm_api.model.discovery_tokens import DiscoveryTokens
 from openapi_evm_api.model.endpoint_weights import EndpointWeights
 from openapi_evm_api.model.ens import Ens
 from openapi_evm_api.model.erc20_allowance import Erc20Allowance
@@ -73,6 +77,7 @@ from openapi_evm_api.model.reserves_collection import ReservesCollection
 from openapi_evm_api.model.reserves_pair import ReservesPair
 from openapi_evm_api.model.resolve import Resolve
 from openapi_evm_api.model.run_contract_dto import RunContractDto
+from openapi_evm_api.model.time_frames import TimeFrames
 from openapi_evm_api.model.token_item import TokenItem
 from openapi_evm_api.model.token_price_item import TokenPriceItem
 from openapi_evm_api.model.trade import Trade

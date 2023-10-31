@@ -128,3 +128,35 @@ class ChainList(
     @schemas.classproperty
     def XA4B1(cls):
         return cls("0xa4b1")
+    
+    @schemas.classproperty
+    def CHILIZ(cls):
+        return cls("chiliz")
+    
+    @schemas.classproperty
+    def X15B38(cls):
+        return cls("0x15b38")
+    
+    @schemas.classproperty
+    def CHILIZ_TESTNET(cls):
+        return cls("chiliz testnet")
+    
+    @schemas.classproperty
+    def X15B32(cls):
+        return cls("0x15b32")
+    
+    @schemas.classproperty
+    def GNOSIS(cls):
+        return cls("gnosis")
+    
+    @schemas.classproperty
+    def X64(cls):
+        return cls("0x64")
+    
+    @schemas.classproperty
+    def GNOSIS_TESTNET(cls):
+        return cls("gnosis testnet")
+    
+    @schemas.classproperty
+    def X27D8(cls):
+        return cls("0x27d8")
