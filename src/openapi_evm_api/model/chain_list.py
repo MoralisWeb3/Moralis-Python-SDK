@@ -68,6 +68,12 @@ class ChainList(
             "0x64": "X64",
             "gnosis testnet": "GNOSIS_TESTNET",
             "0x27d8": "X27D8",
+            "base": "BASE",
+            "0x2105": "X2105",
+            "base testnet": "BASE_TESTNET",
+            "0x14a33": "X14A33",
+            "optimism": "OPTIMISM",
+            "0xa": "XA",
         }
     
     @schemas.classproperty
@@ -197,3 +203,27 @@ class ChainList(
     @schemas.classproperty
     def X27D8(cls):
         return cls("0x27d8")
+    
+    @schemas.classproperty
+    def BASE(cls):
+        return cls("base")
+    
+    @schemas.classproperty
+    def X2105(cls):
+        return cls("0x2105")
+    
+    @schemas.classproperty
+    def BASE_TESTNET(cls):
+        return cls("base testnet")
+    
+    @schemas.classproperty
+    def X14A33(cls):
+        return cls("0x14a33")
+    
+    @schemas.classproperty
+    def OPTIMISM(cls):
+        return cls("optimism")
+    
+    @schemas.classproperty
+    def XA(cls):
+        return cls("0xa")
