@@ -5,7 +5,7 @@ REQUIRES = [
     "certifi >= 14.5.14",
     "frozendict ~= 2.3.4",
     "python-dateutil ~= 2.8.2",
-    "typing_extensions ~= 4.3.0",
+    "typing_extensions ~= 4.9.0",
     "urllib3 ~= 1.26.7",
 ]
 
