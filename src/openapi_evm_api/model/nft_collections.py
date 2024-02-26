@@ -50,6 +50,9 @@ class NftCollections(
             symbol = schemas.StrSchema
             possible_spam = schemas.BoolSchema
             verified_collection = schemas.BoolSchema
+            count = schemas.IntSchema
+            collection_logo = schemas.StrSchema
+            collection_banner_image = schemas.StrSchema
             __annotations__ = {
                 "token_address": token_address,
                 "contract_type": contract_type,
@@ -57,6 +60,9 @@ class NftCollections(
                 "symbol": symbol,
                 "possible_spam": possible_spam,
                 "verified_collection": verified_collection,
+                "count": count,
+                "collection_logo": collection_logo,
+                "collection_banner_image": collection_banner_image,
             }
 
     
@@ -86,9 +92,18 @@ class NftCollections(
     def __getitem__(self, name: typing_extensions.Literal["verified_collection"]) -> MetaOapg.properties.verified_collection: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["count"]) -> MetaOapg.properties.count: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["collection_logo"]) -> MetaOapg.properties.collection_logo: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["collection_banner_image"]) -> MetaOapg.properties.collection_banner_image: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "contract_type", "name", "symbol", "possible_spam", "verified_collection", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "contract_type", "name", "symbol", "possible_spam", "verified_collection", "count", "collection_logo", "collection_banner_image", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -112,9 +127,18 @@ class NftCollections(
     def get_item_oapg(self, name: typing_extensions.Literal["verified_collection"]) -> MetaOapg.properties.verified_collection: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["count"]) -> typing.Union[MetaOapg.properties.count, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["collection_logo"]) -> typing.Union[MetaOapg.properties.collection_logo, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["collection_banner_image"]) -> typing.Union[MetaOapg.properties.collection_banner_image, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "contract_type", "name", "symbol", "possible_spam", "verified_collection", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "contract_type", "name", "symbol", "possible_spam", "verified_collection", "count", "collection_logo", "collection_banner_image", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -127,6 +151,9 @@ class NftCollections(
         name: typing.Union[MetaOapg.properties.name, str, ],
         token_address: typing.Union[MetaOapg.properties.token_address, str, ],
         verified_collection: typing.Union[MetaOapg.properties.verified_collection, bool, ],
+        count: typing.Union[MetaOapg.properties.count, decimal.Decimal, int, schemas.Unset] = schemas.unset,
+        collection_logo: typing.Union[MetaOapg.properties.collection_logo, str, schemas.Unset] = schemas.unset,
+        collection_banner_image: typing.Union[MetaOapg.properties.collection_banner_image, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'NftCollections':
@@ -139,6 +166,9 @@ class NftCollections(
             name=name,
             token_address=token_address,
             verified_collection=verified_collection,
+            count=count,
+            collection_logo=collection_logo,
+            collection_banner_image=collection_banner_image,
             _configuration=_configuration,
             **kwargs,
         )

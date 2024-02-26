@@ -54,6 +54,7 @@ class TokenAddressesSchema(
 
     def __getitem__(self, i: int) -> MetaOapg.items:
         return super().__getitem__(i)
+ExcludeSpamSchema = schemas.BoolSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -65,6 +66,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'chain': typing.Union[ChainSchema, ],
         'to_block': typing.Union[ToBlockSchema, decimal.Decimal, int, float, ],
         'token_addresses': typing.Union[TokenAddressesSchema, list, tuple, ],
+        'exclude_spam': typing.Union[ExcludeSpamSchema, bool, ],
     },
     total=False
 )
@@ -90,6 +92,12 @@ request_query_token_addresses = api_client.QueryParameter(
     name="token_addresses",
     style=api_client.ParameterStyle.FORM,
     schema=TokenAddressesSchema,
+    explode=True,
+)
+request_query_exclude_spam = api_client.QueryParameter(
+    name="exclude_spam",
+    style=api_client.ParameterStyle.FORM,
+    schema=ExcludeSpamSchema,
     explode=True,
 )
 # Path params
@@ -243,6 +251,7 @@ class BaseApi(api_client.Api):
             request_query_chain,
             request_query_to_block,
             request_query_token_addresses,
+            request_query_exclude_spam,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:

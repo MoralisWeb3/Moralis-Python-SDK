@@ -34,30 +34,24 @@ class SPLTokenPrice(
 
 
     class MetaOapg:
-        required = {
-            "usdPrice",
-            "exchangeAddress",
-            "exchangeName",
-        }
         
         class properties:
-            usdPrice = schemas.NumberSchema
-            exchangeAddress = schemas.StrSchema
-            exchangeName = schemas.StrSchema
         
             @staticmethod
             def nativePrice() -> typing.Type['SPLNativePrice']:
                 return SPLNativePrice
+            usdPrice = schemas.NumberSchema
+            exchangeAddress = schemas.StrSchema
+            exchangeName = schemas.StrSchema
             __annotations__ = {
+                "nativePrice": nativePrice,
                 "usdPrice": usdPrice,
                 "exchangeAddress": exchangeAddress,
                 "exchangeName": exchangeName,
-                "nativePrice": nativePrice,
             }
     
-    usdPrice: MetaOapg.properties.usdPrice
-    exchangeAddress: MetaOapg.properties.exchangeAddress
-    exchangeName: MetaOapg.properties.exchangeName
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["nativePrice"]) -> 'SPLNativePrice': ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["usdPrice"]) -> MetaOapg.properties.usdPrice: ...
@@ -69,52 +63,49 @@ class SPLTokenPrice(
     def __getitem__(self, name: typing_extensions.Literal["exchangeName"]) -> MetaOapg.properties.exchangeName: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["nativePrice"]) -> 'SPLNativePrice': ...
-    
-    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["usdPrice", "exchangeAddress", "exchangeName", "nativePrice", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["nativePrice", "usdPrice", "exchangeAddress", "exchangeName", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["usdPrice"]) -> MetaOapg.properties.usdPrice: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["exchangeAddress"]) -> MetaOapg.properties.exchangeAddress: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["exchangeName"]) -> MetaOapg.properties.exchangeName: ...
-    
-    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["nativePrice"]) -> typing.Union['SPLNativePrice', schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["usdPrice"]) -> typing.Union[MetaOapg.properties.usdPrice, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["exchangeAddress"]) -> typing.Union[MetaOapg.properties.exchangeAddress, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["exchangeName"]) -> typing.Union[MetaOapg.properties.exchangeName, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["usdPrice", "exchangeAddress", "exchangeName", "nativePrice", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["nativePrice", "usdPrice", "exchangeAddress", "exchangeName", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        usdPrice: typing.Union[MetaOapg.properties.usdPrice, decimal.Decimal, int, float, ],
-        exchangeAddress: typing.Union[MetaOapg.properties.exchangeAddress, str, ],
-        exchangeName: typing.Union[MetaOapg.properties.exchangeName, str, ],
         nativePrice: typing.Union['SPLNativePrice', schemas.Unset] = schemas.unset,
+        usdPrice: typing.Union[MetaOapg.properties.usdPrice, decimal.Decimal, int, float, schemas.Unset] = schemas.unset,
+        exchangeAddress: typing.Union[MetaOapg.properties.exchangeAddress, str, schemas.Unset] = schemas.unset,
+        exchangeName: typing.Union[MetaOapg.properties.exchangeName, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'SPLTokenPrice':
         return super().__new__(
             cls,
             *args,
+            nativePrice=nativePrice,
             usdPrice=usdPrice,
             exchangeAddress=exchangeAddress,
             exchangeName=exchangeName,
-            nativePrice=nativePrice,
             _configuration=_configuration,
             **kwargs,
         )

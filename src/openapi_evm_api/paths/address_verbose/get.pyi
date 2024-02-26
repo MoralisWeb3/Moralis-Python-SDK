@@ -27,6 +27,7 @@ from openapi_evm_api import schemas  # noqa: F401
 
 from openapi_evm_api.model.include_list import IncludeList
 from openapi_evm_api.model.chain_list import ChainList
+from openapi_evm_api.model.order_list import OrderList
 from openapi_evm_api.model.transaction_collection_verbose import TransactionCollectionVerbose
 
 # Query params
@@ -47,6 +48,7 @@ FromDateSchema = schemas.StrSchema
 ToDateSchema = schemas.StrSchema
 IncludeSchema = IncludeList
 CursorSchema = schemas.StrSchema
+OrderSchema = OrderList
 
 
 class LimitSchema(
@@ -68,6 +70,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'to_date': typing.Union[ToDateSchema, str, ],
         'include': typing.Union[IncludeSchema, ],
         'cursor': typing.Union[CursorSchema, str, ],
+        'order': typing.Union[OrderSchema, ],
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
     },
     total=False
@@ -118,6 +121,12 @@ request_query_cursor = api_client.QueryParameter(
     name="cursor",
     style=api_client.ParameterStyle.FORM,
     schema=CursorSchema,
+    explode=True,
+)
+request_query_order = api_client.QueryParameter(
+    name="order",
+    style=api_client.ParameterStyle.FORM,
+    schema=OrderSchema,
     explode=True,
 )
 request_query_limit = api_client.QueryParameter(
@@ -256,6 +265,7 @@ class BaseApi(api_client.Api):
             request_query_to_date,
             request_query_include,
             request_query_cursor,
+            request_query_order,
             request_query_limit,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)

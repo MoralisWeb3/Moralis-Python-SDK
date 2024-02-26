@@ -48,6 +48,7 @@ class MarketDataHottestNFTCollectionByTradingVolume(
                     "collection_title",
                     "market_cap_24hr_percent_change",
                     "volume_24hr_percent_change",
+                    "collection_address",
                     "rank",
                     "volume_usd",
                     "market_cap_usd",
@@ -63,6 +64,7 @@ class MarketDataHottestNFTCollectionByTradingVolume(
                     volume_usd = schemas.StrSchema
                     volume_24hr_percent_change = schemas.StrSchema
                     average_price_usd = schemas.StrSchema
+                    collection_address = schemas.StrSchema
                     __annotations__ = {
                         "rank": rank,
                         "collection_title": collection_title,
@@ -72,6 +74,7 @@ class MarketDataHottestNFTCollectionByTradingVolume(
                         "volume_usd": volume_usd,
                         "volume_24hr_percent_change": volume_24hr_percent_change,
                         "average_price_usd": average_price_usd,
+                        "collection_address": collection_address,
                     }
         
             
@@ -80,6 +83,7 @@ class MarketDataHottestNFTCollectionByTradingVolume(
             collection_title: MetaOapg.properties.collection_title
             market_cap_24hr_percent_change: schemas.AnyTypeSchema
             volume_24hr_percent_change: MetaOapg.properties.volume_24hr_percent_change
+            collection_address: MetaOapg.properties.collection_address
             rank: MetaOapg.properties.rank
             volume_usd: MetaOapg.properties.volume_usd
             market_cap_usd: schemas.AnyTypeSchema
@@ -110,9 +114,12 @@ class MarketDataHottestNFTCollectionByTradingVolume(
             def __getitem__(self, name: typing_extensions.Literal["average_price_usd"]) -> MetaOapg.properties.average_price_usd: ...
             
             @typing.overload
+            def __getitem__(self, name: typing_extensions.Literal["collection_address"]) -> MetaOapg.properties.collection_address: ...
+            
+            @typing.overload
             def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
             
-            def __getitem__(self, name: typing.Union[typing_extensions.Literal["rank", "collection_title", "collection_image", "floor_price_usd", "floor_price_24hr_percent_change", "volume_usd", "volume_24hr_percent_change", "average_price_usd", ], str]):
+            def __getitem__(self, name: typing.Union[typing_extensions.Literal["rank", "collection_title", "collection_image", "floor_price_usd", "floor_price_24hr_percent_change", "volume_usd", "volume_24hr_percent_change", "average_price_usd", "collection_address", ], str]):
                 # dict_instance[name] accessor
                 return super().__getitem__(name)
             
@@ -142,9 +149,12 @@ class MarketDataHottestNFTCollectionByTradingVolume(
             def get_item_oapg(self, name: typing_extensions.Literal["average_price_usd"]) -> typing.Union[MetaOapg.properties.average_price_usd, schemas.Unset]: ...
             
             @typing.overload
+            def get_item_oapg(self, name: typing_extensions.Literal["collection_address"]) -> MetaOapg.properties.collection_address: ...
+            
+            @typing.overload
             def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
             
-            def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["rank", "collection_title", "collection_image", "floor_price_usd", "floor_price_24hr_percent_change", "volume_usd", "volume_24hr_percent_change", "average_price_usd", ], str]):
+            def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["rank", "collection_title", "collection_image", "floor_price_usd", "floor_price_24hr_percent_change", "volume_usd", "volume_24hr_percent_change", "average_price_usd", "collection_address", ], str]):
                 return super().get_item_oapg(name)
             
         
@@ -156,6 +166,7 @@ class MarketDataHottestNFTCollectionByTradingVolume(
                 collection_title: typing.Union[MetaOapg.properties.collection_title, str, ],
                 market_cap_24hr_percent_change: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
                 volume_24hr_percent_change: typing.Union[MetaOapg.properties.volume_24hr_percent_change, str, ],
+                collection_address: typing.Union[MetaOapg.properties.collection_address, str, ],
                 rank: typing.Union[MetaOapg.properties.rank, decimal.Decimal, int, ],
                 volume_usd: typing.Union[MetaOapg.properties.volume_usd, str, ],
                 market_cap_usd: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
@@ -172,6 +183,7 @@ class MarketDataHottestNFTCollectionByTradingVolume(
                     collection_title=collection_title,
                     market_cap_24hr_percent_change=market_cap_24hr_percent_change,
                     volume_24hr_percent_change=volume_24hr_percent_change,
+                    collection_address=collection_address,
                     rank=rank,
                     volume_usd=volume_usd,
                     market_cap_usd=market_cap_usd,

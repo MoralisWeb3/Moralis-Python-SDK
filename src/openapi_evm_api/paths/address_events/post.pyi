@@ -26,6 +26,7 @@ import frozendict  # noqa: F401
 from openapi_evm_api import schemas  # noqa: F401
 
 from openapi_evm_api.model.chain_list import ChainList
+from openapi_evm_api.model.order_list import OrderList
 from openapi_evm_api.model.log_event import LogEvent
 
 # Query params
@@ -57,6 +58,7 @@ class LimitSchema(
     schemas.IntSchema
 ):
     pass
+OrderSchema = OrderList
 CursorSchema = schemas.StrSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
@@ -74,6 +76,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'to_date': typing.Union[ToDateSchema, str, ],
         'offset': typing.Union[OffsetSchema, decimal.Decimal, int, ],
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
+        'order': typing.Union[OrderSchema, ],
         'cursor': typing.Union[CursorSchema, str, ],
     },
     total=False
@@ -131,6 +134,12 @@ request_query_limit = api_client.QueryParameter(
     name="limit",
     style=api_client.ParameterStyle.FORM,
     schema=LimitSchema,
+    explode=True,
+)
+request_query_order = api_client.QueryParameter(
+    name="order",
+    style=api_client.ParameterStyle.FORM,
+    schema=OrderSchema,
     explode=True,
 )
 request_query_cursor = api_client.QueryParameter(
@@ -404,6 +413,7 @@ class BaseApi(api_client.Api):
             request_query_topic,
             request_query_offset,
             request_query_limit,
+            request_query_order,
             request_query_cursor,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)

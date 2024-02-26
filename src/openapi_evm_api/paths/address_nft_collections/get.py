@@ -43,6 +43,7 @@ class LimitSchema(
         inclusive_minimum = 0
 ExcludeSpamSchema = schemas.BoolSchema
 CursorSchema = schemas.StrSchema
+TokenCountsSchema = schemas.BoolSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -55,6 +56,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
         'exclude_spam': typing.Union[ExcludeSpamSchema, bool, ],
         'cursor': typing.Union[CursorSchema, str, ],
+        'token_counts': typing.Union[TokenCountsSchema, bool, ],
     },
     total=False
 )
@@ -86,6 +88,12 @@ request_query_cursor = api_client.QueryParameter(
     name="cursor",
     style=api_client.ParameterStyle.FORM,
     schema=CursorSchema,
+    explode=True,
+)
+request_query_token_counts = api_client.QueryParameter(
+    name="token_counts",
+    style=api_client.ParameterStyle.FORM,
+    schema=TokenCountsSchema,
     explode=True,
 )
 # Path params
@@ -221,6 +229,7 @@ class BaseApi(api_client.Api):
             request_query_limit,
             request_query_exclude_spam,
             request_query_cursor,
+            request_query_token_counts,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:

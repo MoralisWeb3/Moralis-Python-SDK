@@ -6,6 +6,7 @@
 - [get_token_allowance](#get_token_allowance)
 - [get_token_metadata](#get_token_metadata)
 - [get_token_metadata_by_symbol](#get_token_metadata_by_symbol)
+- [get_token_pair_ohlc](#get_token_pair_ohlc)
 - [get_token_price](#get_token_price)
 - [get_token_stats](#get_token_stats)
 - [get_token_transfers](#get_token_transfers)
@@ -173,6 +174,58 @@ print(result)
 
 
 ---
+## get_token_pair_ohlc
+
+> `evm_api.token.get_token_pair_ohlc()`
+
+Get OHLC candle sticks of token pair.
+
+
+### Example
+```python
+from moralis import evm_api
+
+api_key = "YOUR_API_KEY"
+params = {
+    "token0": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", 
+    "token1": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", 
+    "exchange": "", 
+    "interval": "1h", 
+    "price_format": "", 
+    "from_date": "", 
+    "to_date": "", 
+    "chain": "eth", 
+    "limit": 0, 
+    "cursor": "", 
+}
+
+result = evm_api.token.get_token_pair_ohlc(
+    api_key=api_key,
+    params=params,
+)
+
+print(result)
+
+```
+
+### Parameters
+
+| Name | Type | Description | Required | Default | Example |
+|------|------|-------------|----------|---------|---------|
+| token0 | str | The base token address | Yes |  | "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2" |
+| token1 | str | The quote token address | Yes |  | "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48" |
+| exchange | str | The factory name or address of the token exchange | Yes |  | "" |
+| interval | str | The interval of the ohlc candles | Yes | "1h" | "1h" |
+| price_format | str | The price format of the ohlc candles (usd, native) | Yes |  | "" |
+| from_date | str | The date from where to get the ohlc candles (format in seconds or datestring accepted by momentjs). | Yes |  | "" |
+| to_date | str | Get ohlc candles up until this date (format in seconds or datestring accepted by momentjs). | Yes |  | "" |
+| chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1"<br/>- "chiliz"<br/>- "0x15b38"<br/>- "chiliz testnet"<br/>- "0x15b32"<br/>- "gnosis"<br/>- "0x64"<br/>- "gnosis testnet"<br/>- "0x27d8"<br/>- "base"<br/>- "0x2105"<br/>- "base testnet"<br/>- "0x14a33"<br/>- "optimism"<br/>- "0xa" | The chain to query |  | "eth" | "eth" |
+| limit | int | The maximum number of ohlc candles to return (max 100) |  |  | 0 |
+| cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
+
+
+
+---
 ## get_token_price
 
 > `evm_api.token.get_token_price()`
@@ -271,6 +324,7 @@ params = {
     "from_date": "", 
     "to_date": "", 
     "limit": 0, 
+    "order": "DESC", 
     "cursor": "", 
 }
 
@@ -291,9 +345,10 @@ print(result)
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1"<br/>- "chiliz"<br/>- "0x15b38"<br/>- "chiliz testnet"<br/>- "0x15b32"<br/>- "gnosis"<br/>- "0x64"<br/>- "gnosis testnet"<br/>- "0x27d8"<br/>- "base"<br/>- "0x2105"<br/>- "base testnet"<br/>- "0x14a33"<br/>- "optimism"<br/>- "0xa" | The chain to query |  | "eth" | "eth" |
 | from_block | int | The minimum block number from which to get the transfers<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | 0 |
 | to_block | int | The maximum block number from which to get the transfers.<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | 0 |
-| from_date | str | The start date from which to get the transfers (any format that is accepted by momentjs)<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | "" |
-| to_date | str | Get transfers up until this date (any format that is accepted by momentjs)<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | "" |
+| from_date | str | The start date from which to get the transfers (format in seconds or datestring accepted by momentjs)<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | "" |
+| to_date | str | Get transfers up until this date (format in seconds or datestring accepted by momentjs)<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | "" |
 | limit | int | The desired page size of the result. |  |  | 0 |
+| order | enum[str]: <br/>- "ASC"<br/>- "DESC" | The order of the result, in ascending (ASC) or descending (DESC) |  | "DESC" | "DESC" |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 
 
@@ -316,6 +371,7 @@ params = {
     "chain": "eth", 
     "to_block": 1.2, 
     "token_addresses": [], 
+    "exclude_spam": True, 
 }
 
 result = evm_api.token.get_wallet_token_balances(
@@ -335,6 +391,7 @@ print(result)
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1"<br/>- "chiliz"<br/>- "0x15b38"<br/>- "chiliz testnet"<br/>- "0x15b32"<br/>- "gnosis"<br/>- "0x64"<br/>- "gnosis testnet"<br/>- "0x27d8"<br/>- "base"<br/>- "0x2105"<br/>- "base testnet"<br/>- "0x14a33"<br/>- "optimism"<br/>- "0xa" | The chain to query |  | "eth" | "eth" |
 | to_block | float | The block number up to which the balances will be checked. |  |  | 1.2 |
 | token_addresses | List of str | The addresses to get balances for (optional) |  |  | [] |
+| exclude_spam | bool | Exclude spam tokens from the result |  | True | True |
 
 
 
@@ -358,7 +415,9 @@ params = {
     "to_block": 0, 
     "from_date": "", 
     "to_date": "", 
+    "contract_addresses": [], 
     "limit": 0, 
+    "order": "DESC", 
     "cursor": "", 
 }
 
@@ -379,9 +438,11 @@ print(result)
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "goerli"<br/>- "0x5"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "mumbai"<br/>- "0x13881"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1"<br/>- "chiliz"<br/>- "0x15b38"<br/>- "chiliz testnet"<br/>- "0x15b32"<br/>- "gnosis"<br/>- "0x64"<br/>- "gnosis testnet"<br/>- "0x27d8"<br/>- "base"<br/>- "0x2105"<br/>- "base testnet"<br/>- "0x14a33"<br/>- "optimism"<br/>- "0xa" | The chain to query |  | "eth" | "eth" |
 | from_block | int | The minimum block number from which to get the transactions<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | 0 |
 | to_block | int | The maximum block number from which to get the transactions.<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | 0 |
-| from_date | str | The start date from which to get the transactions (any format that is accepted by momentjs)<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | "" |
-| to_date | str | Get the transactions up to this date (any format that is accepted by momentjs)<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | "" |
+| from_date | str | The start date from which to get the transactions (format in seconds or datestring accepted by momentjs)<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | "" |
+| to_date | str | Get the transactions up to this date (format in seconds or datestring accepted by momentjs)<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | "" |
+| contract_addresses | List of str | List of contract addresses of transfers |  |  | [] |
 | limit | int | The desired page size of the result. |  |  | 0 |
+| order | enum[str]: <br/>- "ASC"<br/>- "DESC" | The order of the result, in ascending (ASC) or descending (DESC) |  | "DESC" | "DESC" |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 
 
