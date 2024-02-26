@@ -18,11 +18,13 @@ from openapi_evm_api.model.block_transaction import BlockTransaction
 from openapi_evm_api.model.block_transaction_decoded import BlockTransactionDecoded
 from openapi_evm_api.model.block_transaction_verbose import BlockTransactionVerbose
 from openapi_evm_api.model.chain_list import ChainList
+from openapi_evm_api.model.chain_net_worth import ChainNetWorth
 from openapi_evm_api.model.contracts_review_dto import ContractsReviewDto
 from openapi_evm_api.model.contracts_review_item import ContractsReviewItem
 from openapi_evm_api.model.decoded_call import DecodedCall
 from openapi_evm_api.model.decoded_event import DecodedEvent
 from openapi_evm_api.model.discovery_api_chains_list import DiscoveryApiChainsList
+from openapi_evm_api.model.discovery_supported_time_frames import DiscoverySupportedTimeFrames
 from openapi_evm_api.model.discovery_token import DiscoveryToken
 from openapi_evm_api.model.discovery_token_links import DiscoveryTokenLinks
 from openapi_evm_api.model.discovery_tokens import DiscoveryTokens
@@ -32,6 +34,8 @@ from openapi_evm_api.model.erc20_allowance import Erc20Allowance
 from openapi_evm_api.model.erc20_metadata import Erc20Metadata
 from openapi_evm_api.model.erc20_price import Erc20Price
 from openapi_evm_api.model.erc20_token_balance import Erc20TokenBalance
+from openapi_evm_api.model.erc20_token_balance_with_price import Erc20TokenBalanceWithPrice
+from openapi_evm_api.model.erc20_token_balance_with_price_result import Erc20TokenBalanceWithPriceResult
 from openapi_evm_api.model.erc20_token_stat import Erc20TokenStat
 from openapi_evm_api.model.erc20_transaction import Erc20Transaction
 from openapi_evm_api.model.erc20_transaction_collection import Erc20TransactionCollection
@@ -52,6 +56,7 @@ from openapi_evm_api.model.log_verbose import LogVerbose
 from openapi_evm_api.model.market_data_erc20_token import MarketDataERC20Token
 from openapi_evm_api.model.market_data_erc20_tokens_by_price_movers import MarketDataERC20TokensByPriceMovers
 from openapi_evm_api.model.market_data_hottest_nft_collection_by_trading_volume import MarketDataHottestNFTCollectionByTradingVolume
+from openapi_evm_api.model.market_data_top_crypto_currencies_by_market_cap import MarketDataTopCryptoCurrenciesByMarketCap
 from openapi_evm_api.model.market_data_top_nft_collection_by_market_cap import MarketDataTopNFTCollectionByMarketCap
 from openapi_evm_api.model.media import Media
 from openapi_evm_api.model.media_collection import MediaCollection
@@ -60,6 +65,7 @@ from openapi_evm_api.model.metadata_resync import MetadataResync
 from openapi_evm_api.model.native_balance import NativeBalance
 from openapi_evm_api.model.native_balances import NativeBalances
 from openapi_evm_api.model.native_erc20_price import NativeErc20Price
+from openapi_evm_api.model.net_worth_result import NetWorthResult
 from openapi_evm_api.model.nft import Nft
 from openapi_evm_api.model.nft_collection import NftCollection
 from openapi_evm_api.model.nft_collection_stat import NftCollectionStat
@@ -73,6 +79,11 @@ from openapi_evm_api.model.nft_transfer_collection import NftTransferCollection
 from openapi_evm_api.model.nft_wallet_collections import NftWalletCollections
 from openapi_evm_api.model.normalized_metadata import NormalizedMetadata
 from openapi_evm_api.model.normalized_metadata_attribute import NormalizedMetadataAttribute
+from openapi_evm_api.model.ohlc_candles import OhlcCandles
+from openapi_evm_api.model.ohlc_interval_list import OhlcIntervalList
+from openapi_evm_api.model.ohlc_response import OhlcResponse
+from openapi_evm_api.model.ohlc_result import OhlcResult
+from openapi_evm_api.model.order_list import OrderList
 from openapi_evm_api.model.reserves_collection import ReservesCollection
 from openapi_evm_api.model.reserves_pair import ReservesPair
 from openapi_evm_api.model.resolve import Resolve
@@ -80,6 +91,7 @@ from openapi_evm_api.model.run_contract_dto import RunContractDto
 from openapi_evm_api.model.time_frames import TimeFrames
 from openapi_evm_api.model.token_item import TokenItem
 from openapi_evm_api.model.token_price_item import TokenPriceItem
+from openapi_evm_api.model.token_timestamp import TokenTimestamp
 from openapi_evm_api.model.trade import Trade
 from openapi_evm_api.model.trade_collection import TradeCollection
 from openapi_evm_api.model.transaction import Transaction

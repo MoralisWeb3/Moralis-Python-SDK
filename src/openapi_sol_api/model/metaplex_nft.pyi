@@ -47,7 +47,7 @@ class MetaplexNFT(
             metadataUri = schemas.StrSchema
             masterEdition = schemas.BoolSchema
             isMutable = schemas.BoolSchema
-            primarySaleHappened = schemas.BoolSchema
+            primarySaleHappened = schemas.NumberSchema
             sellerFeeBasisPoints = schemas.NumberSchema
             updateAuthority = schemas.StrSchema
             __annotations__ = {
@@ -122,7 +122,7 @@ class MetaplexNFT(
         *args: typing.Union[dict, frozendict.frozendict, ],
         isMutable: typing.Union[MetaOapg.properties.isMutable, bool, ],
         updateAuthority: typing.Union[MetaOapg.properties.updateAuthority, str, ],
-        primarySaleHappened: typing.Union[MetaOapg.properties.primarySaleHappened, bool, ],
+        primarySaleHappened: typing.Union[MetaOapg.properties.primarySaleHappened, decimal.Decimal, int, float, ],
         sellerFeeBasisPoints: typing.Union[MetaOapg.properties.sellerFeeBasisPoints, decimal.Decimal, int, float, ],
         metadataUri: typing.Union[MetaOapg.properties.metadataUri, str, ],
         masterEdition: typing.Union[MetaOapg.properties.masterEdition, bool, ],

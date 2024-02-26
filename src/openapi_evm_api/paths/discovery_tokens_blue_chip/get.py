@@ -26,6 +26,7 @@ import frozendict  # noqa: F401
 from openapi_evm_api import schemas  # noqa: F401
 
 from openapi_evm_api.model.discovery_api_chains_list import DiscoveryApiChainsList
+from openapi_evm_api.model.discovery_supported_time_frames import DiscoverySupportedTimeFrames
 from openapi_evm_api.model.discovery_tokens import DiscoveryTokens
 
 from . import path
@@ -33,11 +34,9 @@ from . import path
 # Query params
 ChainSchema = DiscoveryApiChainsList
 MinMarketCapSchema = schemas.NumberSchema
-OneWeekPricePercentChangeUsdSchema = schemas.NumberSchema
-OneDayPricePercentChangeUsdSchema = schemas.NumberSchema
-OneMonthVolumeChangeUsdSchema = schemas.NumberSchema
 SecurityScoreSchema = schemas.NumberSchema
-OneMonthPricePercentChangeUsdSchema = schemas.NumberSchema
+MinTokenAgeInDaysSchema = schemas.NumberSchema
+TimeFrameSchema = DiscoverySupportedTimeFrames
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -48,11 +47,9 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
     {
         'chain': typing.Union[ChainSchema, ],
         'min_market_cap': typing.Union[MinMarketCapSchema, decimal.Decimal, int, float, ],
-        'one_week_price_percent_change_usd': typing.Union[OneWeekPricePercentChangeUsdSchema, decimal.Decimal, int, float, ],
-        'one_day_price_percent_change_usd': typing.Union[OneDayPricePercentChangeUsdSchema, decimal.Decimal, int, float, ],
-        'one_month_volume_change_usd': typing.Union[OneMonthVolumeChangeUsdSchema, decimal.Decimal, int, float, ],
         'security_score': typing.Union[SecurityScoreSchema, decimal.Decimal, int, float, ],
-        'one_month_price_percent_change_usd': typing.Union[OneMonthPricePercentChangeUsdSchema, decimal.Decimal, int, float, ],
+        'min_token_age_in_days': typing.Union[MinTokenAgeInDaysSchema, decimal.Decimal, int, float, ],
+        'time_frame': typing.Union[TimeFrameSchema, ],
     },
     total=False
 )
@@ -74,34 +71,22 @@ request_query_min_market_cap = api_client.QueryParameter(
     schema=MinMarketCapSchema,
     explode=True,
 )
-request_query_one_week_price_percent_change_usd = api_client.QueryParameter(
-    name="one_week_price_percent_change_usd",
-    style=api_client.ParameterStyle.FORM,
-    schema=OneWeekPricePercentChangeUsdSchema,
-    explode=True,
-)
-request_query_one_day_price_percent_change_usd = api_client.QueryParameter(
-    name="one_day_price_percent_change_usd",
-    style=api_client.ParameterStyle.FORM,
-    schema=OneDayPricePercentChangeUsdSchema,
-    explode=True,
-)
-request_query_one_month_volume_change_usd = api_client.QueryParameter(
-    name="one_month_volume_change_usd",
-    style=api_client.ParameterStyle.FORM,
-    schema=OneMonthVolumeChangeUsdSchema,
-    explode=True,
-)
 request_query_security_score = api_client.QueryParameter(
     name="security_score",
     style=api_client.ParameterStyle.FORM,
     schema=SecurityScoreSchema,
     explode=True,
 )
-request_query_one_month_price_percent_change_usd = api_client.QueryParameter(
-    name="one_month_price_percent_change_usd",
+request_query_min_token_age_in_days = api_client.QueryParameter(
+    name="min_token_age_in_days",
     style=api_client.ParameterStyle.FORM,
-    schema=OneMonthPricePercentChangeUsdSchema,
+    schema=MinTokenAgeInDaysSchema,
+    explode=True,
+)
+request_query_time_frame = api_client.QueryParameter(
+    name="time_frame",
+    style=api_client.ParameterStyle.FORM,
+    schema=TimeFrameSchema,
     explode=True,
 )
 _auth = [
@@ -191,11 +176,9 @@ class BaseApi(api_client.Api):
         for parameter in (
             request_query_chain,
             request_query_min_market_cap,
-            request_query_one_week_price_percent_change_usd,
-            request_query_one_day_price_percent_change_usd,
-            request_query_one_month_volume_change_usd,
             request_query_security_score,
-            request_query_one_month_price_percent_change_usd,
+            request_query_min_token_age_in_days,
+            request_query_time_frame,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:

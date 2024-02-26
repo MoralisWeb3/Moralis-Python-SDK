@@ -7,6 +7,7 @@ from openapi_sol_api.apis.paths.account_network_address_nft import AccountNetwor
 from openapi_sol_api.apis.paths.account_network_address_portfolio import AccountNetworkAddressPortfolio
 from openapi_sol_api.apis.paths.nft_network_address_metadata import NftNetworkAddressMetadata
 from openapi_sol_api.apis.paths.token_network_address_price import TokenNetworkAddressPrice
+from openapi_sol_api.apis.paths.token_network_address_metadata import TokenNetworkAddressMetadata
 
 PathToApi = typing_extensions.TypedDict(
     'PathToApi',
@@ -17,6 +18,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.ACCOUNT_NETWORK_ADDRESS_PORTFOLIO: AccountNetworkAddressPortfolio,
         PathValues.NFT_NETWORK_ADDRESS_METADATA: NftNetworkAddressMetadata,
         PathValues.TOKEN_NETWORK_ADDRESS_PRICE: TokenNetworkAddressPrice,
+        PathValues.TOKEN_NETWORK_ADDRESS_METADATA: TokenNetworkAddressMetadata,
     }
 )
 
@@ -28,5 +30,6 @@ path_to_api = PathToApi(
         PathValues.ACCOUNT_NETWORK_ADDRESS_PORTFOLIO: AccountNetworkAddressPortfolio,
         PathValues.NFT_NETWORK_ADDRESS_METADATA: NftNetworkAddressMetadata,
         PathValues.TOKEN_NETWORK_ADDRESS_PRICE: TokenNetworkAddressPrice,
+        PathValues.TOKEN_NETWORK_ADDRESS_METADATA: TokenNetworkAddressMetadata,
     }
 )

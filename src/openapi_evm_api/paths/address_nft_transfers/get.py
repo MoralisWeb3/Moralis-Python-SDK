@@ -26,12 +26,36 @@ import frozendict  # noqa: F401
 from openapi_evm_api import schemas  # noqa: F401
 
 from openapi_evm_api.model.chain_list import ChainList
+from openapi_evm_api.model.order_list import OrderList
 from openapi_evm_api.model.nft_transfer_collection import NftTransferCollection
 
 from . import path
 
 # Query params
 ChainSchema = ChainList
+
+
+class ContractAddressesSchema(
+    schemas.ListSchema
+):
+
+
+    class MetaOapg:
+        items = schemas.StrSchema
+
+    def __new__(
+        cls,
+        arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+        _configuration: typing.Optional[schemas.Configuration] = None,
+    ) -> 'ContractAddressesSchema':
+        return super().__new__(
+            cls,
+            arg,
+            _configuration=_configuration,
+        )
+
+    def __getitem__(self, i: int) -> MetaOapg.items:
+        return super().__getitem__(i)
 
 
 class FormatSchema(
@@ -74,6 +98,7 @@ class LimitSchema(
 
     class MetaOapg:
         inclusive_minimum = 0
+OrderSchema = OrderList
 CursorSchema = schemas.StrSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
@@ -84,12 +109,14 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
     'RequestOptionalQueryParams',
     {
         'chain': typing.Union[ChainSchema, ],
+        'contract_addresses': typing.Union[ContractAddressesSchema, list, tuple, ],
         'format': typing.Union[FormatSchema, str, ],
         'from_block': typing.Union[FromBlockSchema, decimal.Decimal, int, ],
         'to_block': typing.Union[ToBlockSchema, str, ],
         'from_date': typing.Union[FromDateSchema, str, ],
         'to_date': typing.Union[ToDateSchema, str, ],
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
+        'order': typing.Union[OrderSchema, ],
         'cursor': typing.Union[CursorSchema, str, ],
     },
     total=False
@@ -104,6 +131,12 @@ request_query_chain = api_client.QueryParameter(
     name="chain",
     style=api_client.ParameterStyle.FORM,
     schema=ChainSchema,
+    explode=True,
+)
+request_query_contract_addresses = api_client.QueryParameter(
+    name="contract_addresses",
+    style=api_client.ParameterStyle.FORM,
+    schema=ContractAddressesSchema,
     explode=True,
 )
 request_query_format = api_client.QueryParameter(
@@ -140,6 +173,12 @@ request_query_limit = api_client.QueryParameter(
     name="limit",
     style=api_client.ParameterStyle.FORM,
     schema=LimitSchema,
+    explode=True,
+)
+request_query_order = api_client.QueryParameter(
+    name="order",
+    style=api_client.ParameterStyle.FORM,
+    schema=OrderSchema,
     explode=True,
 )
 request_query_cursor = api_client.QueryParameter(
@@ -278,12 +317,14 @@ class BaseApi(api_client.Api):
         prefix_separator_iterator = None
         for parameter in (
             request_query_chain,
+            request_query_contract_addresses,
             request_query_format,
             request_query_from_block,
             request_query_to_block,
             request_query_from_date,
             request_query_to_date,
             request_query_limit,
+            request_query_order,
             request_query_cursor,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)

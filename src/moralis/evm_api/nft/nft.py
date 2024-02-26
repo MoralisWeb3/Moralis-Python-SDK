@@ -1,5 +1,6 @@
 from .get_contract_nfts import get_contract_nfts
 from .get_multiple_nfts import get_multiple_nfts
+from .get_nft_bulk_contract_metadata import get_nft_bulk_contract_metadata
 from .get_nft_collection_stats import get_nft_collection_stats
 from .get_nft_contract_metadata import get_nft_contract_metadata
 from .get_nft_contract_transfers import get_nft_contract_transfers

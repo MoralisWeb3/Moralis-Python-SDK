@@ -52,7 +52,7 @@ class Erc20TokenBalance(
             possible_spam = schemas.BoolSchema
             logo = schemas.StrSchema
             thumbnail = schemas.StrSchema
-            verified_collection = schemas.BoolSchema
+            verified_contract = schemas.BoolSchema
             __annotations__ = {
                 "token_address": token_address,
                 "name": name,
@@ -62,7 +62,7 @@ class Erc20TokenBalance(
                 "possible_spam": possible_spam,
                 "logo": logo,
                 "thumbnail": thumbnail,
-                "verified_collection": verified_collection,
+                "verified_contract": verified_contract,
             }
 
     
@@ -98,12 +98,12 @@ class Erc20TokenBalance(
     def __getitem__(self, name: typing_extensions.Literal["thumbnail"]) -> MetaOapg.properties.thumbnail: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["verified_collection"]) -> MetaOapg.properties.verified_collection: ...
+    def __getitem__(self, name: typing_extensions.Literal["verified_contract"]) -> MetaOapg.properties.verified_contract: ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "name", "symbol", "decimals", "balance", "possible_spam", "logo", "thumbnail", "verified_collection", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "name", "symbol", "decimals", "balance", "possible_spam", "logo", "thumbnail", "verified_contract", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -133,12 +133,12 @@ class Erc20TokenBalance(
     def get_item_oapg(self, name: typing_extensions.Literal["thumbnail"]) -> typing.Union[MetaOapg.properties.thumbnail, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["verified_collection"]) -> typing.Union[MetaOapg.properties.verified_collection, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["verified_contract"]) -> typing.Union[MetaOapg.properties.verified_contract, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "name", "symbol", "decimals", "balance", "possible_spam", "logo", "thumbnail", "verified_collection", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "name", "symbol", "decimals", "balance", "possible_spam", "logo", "thumbnail", "verified_contract", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -153,7 +153,7 @@ class Erc20TokenBalance(
         token_address: typing.Union[MetaOapg.properties.token_address, str, ],
         logo: typing.Union[MetaOapg.properties.logo, str, schemas.Unset] = schemas.unset,
         thumbnail: typing.Union[MetaOapg.properties.thumbnail, str, schemas.Unset] = schemas.unset,
-        verified_collection: typing.Union[MetaOapg.properties.verified_collection, bool, schemas.Unset] = schemas.unset,
+        verified_contract: typing.Union[MetaOapg.properties.verified_contract, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'Erc20TokenBalance':
@@ -168,7 +168,7 @@ class Erc20TokenBalance(
             token_address=token_address,
             logo=logo,
             thumbnail=thumbnail,
-            verified_collection=verified_collection,
+            verified_contract=verified_contract,
             _configuration=_configuration,
             **kwargs,
         )

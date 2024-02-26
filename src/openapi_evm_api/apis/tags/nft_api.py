@@ -11,6 +11,7 @@
 
 from openapi_evm_api.paths.nft_address.get import GetContractNfts
 from openapi_evm_api.paths.nft_get_multiple_nfts.post import GetMultipleNfts
+from openapi_evm_api.paths.nft_metadata.post import GetNftBulkContractMetadata
 from openapi_evm_api.paths.nft_address_stats.get import GetNftCollectionStats
 from openapi_evm_api.paths.nft_address_metadata.get import GetNftContractMetadata
 from openapi_evm_api.paths.nft_address_transfers.get import GetNftContractTransfers
@@ -33,6 +34,7 @@ from openapi_evm_api.paths.nft_address_sync.put import SyncNftContract
 class NftApi(
     GetContractNfts,
     GetMultipleNfts,
+    GetNftBulkContractMetadata,
     GetNftCollectionStats,
     GetNftContractMetadata,
     GetNftContractTransfers,

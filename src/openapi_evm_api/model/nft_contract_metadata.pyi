@@ -51,6 +51,15 @@ class NftContractMetadata(
             possible_spam = schemas.BoolSchema
             verified_collection = schemas.BoolSchema
             synced_at = schemas.StrSchema
+            collection_logo = schemas.StrSchema
+            collection_banner_image = schemas.StrSchema
+            collection_category = schemas.StrSchema
+            project_url = schemas.StrSchema
+            wiki_url = schemas.StrSchema
+            discord_url = schemas.StrSchema
+            telegram_url = schemas.StrSchema
+            twitter_username = schemas.StrSchema
+            instagram_username = schemas.StrSchema
             __annotations__ = {
                 "token_address": token_address,
                 "name": name,
@@ -59,6 +68,15 @@ class NftContractMetadata(
                 "possible_spam": possible_spam,
                 "verified_collection": verified_collection,
                 "synced_at": synced_at,
+                "collection_logo": collection_logo,
+                "collection_banner_image": collection_banner_image,
+                "collection_category": collection_category,
+                "project_url": project_url,
+                "wiki_url": wiki_url,
+                "discord_url": discord_url,
+                "telegram_url": telegram_url,
+                "twitter_username": twitter_username,
+                "instagram_username": instagram_username,
             }
 
     
@@ -91,9 +109,36 @@ class NftContractMetadata(
     def __getitem__(self, name: typing_extensions.Literal["synced_at"]) -> MetaOapg.properties.synced_at: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["collection_logo"]) -> MetaOapg.properties.collection_logo: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["collection_banner_image"]) -> MetaOapg.properties.collection_banner_image: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["collection_category"]) -> MetaOapg.properties.collection_category: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["project_url"]) -> MetaOapg.properties.project_url: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["wiki_url"]) -> MetaOapg.properties.wiki_url: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["discord_url"]) -> MetaOapg.properties.discord_url: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["telegram_url"]) -> MetaOapg.properties.telegram_url: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["twitter_username"]) -> MetaOapg.properties.twitter_username: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["instagram_username"]) -> MetaOapg.properties.instagram_username: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "name", "symbol", "contract_type", "possible_spam", "verified_collection", "synced_at", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "name", "symbol", "contract_type", "possible_spam", "verified_collection", "synced_at", "collection_logo", "collection_banner_image", "collection_category", "project_url", "wiki_url", "discord_url", "telegram_url", "twitter_username", "instagram_username", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -120,9 +165,36 @@ class NftContractMetadata(
     def get_item_oapg(self, name: typing_extensions.Literal["synced_at"]) -> typing.Union[MetaOapg.properties.synced_at, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["collection_logo"]) -> typing.Union[MetaOapg.properties.collection_logo, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["collection_banner_image"]) -> typing.Union[MetaOapg.properties.collection_banner_image, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["collection_category"]) -> typing.Union[MetaOapg.properties.collection_category, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["project_url"]) -> typing.Union[MetaOapg.properties.project_url, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["wiki_url"]) -> typing.Union[MetaOapg.properties.wiki_url, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["discord_url"]) -> typing.Union[MetaOapg.properties.discord_url, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["telegram_url"]) -> typing.Union[MetaOapg.properties.telegram_url, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["twitter_username"]) -> typing.Union[MetaOapg.properties.twitter_username, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["instagram_username"]) -> typing.Union[MetaOapg.properties.instagram_username, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "name", "symbol", "contract_type", "possible_spam", "verified_collection", "synced_at", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "name", "symbol", "contract_type", "possible_spam", "verified_collection", "synced_at", "collection_logo", "collection_banner_image", "collection_category", "project_url", "wiki_url", "discord_url", "telegram_url", "twitter_username", "instagram_username", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -136,6 +208,15 @@ class NftContractMetadata(
         token_address: typing.Union[MetaOapg.properties.token_address, str, ],
         verified_collection: typing.Union[MetaOapg.properties.verified_collection, bool, ],
         synced_at: typing.Union[MetaOapg.properties.synced_at, str, schemas.Unset] = schemas.unset,
+        collection_logo: typing.Union[MetaOapg.properties.collection_logo, str, schemas.Unset] = schemas.unset,
+        collection_banner_image: typing.Union[MetaOapg.properties.collection_banner_image, str, schemas.Unset] = schemas.unset,
+        collection_category: typing.Union[MetaOapg.properties.collection_category, str, schemas.Unset] = schemas.unset,
+        project_url: typing.Union[MetaOapg.properties.project_url, str, schemas.Unset] = schemas.unset,
+        wiki_url: typing.Union[MetaOapg.properties.wiki_url, str, schemas.Unset] = schemas.unset,
+        discord_url: typing.Union[MetaOapg.properties.discord_url, str, schemas.Unset] = schemas.unset,
+        telegram_url: typing.Union[MetaOapg.properties.telegram_url, str, schemas.Unset] = schemas.unset,
+        twitter_username: typing.Union[MetaOapg.properties.twitter_username, str, schemas.Unset] = schemas.unset,
+        instagram_username: typing.Union[MetaOapg.properties.instagram_username, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'NftContractMetadata':
@@ -149,6 +230,15 @@ class NftContractMetadata(
             token_address=token_address,
             verified_collection=verified_collection,
             synced_at=synced_at,
+            collection_logo=collection_logo,
+            collection_banner_image=collection_banner_image,
+            collection_category=collection_category,
+            project_url=project_url,
+            wiki_url=wiki_url,
+            discord_url=discord_url,
+            telegram_url=telegram_url,
+            twitter_username=twitter_username,
+            instagram_username=instagram_username,
             _configuration=_configuration,
             **kwargs,
         )

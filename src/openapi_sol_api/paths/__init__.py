@@ -12,3 +12,4 @@ class PathValues(str, enum.Enum):
     ACCOUNT_NETWORK_ADDRESS_PORTFOLIO = "/account/{network}/{address}/portfolio"
     NFT_NETWORK_ADDRESS_METADATA = "/nft/{network}/{address}/metadata"
     TOKEN_NETWORK_ADDRESS_PRICE = "/token/{network}/{address}/price"
+    TOKEN_NETWORK_ADDRESS_METADATA = "/token/{network}/{address}/metadata"

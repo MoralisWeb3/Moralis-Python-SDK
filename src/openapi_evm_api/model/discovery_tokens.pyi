@@ -52,6 +52,7 @@ class DiscoveryTokens(
                     "twitter_followers",
                     "market_cap",
                     "volume_change_usd",
+                    "on_chain_strength_index",
                     "security_score",
                     "token_logo",
                     "token_name",
@@ -59,6 +60,7 @@ class DiscoveryTokens(
                     "price_percent_change_usd",
                     "token_symbol",
                     "liquidity_change_usd",
+                    "token_age_in_days",
                 }
                 
                 class properties:
@@ -139,6 +141,46 @@ class DiscoveryTokens(
                             *args: typing.Union[None, decimal.Decimal, int, float, ],
                             _configuration: typing.Optional[schemas.Configuration] = None,
                         ) -> 'price_usd':
+                            return super().__new__(
+                                cls,
+                                *args,
+                                _configuration=_configuration,
+                            )
+                    
+                    
+                    class token_age_in_days(
+                        schemas.NumberBase,
+                        schemas.NoneBase,
+                        schemas.Schema,
+                        schemas.NoneDecimalMixin
+                    ):
+                    
+                    
+                        def __new__(
+                            cls,
+                            *args: typing.Union[None, decimal.Decimal, int, float, ],
+                            _configuration: typing.Optional[schemas.Configuration] = None,
+                        ) -> 'token_age_in_days':
+                            return super().__new__(
+                                cls,
+                                *args,
+                                _configuration=_configuration,
+                            )
+                    
+                    
+                    class on_chain_strength_index(
+                        schemas.NumberBase,
+                        schemas.NoneBase,
+                        schemas.Schema,
+                        schemas.NoneDecimalMixin
+                    ):
+                    
+                    
+                        def __new__(
+                            cls,
+                            *args: typing.Union[None, decimal.Decimal, int, float, ],
+                            _configuration: typing.Optional[schemas.Configuration] = None,
+                        ) -> 'on_chain_strength_index':
                             return super().__new__(
                                 cls,
                                 *args,
@@ -255,6 +297,8 @@ class DiscoveryTokens(
                         "token_symbol": token_symbol,
                         "token_logo": token_logo,
                         "price_usd": price_usd,
+                        "token_age_in_days": token_age_in_days,
+                        "on_chain_strength_index": on_chain_strength_index,
                         "security_score": security_score,
                         "market_cap": market_cap,
                         "fully_diluted_valuation": fully_diluted_valuation,
@@ -277,6 +321,7 @@ class DiscoveryTokens(
             twitter_followers: MetaOapg.properties.twitter_followers
             market_cap: MetaOapg.properties.market_cap
             volume_change_usd: 'TimeFrames'
+            on_chain_strength_index: MetaOapg.properties.on_chain_strength_index
             security_score: MetaOapg.properties.security_score
             token_logo: MetaOapg.properties.token_logo
             token_name: MetaOapg.properties.token_name
@@ -284,6 +329,7 @@ class DiscoveryTokens(
             price_percent_change_usd: 'TimeFrames'
             token_symbol: MetaOapg.properties.token_symbol
             liquidity_change_usd: 'TimeFrames'
+            token_age_in_days: MetaOapg.properties.token_age_in_days
             
             @typing.overload
             def __getitem__(self, name: typing_extensions.Literal["chain_id"]) -> MetaOapg.properties.chain_id: ...
@@ -302,6 +348,12 @@ class DiscoveryTokens(
             
             @typing.overload
             def __getitem__(self, name: typing_extensions.Literal["price_usd"]) -> MetaOapg.properties.price_usd: ...
+            
+            @typing.overload
+            def __getitem__(self, name: typing_extensions.Literal["token_age_in_days"]) -> MetaOapg.properties.token_age_in_days: ...
+            
+            @typing.overload
+            def __getitem__(self, name: typing_extensions.Literal["on_chain_strength_index"]) -> MetaOapg.properties.on_chain_strength_index: ...
             
             @typing.overload
             def __getitem__(self, name: typing_extensions.Literal["security_score"]) -> MetaOapg.properties.security_score: ...
@@ -336,7 +388,7 @@ class DiscoveryTokens(
             @typing.overload
             def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
             
-            def __getitem__(self, name: typing.Union[typing_extensions.Literal["chain_id", "token_address", "token_name", "token_symbol", "token_logo", "price_usd", "security_score", "market_cap", "fully_diluted_valuation", "twitter_followers", "holders_change", "liquidity_change_usd", "experienced_net_buyers_change", "volume_change_usd", "net_volume_change_usd", "price_percent_change_usd", ], str]):
+            def __getitem__(self, name: typing.Union[typing_extensions.Literal["chain_id", "token_address", "token_name", "token_symbol", "token_logo", "price_usd", "token_age_in_days", "on_chain_strength_index", "security_score", "market_cap", "fully_diluted_valuation", "twitter_followers", "holders_change", "liquidity_change_usd", "experienced_net_buyers_change", "volume_change_usd", "net_volume_change_usd", "price_percent_change_usd", ], str]):
                 # dict_instance[name] accessor
                 return super().__getitem__(name)
             
@@ -358,6 +410,12 @@ class DiscoveryTokens(
             
             @typing.overload
             def get_item_oapg(self, name: typing_extensions.Literal["price_usd"]) -> MetaOapg.properties.price_usd: ...
+            
+            @typing.overload
+            def get_item_oapg(self, name: typing_extensions.Literal["token_age_in_days"]) -> MetaOapg.properties.token_age_in_days: ...
+            
+            @typing.overload
+            def get_item_oapg(self, name: typing_extensions.Literal["on_chain_strength_index"]) -> MetaOapg.properties.on_chain_strength_index: ...
             
             @typing.overload
             def get_item_oapg(self, name: typing_extensions.Literal["security_score"]) -> MetaOapg.properties.security_score: ...
@@ -392,7 +450,7 @@ class DiscoveryTokens(
             @typing.overload
             def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
             
-            def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["chain_id", "token_address", "token_name", "token_symbol", "token_logo", "price_usd", "security_score", "market_cap", "fully_diluted_valuation", "twitter_followers", "holders_change", "liquidity_change_usd", "experienced_net_buyers_change", "volume_change_usd", "net_volume_change_usd", "price_percent_change_usd", ], str]):
+            def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["chain_id", "token_address", "token_name", "token_symbol", "token_logo", "price_usd", "token_age_in_days", "on_chain_strength_index", "security_score", "market_cap", "fully_diluted_valuation", "twitter_followers", "holders_change", "liquidity_change_usd", "experienced_net_buyers_change", "volume_change_usd", "net_volume_change_usd", "price_percent_change_usd", ], str]):
                 return super().get_item_oapg(name)
             
         
@@ -408,6 +466,7 @@ class DiscoveryTokens(
                 twitter_followers: typing.Union[MetaOapg.properties.twitter_followers, None, decimal.Decimal, int, float, ],
                 market_cap: typing.Union[MetaOapg.properties.market_cap, None, decimal.Decimal, int, float, ],
                 volume_change_usd: 'TimeFrames',
+                on_chain_strength_index: typing.Union[MetaOapg.properties.on_chain_strength_index, None, decimal.Decimal, int, float, ],
                 security_score: typing.Union[MetaOapg.properties.security_score, None, decimal.Decimal, int, float, ],
                 token_logo: typing.Union[MetaOapg.properties.token_logo, None, str, ],
                 token_name: typing.Union[MetaOapg.properties.token_name, None, str, ],
@@ -415,6 +474,7 @@ class DiscoveryTokens(
                 price_percent_change_usd: 'TimeFrames',
                 token_symbol: typing.Union[MetaOapg.properties.token_symbol, None, str, ],
                 liquidity_change_usd: 'TimeFrames',
+                token_age_in_days: typing.Union[MetaOapg.properties.token_age_in_days, None, decimal.Decimal, int, float, ],
                 _configuration: typing.Optional[schemas.Configuration] = None,
                 **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
             ) -> 'items':
@@ -430,6 +490,7 @@ class DiscoveryTokens(
                     twitter_followers=twitter_followers,
                     market_cap=market_cap,
                     volume_change_usd=volume_change_usd,
+                    on_chain_strength_index=on_chain_strength_index,
                     security_score=security_score,
                     token_logo=token_logo,
                     token_name=token_name,
@@ -437,6 +498,7 @@ class DiscoveryTokens(
                     price_percent_change_usd=price_percent_change_usd,
                     token_symbol=token_symbol,
                     liquidity_change_usd=liquidity_change_usd,
+                    token_age_in_days=token_age_in_days,
                     _configuration=_configuration,
                     **kwargs,
                 )

@@ -132,6 +132,7 @@ class Erc20Metadata(
                     )
             block_number = schemas.StrSchema
             validated = schemas.NumberSchema
+            verified_contract = schemas.BoolSchema
             __annotations__ = {
                 "address": address,
                 "name": name,
@@ -145,6 +146,7 @@ class Erc20Metadata(
                 "thumbnail": thumbnail,
                 "block_number": block_number,
                 "validated": validated,
+                "verified_contract": verified_contract,
             }
     
     symbol: MetaOapg.properties.symbol
@@ -191,9 +193,12 @@ class Erc20Metadata(
     def __getitem__(self, name: typing_extensions.Literal["validated"]) -> MetaOapg.properties.validated: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["verified_contract"]) -> MetaOapg.properties.verified_contract: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["address", "name", "symbol", "decimals", "created_at", "possible_spam", "address_label", "logo", "logo_hash", "thumbnail", "block_number", "validated", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["address", "name", "symbol", "decimals", "created_at", "possible_spam", "address_label", "logo", "logo_hash", "thumbnail", "block_number", "validated", "verified_contract", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -235,9 +240,12 @@ class Erc20Metadata(
     def get_item_oapg(self, name: typing_extensions.Literal["validated"]) -> typing.Union[MetaOapg.properties.validated, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["verified_contract"]) -> typing.Union[MetaOapg.properties.verified_contract, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["address", "name", "symbol", "decimals", "created_at", "possible_spam", "address_label", "logo", "logo_hash", "thumbnail", "block_number", "validated", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["address", "name", "symbol", "decimals", "created_at", "possible_spam", "address_label", "logo", "logo_hash", "thumbnail", "block_number", "validated", "verified_contract", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -256,6 +264,7 @@ class Erc20Metadata(
         thumbnail: typing.Union[MetaOapg.properties.thumbnail, None, str, schemas.Unset] = schemas.unset,
         block_number: typing.Union[MetaOapg.properties.block_number, str, schemas.Unset] = schemas.unset,
         validated: typing.Union[MetaOapg.properties.validated, decimal.Decimal, int, float, schemas.Unset] = schemas.unset,
+        verified_contract: typing.Union[MetaOapg.properties.verified_contract, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'Erc20Metadata':
@@ -274,6 +283,7 @@ class Erc20Metadata(
             thumbnail=thumbnail,
             block_number=block_number,
             validated=validated,
+            verified_contract=verified_contract,
             _configuration=_configuration,
             **kwargs,
         )

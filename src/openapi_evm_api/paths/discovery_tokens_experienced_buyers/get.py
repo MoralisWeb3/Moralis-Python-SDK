@@ -34,10 +34,7 @@ from . import path
 ChainSchema = DiscoveryApiChainsList
 OneWeekExperiencedNetBuyersChangeSchema = schemas.NumberSchema
 MinMarketCapSchema = schemas.NumberSchema
-TwitterFollowersSchema = schemas.NumberSchema
-OneMonthVolumeChangeUsdSchema = schemas.NumberSchema
 SecurityScoreSchema = schemas.NumberSchema
-OneMonthPricePercentChangeUsdSchema = schemas.NumberSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -49,10 +46,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'chain': typing.Union[ChainSchema, ],
         'one_week_experienced_net_buyers_change': typing.Union[OneWeekExperiencedNetBuyersChangeSchema, decimal.Decimal, int, float, ],
         'min_market_cap': typing.Union[MinMarketCapSchema, decimal.Decimal, int, float, ],
-        'twitter_followers': typing.Union[TwitterFollowersSchema, decimal.Decimal, int, float, ],
-        'one_month_volume_change_usd': typing.Union[OneMonthVolumeChangeUsdSchema, decimal.Decimal, int, float, ],
         'security_score': typing.Union[SecurityScoreSchema, decimal.Decimal, int, float, ],
-        'one_month_price_percent_change_usd': typing.Union[OneMonthPricePercentChangeUsdSchema, decimal.Decimal, int, float, ],
     },
     total=False
 )
@@ -80,28 +74,10 @@ request_query_min_market_cap = api_client.QueryParameter(
     schema=MinMarketCapSchema,
     explode=True,
 )
-request_query_twitter_followers = api_client.QueryParameter(
-    name="twitter_followers",
-    style=api_client.ParameterStyle.FORM,
-    schema=TwitterFollowersSchema,
-    explode=True,
-)
-request_query_one_month_volume_change_usd = api_client.QueryParameter(
-    name="one_month_volume_change_usd",
-    style=api_client.ParameterStyle.FORM,
-    schema=OneMonthVolumeChangeUsdSchema,
-    explode=True,
-)
 request_query_security_score = api_client.QueryParameter(
     name="security_score",
     style=api_client.ParameterStyle.FORM,
     schema=SecurityScoreSchema,
-    explode=True,
-)
-request_query_one_month_price_percent_change_usd = api_client.QueryParameter(
-    name="one_month_price_percent_change_usd",
-    style=api_client.ParameterStyle.FORM,
-    schema=OneMonthPricePercentChangeUsdSchema,
     explode=True,
 )
 _auth = [
@@ -192,10 +168,7 @@ class BaseApi(api_client.Api):
             request_query_chain,
             request_query_one_week_experienced_net_buyers_change,
             request_query_min_market_cap,
-            request_query_twitter_followers,
-            request_query_one_month_volume_change_usd,
             request_query_security_score,
-            request_query_one_month_price_percent_change_usd,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:

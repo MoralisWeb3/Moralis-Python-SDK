@@ -57,6 +57,7 @@ from moralis import evm_api
 api_key = "YOUR_API_KEY"
 params = {
     "address": "0x94ef5300cbc0aa600a821ccbc561b057e456ab23", 
+    "currency": "eth", 
 }
 
 result = evm_api.resolve.resolve_address_to_domain(
@@ -73,6 +74,7 @@ print(result)
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
 | address | str | The address to be resolved | Yes |  | "0x94ef5300cbc0aa600a821ccbc561b057e456ab23" |
+| currency | enum[str]: <br/>- "eth"<br/>- "0x1" | The currency to query |  | "eth" | "eth" |
 
 
 

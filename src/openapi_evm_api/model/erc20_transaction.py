@@ -42,6 +42,7 @@ class Erc20Transaction(
             "transaction_index",
             "log_index",
             "possible_spam",
+            "verified_contract",
             "block_timestamp",
             "token_name",
             "token_decimals",
@@ -67,6 +68,7 @@ class Erc20Transaction(
             transaction_index = schemas.IntSchema
             log_index = schemas.IntSchema
             possible_spam = schemas.BoolSchema
+            verified_contract = schemas.BoolSchema
             token_logo = schemas.StrSchema
             
             
@@ -108,7 +110,6 @@ class Erc20Transaction(
                         *args,
                         _configuration=_configuration,
                     )
-            verified_collection = schemas.BoolSchema
             __annotations__ = {
                 "token_name": token_name,
                 "token_symbol": token_symbol,
@@ -124,10 +125,10 @@ class Erc20Transaction(
                 "transaction_index": transaction_index,
                 "log_index": log_index,
                 "possible_spam": possible_spam,
+                "verified_contract": verified_contract,
                 "token_logo": token_logo,
                 "to_address_label": to_address_label,
                 "from_address_label": from_address_label,
-                "verified_collection": verified_collection,
             }
 
     
@@ -138,6 +139,7 @@ class Erc20Transaction(
     transaction_index: MetaOapg.properties.transaction_index
     log_index: MetaOapg.properties.log_index
     possible_spam: MetaOapg.properties.possible_spam
+    verified_contract: MetaOapg.properties.verified_contract
     block_timestamp: MetaOapg.properties.block_timestamp
     token_name: MetaOapg.properties.token_name
     token_decimals: MetaOapg.properties.token_decimals
@@ -190,6 +192,9 @@ class Erc20Transaction(
     def __getitem__(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["verified_contract"]) -> MetaOapg.properties.verified_contract: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["token_logo"]) -> MetaOapg.properties.token_logo: ...
     
     @typing.overload
@@ -199,12 +204,9 @@ class Erc20Transaction(
     def __getitem__(self, name: typing_extensions.Literal["from_address_label"]) -> MetaOapg.properties.from_address_label: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["verified_collection"]) -> MetaOapg.properties.verified_collection: ...
-    
-    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_name", "token_symbol", "token_decimals", "transaction_hash", "address", "block_timestamp", "block_number", "block_hash", "to_address", "from_address", "value", "transaction_index", "log_index", "possible_spam", "token_logo", "to_address_label", "from_address_label", "verified_collection", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_name", "token_symbol", "token_decimals", "transaction_hash", "address", "block_timestamp", "block_number", "block_hash", "to_address", "from_address", "value", "transaction_index", "log_index", "possible_spam", "verified_contract", "token_logo", "to_address_label", "from_address_label", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -252,6 +254,9 @@ class Erc20Transaction(
     def get_item_oapg(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["verified_contract"]) -> MetaOapg.properties.verified_contract: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["token_logo"]) -> typing.Union[MetaOapg.properties.token_logo, schemas.Unset]: ...
     
     @typing.overload
@@ -261,12 +266,9 @@ class Erc20Transaction(
     def get_item_oapg(self, name: typing_extensions.Literal["from_address_label"]) -> typing.Union[MetaOapg.properties.from_address_label, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["verified_collection"]) -> typing.Union[MetaOapg.properties.verified_collection, schemas.Unset]: ...
-    
-    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_name", "token_symbol", "token_decimals", "transaction_hash", "address", "block_timestamp", "block_number", "block_hash", "to_address", "from_address", "value", "transaction_index", "log_index", "possible_spam", "token_logo", "to_address_label", "from_address_label", "verified_collection", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_name", "token_symbol", "token_decimals", "transaction_hash", "address", "block_timestamp", "block_number", "block_hash", "to_address", "from_address", "value", "transaction_index", "log_index", "possible_spam", "verified_contract", "token_logo", "to_address_label", "from_address_label", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -280,6 +282,7 @@ class Erc20Transaction(
         transaction_index: typing.Union[MetaOapg.properties.transaction_index, decimal.Decimal, int, ],
         log_index: typing.Union[MetaOapg.properties.log_index, decimal.Decimal, int, ],
         possible_spam: typing.Union[MetaOapg.properties.possible_spam, bool, ],
+        verified_contract: typing.Union[MetaOapg.properties.verified_contract, bool, ],
         block_timestamp: typing.Union[MetaOapg.properties.block_timestamp, str, ],
         token_name: typing.Union[MetaOapg.properties.token_name, str, ],
         token_decimals: typing.Union[MetaOapg.properties.token_decimals, str, ],
@@ -291,7 +294,6 @@ class Erc20Transaction(
         token_logo: typing.Union[MetaOapg.properties.token_logo, str, schemas.Unset] = schemas.unset,
         to_address_label: typing.Union[MetaOapg.properties.to_address_label, None, str, schemas.Unset] = schemas.unset,
         from_address_label: typing.Union[MetaOapg.properties.from_address_label, None, str, schemas.Unset] = schemas.unset,
-        verified_collection: typing.Union[MetaOapg.properties.verified_collection, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'Erc20Transaction':
@@ -305,6 +307,7 @@ class Erc20Transaction(
             transaction_index=transaction_index,
             log_index=log_index,
             possible_spam=possible_spam,
+            verified_contract=verified_contract,
             block_timestamp=block_timestamp,
             token_name=token_name,
             token_decimals=token_decimals,
@@ -316,7 +319,6 @@ class Erc20Transaction(
             token_logo=token_logo,
             to_address_label=to_address_label,
             from_address_label=from_address_label,
-            verified_collection=verified_collection,
             _configuration=_configuration,
             **kwargs,
         )

@@ -2,19 +2,22 @@ import json
 import typing
 import typing_extensions
 from .api_instance import get_api_instance
-from openapi_evm_api.paths.resolve_address_domain.get import RequestPathParams
+from openapi_evm_api.paths.resolve_address_domain.get import RequestQueryParams, RequestPathParams
 
 
 
+class QueryParams(RequestQueryParams):
+    pass
 
-
-class Params(RequestPathParams,):
+class Params(QueryParams,RequestPathParams,):
     pass
 
 def resolve_address_to_domain(api_key: str, params: Params):
     api_instance = get_api_instance(api_key, params)
+    query_params: typing.Any = {k: v for k, v in params.items() if k in RequestQueryParams.__annotations__.keys()}
     path_params: typing.Any = {k: v for k, v in params.items() if k in RequestPathParams.__annotations__.keys()}
     api_response = api_instance.resolve_address_to_domain(
+        query_params=query_params,
         path_params=path_params,
         accept_content_types=(
             'application/json; charset=utf-8',

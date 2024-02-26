@@ -54,6 +54,7 @@ class Erc20Price(
             exchangeName = schemas.StrSchema
             tokenAddress = schemas.StrSchema
             toBlock = schemas.StrSchema
+            verifiedContract = schemas.BoolSchema
             __annotations__ = {
                 "usdPrice": usdPrice,
                 "tokenName": tokenName,
@@ -67,6 +68,7 @@ class Erc20Price(
                 "exchangeName": exchangeName,
                 "tokenAddress": tokenAddress,
                 "toBlock": toBlock,
+                "verifiedContract": verifiedContract,
             }
 
     
@@ -109,9 +111,12 @@ class Erc20Price(
     def __getitem__(self, name: typing_extensions.Literal["toBlock"]) -> MetaOapg.properties.toBlock: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["verifiedContract"]) -> MetaOapg.properties.verifiedContract: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["usdPrice", "tokenName", "tokenSymbol", "tokenLogo", "tokenDecimals", "nativePrice", "usdPriceFormatted", "24hrPercentChange", "exchangeAddress", "exchangeName", "tokenAddress", "toBlock", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["usdPrice", "tokenName", "tokenSymbol", "tokenLogo", "tokenDecimals", "nativePrice", "usdPriceFormatted", "24hrPercentChange", "exchangeAddress", "exchangeName", "tokenAddress", "toBlock", "verifiedContract", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -153,9 +158,12 @@ class Erc20Price(
     def get_item_oapg(self, name: typing_extensions.Literal["toBlock"]) -> typing.Union[MetaOapg.properties.toBlock, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["verifiedContract"]) -> typing.Union[MetaOapg.properties.verifiedContract, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["usdPrice", "tokenName", "tokenSymbol", "tokenLogo", "tokenDecimals", "nativePrice", "usdPriceFormatted", "24hrPercentChange", "exchangeAddress", "exchangeName", "tokenAddress", "toBlock", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["usdPrice", "tokenName", "tokenSymbol", "tokenLogo", "tokenDecimals", "nativePrice", "usdPriceFormatted", "24hrPercentChange", "exchangeAddress", "exchangeName", "tokenAddress", "toBlock", "verifiedContract", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -173,6 +181,7 @@ class Erc20Price(
         exchangeName: typing.Union[MetaOapg.properties.exchangeName, str, schemas.Unset] = schemas.unset,
         tokenAddress: typing.Union[MetaOapg.properties.tokenAddress, str, schemas.Unset] = schemas.unset,
         toBlock: typing.Union[MetaOapg.properties.toBlock, str, schemas.Unset] = schemas.unset,
+        verifiedContract: typing.Union[MetaOapg.properties.verifiedContract, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'Erc20Price':
@@ -190,6 +199,7 @@ class Erc20Price(
             exchangeName=exchangeName,
             tokenAddress=tokenAddress,
             toBlock=toBlock,
+            verifiedContract=verifiedContract,
             _configuration=_configuration,
             **kwargs,
         )

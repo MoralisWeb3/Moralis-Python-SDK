@@ -2,6 +2,7 @@ from .get_multiple_token_prices import get_multiple_token_prices
 from .get_token_allowance import get_token_allowance
 from .get_token_metadata import get_token_metadata
 from .get_token_metadata_by_symbol import get_token_metadata_by_symbol
+from .get_token_pair_ohlc import get_token_pair_ohlc
 from .get_token_price import get_token_price
 from .get_token_stats import get_token_stats
 from .get_token_transfers import get_token_transfers
