@@ -178,6 +178,14 @@ class ChainList(
         return cls("0x14a33")
     
     @schemas.classproperty
+    def BASE_SEPOLIA(cls):
+        return cls("base sepolia")
+    
+    @schemas.classproperty
+    def X14A34(cls):
+        return cls("0x14a34")
+    
+    @schemas.classproperty
     def OPTIMISM(cls):
         return cls("optimism")
     

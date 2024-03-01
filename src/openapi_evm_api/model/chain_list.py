@@ -72,6 +72,8 @@ class ChainList(
             "0x2105": "X2105",
             "base testnet": "BASE_TESTNET",
             "0x14a33": "X14A33",
+            "base sepolia": "BASE_SEPOLIA",
+            "0x14a34": "X14A34",
             "optimism": "OPTIMISM",
             "0xa": "XA",
         }
@@ -219,6 +221,14 @@ class ChainList(
     @schemas.classproperty
     def X14A33(cls):
         return cls("0x14a33")
+    
+    @schemas.classproperty
+    def BASE_SEPOLIA(cls):
+        return cls("base sepolia")
+    
+    @schemas.classproperty
+    def X14A34(cls):
+        return cls("0x14a34")
     
     @schemas.classproperty
     def OPTIMISM(cls):
