@@ -47,21 +47,21 @@ class MarketDataTopCryptoCurrenciesByMarketCap(
                     "circulating_supply",
                     "symbol",
                     "total_volume",
+                    "market_cap_24hr_percent_change",
                     "total_supply",
                     "market_cap_rank",
+                    "usd_price_24hr_percent_change",
+                    "usd_price_24hr_low",
                     "market_cap_usd",
-                    "market_cap_24h_change",
-                    "usd_price_24h_percent_change",
+                    "usd_price_24hr_high",
+                    "usd_price_24hr_change",
                     "usd_price_ath",
                     "ath_percent_change",
-                    "usd_price_24h_low",
-                    "market_cap_24h_percent_change",
                     "max_supply",
                     "name",
-                    "usd_price_24h_high",
                     "logo",
                     "rank",
-                    "usd_price_24h_change",
+                    "market_cap_24hr_change",
                     "ath_date",
                 }
                 
@@ -74,17 +74,20 @@ class MarketDataTopCryptoCurrenciesByMarketCap(
                     max_supply = schemas.StrSchema
                     market_cap_usd = schemas.StrSchema
                     market_cap_rank = schemas.StrSchema
-                    market_cap_24h_change = schemas.StrSchema
-                    market_cap_24h_percent_change = schemas.StrSchema
+                    market_cap_24hr_change = schemas.StrSchema
+                    market_cap_24hr_percent_change = schemas.StrSchema
                     total_volume = schemas.StrSchema
-                    price_usd = schemas.StrSchema
-                    usd_price_24h_high = schemas.StrSchema
-                    usd_price_24h_low = schemas.StrSchema
-                    usd_price_24h_change = schemas.StrSchema
-                    usd_price_24h_percent_change = schemas.StrSchema
+                    usd_price = schemas.StrSchema
+                    usd_price_24hr_high = schemas.StrSchema
+                    usd_price_24hr_low = schemas.StrSchema
+                    usd_price_24hr_change = schemas.StrSchema
+                    usd_price_24hr_percent_change = schemas.StrSchema
                     usd_price_ath = schemas.StrSchema
                     ath_percent_change = schemas.StrSchema
                     ath_date = schemas.StrSchema
+                    usd_price_1hr_percent_change = schemas.StrSchema
+                    usd_price_7d_percent_change = schemas.StrSchema
+                    usd_price_30d_percent_change = schemas.StrSchema
                     __annotations__ = {
                         "symbol": symbol,
                         "name": name,
@@ -94,39 +97,42 @@ class MarketDataTopCryptoCurrenciesByMarketCap(
                         "max_supply": max_supply,
                         "market_cap_usd": market_cap_usd,
                         "market_cap_rank": market_cap_rank,
-                        "market_cap_24h_change": market_cap_24h_change,
-                        "market_cap_24h_percent_change": market_cap_24h_percent_change,
+                        "market_cap_24hr_change": market_cap_24hr_change,
+                        "market_cap_24hr_percent_change": market_cap_24hr_percent_change,
                         "total_volume": total_volume,
-                        "price_usd": price_usd,
-                        "usd_price_24h_high": usd_price_24h_high,
-                        "usd_price_24h_low": usd_price_24h_low,
-                        "usd_price_24h_change": usd_price_24h_change,
-                        "usd_price_24h_percent_change": usd_price_24h_percent_change,
+                        "usd_price": usd_price,
+                        "usd_price_24hr_high": usd_price_24hr_high,
+                        "usd_price_24hr_low": usd_price_24hr_low,
+                        "usd_price_24hr_change": usd_price_24hr_change,
+                        "usd_price_24hr_percent_change": usd_price_24hr_percent_change,
                         "usd_price_ath": usd_price_ath,
                         "ath_percent_change": ath_percent_change,
                         "ath_date": ath_date,
+                        "usd_price_1hr_percent_change": usd_price_1hr_percent_change,
+                        "usd_price_7d_percent_change": usd_price_7d_percent_change,
+                        "usd_price_30d_percent_change": usd_price_30d_percent_change,
                     }
         
             
-            price_usd: MetaOapg.properties.price_usd
+            price_usd: schemas.AnyTypeSchema
             circulating_supply: MetaOapg.properties.circulating_supply
             symbol: MetaOapg.properties.symbol
             total_volume: MetaOapg.properties.total_volume
+            market_cap_24hr_percent_change: MetaOapg.properties.market_cap_24hr_percent_change
             total_supply: MetaOapg.properties.total_supply
             market_cap_rank: MetaOapg.properties.market_cap_rank
+            usd_price_24hr_percent_change: MetaOapg.properties.usd_price_24hr_percent_change
+            usd_price_24hr_low: MetaOapg.properties.usd_price_24hr_low
             market_cap_usd: MetaOapg.properties.market_cap_usd
-            market_cap_24h_change: MetaOapg.properties.market_cap_24h_change
-            usd_price_24h_percent_change: MetaOapg.properties.usd_price_24h_percent_change
+            usd_price_24hr_high: MetaOapg.properties.usd_price_24hr_high
+            usd_price_24hr_change: MetaOapg.properties.usd_price_24hr_change
             usd_price_ath: MetaOapg.properties.usd_price_ath
             ath_percent_change: MetaOapg.properties.ath_percent_change
-            usd_price_24h_low: MetaOapg.properties.usd_price_24h_low
-            market_cap_24h_percent_change: MetaOapg.properties.market_cap_24h_percent_change
             max_supply: MetaOapg.properties.max_supply
             name: MetaOapg.properties.name
-            usd_price_24h_high: MetaOapg.properties.usd_price_24h_high
             logo: MetaOapg.properties.logo
             rank: schemas.AnyTypeSchema
-            usd_price_24h_change: MetaOapg.properties.usd_price_24h_change
+            market_cap_24hr_change: MetaOapg.properties.market_cap_24hr_change
             ath_date: MetaOapg.properties.ath_date
             
             @typing.overload
@@ -154,28 +160,28 @@ class MarketDataTopCryptoCurrenciesByMarketCap(
             def __getitem__(self, name: typing_extensions.Literal["market_cap_rank"]) -> MetaOapg.properties.market_cap_rank: ...
             
             @typing.overload
-            def __getitem__(self, name: typing_extensions.Literal["market_cap_24h_change"]) -> MetaOapg.properties.market_cap_24h_change: ...
+            def __getitem__(self, name: typing_extensions.Literal["market_cap_24hr_change"]) -> MetaOapg.properties.market_cap_24hr_change: ...
             
             @typing.overload
-            def __getitem__(self, name: typing_extensions.Literal["market_cap_24h_percent_change"]) -> MetaOapg.properties.market_cap_24h_percent_change: ...
+            def __getitem__(self, name: typing_extensions.Literal["market_cap_24hr_percent_change"]) -> MetaOapg.properties.market_cap_24hr_percent_change: ...
             
             @typing.overload
             def __getitem__(self, name: typing_extensions.Literal["total_volume"]) -> MetaOapg.properties.total_volume: ...
             
             @typing.overload
-            def __getitem__(self, name: typing_extensions.Literal["price_usd"]) -> MetaOapg.properties.price_usd: ...
+            def __getitem__(self, name: typing_extensions.Literal["usd_price"]) -> MetaOapg.properties.usd_price: ...
             
             @typing.overload
-            def __getitem__(self, name: typing_extensions.Literal["usd_price_24h_high"]) -> MetaOapg.properties.usd_price_24h_high: ...
+            def __getitem__(self, name: typing_extensions.Literal["usd_price_24hr_high"]) -> MetaOapg.properties.usd_price_24hr_high: ...
             
             @typing.overload
-            def __getitem__(self, name: typing_extensions.Literal["usd_price_24h_low"]) -> MetaOapg.properties.usd_price_24h_low: ...
+            def __getitem__(self, name: typing_extensions.Literal["usd_price_24hr_low"]) -> MetaOapg.properties.usd_price_24hr_low: ...
             
             @typing.overload
-            def __getitem__(self, name: typing_extensions.Literal["usd_price_24h_change"]) -> MetaOapg.properties.usd_price_24h_change: ...
+            def __getitem__(self, name: typing_extensions.Literal["usd_price_24hr_change"]) -> MetaOapg.properties.usd_price_24hr_change: ...
             
             @typing.overload
-            def __getitem__(self, name: typing_extensions.Literal["usd_price_24h_percent_change"]) -> MetaOapg.properties.usd_price_24h_percent_change: ...
+            def __getitem__(self, name: typing_extensions.Literal["usd_price_24hr_percent_change"]) -> MetaOapg.properties.usd_price_24hr_percent_change: ...
             
             @typing.overload
             def __getitem__(self, name: typing_extensions.Literal["usd_price_ath"]) -> MetaOapg.properties.usd_price_ath: ...
@@ -187,9 +193,18 @@ class MarketDataTopCryptoCurrenciesByMarketCap(
             def __getitem__(self, name: typing_extensions.Literal["ath_date"]) -> MetaOapg.properties.ath_date: ...
             
             @typing.overload
+            def __getitem__(self, name: typing_extensions.Literal["usd_price_1hr_percent_change"]) -> MetaOapg.properties.usd_price_1hr_percent_change: ...
+            
+            @typing.overload
+            def __getitem__(self, name: typing_extensions.Literal["usd_price_7d_percent_change"]) -> MetaOapg.properties.usd_price_7d_percent_change: ...
+            
+            @typing.overload
+            def __getitem__(self, name: typing_extensions.Literal["usd_price_30d_percent_change"]) -> MetaOapg.properties.usd_price_30d_percent_change: ...
+            
+            @typing.overload
             def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
             
-            def __getitem__(self, name: typing.Union[typing_extensions.Literal["symbol", "name", "logo", "circulating_supply", "total_supply", "max_supply", "market_cap_usd", "market_cap_rank", "market_cap_24h_change", "market_cap_24h_percent_change", "total_volume", "price_usd", "usd_price_24h_high", "usd_price_24h_low", "usd_price_24h_change", "usd_price_24h_percent_change", "usd_price_ath", "ath_percent_change", "ath_date", ], str]):
+            def __getitem__(self, name: typing.Union[typing_extensions.Literal["symbol", "name", "logo", "circulating_supply", "total_supply", "max_supply", "market_cap_usd", "market_cap_rank", "market_cap_24hr_change", "market_cap_24hr_percent_change", "total_volume", "usd_price", "usd_price_24hr_high", "usd_price_24hr_low", "usd_price_24hr_change", "usd_price_24hr_percent_change", "usd_price_ath", "ath_percent_change", "ath_date", "usd_price_1hr_percent_change", "usd_price_7d_percent_change", "usd_price_30d_percent_change", ], str]):
                 # dict_instance[name] accessor
                 return super().__getitem__(name)
             
@@ -219,28 +234,28 @@ class MarketDataTopCryptoCurrenciesByMarketCap(
             def get_item_oapg(self, name: typing_extensions.Literal["market_cap_rank"]) -> MetaOapg.properties.market_cap_rank: ...
             
             @typing.overload
-            def get_item_oapg(self, name: typing_extensions.Literal["market_cap_24h_change"]) -> MetaOapg.properties.market_cap_24h_change: ...
+            def get_item_oapg(self, name: typing_extensions.Literal["market_cap_24hr_change"]) -> MetaOapg.properties.market_cap_24hr_change: ...
             
             @typing.overload
-            def get_item_oapg(self, name: typing_extensions.Literal["market_cap_24h_percent_change"]) -> MetaOapg.properties.market_cap_24h_percent_change: ...
+            def get_item_oapg(self, name: typing_extensions.Literal["market_cap_24hr_percent_change"]) -> MetaOapg.properties.market_cap_24hr_percent_change: ...
             
             @typing.overload
             def get_item_oapg(self, name: typing_extensions.Literal["total_volume"]) -> MetaOapg.properties.total_volume: ...
             
             @typing.overload
-            def get_item_oapg(self, name: typing_extensions.Literal["price_usd"]) -> MetaOapg.properties.price_usd: ...
+            def get_item_oapg(self, name: typing_extensions.Literal["usd_price"]) -> typing.Union[MetaOapg.properties.usd_price, schemas.Unset]: ...
             
             @typing.overload
-            def get_item_oapg(self, name: typing_extensions.Literal["usd_price_24h_high"]) -> MetaOapg.properties.usd_price_24h_high: ...
+            def get_item_oapg(self, name: typing_extensions.Literal["usd_price_24hr_high"]) -> MetaOapg.properties.usd_price_24hr_high: ...
             
             @typing.overload
-            def get_item_oapg(self, name: typing_extensions.Literal["usd_price_24h_low"]) -> MetaOapg.properties.usd_price_24h_low: ...
+            def get_item_oapg(self, name: typing_extensions.Literal["usd_price_24hr_low"]) -> MetaOapg.properties.usd_price_24hr_low: ...
             
             @typing.overload
-            def get_item_oapg(self, name: typing_extensions.Literal["usd_price_24h_change"]) -> MetaOapg.properties.usd_price_24h_change: ...
+            def get_item_oapg(self, name: typing_extensions.Literal["usd_price_24hr_change"]) -> MetaOapg.properties.usd_price_24hr_change: ...
             
             @typing.overload
-            def get_item_oapg(self, name: typing_extensions.Literal["usd_price_24h_percent_change"]) -> MetaOapg.properties.usd_price_24h_percent_change: ...
+            def get_item_oapg(self, name: typing_extensions.Literal["usd_price_24hr_percent_change"]) -> MetaOapg.properties.usd_price_24hr_percent_change: ...
             
             @typing.overload
             def get_item_oapg(self, name: typing_extensions.Literal["usd_price_ath"]) -> MetaOapg.properties.usd_price_ath: ...
@@ -252,35 +267,48 @@ class MarketDataTopCryptoCurrenciesByMarketCap(
             def get_item_oapg(self, name: typing_extensions.Literal["ath_date"]) -> MetaOapg.properties.ath_date: ...
             
             @typing.overload
+            def get_item_oapg(self, name: typing_extensions.Literal["usd_price_1hr_percent_change"]) -> typing.Union[MetaOapg.properties.usd_price_1hr_percent_change, schemas.Unset]: ...
+            
+            @typing.overload
+            def get_item_oapg(self, name: typing_extensions.Literal["usd_price_7d_percent_change"]) -> typing.Union[MetaOapg.properties.usd_price_7d_percent_change, schemas.Unset]: ...
+            
+            @typing.overload
+            def get_item_oapg(self, name: typing_extensions.Literal["usd_price_30d_percent_change"]) -> typing.Union[MetaOapg.properties.usd_price_30d_percent_change, schemas.Unset]: ...
+            
+            @typing.overload
             def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
             
-            def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["symbol", "name", "logo", "circulating_supply", "total_supply", "max_supply", "market_cap_usd", "market_cap_rank", "market_cap_24h_change", "market_cap_24h_percent_change", "total_volume", "price_usd", "usd_price_24h_high", "usd_price_24h_low", "usd_price_24h_change", "usd_price_24h_percent_change", "usd_price_ath", "ath_percent_change", "ath_date", ], str]):
+            def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["symbol", "name", "logo", "circulating_supply", "total_supply", "max_supply", "market_cap_usd", "market_cap_rank", "market_cap_24hr_change", "market_cap_24hr_percent_change", "total_volume", "usd_price", "usd_price_24hr_high", "usd_price_24hr_low", "usd_price_24hr_change", "usd_price_24hr_percent_change", "usd_price_ath", "ath_percent_change", "ath_date", "usd_price_1hr_percent_change", "usd_price_7d_percent_change", "usd_price_30d_percent_change", ], str]):
                 return super().get_item_oapg(name)
             
         
             def __new__(
                 cls,
                 *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
-                price_usd: typing.Union[MetaOapg.properties.price_usd, str, ],
+                price_usd: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
                 circulating_supply: typing.Union[MetaOapg.properties.circulating_supply, str, ],
                 symbol: typing.Union[MetaOapg.properties.symbol, str, ],
                 total_volume: typing.Union[MetaOapg.properties.total_volume, str, ],
+                market_cap_24hr_percent_change: typing.Union[MetaOapg.properties.market_cap_24hr_percent_change, str, ],
                 total_supply: typing.Union[MetaOapg.properties.total_supply, str, ],
                 market_cap_rank: typing.Union[MetaOapg.properties.market_cap_rank, str, ],
+                usd_price_24hr_percent_change: typing.Union[MetaOapg.properties.usd_price_24hr_percent_change, str, ],
+                usd_price_24hr_low: typing.Union[MetaOapg.properties.usd_price_24hr_low, str, ],
                 market_cap_usd: typing.Union[MetaOapg.properties.market_cap_usd, str, ],
-                market_cap_24h_change: typing.Union[MetaOapg.properties.market_cap_24h_change, str, ],
-                usd_price_24h_percent_change: typing.Union[MetaOapg.properties.usd_price_24h_percent_change, str, ],
+                usd_price_24hr_high: typing.Union[MetaOapg.properties.usd_price_24hr_high, str, ],
+                usd_price_24hr_change: typing.Union[MetaOapg.properties.usd_price_24hr_change, str, ],
                 usd_price_ath: typing.Union[MetaOapg.properties.usd_price_ath, str, ],
                 ath_percent_change: typing.Union[MetaOapg.properties.ath_percent_change, str, ],
-                usd_price_24h_low: typing.Union[MetaOapg.properties.usd_price_24h_low, str, ],
-                market_cap_24h_percent_change: typing.Union[MetaOapg.properties.market_cap_24h_percent_change, str, ],
                 max_supply: typing.Union[MetaOapg.properties.max_supply, str, ],
                 name: typing.Union[MetaOapg.properties.name, str, ],
-                usd_price_24h_high: typing.Union[MetaOapg.properties.usd_price_24h_high, str, ],
                 logo: typing.Union[MetaOapg.properties.logo, str, ],
                 rank: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
-                usd_price_24h_change: typing.Union[MetaOapg.properties.usd_price_24h_change, str, ],
+                market_cap_24hr_change: typing.Union[MetaOapg.properties.market_cap_24hr_change, str, ],
                 ath_date: typing.Union[MetaOapg.properties.ath_date, str, ],
+                usd_price: typing.Union[MetaOapg.properties.usd_price, str, schemas.Unset] = schemas.unset,
+                usd_price_1hr_percent_change: typing.Union[MetaOapg.properties.usd_price_1hr_percent_change, str, schemas.Unset] = schemas.unset,
+                usd_price_7d_percent_change: typing.Union[MetaOapg.properties.usd_price_7d_percent_change, str, schemas.Unset] = schemas.unset,
+                usd_price_30d_percent_change: typing.Union[MetaOapg.properties.usd_price_30d_percent_change, str, schemas.Unset] = schemas.unset,
                 _configuration: typing.Optional[schemas.Configuration] = None,
                 **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
             ) -> 'items':
@@ -291,22 +319,26 @@ class MarketDataTopCryptoCurrenciesByMarketCap(
                     circulating_supply=circulating_supply,
                     symbol=symbol,
                     total_volume=total_volume,
+                    market_cap_24hr_percent_change=market_cap_24hr_percent_change,
                     total_supply=total_supply,
                     market_cap_rank=market_cap_rank,
+                    usd_price_24hr_percent_change=usd_price_24hr_percent_change,
+                    usd_price_24hr_low=usd_price_24hr_low,
                     market_cap_usd=market_cap_usd,
-                    market_cap_24h_change=market_cap_24h_change,
-                    usd_price_24h_percent_change=usd_price_24h_percent_change,
+                    usd_price_24hr_high=usd_price_24hr_high,
+                    usd_price_24hr_change=usd_price_24hr_change,
                     usd_price_ath=usd_price_ath,
                     ath_percent_change=ath_percent_change,
-                    usd_price_24h_low=usd_price_24h_low,
-                    market_cap_24h_percent_change=market_cap_24h_percent_change,
                     max_supply=max_supply,
                     name=name,
-                    usd_price_24h_high=usd_price_24h_high,
                     logo=logo,
                     rank=rank,
-                    usd_price_24h_change=usd_price_24h_change,
+                    market_cap_24hr_change=market_cap_24hr_change,
                     ath_date=ath_date,
+                    usd_price=usd_price,
+                    usd_price_1hr_percent_change=usd_price_1hr_percent_change,
+                    usd_price_7d_percent_change=usd_price_7d_percent_change,
+                    usd_price_30d_percent_change=usd_price_30d_percent_change,
                     _configuration=_configuration,
                     **kwargs,
                 )
