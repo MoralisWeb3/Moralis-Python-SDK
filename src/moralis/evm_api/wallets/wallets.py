@@ -1,4 +1,5 @@
 from .get_wallet_active_chains import get_wallet_active_chains
+from .get_wallet_history import get_wallet_history
 from .get_wallet_net_worth import get_wallet_net_worth
 from .get_wallet_stats import get_wallet_stats
 from .get_wallet_token_balances_price import get_wallet_token_balances_price

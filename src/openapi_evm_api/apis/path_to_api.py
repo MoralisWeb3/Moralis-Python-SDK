@@ -29,6 +29,7 @@ from openapi_evm_api.apis.paths.erc20_address_allowance import Erc20AddressAllow
 from openapi_evm_api.apis.paths.erc20_address_transfers import Erc20AddressTransfers
 from openapi_evm_api.apis.paths.address_balance import AddressBalance
 from openapi_evm_api.apis.paths.wallets_balances import WalletsBalances
+from openapi_evm_api.apis.paths.wallets_address_history import WalletsAddressHistory
 from openapi_evm_api.apis.paths.wallets_address_tokens import WalletsAddressTokens
 from openapi_evm_api.apis.paths.wallets_address_net_worth import WalletsAddressNetWorth
 from openapi_evm_api.apis.paths.address import Address
@@ -107,6 +108,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.ERC20_ADDRESS_TRANSFERS: Erc20AddressTransfers,
         PathValues.ADDRESS_BALANCE: AddressBalance,
         PathValues.WALLETS_BALANCES: WalletsBalances,
+        PathValues.WALLETS_ADDRESS_HISTORY: WalletsAddressHistory,
         PathValues.WALLETS_ADDRESS_TOKENS: WalletsAddressTokens,
         PathValues.WALLETS_ADDRESS_NETWORTH: WalletsAddressNetWorth,
         PathValues.ADDRESS: Address,
@@ -186,6 +188,7 @@ path_to_api = PathToApi(
         PathValues.ERC20_ADDRESS_TRANSFERS: Erc20AddressTransfers,
         PathValues.ADDRESS_BALANCE: AddressBalance,
         PathValues.WALLETS_BALANCES: WalletsBalances,
+        PathValues.WALLETS_ADDRESS_HISTORY: WalletsAddressHistory,
         PathValues.WALLETS_ADDRESS_TOKENS: WalletsAddressTokens,
         PathValues.WALLETS_ADDRESS_NETWORTH: WalletsAddressNetWorth,
         PathValues.ADDRESS: Address,

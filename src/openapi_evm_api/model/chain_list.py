@@ -76,6 +76,8 @@ class ChainList(
             "0x14a34": "X14A34",
             "optimism": "OPTIMISM",
             "0xa": "XA",
+            "holesky": "HOLESKY",
+            "0x4268": "X4268",
         }
     
     @schemas.classproperty
@@ -237,3 +239,11 @@ class ChainList(
     @schemas.classproperty
     def XA(cls):
         return cls("0xa")
+    
+    @schemas.classproperty
+    def HOLESKY(cls):
+        return cls("holesky")
+    
+    @schemas.classproperty
+    def X4268(cls):
+        return cls("0x4268")

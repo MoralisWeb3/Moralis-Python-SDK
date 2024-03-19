@@ -34,6 +34,7 @@ class PathValues(str, enum.Enum):
     ERC20_ADDRESS_TRANSFERS = "/erc20/{address}/transfers"
     ADDRESS_BALANCE = "/{address}/balance"
     WALLETS_BALANCES = "/wallets/balances"
+    WALLETS_ADDRESS_HISTORY = "/wallets/{address}/history"
     WALLETS_ADDRESS_TOKENS = "/wallets/{address}/tokens"
     WALLETS_ADDRESS_NETWORTH = "/wallets/{address}/net-worth"
     ADDRESS = "/{address}"

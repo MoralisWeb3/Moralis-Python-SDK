@@ -28,6 +28,7 @@ from openapi_evm_api.model.discovery_supported_time_frames import DiscoverySuppo
 from openapi_evm_api.model.discovery_token import DiscoveryToken
 from openapi_evm_api.model.discovery_token_links import DiscoveryTokenLinks
 from openapi_evm_api.model.discovery_tokens import DiscoveryTokens
+from openapi_evm_api.model.e_transaction_category import ETransactionCategory
 from openapi_evm_api.model.endpoint_weights import EndpointWeights
 from openapi_evm_api.model.ens import Ens
 from openapi_evm_api.model.erc20_allowance import Erc20Allowance
@@ -101,5 +102,7 @@ from openapi_evm_api.model.transaction_timestamp import TransactionTimestamp
 from openapi_evm_api.model.unstoppable_domain import UnstoppableDomain
 from openapi_evm_api.model.wallet_active_chain import WalletActiveChain
 from openapi_evm_api.model.wallet_active_chains import WalletActiveChains
+from openapi_evm_api.model.wallet_history import WalletHistory
+from openapi_evm_api.model.wallet_history_transaction import WalletHistoryTransaction
 from openapi_evm_api.model.wallet_stat import WalletStat
 from openapi_evm_api.model.web3version import Web3version
