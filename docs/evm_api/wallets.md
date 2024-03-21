@@ -66,6 +66,7 @@ params = {
     "from_date": "", 
     "to_date": "", 
     "internal_transactions": True, 
+    "include_input_data ": True, 
     "nft_metadata": True, 
     "cursor": "", 
     "order": "DESC", 
@@ -92,6 +93,7 @@ print(result)
 | from_date | str | The start date from which to get the transactions (format in seconds or datestring accepted by momentjs)<br/>* Provide the param 'from_block' or 'from_date'<br/>* If 'from_date' and 'from_block' are provided, 'from_block' will be used.<br/> |  |  | "" |
 | to_date | str | Get the transactions up to this date (format in seconds or datestring accepted by momentjs)<br/>* Provide the param 'to_block' or 'to_date'<br/>* If 'to_date' and 'to_block' are provided, 'to_block' will be used.<br/> |  |  | "" |
 | internal_transactions | bool | If the result should contain the internal transactions. |  |  | True |
+| include_input_data  | bool | Set the input data from the result |  | False | True |
 | nft_metadata | bool | If the result should contain the nft metadata. |  |  | True |
 | cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
 | order | enum[str]: <br/>- "ASC"<br/>- "DESC" | The order of the result, in ascending (ASC) or descending (DESC) |  | "DESC" | "DESC" |
