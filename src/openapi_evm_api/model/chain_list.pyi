@@ -192,3 +192,11 @@ class ChainList(
     @schemas.classproperty
     def XA(cls):
         return cls("0xa")
+    
+    @schemas.classproperty
+    def HOLESKY(cls):
+        return cls("holesky")
+    
+    @schemas.classproperty
+    def X4268(cls):
+        return cls("0x4268")

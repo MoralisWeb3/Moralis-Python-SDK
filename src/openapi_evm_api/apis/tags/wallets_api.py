@@ -10,6 +10,7 @@
 """
 
 from openapi_evm_api.paths.wallets_address_chains.get import GetWalletActiveChains
+from openapi_evm_api.paths.wallets_address_history.get import GetWalletHistory
 from openapi_evm_api.paths.wallets_address_net_worth.get import GetWalletNetWorth
 from openapi_evm_api.paths.wallets_address_stats.get import GetWalletStats
 from openapi_evm_api.paths.wallets_address_tokens.get import GetWalletTokenBalancesPrice
@@ -17,6 +18,7 @@ from openapi_evm_api.paths.wallets_address_tokens.get import GetWalletTokenBalan
 
 class WalletsApi(
     GetWalletActiveChains,
+    GetWalletHistory,
     GetWalletNetWorth,
     GetWalletStats,
     GetWalletTokenBalancesPrice,
