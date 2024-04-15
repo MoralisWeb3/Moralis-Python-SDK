@@ -104,3 +104,11 @@ class DiscoveryApiChainsList(
     @schemas.classproperty
     def X171(cls):
         return cls("0x171")
+    
+    @schemas.classproperty
+    def BASE(cls):
+        return cls("base")
+    
+    @schemas.classproperty
+    def X2105(cls):
+        return cls("0x2105")

@@ -21,6 +21,7 @@ from openapi_evm_api.apis.paths.nft_address_token_id_metadata_resync import NftA
 from openapi_evm_api.apis.paths.nft_address_lowestprice import NftAddressLowestprice
 from openapi_evm_api.apis.paths.erc20_address_price import Erc20AddressPrice
 from openapi_evm_api.apis.paths.erc20_prices import Erc20Prices
+from openapi_evm_api.apis.paths.erc20_token_address_owners import Erc20TokenAddressOwners
 from openapi_evm_api.apis.paths.address_erc20 import AddressErc20
 from openapi_evm_api.apis.paths.address_erc20_transfers import AddressErc20Transfers
 from openapi_evm_api.apis.paths.erc20_metadata import Erc20Metadata
@@ -100,6 +101,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.NFT_ADDRESS_LOWESTPRICE: NftAddressLowestprice,
         PathValues.ERC20_ADDRESS_PRICE: Erc20AddressPrice,
         PathValues.ERC20_PRICES: Erc20Prices,
+        PathValues.ERC20_TOKEN_ADDRESS_OWNERS: Erc20TokenAddressOwners,
         PathValues.ADDRESS_ERC20: AddressErc20,
         PathValues.ADDRESS_ERC20_TRANSFERS: AddressErc20Transfers,
         PathValues.ERC20_METADATA: Erc20Metadata,
@@ -180,6 +182,7 @@ path_to_api = PathToApi(
         PathValues.NFT_ADDRESS_LOWESTPRICE: NftAddressLowestprice,
         PathValues.ERC20_ADDRESS_PRICE: Erc20AddressPrice,
         PathValues.ERC20_PRICES: Erc20Prices,
+        PathValues.ERC20_TOKEN_ADDRESS_OWNERS: Erc20TokenAddressOwners,
         PathValues.ADDRESS_ERC20: AddressErc20,
         PathValues.ADDRESS_ERC20_TRANSFERS: AddressErc20Transfers,
         PathValues.ERC20_METADATA: Erc20Metadata,

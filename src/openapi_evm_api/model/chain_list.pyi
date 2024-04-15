@@ -200,3 +200,19 @@ class ChainList(
     @schemas.classproperty
     def X4268(cls):
         return cls("0x4268")
+    
+    @schemas.classproperty
+    def POLYGON_AMOY(cls):
+        return cls("polygon amoy")
+    
+    @schemas.classproperty
+    def X13882(cls):
+        return cls("0x13882")
+    
+    @schemas.classproperty
+    def LINEA(cls):
+        return cls("linea")
+    
+    @schemas.classproperty
+    def XE708(cls):
+        return cls("0xe708")

@@ -52,6 +52,7 @@ class ETransactionCategory(
             "airdrop": "AIRDROP",
             "mint": "MINT",
             "burn": "BURN",
+            "borrow": "BORROW",
             "contract interaction": "CONTRACT_INTERACTION",
         }
     
@@ -110,6 +111,10 @@ class ETransactionCategory(
     @schemas.classproperty
     def BURN(cls):
         return cls("burn")
+    
+    @schemas.classproperty
+    def BORROW(cls):
+        return cls("borrow")
     
     @schemas.classproperty
     def CONTRACT_INTERACTION(cls):

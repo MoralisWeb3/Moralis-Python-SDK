@@ -37,6 +37,8 @@ from openapi_evm_api.model.erc20_price import Erc20Price
 from openapi_evm_api.model.erc20_token_balance import Erc20TokenBalance
 from openapi_evm_api.model.erc20_token_balance_with_price import Erc20TokenBalanceWithPrice
 from openapi_evm_api.model.erc20_token_balance_with_price_result import Erc20TokenBalanceWithPriceResult
+from openapi_evm_api.model.erc20_token_owner import Erc20TokenOwner
+from openapi_evm_api.model.erc20_token_owner_collection import Erc20TokenOwnerCollection
 from openapi_evm_api.model.erc20_token_stat import Erc20TokenStat
 from openapi_evm_api.model.erc20_transaction import Erc20Transaction
 from openapi_evm_api.model.erc20_transaction_collection import Erc20TransactionCollection
@@ -66,6 +68,7 @@ from openapi_evm_api.model.metadata_resync import MetadataResync
 from openapi_evm_api.model.native_balance import NativeBalance
 from openapi_evm_api.model.native_balances import NativeBalances
 from openapi_evm_api.model.native_erc20_price import NativeErc20Price
+from openapi_evm_api.model.native_transfer import NativeTransfer
 from openapi_evm_api.model.net_worth_result import NetWorthResult
 from openapi_evm_api.model.nft import Nft
 from openapi_evm_api.model.nft_collection import NftCollection
@@ -103,6 +106,8 @@ from openapi_evm_api.model.unstoppable_domain import UnstoppableDomain
 from openapi_evm_api.model.wallet_active_chain import WalletActiveChain
 from openapi_evm_api.model.wallet_active_chains import WalletActiveChains
 from openapi_evm_api.model.wallet_history import WalletHistory
+from openapi_evm_api.model.wallet_history_erc20_transfer import WalletHistoryErc20Transfer
+from openapi_evm_api.model.wallet_history_nft_transfer import WalletHistoryNftTransfer
 from openapi_evm_api.model.wallet_history_transaction import WalletHistoryTransaction
 from openapi_evm_api.model.wallet_stat import WalletStat
 from openapi_evm_api.model.web3version import Web3version
