@@ -92,5 +92,9 @@ class ETransactionCategory(
         return cls("burn")
     
     @schemas.classproperty
+    def BORROW(cls):
+        return cls("borrow")
+    
+    @schemas.classproperty
     def CONTRACT_INTERACTION(cls):
         return cls("contract interaction")

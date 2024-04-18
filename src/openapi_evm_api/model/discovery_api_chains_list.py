@@ -54,6 +54,8 @@ class DiscoveryApiChainsList(
             "0xa": "XA",
             "pulsechain": "PULSECHAIN",
             "0x171": "X171",
+            "base": "BASE",
+            "0x2105": "X2105",
         }
     
     @schemas.classproperty
@@ -127,3 +129,11 @@ class DiscoveryApiChainsList(
     @schemas.classproperty
     def X171(cls):
         return cls("0x171")
+    
+    @schemas.classproperty
+    def BASE(cls):
+        return cls("base")
+    
+    @schemas.classproperty
+    def X2105(cls):
+        return cls("0x2105")
