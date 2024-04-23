@@ -216,3 +216,27 @@ class ChainList(
     @schemas.classproperty
     def XE708(cls):
         return cls("0xe708")
+    
+    @schemas.classproperty
+    def MOONBEAM(cls):
+        return cls("moonbeam")
+    
+    @schemas.classproperty
+    def X504(cls):
+        return cls("0x504")
+    
+    @schemas.classproperty
+    def MOONRIVER(cls):
+        return cls("moonriver")
+    
+    @schemas.classproperty
+    def X505(cls):
+        return cls("0x505")
+    
+    @schemas.classproperty
+    def MOONBASE(cls):
+        return cls("moonbase")
+    
+    @schemas.classproperty
+    def X507(cls):
+        return cls("0x507")

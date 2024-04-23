@@ -82,6 +82,12 @@ class ChainList(
             "0x13882": "X13882",
             "linea": "LINEA",
             "0xe708": "XE708",
+            "moonbeam": "MOONBEAM",
+            "0x504": "X504",
+            "moonriver": "MOONRIVER",
+            "0x505": "X505",
+            "moonbase": "MOONBASE",
+            "0x507": "X507",
         }
     
     @schemas.classproperty
@@ -267,3 +273,27 @@ class ChainList(
     @schemas.classproperty
     def XE708(cls):
         return cls("0xe708")
+    
+    @schemas.classproperty
+    def MOONBEAM(cls):
+        return cls("moonbeam")
+    
+    @schemas.classproperty
+    def X504(cls):
+        return cls("0x504")
+    
+    @schemas.classproperty
+    def MOONRIVER(cls):
+        return cls("moonriver")
+    
+    @schemas.classproperty
+    def X505(cls):
+        return cls("0x505")
+    
+    @schemas.classproperty
+    def MOONBASE(cls):
+        return cls("moonbase")
+    
+    @schemas.classproperty
+    def X507(cls):
+        return cls("0x507")
