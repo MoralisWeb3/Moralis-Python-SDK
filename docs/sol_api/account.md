@@ -112,7 +112,7 @@ print(result)
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
 | network | enum[str]: <br/>- "mainnet"<br/>- "devnet" | The network to query | Yes | "mainnet" | "" |
-| address | str | The address of the token contract | Yes |  | "" |
+| address | str | The wallet address | Yes |  | "" |
 
 
 
