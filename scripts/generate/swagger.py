@@ -67,8 +67,9 @@ def overwrite_host_url(swagger_json: dict, overwrite_host: str | None = None):
 
 def fix_swagger_for_generator(swagger_json: dict):
     # The generator doesn't support enums with number at the start (like "10m", "30m", etc)
-    if ('ohlcIntervalList' in swagger_json['components']['schemas']):
-        del swagger_json['components']['schemas']['ohlcIntervalList']['enum']
+    #if ('ohlcIntervalList' in swagger_json['components']['schemas']):
+        #del swagger_json['components']['schemas']['ohlcIntervalList']['enum']
+    pass
 
 def remove_invalid_attributes(swagger_json: dict):
     # 'default' is added in streams, but it's an invalid openapi specification
