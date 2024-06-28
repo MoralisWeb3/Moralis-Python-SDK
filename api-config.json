@@ -28,7 +28,7 @@
     },
     {
       "name": "aptos_api",
-      "swagger": "https://mainnet-aptos-api.moralis.io/swagger-json",
+      "swagger": "./local-swaggers/aptos.json",
       "security_key": "bearer",
       "skip": false,
       "sub_networks": {
