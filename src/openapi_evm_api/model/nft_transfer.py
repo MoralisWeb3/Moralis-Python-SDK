@@ -41,7 +41,6 @@ class NftTransfer(
             "block_timestamp",
             "block_hash",
             "block_number",
-            "to_address",
             "token_address",
             "log_index",
             "transaction_hash",
@@ -50,7 +49,6 @@ class NftTransfer(
         class properties:
             token_address = schemas.StrSchema
             token_id = schemas.StrSchema
-            to_address = schemas.StrSchema
             contract_type = schemas.StrSchema
             block_number = schemas.StrSchema
             block_timestamp = schemas.StrSchema
@@ -79,6 +77,7 @@ class NftTransfer(
                         *args,
                         _configuration=_configuration,
                     )
+            to_address = schemas.StrSchema
             
             
             class to_address_label(
@@ -105,10 +104,238 @@ class NftTransfer(
             transaction_index = schemas.IntSchema
             operator = schemas.StrSchema
             verified_collection = schemas.BoolSchema
+            
+            
+            class last_sale(
+                schemas.DictBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneFrozenDictMixin
+            ):
+            
+            
+                class MetaOapg:
+                    required = {
+                        "buyer_address",
+                        "price",
+                        "block_timestamp",
+                        "payment_token",
+                        "seller_address",
+                        "transaction_hash",
+                        "price_formatted",
+                    }
+                    
+                    class properties:
+                        transaction_hash = schemas.StrSchema
+                        block_timestamp = schemas.StrSchema
+                        price = schemas.StrSchema
+                        price_formatted = schemas.StrSchema
+                        usd_price = schemas.StrSchema
+                        buyer_address = schemas.StrSchema
+                        seller_address = schemas.StrSchema
+                        
+                        
+                        class payment_token(
+                            schemas.DictSchema
+                        ):
+                        
+                        
+                            class MetaOapg:
+                                required = {
+                                    "token_logo",
+                                    "token_name",
+                                    "token_address",
+                                    "token_decimals",
+                                    "token_symbol",
+                                }
+                                
+                                class properties:
+                                    token_name = schemas.StrSchema
+                                    token_symbol = schemas.StrSchema
+                                    token_logo = schemas.StrSchema
+                                    token_decimals = schemas.StrSchema
+                                    token_address = schemas.StrSchema
+                                    __annotations__ = {
+                                        "token_name": token_name,
+                                        "token_symbol": token_symbol,
+                                        "token_logo": token_logo,
+                                        "token_decimals": token_decimals,
+                                        "token_address": token_address,
+                                    }
+                            
+                            token_logo: MetaOapg.properties.token_logo
+                            token_name: MetaOapg.properties.token_name
+                            token_address: MetaOapg.properties.token_address
+                            token_decimals: MetaOapg.properties.token_decimals
+                            token_symbol: MetaOapg.properties.token_symbol
+                            
+                            @typing.overload
+                            def __getitem__(self, name: typing_extensions.Literal["token_name"]) -> MetaOapg.properties.token_name: ...
+                            
+                            @typing.overload
+                            def __getitem__(self, name: typing_extensions.Literal["token_symbol"]) -> MetaOapg.properties.token_symbol: ...
+                            
+                            @typing.overload
+                            def __getitem__(self, name: typing_extensions.Literal["token_logo"]) -> MetaOapg.properties.token_logo: ...
+                            
+                            @typing.overload
+                            def __getitem__(self, name: typing_extensions.Literal["token_decimals"]) -> MetaOapg.properties.token_decimals: ...
+                            
+                            @typing.overload
+                            def __getitem__(self, name: typing_extensions.Literal["token_address"]) -> MetaOapg.properties.token_address: ...
+                            
+                            @typing.overload
+                            def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
+                            
+                            def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_name", "token_symbol", "token_logo", "token_decimals", "token_address", ], str]):
+                                # dict_instance[name] accessor
+                                return super().__getitem__(name)
+                            
+                            
+                            @typing.overload
+                            def get_item_oapg(self, name: typing_extensions.Literal["token_name"]) -> MetaOapg.properties.token_name: ...
+                            
+                            @typing.overload
+                            def get_item_oapg(self, name: typing_extensions.Literal["token_symbol"]) -> MetaOapg.properties.token_symbol: ...
+                            
+                            @typing.overload
+                            def get_item_oapg(self, name: typing_extensions.Literal["token_logo"]) -> MetaOapg.properties.token_logo: ...
+                            
+                            @typing.overload
+                            def get_item_oapg(self, name: typing_extensions.Literal["token_decimals"]) -> MetaOapg.properties.token_decimals: ...
+                            
+                            @typing.overload
+                            def get_item_oapg(self, name: typing_extensions.Literal["token_address"]) -> MetaOapg.properties.token_address: ...
+                            
+                            @typing.overload
+                            def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
+                            
+                            def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_name", "token_symbol", "token_logo", "token_decimals", "token_address", ], str]):
+                                return super().get_item_oapg(name)
+                            
+                        
+                            def __new__(
+                                cls,
+                                *args: typing.Union[dict, frozendict.frozendict, ],
+                                token_logo: typing.Union[MetaOapg.properties.token_logo, str, ],
+                                token_name: typing.Union[MetaOapg.properties.token_name, str, ],
+                                token_address: typing.Union[MetaOapg.properties.token_address, str, ],
+                                token_decimals: typing.Union[MetaOapg.properties.token_decimals, str, ],
+                                token_symbol: typing.Union[MetaOapg.properties.token_symbol, str, ],
+                                _configuration: typing.Optional[schemas.Configuration] = None,
+                                **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+                            ) -> 'payment_token':
+                                return super().__new__(
+                                    cls,
+                                    *args,
+                                    token_logo=token_logo,
+                                    token_name=token_name,
+                                    token_address=token_address,
+                                    token_decimals=token_decimals,
+                                    token_symbol=token_symbol,
+                                    _configuration=_configuration,
+                                    **kwargs,
+                                )
+                        __annotations__ = {
+                            "transaction_hash": transaction_hash,
+                            "block_timestamp": block_timestamp,
+                            "price": price,
+                            "price_formatted": price_formatted,
+                            "usd_price": usd_price,
+                            "buyer_address": buyer_address,
+                            "seller_address": seller_address,
+                            "payment_token": payment_token,
+                        }
+            
+                
+                buyer_address: MetaOapg.properties.buyer_address
+                price: MetaOapg.properties.price
+                block_timestamp: MetaOapg.properties.block_timestamp
+                payment_token: MetaOapg.properties.payment_token
+                seller_address: MetaOapg.properties.seller_address
+                transaction_hash: MetaOapg.properties.transaction_hash
+                price_formatted: MetaOapg.properties.price_formatted
+                
+                @typing.overload
+                def __getitem__(self, name: typing_extensions.Literal["transaction_hash"]) -> MetaOapg.properties.transaction_hash: ...
+                
+                @typing.overload
+                def __getitem__(self, name: typing_extensions.Literal["block_timestamp"]) -> MetaOapg.properties.block_timestamp: ...
+                
+                @typing.overload
+                def __getitem__(self, name: typing_extensions.Literal["price"]) -> MetaOapg.properties.price: ...
+                
+                @typing.overload
+                def __getitem__(self, name: typing_extensions.Literal["price_formatted"]) -> MetaOapg.properties.price_formatted: ...
+                
+                @typing.overload
+                def __getitem__(self, name: typing_extensions.Literal["usd_price"]) -> MetaOapg.properties.usd_price: ...
+                
+                @typing.overload
+                def __getitem__(self, name: typing_extensions.Literal["buyer_address"]) -> MetaOapg.properties.buyer_address: ...
+                
+                @typing.overload
+                def __getitem__(self, name: typing_extensions.Literal["seller_address"]) -> MetaOapg.properties.seller_address: ...
+                
+                @typing.overload
+                def __getitem__(self, name: typing_extensions.Literal["payment_token"]) -> MetaOapg.properties.payment_token: ...
+                
+                @typing.overload
+                def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
+                
+                def __getitem__(self, name: typing.Union[typing_extensions.Literal["transaction_hash", "block_timestamp", "price", "price_formatted", "usd_price", "buyer_address", "seller_address", "payment_token", ], str]):
+                    # dict_instance[name] accessor
+                    return super().__getitem__(name)
+                
+                
+                @typing.overload
+                def get_item_oapg(self, name: typing_extensions.Literal["transaction_hash"]) -> MetaOapg.properties.transaction_hash: ...
+                
+                @typing.overload
+                def get_item_oapg(self, name: typing_extensions.Literal["block_timestamp"]) -> MetaOapg.properties.block_timestamp: ...
+                
+                @typing.overload
+                def get_item_oapg(self, name: typing_extensions.Literal["price"]) -> MetaOapg.properties.price: ...
+                
+                @typing.overload
+                def get_item_oapg(self, name: typing_extensions.Literal["price_formatted"]) -> MetaOapg.properties.price_formatted: ...
+                
+                @typing.overload
+                def get_item_oapg(self, name: typing_extensions.Literal["usd_price"]) -> typing.Union[MetaOapg.properties.usd_price, schemas.Unset]: ...
+                
+                @typing.overload
+                def get_item_oapg(self, name: typing_extensions.Literal["buyer_address"]) -> MetaOapg.properties.buyer_address: ...
+                
+                @typing.overload
+                def get_item_oapg(self, name: typing_extensions.Literal["seller_address"]) -> MetaOapg.properties.seller_address: ...
+                
+                @typing.overload
+                def get_item_oapg(self, name: typing_extensions.Literal["payment_token"]) -> MetaOapg.properties.payment_token: ...
+                
+                @typing.overload
+                def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
+                
+                def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["transaction_hash", "block_timestamp", "price", "price_formatted", "usd_price", "buyer_address", "seller_address", "payment_token", ], str]):
+                    return super().get_item_oapg(name)
+                
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[dict, frozendict.frozendict, None, ],
+                    usd_price: typing.Union[MetaOapg.properties.usd_price, str, schemas.Unset] = schemas.unset,
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                    **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+                ) -> 'last_sale':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        usd_price=usd_price,
+                        _configuration=_configuration,
+                        **kwargs,
+                    )
             __annotations__ = {
                 "token_address": token_address,
                 "token_id": token_id,
-                "to_address": to_address,
                 "contract_type": contract_type,
                 "block_number": block_number,
                 "block_timestamp": block_timestamp,
@@ -118,6 +345,7 @@ class NftTransfer(
                 "possible_spam": possible_spam,
                 "from_address": from_address,
                 "from_address_label": from_address_label,
+                "to_address": to_address,
                 "to_address_label": to_address_label,
                 "value": value,
                 "amount": amount,
@@ -125,6 +353,7 @@ class NftTransfer(
                 "transaction_index": transaction_index,
                 "operator": operator,
                 "verified_collection": verified_collection,
+                "last_sale": last_sale,
             }
 
     
@@ -134,7 +363,6 @@ class NftTransfer(
     block_timestamp: MetaOapg.properties.block_timestamp
     block_hash: MetaOapg.properties.block_hash
     block_number: MetaOapg.properties.block_number
-    to_address: MetaOapg.properties.to_address
     token_address: MetaOapg.properties.token_address
     log_index: MetaOapg.properties.log_index
     transaction_hash: MetaOapg.properties.transaction_hash
@@ -144,9 +372,6 @@ class NftTransfer(
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["token_id"]) -> MetaOapg.properties.token_id: ...
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["to_address"]) -> MetaOapg.properties.to_address: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["contract_type"]) -> MetaOapg.properties.contract_type: ...
@@ -176,6 +401,9 @@ class NftTransfer(
     def __getitem__(self, name: typing_extensions.Literal["from_address_label"]) -> MetaOapg.properties.from_address_label: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["to_address"]) -> MetaOapg.properties.to_address: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["to_address_label"]) -> MetaOapg.properties.to_address_label: ...
     
     @typing.overload
@@ -197,9 +425,12 @@ class NftTransfer(
     def __getitem__(self, name: typing_extensions.Literal["verified_collection"]) -> MetaOapg.properties.verified_collection: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["last_sale"]) -> MetaOapg.properties.last_sale: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "to_address", "contract_type", "block_number", "block_timestamp", "block_hash", "transaction_hash", "log_index", "possible_spam", "from_address", "from_address_label", "to_address_label", "value", "amount", "transaction_type", "transaction_index", "operator", "verified_collection", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "block_number", "block_timestamp", "block_hash", "transaction_hash", "log_index", "possible_spam", "from_address", "from_address_label", "to_address", "to_address_label", "value", "amount", "transaction_type", "transaction_index", "operator", "verified_collection", "last_sale", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -209,9 +440,6 @@ class NftTransfer(
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["token_id"]) -> MetaOapg.properties.token_id: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["to_address"]) -> MetaOapg.properties.to_address: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["contract_type"]) -> MetaOapg.properties.contract_type: ...
@@ -241,6 +469,9 @@ class NftTransfer(
     def get_item_oapg(self, name: typing_extensions.Literal["from_address_label"]) -> typing.Union[MetaOapg.properties.from_address_label, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["to_address"]) -> typing.Union[MetaOapg.properties.to_address, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["to_address_label"]) -> typing.Union[MetaOapg.properties.to_address_label, schemas.Unset]: ...
     
     @typing.overload
@@ -262,9 +493,12 @@ class NftTransfer(
     def get_item_oapg(self, name: typing_extensions.Literal["verified_collection"]) -> typing.Union[MetaOapg.properties.verified_collection, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["last_sale"]) -> typing.Union[MetaOapg.properties.last_sale, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "to_address", "contract_type", "block_number", "block_timestamp", "block_hash", "transaction_hash", "log_index", "possible_spam", "from_address", "from_address_label", "to_address_label", "value", "amount", "transaction_type", "transaction_index", "operator", "verified_collection", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "block_number", "block_timestamp", "block_hash", "transaction_hash", "log_index", "possible_spam", "from_address", "from_address_label", "to_address", "to_address_label", "value", "amount", "transaction_type", "transaction_index", "operator", "verified_collection", "last_sale", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -277,12 +511,12 @@ class NftTransfer(
         block_timestamp: typing.Union[MetaOapg.properties.block_timestamp, str, ],
         block_hash: typing.Union[MetaOapg.properties.block_hash, str, ],
         block_number: typing.Union[MetaOapg.properties.block_number, str, ],
-        to_address: typing.Union[MetaOapg.properties.to_address, str, ],
         token_address: typing.Union[MetaOapg.properties.token_address, str, ],
         log_index: typing.Union[MetaOapg.properties.log_index, decimal.Decimal, int, ],
         transaction_hash: typing.Union[MetaOapg.properties.transaction_hash, str, ],
         from_address: typing.Union[MetaOapg.properties.from_address, str, schemas.Unset] = schemas.unset,
         from_address_label: typing.Union[MetaOapg.properties.from_address_label, None, str, schemas.Unset] = schemas.unset,
+        to_address: typing.Union[MetaOapg.properties.to_address, str, schemas.Unset] = schemas.unset,
         to_address_label: typing.Union[MetaOapg.properties.to_address_label, None, str, schemas.Unset] = schemas.unset,
         value: typing.Union[MetaOapg.properties.value, str, schemas.Unset] = schemas.unset,
         amount: typing.Union[MetaOapg.properties.amount, str, schemas.Unset] = schemas.unset,
@@ -290,6 +524,7 @@ class NftTransfer(
         transaction_index: typing.Union[MetaOapg.properties.transaction_index, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         operator: typing.Union[MetaOapg.properties.operator, str, schemas.Unset] = schemas.unset,
         verified_collection: typing.Union[MetaOapg.properties.verified_collection, bool, schemas.Unset] = schemas.unset,
+        last_sale: typing.Union[MetaOapg.properties.last_sale, dict, frozendict.frozendict, None, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'NftTransfer':
@@ -302,12 +537,12 @@ class NftTransfer(
             block_timestamp=block_timestamp,
             block_hash=block_hash,
             block_number=block_number,
-            to_address=to_address,
             token_address=token_address,
             log_index=log_index,
             transaction_hash=transaction_hash,
             from_address=from_address,
             from_address_label=from_address_label,
+            to_address=to_address,
             to_address_label=to_address_label,
             value=value,
             amount=amount,
@@ -315,6 +550,7 @@ class NftTransfer(
             transaction_index=transaction_index,
             operator=operator,
             verified_collection=verified_collection,
+            last_sale=last_sale,
             _configuration=_configuration,
             **kwargs,
         )

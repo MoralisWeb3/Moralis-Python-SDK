@@ -76,16 +76,28 @@ class EvmCompleteChallengeResponseDto(
                     enum_value_to_name = {
                         "1": "POSITIVE_1",
                         "5": "POSITIVE_5",
+                        "10": "POSITIVE_10",
                         "25": "POSITIVE_25",
                         "56": "POSITIVE_56",
                         "97": "POSITIVE_97",
+                        "100": "POSITIVE_100",
                         "137": "POSITIVE_137",
                         "250": "POSITIVE_250",
                         "338": "POSITIVE_338",
+                        "420": "POSITIVE_420",
+                        "1284": "POSITIVE_1284",
+                        "1285": "POSITIVE_1285",
+                        "1287": "POSITIVE_1287",
                         "1337": "POSITIVE_1337",
+                        "8453": "POSITIVE_8453",
+                        "10200": "POSITIVE_10200",
                         "43113": "POSITIVE_43113",
                         "43114": "POSITIVE_43114",
                         "80001": "POSITIVE_80001",
+                        "80002": "POSITIVE_80002",
+                        "84531": "POSITIVE_84531",
+                        "88882": "POSITIVE_88882",
+                        "88888": "POSITIVE_88888",
                         "11155111": "POSITIVE_11155111",
                     }
                 
@@ -96,6 +108,10 @@ class EvmCompleteChallengeResponseDto(
                 @schemas.classproperty
                 def POSITIVE_5(cls):
                     return cls("5")
+                
+                @schemas.classproperty
+                def POSITIVE_10(cls):
+                    return cls("10")
                 
                 @schemas.classproperty
                 def POSITIVE_25(cls):
@@ -110,6 +126,10 @@ class EvmCompleteChallengeResponseDto(
                     return cls("97")
                 
                 @schemas.classproperty
+                def POSITIVE_100(cls):
+                    return cls("100")
+                
+                @schemas.classproperty
                 def POSITIVE_137(cls):
                     return cls("137")
                 
@@ -122,8 +142,32 @@ class EvmCompleteChallengeResponseDto(
                     return cls("338")
                 
                 @schemas.classproperty
+                def POSITIVE_420(cls):
+                    return cls("420")
+                
+                @schemas.classproperty
+                def POSITIVE_1284(cls):
+                    return cls("1284")
+                
+                @schemas.classproperty
+                def POSITIVE_1285(cls):
+                    return cls("1285")
+                
+                @schemas.classproperty
+                def POSITIVE_1287(cls):
+                    return cls("1287")
+                
+                @schemas.classproperty
                 def POSITIVE_1337(cls):
                     return cls("1337")
+                
+                @schemas.classproperty
+                def POSITIVE_8453(cls):
+                    return cls("8453")
+                
+                @schemas.classproperty
+                def POSITIVE_10200(cls):
+                    return cls("10200")
                 
                 @schemas.classproperty
                 def POSITIVE_43113(cls):
@@ -136,6 +180,22 @@ class EvmCompleteChallengeResponseDto(
                 @schemas.classproperty
                 def POSITIVE_80001(cls):
                     return cls("80001")
+                
+                @schemas.classproperty
+                def POSITIVE_80002(cls):
+                    return cls("80002")
+                
+                @schemas.classproperty
+                def POSITIVE_84531(cls):
+                    return cls("84531")
+                
+                @schemas.classproperty
+                def POSITIVE_88882(cls):
+                    return cls("88882")
+                
+                @schemas.classproperty
+                def POSITIVE_88888(cls):
+                    return cls("88888")
                 
                 @schemas.classproperty
                 def POSITIVE_11155111(cls):

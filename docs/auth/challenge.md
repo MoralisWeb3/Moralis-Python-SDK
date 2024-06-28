@@ -106,7 +106,7 @@ Object with the properties:
 | notBefore | str | ISO 8601 datetime string that, if present, indicates when the signed authentication message will become valid. | Yes |  | "2020-01-01T00:00:00.000Z" |
 | resources | List of str | List of information or references to information the user wishes to have resolved as part of authentication by the relying party. They are expressed as RFC 3986 URIs separated by new lines. | Yes |  | ['https://docs.moralis.io/'] |
 | timeout | float | Time in seconds before the challenge is expired | Yes | 15 | 15 |
-| chainId | enum[str]: <br/>- "1"<br/>- "5"<br/>- "25"<br/>- "56"<br/>- "97"<br/>- "137"<br/>- "250"<br/>- "338"<br/>- "1337"<br/>- "43113"<br/>- "43114"<br/>- "80001"<br/>- "11155111" | EIP-155 Chain ID to which the session is bound, and the network where Contract Accounts must be resolved. | Yes |  | "1" |
+| chainId | enum[str]: <br/>- "1"<br/>- "5"<br/>- "10"<br/>- "25"<br/>- "56"<br/>- "97"<br/>- "100"<br/>- "137"<br/>- "250"<br/>- "338"<br/>- "420"<br/>- "1284"<br/>- "1285"<br/>- "1287"<br/>- "1337"<br/>- "8453"<br/>- "10200"<br/>- "43113"<br/>- "43114"<br/>- "80001"<br/>- "80002"<br/>- "84531"<br/>- "88882"<br/>- "88888"<br/>- "11155111" | EIP-155 Chain ID to which the session is bound, and the network where Contract Accounts must be resolved. | Yes |  | "1" |
 | address | str | Ethereum address performing the signing conformant to capitalization encoded checksum specified in EIP-55 where applicable. | Yes |  | "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B" |
 
 

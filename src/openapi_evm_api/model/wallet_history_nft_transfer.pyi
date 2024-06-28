@@ -40,7 +40,6 @@ class WalletHistoryNftTransfer(
             "possible_spam",
             "token_id",
             "verified",
-            "to_address",
             "token_address",
             "transaction_type",
             "from_address",
@@ -53,7 +52,6 @@ class WalletHistoryNftTransfer(
             token_address = schemas.StrSchema
             token_id = schemas.StrSchema
             from_address = schemas.StrSchema
-            to_address = schemas.StrSchema
             value = schemas.StrSchema
             amount = schemas.StrSchema
             contract_type = schemas.StrSchema
@@ -81,6 +79,7 @@ class WalletHistoryNftTransfer(
                         *args,
                         _configuration=_configuration,
                     )
+            to_address = schemas.StrSchema
             
             
             class to_address_label(
@@ -113,7 +112,6 @@ class WalletHistoryNftTransfer(
                 "token_address": token_address,
                 "token_id": token_id,
                 "from_address": from_address,
-                "to_address": to_address,
                 "value": value,
                 "amount": amount,
                 "contract_type": contract_type,
@@ -122,6 +120,7 @@ class WalletHistoryNftTransfer(
                 "possible_spam": possible_spam,
                 "direction": direction,
                 "from_address_label": from_address_label,
+                "to_address": to_address,
                 "to_address_label": to_address_label,
                 "operator": operator,
                 "verified_collection": verified_collection,
@@ -136,7 +135,6 @@ class WalletHistoryNftTransfer(
     possible_spam: MetaOapg.properties.possible_spam
     token_id: MetaOapg.properties.token_id
     verified: schemas.AnyTypeSchema
-    to_address: MetaOapg.properties.to_address
     token_address: MetaOapg.properties.token_address
     transaction_type: MetaOapg.properties.transaction_type
     from_address: MetaOapg.properties.from_address
@@ -152,9 +150,6 @@ class WalletHistoryNftTransfer(
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["from_address"]) -> MetaOapg.properties.from_address: ...
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["to_address"]) -> MetaOapg.properties.to_address: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["value"]) -> MetaOapg.properties.value: ...
@@ -181,6 +176,9 @@ class WalletHistoryNftTransfer(
     def __getitem__(self, name: typing_extensions.Literal["from_address_label"]) -> MetaOapg.properties.from_address_label: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["to_address"]) -> MetaOapg.properties.to_address: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["to_address_label"]) -> MetaOapg.properties.to_address_label: ...
     
     @typing.overload
@@ -201,7 +199,7 @@ class WalletHistoryNftTransfer(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "from_address", "to_address", "value", "amount", "contract_type", "transaction_type", "log_index", "possible_spam", "direction", "from_address_label", "to_address_label", "operator", "verified_collection", "collection_logo", "collection_banner_image", "normalized_metadata", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "from_address", "value", "amount", "contract_type", "transaction_type", "log_index", "possible_spam", "direction", "from_address_label", "to_address", "to_address_label", "operator", "verified_collection", "collection_logo", "collection_banner_image", "normalized_metadata", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -214,9 +212,6 @@ class WalletHistoryNftTransfer(
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["from_address"]) -> MetaOapg.properties.from_address: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["to_address"]) -> MetaOapg.properties.to_address: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["value"]) -> MetaOapg.properties.value: ...
@@ -243,6 +238,9 @@ class WalletHistoryNftTransfer(
     def get_item_oapg(self, name: typing_extensions.Literal["from_address_label"]) -> typing.Union[MetaOapg.properties.from_address_label, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["to_address"]) -> typing.Union[MetaOapg.properties.to_address, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["to_address_label"]) -> typing.Union[MetaOapg.properties.to_address_label, schemas.Unset]: ...
     
     @typing.overload
@@ -263,7 +261,7 @@ class WalletHistoryNftTransfer(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "from_address", "to_address", "value", "amount", "contract_type", "transaction_type", "log_index", "possible_spam", "direction", "from_address_label", "to_address_label", "operator", "verified_collection", "collection_logo", "collection_banner_image", "normalized_metadata", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "from_address", "value", "amount", "contract_type", "transaction_type", "log_index", "possible_spam", "direction", "from_address_label", "to_address", "to_address_label", "operator", "verified_collection", "collection_logo", "collection_banner_image", "normalized_metadata", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -275,7 +273,6 @@ class WalletHistoryNftTransfer(
         possible_spam: typing.Union[MetaOapg.properties.possible_spam, bool, ],
         token_id: typing.Union[MetaOapg.properties.token_id, str, ],
         verified: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
-        to_address: typing.Union[MetaOapg.properties.to_address, str, ],
         token_address: typing.Union[MetaOapg.properties.token_address, str, ],
         transaction_type: typing.Union[MetaOapg.properties.transaction_type, str, ],
         from_address: typing.Union[MetaOapg.properties.from_address, str, ],
@@ -283,6 +280,7 @@ class WalletHistoryNftTransfer(
         value: typing.Union[MetaOapg.properties.value, str, ],
         direction: typing.Union[MetaOapg.properties.direction, str, ],
         from_address_label: typing.Union[MetaOapg.properties.from_address_label, None, str, schemas.Unset] = schemas.unset,
+        to_address: typing.Union[MetaOapg.properties.to_address, str, schemas.Unset] = schemas.unset,
         to_address_label: typing.Union[MetaOapg.properties.to_address_label, None, str, schemas.Unset] = schemas.unset,
         operator: typing.Union[MetaOapg.properties.operator, str, schemas.Unset] = schemas.unset,
         verified_collection: typing.Union[MetaOapg.properties.verified_collection, bool, schemas.Unset] = schemas.unset,
@@ -300,7 +298,6 @@ class WalletHistoryNftTransfer(
             possible_spam=possible_spam,
             token_id=token_id,
             verified=verified,
-            to_address=to_address,
             token_address=token_address,
             transaction_type=transaction_type,
             from_address=from_address,
@@ -308,6 +305,7 @@ class WalletHistoryNftTransfer(
             value=value,
             direction=direction,
             from_address_label=from_address_label,
+            to_address=to_address,
             to_address_label=to_address_label,
             operator=operator,
             verified_collection=verified_collection,

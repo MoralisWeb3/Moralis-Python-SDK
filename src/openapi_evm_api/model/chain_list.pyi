@@ -42,14 +42,6 @@ class ChainList(
         return cls("0x1")
     
     @schemas.classproperty
-    def GOERLI(cls):
-        return cls("goerli")
-    
-    @schemas.classproperty
-    def X5(cls):
-        return cls("0x5")
-    
-    @schemas.classproperty
     def SEPOLIA(cls):
         return cls("sepolia")
     
@@ -64,14 +56,6 @@ class ChainList(
     @schemas.classproperty
     def X89(cls):
         return cls("0x89")
-    
-    @schemas.classproperty
-    def MUMBAI(cls):
-        return cls("mumbai")
-    
-    @schemas.classproperty
-    def X13881(cls):
-        return cls("0x13881")
     
     @schemas.classproperty
     def BSC(cls):
@@ -170,14 +154,6 @@ class ChainList(
         return cls("0x2105")
     
     @schemas.classproperty
-    def BASE_TESTNET(cls):
-        return cls("base testnet")
-    
-    @schemas.classproperty
-    def X14A33(cls):
-        return cls("0x14a33")
-    
-    @schemas.classproperty
     def BASE_SEPOLIA(cls):
         return cls("base sepolia")
     
@@ -240,3 +216,11 @@ class ChainList(
     @schemas.classproperty
     def X507(cls):
         return cls("0x507")
+    
+    @schemas.classproperty
+    def LINEA_SEPOLIA(cls):
+        return cls("linea sepolia")
+    
+    @schemas.classproperty
+    def XE705(cls):
+        return cls("0xe705")

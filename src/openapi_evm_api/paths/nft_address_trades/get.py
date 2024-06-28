@@ -26,12 +26,12 @@ import frozendict  # noqa: F401
 from openapi_evm_api import schemas  # noqa: F401
 
 from openapi_evm_api.model.trade_collection import TradeCollection
-from openapi_evm_api.model.chain_list import ChainList
+from openapi_evm_api.model.nft_trades_chain_list import NftTradesChainList
 
 from . import path
 
 # Query params
-ChainSchema = ChainList
+ChainSchema = NftTradesChainList
 
 
 class FromBlockSchema(
@@ -55,11 +55,31 @@ class MarketplaceSchema(
     class MetaOapg:
         enum_value_to_name = {
             "opensea": "OPENSEA",
+            "blur": "BLUR",
+            "looksrare": "LOOKSRARE",
+            "x2y2": "X2Y2",
+            "0xprotocol": "XPROTOCOL",
         }
     
     @schemas.classproperty
     def OPENSEA(cls):
         return cls("opensea")
+    
+    @schemas.classproperty
+    def BLUR(cls):
+        return cls("blur")
+    
+    @schemas.classproperty
+    def LOOKSRARE(cls):
+        return cls("looksrare")
+    
+    @schemas.classproperty
+    def X2Y2(cls):
+        return cls("x2y2")
+    
+    @schemas.classproperty
+    def XPROTOCOL(cls):
+        return cls("0xprotocol")
 CursorSchema = schemas.StrSchema
 
 
@@ -70,6 +90,7 @@ class LimitSchema(
 
     class MetaOapg:
         inclusive_minimum = 0
+NftMetadataSchema = schemas.BoolSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -86,6 +107,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'marketplace': typing.Union[MarketplaceSchema, str, ],
         'cursor': typing.Union[CursorSchema, str, ],
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
+        'nft_metadata': typing.Union[NftMetadataSchema, bool, ],
     },
     total=False
 )
@@ -141,6 +163,12 @@ request_query_limit = api_client.QueryParameter(
     name="limit",
     style=api_client.ParameterStyle.FORM,
     schema=LimitSchema,
+    explode=True,
+)
+request_query_nft_metadata = api_client.QueryParameter(
+    name="nft_metadata",
+    style=api_client.ParameterStyle.FORM,
+    schema=NftMetadataSchema,
     explode=True,
 )
 # Path params
@@ -248,7 +276,7 @@ class BaseApi(api_client.Api):
         skip_deserialization: bool = False,
     ):
         """
-        Get NFT trades by marketplace
+        Get NFT trades by collection
         :param skip_deserialization: If true then api_response.response will be set but
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
@@ -280,6 +308,7 @@ class BaseApi(api_client.Api):
             request_query_marketplace,
             request_query_cursor,
             request_query_limit,
+            request_query_nft_metadata,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:

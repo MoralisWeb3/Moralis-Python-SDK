@@ -40,7 +40,6 @@ class BlockTransaction(
             "receipt_cumulative_gas_used",
             "block_hash",
             "block_number",
-            "to_address",
             "transaction_index",
             "nonce",
             "input",
@@ -56,26 +55,6 @@ class BlockTransaction(
             nonce = schemas.StrSchema
             transaction_index = schemas.StrSchema
             from_address = schemas.StrSchema
-            
-            
-            class to_address(
-                schemas.StrBase,
-                schemas.NoneBase,
-                schemas.Schema,
-                schemas.NoneStrMixin
-            ):
-            
-            
-                def __new__(
-                    cls,
-                    *args: typing.Union[None, str, ],
-                    _configuration: typing.Optional[schemas.Configuration] = None,
-                ) -> 'to_address':
-                    return super().__new__(
-                        cls,
-                        *args,
-                        _configuration=_configuration,
-                    )
             value = schemas.StrSchema
             gas_price = schemas.StrSchema
             input = schemas.StrSchema
@@ -100,6 +79,26 @@ class BlockTransaction(
                     *args: typing.Union[None, str, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'from_address_label':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
+            
+            
+            class to_address(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'to_address':
                     return super().__new__(
                         cls,
                         *args,
@@ -223,7 +222,6 @@ class BlockTransaction(
                 "nonce": nonce,
                 "transaction_index": transaction_index,
                 "from_address": from_address,
-                "to_address": to_address,
                 "value": value,
                 "gas_price": gas_price,
                 "input": input,
@@ -234,6 +232,7 @@ class BlockTransaction(
                 "block_number": block_number,
                 "block_hash": block_hash,
                 "from_address_label": from_address_label,
+                "to_address": to_address,
                 "to_address_label": to_address_label,
                 "gas": gas,
                 "receipt_contract_address": receipt_contract_address,
@@ -247,7 +246,6 @@ class BlockTransaction(
     receipt_cumulative_gas_used: MetaOapg.properties.receipt_cumulative_gas_used
     block_hash: MetaOapg.properties.block_hash
     block_number: MetaOapg.properties.block_number
-    to_address: MetaOapg.properties.to_address
     transaction_index: MetaOapg.properties.transaction_index
     nonce: MetaOapg.properties.nonce
     input: MetaOapg.properties.input
@@ -268,9 +266,6 @@ class BlockTransaction(
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["from_address"]) -> MetaOapg.properties.from_address: ...
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["to_address"]) -> MetaOapg.properties.to_address: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["value"]) -> MetaOapg.properties.value: ...
@@ -303,6 +298,9 @@ class BlockTransaction(
     def __getitem__(self, name: typing_extensions.Literal["from_address_label"]) -> MetaOapg.properties.from_address_label: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["to_address"]) -> MetaOapg.properties.to_address: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["to_address_label"]) -> MetaOapg.properties.to_address_label: ...
     
     @typing.overload
@@ -323,7 +321,7 @@ class BlockTransaction(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["hash", "nonce", "transaction_index", "from_address", "to_address", "value", "gas_price", "input", "receipt_cumulative_gas_used", "receipt_gas_used", "receipt_status", "block_timestamp", "block_number", "block_hash", "from_address_label", "to_address_label", "gas", "receipt_contract_address", "receipt_root", "logs", "internal_transactions", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["hash", "nonce", "transaction_index", "from_address", "value", "gas_price", "input", "receipt_cumulative_gas_used", "receipt_gas_used", "receipt_status", "block_timestamp", "block_number", "block_hash", "from_address_label", "to_address", "to_address_label", "gas", "receipt_contract_address", "receipt_root", "logs", "internal_transactions", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -339,9 +337,6 @@ class BlockTransaction(
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["from_address"]) -> MetaOapg.properties.from_address: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["to_address"]) -> MetaOapg.properties.to_address: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["value"]) -> MetaOapg.properties.value: ...
@@ -374,6 +369,9 @@ class BlockTransaction(
     def get_item_oapg(self, name: typing_extensions.Literal["from_address_label"]) -> typing.Union[MetaOapg.properties.from_address_label, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["to_address"]) -> typing.Union[MetaOapg.properties.to_address, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["to_address_label"]) -> typing.Union[MetaOapg.properties.to_address_label, schemas.Unset]: ...
     
     @typing.overload
@@ -394,7 +392,7 @@ class BlockTransaction(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["hash", "nonce", "transaction_index", "from_address", "to_address", "value", "gas_price", "input", "receipt_cumulative_gas_used", "receipt_gas_used", "receipt_status", "block_timestamp", "block_number", "block_hash", "from_address_label", "to_address_label", "gas", "receipt_contract_address", "receipt_root", "logs", "internal_transactions", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["hash", "nonce", "transaction_index", "from_address", "value", "gas_price", "input", "receipt_cumulative_gas_used", "receipt_gas_used", "receipt_status", "block_timestamp", "block_number", "block_hash", "from_address_label", "to_address", "to_address_label", "gas", "receipt_contract_address", "receipt_root", "logs", "internal_transactions", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -406,7 +404,6 @@ class BlockTransaction(
         receipt_cumulative_gas_used: typing.Union[MetaOapg.properties.receipt_cumulative_gas_used, str, ],
         block_hash: typing.Union[MetaOapg.properties.block_hash, str, ],
         block_number: typing.Union[MetaOapg.properties.block_number, str, ],
-        to_address: typing.Union[MetaOapg.properties.to_address, None, str, ],
         transaction_index: typing.Union[MetaOapg.properties.transaction_index, str, ],
         nonce: typing.Union[MetaOapg.properties.nonce, str, ],
         input: typing.Union[MetaOapg.properties.input, str, ],
@@ -416,6 +413,7 @@ class BlockTransaction(
         value: typing.Union[MetaOapg.properties.value, str, ],
         hash: typing.Union[MetaOapg.properties.hash, str, ],
         from_address_label: typing.Union[MetaOapg.properties.from_address_label, None, str, schemas.Unset] = schemas.unset,
+        to_address: typing.Union[MetaOapg.properties.to_address, None, str, schemas.Unset] = schemas.unset,
         to_address_label: typing.Union[MetaOapg.properties.to_address_label, None, str, schemas.Unset] = schemas.unset,
         gas: typing.Union[MetaOapg.properties.gas, str, schemas.Unset] = schemas.unset,
         receipt_contract_address: typing.Union[MetaOapg.properties.receipt_contract_address, None, str, schemas.Unset] = schemas.unset,
@@ -433,7 +431,6 @@ class BlockTransaction(
             receipt_cumulative_gas_used=receipt_cumulative_gas_used,
             block_hash=block_hash,
             block_number=block_number,
-            to_address=to_address,
             transaction_index=transaction_index,
             nonce=nonce,
             input=input,
@@ -443,6 +440,7 @@ class BlockTransaction(
             value=value,
             hash=hash,
             from_address_label=from_address_label,
+            to_address=to_address,
             to_address_label=to_address_label,
             gas=gas,
             receipt_contract_address=receipt_contract_address,
