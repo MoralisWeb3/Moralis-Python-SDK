@@ -14,10 +14,10 @@ from openapi_evm_api.paths.erc20_address_allowance.get import GetTokenAllowance
 from openapi_evm_api.paths.erc20_metadata.get import GetTokenMetadata
 from openapi_evm_api.paths.erc20_metadata_symbols.get import GetTokenMetadataBySymbol
 from openapi_evm_api.paths.erc20_token_address_owners.get import GetTokenOwners
-from openapi_evm_api.paths.token0_token1_ohlc.get import GetTokenPairOhlc
 from openapi_evm_api.paths.erc20_address_price.get import GetTokenPrice
 from openapi_evm_api.paths.erc20_address_stats.get import GetTokenStats
 from openapi_evm_api.paths.erc20_address_transfers.get import GetTokenTransfers
+from openapi_evm_api.paths.erc20_address_top_gainers.get import GetTopProfitableWalletPerToken
 from openapi_evm_api.paths.address_erc20.get import GetWalletTokenBalances
 from openapi_evm_api.paths.address_erc20_transfers.get import GetWalletTokenTransfers
 
@@ -28,10 +28,10 @@ class TokenApi(
     GetTokenMetadata,
     GetTokenMetadataBySymbol,
     GetTokenOwners,
-    GetTokenPairOhlc,
     GetTokenPrice,
     GetTokenStats,
     GetTokenTransfers,
+    GetTopProfitableWalletPerToken,
     GetWalletTokenBalances,
     GetWalletTokenTransfers,
 ):

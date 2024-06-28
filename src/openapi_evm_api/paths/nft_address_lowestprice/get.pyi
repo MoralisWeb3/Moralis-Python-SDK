@@ -25,11 +25,11 @@ import frozendict  # noqa: F401
 
 from openapi_evm_api import schemas  # noqa: F401
 
-from openapi_evm_api.model.chain_list import ChainList
 from openapi_evm_api.model.trade import Trade
+from openapi_evm_api.model.nft_trades_chain_list import NftTradesChainList
 
 # Query params
-ChainSchema = ChainList
+ChainSchema = NftTradesChainList
 
 
 class DaysSchema(
@@ -46,6 +46,23 @@ class MarketplaceSchema(
     @schemas.classproperty
     def OPENSEA(cls):
         return cls("opensea")
+    
+    @schemas.classproperty
+    def BLUR(cls):
+        return cls("blur")
+    
+    @schemas.classproperty
+    def LOOKSRARE(cls):
+        return cls("looksrare")
+    
+    @schemas.classproperty
+    def X2Y2(cls):
+        return cls("x2y2")
+    
+    @schemas.classproperty
+    def XPROTOCOL(cls):
+        return cls("0xprotocol")
+NftMetadataSchema = schemas.BoolSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -57,6 +74,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'chain': typing.Union[ChainSchema, ],
         'days': typing.Union[DaysSchema, decimal.Decimal, int, ],
         'marketplace': typing.Union[MarketplaceSchema, str, ],
+        'nft_metadata': typing.Union[NftMetadataSchema, bool, ],
     },
     total=False
 )
@@ -82,6 +100,12 @@ request_query_marketplace = api_client.QueryParameter(
     name="marketplace",
     style=api_client.ParameterStyle.FORM,
     schema=MarketplaceSchema,
+    explode=True,
+)
+request_query_nft_metadata = api_client.QueryParameter(
+    name="nft_metadata",
+    style=api_client.ParameterStyle.FORM,
+    schema=NftMetadataSchema,
     explode=True,
 )
 # Path params
@@ -210,6 +234,7 @@ class BaseApi(api_client.Api):
             request_query_chain,
             request_query_days,
             request_query_marketplace,
+            request_query_nft_metadata,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:

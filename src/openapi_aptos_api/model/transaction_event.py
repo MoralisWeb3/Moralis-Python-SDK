@@ -80,7 +80,7 @@ class TransactionEvent(
                     )
             sequence_number = schemas.StrSchema
             type = schemas.StrSchema
-            data = schemas.DictSchema
+            data = schemas.StrSchema
             __annotations__ = {
                 "guid": guid,
                 "sequence_number": sequence_number,
@@ -136,7 +136,7 @@ class TransactionEvent(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
         sequence_number: typing.Union[MetaOapg.properties.sequence_number, str, ],
-        data: typing.Union[MetaOapg.properties.data, dict, frozendict.frozendict, ],
+        data: typing.Union[MetaOapg.properties.data, str, ],
         guid: typing.Union[MetaOapg.properties.guid, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         type: typing.Union[MetaOapg.properties.type, str, ],
         _configuration: typing.Optional[schemas.Configuration] = None,

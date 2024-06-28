@@ -40,6 +40,7 @@ class Block(
             "block_timestamp",
             "block_hash",
             "block_height",
+            "transactions",
         }
         
         class properties:
@@ -67,7 +68,7 @@ class Block(
                             
                             @classmethod
                             @functools.lru_cache()
-                            def any_of(cls):
+                            def one_of(cls):
                                 # we need this here to make our import statements work
                                 # we must store _composed_schemas in here so the code is only run
                                 # when we invoke this method. If we kept this at the class
@@ -124,6 +125,7 @@ class Block(
     block_timestamp: MetaOapg.properties.block_timestamp
     block_hash: MetaOapg.properties.block_hash
     block_height: MetaOapg.properties.block_height
+    transactions: MetaOapg.properties.transactions
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["block_height"]) -> MetaOapg.properties.block_height: ...
@@ -167,7 +169,7 @@ class Block(
     def get_item_oapg(self, name: typing_extensions.Literal["last_version"]) -> MetaOapg.properties.last_version: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["transactions"]) -> typing.Union[MetaOapg.properties.transactions, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["transactions"]) -> MetaOapg.properties.transactions: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -184,7 +186,7 @@ class Block(
         block_timestamp: typing.Union[MetaOapg.properties.block_timestamp, str, ],
         block_hash: typing.Union[MetaOapg.properties.block_hash, str, ],
         block_height: typing.Union[MetaOapg.properties.block_height, str, ],
-        transactions: typing.Union[MetaOapg.properties.transactions, list, tuple, schemas.Unset] = schemas.unset,
+        transactions: typing.Union[MetaOapg.properties.transactions, list, tuple, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'Block':

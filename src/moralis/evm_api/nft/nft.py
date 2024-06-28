@@ -3,13 +3,17 @@ from .get_multiple_nfts import get_multiple_nfts
 from .get_nft_bulk_contract_metadata import get_nft_bulk_contract_metadata
 from .get_nft_collection_stats import get_nft_collection_stats
 from .get_nft_contract_metadata import get_nft_contract_metadata
+from .get_nft_contract_sale_prices import get_nft_contract_sale_prices
 from .get_nft_contract_transfers import get_nft_contract_transfers
 from .get_nft_lowest_price import get_nft_lowest_price
 from .get_nft_metadata import get_nft_metadata
 from .get_nft_owners import get_nft_owners
+from .get_nft_sale_prices import get_nft_sale_prices
 from .get_nft_token_id_owners import get_nft_token_id_owners
 from .get_nft_token_stats import get_nft_token_stats
 from .get_nft_trades import get_nft_trades
+from .get_nft_trades_by_token import get_nft_trades_by_token
+from .get_nft_trades_by_wallet import get_nft_trades_by_wallet
 from .get_nft_transfers import get_nft_transfers
 from .get_nft_transfers_by_block import get_nft_transfers_by_block
 from .get_nft_transfers_from_to_block import get_nft_transfers_from_to_block

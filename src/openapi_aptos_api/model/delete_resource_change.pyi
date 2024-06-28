@@ -43,7 +43,7 @@ class DeleteResourceChange(
         
         class properties:
             type = schemas.StrSchema
-            address = schemas.StrSchema
+            address = schemas.DictSchema
             state_key_hash = schemas.StrSchema
             resource = schemas.DictSchema
             __annotations__ = {
@@ -100,7 +100,7 @@ class DeleteResourceChange(
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        address: typing.Union[MetaOapg.properties.address, str, ],
+        address: typing.Union[MetaOapg.properties.address, dict, frozendict.frozendict, ],
         state_key_hash: typing.Union[MetaOapg.properties.state_key_hash, str, ],
         resource: typing.Union[MetaOapg.properties.resource, dict, frozendict.frozendict, ],
         type: typing.Union[MetaOapg.properties.type, str, ],

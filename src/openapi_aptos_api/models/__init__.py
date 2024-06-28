@@ -79,7 +79,5 @@ from openapi_aptos_api.model.transaction_event_guid import TransactionEventGuid
 from openapi_aptos_api.model.user_transaction import UserTransaction
 from openapi_aptos_api.model.write_module_data import WriteModuleData
 from openapi_aptos_api.model.write_or_update_module_change import WriteOrUpdateModuleChange
-from openapi_aptos_api.model.write_resource_change import WriteResourceChange
-from openapi_aptos_api.model.write_resource_data import WriteResourceData
 from openapi_aptos_api.model.write_set_payload import WriteSetPayload
 from openapi_aptos_api.model.write_table_change_set_change import WriteTableChangeSetChange

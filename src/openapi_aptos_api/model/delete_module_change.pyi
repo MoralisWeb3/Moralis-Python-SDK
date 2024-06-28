@@ -43,7 +43,7 @@ class DeleteModuleChange(
         
         class properties:
             type = schemas.StrSchema
-            address = schemas.StrSchema
+            address = schemas.DictSchema
             state_key_hash = schemas.StrSchema
             module = schemas.DictSchema
             __annotations__ = {
@@ -100,7 +100,7 @@ class DeleteModuleChange(
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        address: typing.Union[MetaOapg.properties.address, str, ],
+        address: typing.Union[MetaOapg.properties.address, dict, frozendict.frozendict, ],
         state_key_hash: typing.Union[MetaOapg.properties.state_key_hash, str, ],
         module: typing.Union[MetaOapg.properties.module, dict, frozendict.frozendict, ],
         type: typing.Union[MetaOapg.properties.type, str, ],

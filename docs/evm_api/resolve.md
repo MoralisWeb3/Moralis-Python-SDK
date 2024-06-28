@@ -22,7 +22,7 @@ from moralis import evm_api
 
 api_key = "YOUR_API_KEY"
 params = {
-    "address": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045", 
+    "address": "0xd8da6bf26964af9d7eed9e03e53415d37aa96045", 
 }
 
 result = evm_api.resolve.resolve_address(
@@ -38,7 +38,7 @@ print(result)
 
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
-| address | str | The address to be resolved | Yes |  | "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045" |
+| address | str | The address to be resolved | Yes |  | "0xd8da6bf26964af9d7eed9e03e53415d37aa96045" |
 
 
 

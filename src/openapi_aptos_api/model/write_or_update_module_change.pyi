@@ -43,7 +43,7 @@ class WriteOrUpdateModuleChange(
         
         class properties:
             type = schemas.StrSchema
-            address = schemas.StrSchema
+            address = schemas.DictSchema
             state_key_hash = schemas.StrSchema
             
             
@@ -135,7 +135,7 @@ class WriteOrUpdateModuleChange(
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        address: typing.Union[MetaOapg.properties.address, str, ],
+        address: typing.Union[MetaOapg.properties.address, dict, frozendict.frozendict, ],
         data: typing.Union[MetaOapg.properties.data, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         state_key_hash: typing.Union[MetaOapg.properties.state_key_hash, str, ],
         type: typing.Union[MetaOapg.properties.type, str, ],

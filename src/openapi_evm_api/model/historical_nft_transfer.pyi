@@ -42,7 +42,6 @@ class HistoricalNftTransfer(
             "block_timestamp",
             "block_hash",
             "block_number",
-            "to_address",
             "from_address",
             "transaction_hash",
         }
@@ -53,7 +52,6 @@ class HistoricalNftTransfer(
             block_timestamp = schemas.StrSchema
             block_number = schemas.StrSchema
             block_hash = schemas.StrSchema
-            to_address = schemas.StrSchema
             from_address = schemas.StrSchema
             
             
@@ -102,17 +100,18 @@ class HistoricalNftTransfer(
                 def __getitem__(self, i: int) -> MetaOapg.items:
                     return super().__getitem__(i)
             contract_type = schemas.StrSchema
+            to_address = schemas.StrSchema
             __annotations__ = {
                 "transaction_hash": transaction_hash,
                 "address": address,
                 "block_timestamp": block_timestamp,
                 "block_number": block_number,
                 "block_hash": block_hash,
-                "to_address": to_address,
                 "from_address": from_address,
                 "token_ids": token_ids,
                 "amounts": amounts,
                 "contract_type": contract_type,
+                "to_address": to_address,
             }
 
     
@@ -123,7 +122,6 @@ class HistoricalNftTransfer(
     block_timestamp: MetaOapg.properties.block_timestamp
     block_hash: MetaOapg.properties.block_hash
     block_number: MetaOapg.properties.block_number
-    to_address: MetaOapg.properties.to_address
     from_address: MetaOapg.properties.from_address
     transaction_hash: MetaOapg.properties.transaction_hash
     
@@ -143,9 +141,6 @@ class HistoricalNftTransfer(
     def __getitem__(self, name: typing_extensions.Literal["block_hash"]) -> MetaOapg.properties.block_hash: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["to_address"]) -> MetaOapg.properties.to_address: ...
-    
-    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["from_address"]) -> MetaOapg.properties.from_address: ...
     
     @typing.overload
@@ -158,9 +153,12 @@ class HistoricalNftTransfer(
     def __getitem__(self, name: typing_extensions.Literal["contract_type"]) -> MetaOapg.properties.contract_type: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["to_address"]) -> MetaOapg.properties.to_address: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["transaction_hash", "address", "block_timestamp", "block_number", "block_hash", "to_address", "from_address", "token_ids", "amounts", "contract_type", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["transaction_hash", "address", "block_timestamp", "block_number", "block_hash", "from_address", "token_ids", "amounts", "contract_type", "to_address", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -181,9 +179,6 @@ class HistoricalNftTransfer(
     def get_item_oapg(self, name: typing_extensions.Literal["block_hash"]) -> MetaOapg.properties.block_hash: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["to_address"]) -> MetaOapg.properties.to_address: ...
-    
-    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["from_address"]) -> MetaOapg.properties.from_address: ...
     
     @typing.overload
@@ -196,9 +191,12 @@ class HistoricalNftTransfer(
     def get_item_oapg(self, name: typing_extensions.Literal["contract_type"]) -> MetaOapg.properties.contract_type: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["to_address"]) -> typing.Union[MetaOapg.properties.to_address, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["transaction_hash", "address", "block_timestamp", "block_number", "block_hash", "to_address", "from_address", "token_ids", "amounts", "contract_type", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["transaction_hash", "address", "block_timestamp", "block_number", "block_hash", "from_address", "token_ids", "amounts", "contract_type", "to_address", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -212,9 +210,9 @@ class HistoricalNftTransfer(
         block_timestamp: typing.Union[MetaOapg.properties.block_timestamp, str, ],
         block_hash: typing.Union[MetaOapg.properties.block_hash, str, ],
         block_number: typing.Union[MetaOapg.properties.block_number, str, ],
-        to_address: typing.Union[MetaOapg.properties.to_address, str, ],
         from_address: typing.Union[MetaOapg.properties.from_address, str, ],
         transaction_hash: typing.Union[MetaOapg.properties.transaction_hash, str, ],
+        to_address: typing.Union[MetaOapg.properties.to_address, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'HistoricalNftTransfer':
@@ -228,9 +226,9 @@ class HistoricalNftTransfer(
             block_timestamp=block_timestamp,
             block_hash=block_hash,
             block_number=block_number,
-            to_address=to_address,
             from_address=from_address,
             transaction_hash=transaction_hash,
+            to_address=to_address,
             _configuration=_configuration,
             **kwargs,
         )

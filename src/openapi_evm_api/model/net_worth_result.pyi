@@ -67,9 +67,33 @@ class NetWorthResult(
             
                 def __getitem__(self, i: int) -> 'ChainNetWorth':
                     return super().__getitem__(i)
+            
+            
+            class unsupported_chain_ids(
+                schemas.ListSchema
+            ):
+            
+            
+                class MetaOapg:
+                    items = schemas.StrSchema
+            
+                def __new__(
+                    cls,
+                    arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'unsupported_chain_ids':
+                    return super().__new__(
+                        cls,
+                        arg,
+                        _configuration=_configuration,
+                    )
+            
+                def __getitem__(self, i: int) -> MetaOapg.items:
+                    return super().__getitem__(i)
             __annotations__ = {
                 "total_networth_usd": total_networth_usd,
                 "chains": chains,
+                "unsupported_chain_ids": unsupported_chain_ids,
             }
 
     
@@ -83,9 +107,12 @@ class NetWorthResult(
     def __getitem__(self, name: typing_extensions.Literal["chains"]) -> MetaOapg.properties.chains: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["unsupported_chain_ids"]) -> MetaOapg.properties.unsupported_chain_ids: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["total_networth_usd", "chains", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["total_networth_usd", "chains", "unsupported_chain_ids", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -97,9 +124,12 @@ class NetWorthResult(
     def get_item_oapg(self, name: typing_extensions.Literal["chains"]) -> MetaOapg.properties.chains: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["unsupported_chain_ids"]) -> typing.Union[MetaOapg.properties.unsupported_chain_ids, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["total_networth_usd", "chains", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["total_networth_usd", "chains", "unsupported_chain_ids", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -108,6 +138,7 @@ class NetWorthResult(
         *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         chains: typing.Union[MetaOapg.properties.chains, list, tuple, ],
         total_networth_usd: typing.Union[MetaOapg.properties.total_networth_usd, str, ],
+        unsupported_chain_ids: typing.Union[MetaOapg.properties.unsupported_chain_ids, list, tuple, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'NetWorthResult':
@@ -116,6 +147,7 @@ class NetWorthResult(
             *args,
             chains=chains,
             total_networth_usd=total_networth_usd,
+            unsupported_chain_ids=unsupported_chain_ids,
             _configuration=_configuration,
             **kwargs,
         )

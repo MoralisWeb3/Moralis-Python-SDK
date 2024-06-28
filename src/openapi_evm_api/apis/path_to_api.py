@@ -11,6 +11,8 @@ from openapi_evm_api.apis.paths.nft_address_transfers import NftAddressTransfers
 from openapi_evm_api.apis.paths.nft_transfers import NftTransfers
 from openapi_evm_api.apis.paths.block_block_number_or_hash_nft_transfers import BlockBlockNumberOrHashNftTransfers
 from openapi_evm_api.apis.paths.nft_address_trades import NftAddressTrades
+from openapi_evm_api.apis.paths.nft_address_token_id_trades import NftAddressTokenIdTrades
+from openapi_evm_api.apis.paths.wallets_address_nfts_trades import WalletsAddressNftsTrades
 from openapi_evm_api.apis.paths.nft_address_metadata import NftAddressMetadata
 from openapi_evm_api.apis.paths.nft_metadata import NftMetadata
 from openapi_evm_api.apis.paths.nft_address_token_id import NftAddressTokenId
@@ -19,6 +21,8 @@ from openapi_evm_api.apis.paths.nft_address_token_id_owners import NftAddressTok
 from openapi_evm_api.apis.paths.nft_address_sync import NftAddressSync
 from openapi_evm_api.apis.paths.nft_address_token_id_metadata_resync import NftAddressTokenIdMetadataResync
 from openapi_evm_api.apis.paths.nft_address_lowestprice import NftAddressLowestprice
+from openapi_evm_api.apis.paths.nft_address_price import NftAddressPrice
+from openapi_evm_api.apis.paths.nft_address_token_id_price import NftAddressTokenIdPrice
 from openapi_evm_api.apis.paths.erc20_address_price import Erc20AddressPrice
 from openapi_evm_api.apis.paths.erc20_prices import Erc20Prices
 from openapi_evm_api.apis.paths.erc20_token_address_owners import Erc20TokenAddressOwners
@@ -60,6 +64,9 @@ from openapi_evm_api.apis.paths.market_data_nfts_hottest_collections import Mark
 from openapi_evm_api.apis.paths.market_data_global_market_cap import MarketDataGlobalMarketCap
 from openapi_evm_api.apis.paths.market_data_global_volume import MarketDataGlobalVolume
 from openapi_evm_api.apis.paths.contracts_review import ContractsReview
+from openapi_evm_api.apis.paths.wallets_address_defi_summary import WalletsAddressDefiSummary
+from openapi_evm_api.apis.paths.wallets_address_defi_protocol_positions import WalletsAddressDefiProtocolPositions
+from openapi_evm_api.apis.paths.wallets_address_defi_positions import WalletsAddressDefiPositions
 from openapi_evm_api.apis.paths.wallets_address_chains import WalletsAddressChains
 from openapi_evm_api.apis.paths.wallets_address_stats import WalletsAddressStats
 from openapi_evm_api.apis.paths.nft_address_stats import NftAddressStats
@@ -76,7 +83,9 @@ from openapi_evm_api.apis.paths.discovery_tokens_top_gainers import DiscoveryTok
 from openapi_evm_api.apis.paths.discovery_tokens_top_losers import DiscoveryTokensTopLosers
 from openapi_evm_api.apis.paths.discovery_tokens_trending import DiscoveryTokensTrending
 from openapi_evm_api.apis.paths.discovery_token import DiscoveryToken
-from openapi_evm_api.apis.paths.token0_token1_ohlc import Token0Token1Ohlc
+from openapi_evm_api.apis.paths.wallets_address_profitability_summary import WalletsAddressProfitabilitySummary
+from openapi_evm_api.apis.paths.wallets_address_profitability import WalletsAddressProfitability
+from openapi_evm_api.apis.paths.erc20_address_top_gainers import Erc20AddressTopGainers
 
 PathToApi = typing_extensions.TypedDict(
     'PathToApi',
@@ -91,6 +100,8 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.NFT_TRANSFERS: NftTransfers,
         PathValues.BLOCK_BLOCK_NUMBER_OR_HASH_NFT_TRANSFERS: BlockBlockNumberOrHashNftTransfers,
         PathValues.NFT_ADDRESS_TRADES: NftAddressTrades,
+        PathValues.NFT_ADDRESS_TOKEN_ID_TRADES: NftAddressTokenIdTrades,
+        PathValues.WALLETS_ADDRESS_NFTS_TRADES: WalletsAddressNftsTrades,
         PathValues.NFT_ADDRESS_METADATA: NftAddressMetadata,
         PathValues.NFT_METADATA: NftMetadata,
         PathValues.NFT_ADDRESS_TOKEN_ID: NftAddressTokenId,
@@ -99,6 +110,8 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.NFT_ADDRESS_SYNC: NftAddressSync,
         PathValues.NFT_ADDRESS_TOKEN_ID_METADATA_RESYNC: NftAddressTokenIdMetadataResync,
         PathValues.NFT_ADDRESS_LOWESTPRICE: NftAddressLowestprice,
+        PathValues.NFT_ADDRESS_PRICE: NftAddressPrice,
+        PathValues.NFT_ADDRESS_TOKEN_ID_PRICE: NftAddressTokenIdPrice,
         PathValues.ERC20_ADDRESS_PRICE: Erc20AddressPrice,
         PathValues.ERC20_PRICES: Erc20Prices,
         PathValues.ERC20_TOKEN_ADDRESS_OWNERS: Erc20TokenAddressOwners,
@@ -140,6 +153,9 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.MARKETDATA_GLOBAL_MARKETCAP: MarketDataGlobalMarketCap,
         PathValues.MARKETDATA_GLOBAL_VOLUME: MarketDataGlobalVolume,
         PathValues.CONTRACTSREVIEW: ContractsReview,
+        PathValues.WALLETS_ADDRESS_DEFI_SUMMARY: WalletsAddressDefiSummary,
+        PathValues.WALLETS_ADDRESS_DEFI_PROTOCOL_POSITIONS: WalletsAddressDefiProtocolPositions,
+        PathValues.WALLETS_ADDRESS_DEFI_POSITIONS: WalletsAddressDefiPositions,
         PathValues.WALLETS_ADDRESS_CHAINS: WalletsAddressChains,
         PathValues.WALLETS_ADDRESS_STATS: WalletsAddressStats,
         PathValues.NFT_ADDRESS_STATS: NftAddressStats,
@@ -156,7 +172,9 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.DISCOVERY_TOKENS_TOPLOSERS: DiscoveryTokensTopLosers,
         PathValues.DISCOVERY_TOKENS_TRENDING: DiscoveryTokensTrending,
         PathValues.DISCOVERY_TOKEN: DiscoveryToken,
-        PathValues.TOKEN0_TOKEN1_OHLC: Token0Token1Ohlc,
+        PathValues.WALLETS_ADDRESS_PROFITABILITY_SUMMARY: WalletsAddressProfitabilitySummary,
+        PathValues.WALLETS_ADDRESS_PROFITABILITY: WalletsAddressProfitability,
+        PathValues.ERC20_ADDRESS_TOPGAINERS: Erc20AddressTopGainers,
     }
 )
 
@@ -172,6 +190,8 @@ path_to_api = PathToApi(
         PathValues.NFT_TRANSFERS: NftTransfers,
         PathValues.BLOCK_BLOCK_NUMBER_OR_HASH_NFT_TRANSFERS: BlockBlockNumberOrHashNftTransfers,
         PathValues.NFT_ADDRESS_TRADES: NftAddressTrades,
+        PathValues.NFT_ADDRESS_TOKEN_ID_TRADES: NftAddressTokenIdTrades,
+        PathValues.WALLETS_ADDRESS_NFTS_TRADES: WalletsAddressNftsTrades,
         PathValues.NFT_ADDRESS_METADATA: NftAddressMetadata,
         PathValues.NFT_METADATA: NftMetadata,
         PathValues.NFT_ADDRESS_TOKEN_ID: NftAddressTokenId,
@@ -180,6 +200,8 @@ path_to_api = PathToApi(
         PathValues.NFT_ADDRESS_SYNC: NftAddressSync,
         PathValues.NFT_ADDRESS_TOKEN_ID_METADATA_RESYNC: NftAddressTokenIdMetadataResync,
         PathValues.NFT_ADDRESS_LOWESTPRICE: NftAddressLowestprice,
+        PathValues.NFT_ADDRESS_PRICE: NftAddressPrice,
+        PathValues.NFT_ADDRESS_TOKEN_ID_PRICE: NftAddressTokenIdPrice,
         PathValues.ERC20_ADDRESS_PRICE: Erc20AddressPrice,
         PathValues.ERC20_PRICES: Erc20Prices,
         PathValues.ERC20_TOKEN_ADDRESS_OWNERS: Erc20TokenAddressOwners,
@@ -221,6 +243,9 @@ path_to_api = PathToApi(
         PathValues.MARKETDATA_GLOBAL_MARKETCAP: MarketDataGlobalMarketCap,
         PathValues.MARKETDATA_GLOBAL_VOLUME: MarketDataGlobalVolume,
         PathValues.CONTRACTSREVIEW: ContractsReview,
+        PathValues.WALLETS_ADDRESS_DEFI_SUMMARY: WalletsAddressDefiSummary,
+        PathValues.WALLETS_ADDRESS_DEFI_PROTOCOL_POSITIONS: WalletsAddressDefiProtocolPositions,
+        PathValues.WALLETS_ADDRESS_DEFI_POSITIONS: WalletsAddressDefiPositions,
         PathValues.WALLETS_ADDRESS_CHAINS: WalletsAddressChains,
         PathValues.WALLETS_ADDRESS_STATS: WalletsAddressStats,
         PathValues.NFT_ADDRESS_STATS: NftAddressStats,
@@ -237,6 +262,8 @@ path_to_api = PathToApi(
         PathValues.DISCOVERY_TOKENS_TOPLOSERS: DiscoveryTokensTopLosers,
         PathValues.DISCOVERY_TOKENS_TRENDING: DiscoveryTokensTrending,
         PathValues.DISCOVERY_TOKEN: DiscoveryToken,
-        PathValues.TOKEN0_TOKEN1_OHLC: Token0Token1Ohlc,
+        PathValues.WALLETS_ADDRESS_PROFITABILITY_SUMMARY: WalletsAddressProfitabilitySummary,
+        PathValues.WALLETS_ADDRESS_PROFITABILITY: WalletsAddressProfitability,
+        PathValues.ERC20_ADDRESS_TOPGAINERS: Erc20AddressTopGainers,
     }
 )

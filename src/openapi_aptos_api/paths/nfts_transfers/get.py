@@ -212,7 +212,32 @@ request_query_token_ids = api_client.QueryParameter(
 _auth = [
     'bearer',
 ]
-SchemaFor200ResponseBodyApplicationJson = NFTTransfersByTokensResponse
+
+
+class SchemaFor200ResponseBodyApplicationJson(
+    schemas.ListSchema
+):
+
+
+    class MetaOapg:
+        
+        @staticmethod
+        def items() -> typing.Type['NFTTransfersByTokensResponse']:
+            return NFTTransfersByTokensResponse
+
+    def __new__(
+        cls,
+        arg: typing.Union[typing.Tuple['NFTTransfersByTokensResponse'], typing.List['NFTTransfersByTokensResponse']],
+        _configuration: typing.Optional[schemas.Configuration] = None,
+    ) -> 'SchemaFor200ResponseBodyApplicationJson':
+        return super().__new__(
+            cls,
+            arg,
+            _configuration=_configuration,
+        )
+
+    def __getitem__(self, i: int) -> 'NFTTransfersByTokensResponse':
+        return super().__getitem__(i)
 
 
 @dataclass
@@ -304,7 +329,7 @@ class BaseApi(api_client.Api):
         skip_deserialization: bool = False,
     ):
         """
-        Get NFT Transfers by Token ids
+        Get NFT Transferss by Token ids
         :param skip_deserialization: If true then api_response.response will be set but
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
