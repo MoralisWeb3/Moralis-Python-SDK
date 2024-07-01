@@ -293,7 +293,7 @@ print(result)
 |------|------|-------------|----------|---------|---------|
 | address | str | The wallet address for which profitability is to be retrieved. | Yes |  | "" |
 | days | str | Timeframe in days for which profitability is calculated, Options include 'all', '7', '30', '60', '90' default is 'all'. |  |  | "" |
-| chain | enum[str]: <br/>- "eth"<br/>- "mainnet"<br/>- "0x1"<br/>- "matic"<br/>- "0x89"<br/>- "polygon"<br/>- "bsc"<br/>- "binance"<br/>- "0x38"<br/>- "fantom"<br/>- "ftm"<br/>- "0xfa"<br/>- "arbitrum"<br/>- "0xa4b1"<br/>- "optimism"<br/>- "0xa"<br/>- "pulsechain"<br/>- "0x171"<br/>- "base"<br/>- "0x2105" | The chain to query |  |  | "eth" |
+| chain | enum[str]: <br/>- "eth"<br/>- "mainnet"<br/>- "0x1"<br/>- "matic"<br/>- "0x89"<br/>- "polygon"<br/>- "bsc"<br/>- "binance"<br/>- "0x38"<br/>- "fantom"<br/>- "ftm"<br/>- "0xfa"<br/>- "arbitrum"<br/>- "0xa4b1"<br/>- "optimism"<br/>- "0xa"<br/>- "pulsechain"<br/>- "0x171"<br/>- "base"<br/>- "0x2105"<br/>- "linea"<br/>- "0xe708" | The chain to query |  |  | "eth" |
 | token_addresses | List of str | The token addresses list to filter the result with |  |  | [] |
 
 
@@ -332,7 +332,7 @@ print(result)
 |------|------|-------------|----------|---------|---------|
 | address | str | The wallet address for which profitability summary is to be retrieved. | Yes |  | "" |
 | days | str | Timeframe in days for the profitability summary. Options include 'all', '7', '30', '60', '90' default is 'all'. |  |  | "" |
-| chain | enum[str]: <br/>- "eth"<br/>- "mainnet"<br/>- "0x1"<br/>- "matic"<br/>- "0x89"<br/>- "polygon"<br/>- "bsc"<br/>- "binance"<br/>- "0x38"<br/>- "fantom"<br/>- "ftm"<br/>- "0xfa"<br/>- "arbitrum"<br/>- "0xa4b1"<br/>- "optimism"<br/>- "0xa"<br/>- "pulsechain"<br/>- "0x171"<br/>- "base"<br/>- "0x2105" | The chain to query |  |  | "eth" |
+| chain | enum[str]: <br/>- "eth"<br/>- "mainnet"<br/>- "0x1"<br/>- "matic"<br/>- "0x89"<br/>- "polygon"<br/>- "bsc"<br/>- "binance"<br/>- "0x38"<br/>- "fantom"<br/>- "ftm"<br/>- "0xfa"<br/>- "arbitrum"<br/>- "0xa4b1"<br/>- "optimism"<br/>- "0xa"<br/>- "pulsechain"<br/>- "0x171"<br/>- "base"<br/>- "0x2105"<br/>- "linea"<br/>- "0xe708" | The chain to query |  |  | "eth" |
 
 
 
