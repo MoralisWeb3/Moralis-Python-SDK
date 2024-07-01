@@ -378,7 +378,7 @@ print(result)
 |------|------|-------------|----------|---------|---------|
 | address | str | The ERC20 token address. | Yes |  | "" |
 | days | str | Timeframe in days for which profitability is calculated, can be 'all', '7d' or '30d' |  |  | "" |
-| chain | enum[str]: <br/>- "eth"<br/>- "mainnet"<br/>- "0x1"<br/>- "matic"<br/>- "0x89"<br/>- "polygon"<br/>- "bsc"<br/>- "binance"<br/>- "0x38"<br/>- "fantom"<br/>- "ftm"<br/>- "0xfa"<br/>- "arbitrum"<br/>- "0xa4b1"<br/>- "optimism"<br/>- "0xa"<br/>- "pulsechain"<br/>- "0x171"<br/>- "base"<br/>- "0x2105" | The chain to query |  |  | "eth" |
+| chain | enum[str]: <br/>- "eth"<br/>- "mainnet"<br/>- "0x1"<br/>- "matic"<br/>- "0x89"<br/>- "polygon"<br/>- "bsc"<br/>- "binance"<br/>- "0x38"<br/>- "fantom"<br/>- "ftm"<br/>- "0xfa"<br/>- "arbitrum"<br/>- "0xa4b1"<br/>- "optimism"<br/>- "0xa"<br/>- "pulsechain"<br/>- "0x171"<br/>- "base"<br/>- "0x2105"<br/>- "linea"<br/>- "0xe708" | The chain to query |  |  | "eth" |
 
 
 
