@@ -84,3 +84,19 @@ class DefiProtocolList(
     @schemas.classproperty
     def EIGENLAYER(cls):
         return cls("eigenlayer")
+    
+    @schemas.classproperty
+    def PENDLE(cls):
+        return cls("pendle")
+    
+    @schemas.classproperty
+    def ETHERFI(cls):
+        return cls("etherfi")
+    
+    @schemas.classproperty
+    def ROCKETPOOL(cls):
+        return cls("rocketpool")
+    
+    @schemas.classproperty
+    def SPARKFI(cls):
+        return cls("sparkfi")

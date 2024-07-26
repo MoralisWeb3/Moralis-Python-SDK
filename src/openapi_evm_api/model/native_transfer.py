@@ -50,6 +50,8 @@ class NativeTransfer(
             internal_transaction = schemas.BoolSchema
             token_symbol = schemas.StrSchema
             token_logo = schemas.StrSchema
+            from_address_entity = schemas.StrSchema
+            from_address_entity_logo = schemas.StrSchema
             
             
             class from_address_label(
@@ -70,6 +72,8 @@ class NativeTransfer(
                         *args,
                         _configuration=_configuration,
                     )
+            to_address_entity = schemas.StrSchema
+            to_address_entity_logo = schemas.StrSchema
             to_address = schemas.StrSchema
             
             
@@ -99,7 +103,11 @@ class NativeTransfer(
                 "internal_transaction": internal_transaction,
                 "token_symbol": token_symbol,
                 "token_logo": token_logo,
+                "from_address_entity": from_address_entity,
+                "from_address_entity_logo": from_address_entity_logo,
                 "from_address_label": from_address_label,
+                "to_address_entity": to_address_entity,
+                "to_address_entity_logo": to_address_entity_logo,
                 "to_address": to_address,
                 "to_address_label": to_address_label,
                 "direction": direction,
@@ -132,7 +140,19 @@ class NativeTransfer(
     def __getitem__(self, name: typing_extensions.Literal["token_logo"]) -> MetaOapg.properties.token_logo: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["from_address_entity"]) -> MetaOapg.properties.from_address_entity: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["from_address_entity_logo"]) -> MetaOapg.properties.from_address_entity_logo: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["from_address_label"]) -> MetaOapg.properties.from_address_label: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["to_address_entity"]) -> MetaOapg.properties.to_address_entity: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["to_address_entity_logo"]) -> MetaOapg.properties.to_address_entity_logo: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["to_address"]) -> MetaOapg.properties.to_address: ...
@@ -146,7 +166,7 @@ class NativeTransfer(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["from_address", "value", "value_formatted", "internal_transaction", "token_symbol", "token_logo", "from_address_label", "to_address", "to_address_label", "direction", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["from_address", "value", "value_formatted", "internal_transaction", "token_symbol", "token_logo", "from_address_entity", "from_address_entity_logo", "from_address_label", "to_address_entity", "to_address_entity_logo", "to_address", "to_address_label", "direction", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -170,7 +190,19 @@ class NativeTransfer(
     def get_item_oapg(self, name: typing_extensions.Literal["token_logo"]) -> MetaOapg.properties.token_logo: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["from_address_entity"]) -> typing.Union[MetaOapg.properties.from_address_entity, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["from_address_entity_logo"]) -> typing.Union[MetaOapg.properties.from_address_entity_logo, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["from_address_label"]) -> typing.Union[MetaOapg.properties.from_address_label, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["to_address_entity"]) -> typing.Union[MetaOapg.properties.to_address_entity, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["to_address_entity_logo"]) -> typing.Union[MetaOapg.properties.to_address_entity_logo, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["to_address"]) -> typing.Union[MetaOapg.properties.to_address, schemas.Unset]: ...
@@ -184,7 +216,7 @@ class NativeTransfer(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["from_address", "value", "value_formatted", "internal_transaction", "token_symbol", "token_logo", "from_address_label", "to_address", "to_address_label", "direction", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["from_address", "value", "value_formatted", "internal_transaction", "token_symbol", "token_logo", "from_address_entity", "from_address_entity_logo", "from_address_label", "to_address_entity", "to_address_entity_logo", "to_address", "to_address_label", "direction", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -197,7 +229,11 @@ class NativeTransfer(
         token_symbol: typing.Union[MetaOapg.properties.token_symbol, str, ],
         from_address: typing.Union[MetaOapg.properties.from_address, str, ],
         value: typing.Union[MetaOapg.properties.value, str, ],
+        from_address_entity: typing.Union[MetaOapg.properties.from_address_entity, str, schemas.Unset] = schemas.unset,
+        from_address_entity_logo: typing.Union[MetaOapg.properties.from_address_entity_logo, str, schemas.Unset] = schemas.unset,
         from_address_label: typing.Union[MetaOapg.properties.from_address_label, None, str, schemas.Unset] = schemas.unset,
+        to_address_entity: typing.Union[MetaOapg.properties.to_address_entity, str, schemas.Unset] = schemas.unset,
+        to_address_entity_logo: typing.Union[MetaOapg.properties.to_address_entity_logo, str, schemas.Unset] = schemas.unset,
         to_address: typing.Union[MetaOapg.properties.to_address, str, schemas.Unset] = schemas.unset,
         to_address_label: typing.Union[MetaOapg.properties.to_address_label, None, str, schemas.Unset] = schemas.unset,
         direction: typing.Union[MetaOapg.properties.direction, str, schemas.Unset] = schemas.unset,
@@ -213,7 +249,11 @@ class NativeTransfer(
             token_symbol=token_symbol,
             from_address=from_address,
             value=value,
+            from_address_entity=from_address_entity,
+            from_address_entity_logo=from_address_entity_logo,
             from_address_label=from_address_label,
+            to_address_entity=to_address_entity,
+            to_address_entity_logo=to_address_entity_logo,
             to_address=to_address,
             to_address_label=to_address_label,
             direction=direction,

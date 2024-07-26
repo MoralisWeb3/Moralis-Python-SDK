@@ -49,6 +49,10 @@ class DefiProtocolList(
             "lido": "LIDO",
             "makerdao": "MAKERDAO",
             "eigenlayer": "EIGENLAYER",
+            "pendle": "PENDLE",
+            "etherfi": "ETHERFI",
+            "rocketpool": "ROCKETPOOL",
+            "sparkfi": "SPARKFI",
         }
     
     @schemas.classproperty
@@ -102,3 +106,19 @@ class DefiProtocolList(
     @schemas.classproperty
     def EIGENLAYER(cls):
         return cls("eigenlayer")
+    
+    @schemas.classproperty
+    def PENDLE(cls):
+        return cls("pendle")
+    
+    @schemas.classproperty
+    def ETHERFI(cls):
+        return cls("etherfi")
+    
+    @schemas.classproperty
+    def ROCKETPOOL(cls):
+        return cls("rocketpool")
+    
+    @schemas.classproperty
+    def SPARKFI(cls):
+        return cls("sparkfi")

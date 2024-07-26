@@ -113,6 +113,7 @@ from openapi_evm_api.model.transaction import Transaction
 from openapi_evm_api.model.transaction_collection import TransactionCollection
 from openapi_evm_api.model.transaction_collection_verbose import TransactionCollectionVerbose
 from openapi_evm_api.model.transaction_timestamp import TransactionTimestamp
+from openapi_evm_api.model.unavailable_chain_net_worth import UnavailableChainNetWorth
 from openapi_evm_api.model.unstoppable_domain import UnstoppableDomain
 from openapi_evm_api.model.wallet_active_chain import WalletActiveChain
 from openapi_evm_api.model.wallet_active_chains import WalletActiveChains

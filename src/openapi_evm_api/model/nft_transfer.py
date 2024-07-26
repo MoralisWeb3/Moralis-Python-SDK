@@ -56,6 +56,8 @@ class NftTransfer(
             transaction_hash = schemas.StrSchema
             log_index = schemas.IntSchema
             possible_spam = schemas.BoolSchema
+            from_address_entity = schemas.StrSchema
+            from_address_entity_logo = schemas.StrSchema
             from_address = schemas.StrSchema
             
             
@@ -77,6 +79,8 @@ class NftTransfer(
                         *args,
                         _configuration=_configuration,
                     )
+            to_address_entity = schemas.StrSchema
+            to_address_entity_logo = schemas.StrSchema
             to_address = schemas.StrSchema
             
             
@@ -343,8 +347,12 @@ class NftTransfer(
                 "transaction_hash": transaction_hash,
                 "log_index": log_index,
                 "possible_spam": possible_spam,
+                "from_address_entity": from_address_entity,
+                "from_address_entity_logo": from_address_entity_logo,
                 "from_address": from_address,
                 "from_address_label": from_address_label,
+                "to_address_entity": to_address_entity,
+                "to_address_entity_logo": to_address_entity_logo,
                 "to_address": to_address,
                 "to_address_label": to_address_label,
                 "value": value,
@@ -395,10 +403,22 @@ class NftTransfer(
     def __getitem__(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["from_address_entity"]) -> MetaOapg.properties.from_address_entity: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["from_address_entity_logo"]) -> MetaOapg.properties.from_address_entity_logo: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["from_address"]) -> MetaOapg.properties.from_address: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["from_address_label"]) -> MetaOapg.properties.from_address_label: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["to_address_entity"]) -> MetaOapg.properties.to_address_entity: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["to_address_entity_logo"]) -> MetaOapg.properties.to_address_entity_logo: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["to_address"]) -> MetaOapg.properties.to_address: ...
@@ -430,7 +450,7 @@ class NftTransfer(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "block_number", "block_timestamp", "block_hash", "transaction_hash", "log_index", "possible_spam", "from_address", "from_address_label", "to_address", "to_address_label", "value", "amount", "transaction_type", "transaction_index", "operator", "verified_collection", "last_sale", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "block_number", "block_timestamp", "block_hash", "transaction_hash", "log_index", "possible_spam", "from_address_entity", "from_address_entity_logo", "from_address", "from_address_label", "to_address_entity", "to_address_entity_logo", "to_address", "to_address_label", "value", "amount", "transaction_type", "transaction_index", "operator", "verified_collection", "last_sale", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -463,10 +483,22 @@ class NftTransfer(
     def get_item_oapg(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["from_address_entity"]) -> typing.Union[MetaOapg.properties.from_address_entity, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["from_address_entity_logo"]) -> typing.Union[MetaOapg.properties.from_address_entity_logo, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["from_address"]) -> typing.Union[MetaOapg.properties.from_address, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["from_address_label"]) -> typing.Union[MetaOapg.properties.from_address_label, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["to_address_entity"]) -> typing.Union[MetaOapg.properties.to_address_entity, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["to_address_entity_logo"]) -> typing.Union[MetaOapg.properties.to_address_entity_logo, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["to_address"]) -> typing.Union[MetaOapg.properties.to_address, schemas.Unset]: ...
@@ -498,7 +530,7 @@ class NftTransfer(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "block_number", "block_timestamp", "block_hash", "transaction_hash", "log_index", "possible_spam", "from_address", "from_address_label", "to_address", "to_address_label", "value", "amount", "transaction_type", "transaction_index", "operator", "verified_collection", "last_sale", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "block_number", "block_timestamp", "block_hash", "transaction_hash", "log_index", "possible_spam", "from_address_entity", "from_address_entity_logo", "from_address", "from_address_label", "to_address_entity", "to_address_entity_logo", "to_address", "to_address_label", "value", "amount", "transaction_type", "transaction_index", "operator", "verified_collection", "last_sale", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -514,8 +546,12 @@ class NftTransfer(
         token_address: typing.Union[MetaOapg.properties.token_address, str, ],
         log_index: typing.Union[MetaOapg.properties.log_index, decimal.Decimal, int, ],
         transaction_hash: typing.Union[MetaOapg.properties.transaction_hash, str, ],
+        from_address_entity: typing.Union[MetaOapg.properties.from_address_entity, str, schemas.Unset] = schemas.unset,
+        from_address_entity_logo: typing.Union[MetaOapg.properties.from_address_entity_logo, str, schemas.Unset] = schemas.unset,
         from_address: typing.Union[MetaOapg.properties.from_address, str, schemas.Unset] = schemas.unset,
         from_address_label: typing.Union[MetaOapg.properties.from_address_label, None, str, schemas.Unset] = schemas.unset,
+        to_address_entity: typing.Union[MetaOapg.properties.to_address_entity, str, schemas.Unset] = schemas.unset,
+        to_address_entity_logo: typing.Union[MetaOapg.properties.to_address_entity_logo, str, schemas.Unset] = schemas.unset,
         to_address: typing.Union[MetaOapg.properties.to_address, str, schemas.Unset] = schemas.unset,
         to_address_label: typing.Union[MetaOapg.properties.to_address_label, None, str, schemas.Unset] = schemas.unset,
         value: typing.Union[MetaOapg.properties.value, str, schemas.Unset] = schemas.unset,
@@ -540,8 +576,12 @@ class NftTransfer(
             token_address=token_address,
             log_index=log_index,
             transaction_hash=transaction_hash,
+            from_address_entity=from_address_entity,
+            from_address_entity_logo=from_address_entity_logo,
             from_address=from_address,
             from_address_label=from_address_label,
+            to_address_entity=to_address_entity,
+            to_address_entity_logo=to_address_entity_logo,
             to_address=to_address,
             to_address_label=to_address_label,
             value=value,

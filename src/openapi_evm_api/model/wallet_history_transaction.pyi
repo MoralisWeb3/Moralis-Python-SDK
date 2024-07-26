@@ -150,6 +150,8 @@ class WalletHistoryTransaction(
             
                 def __getitem__(self, i: int) -> 'NativeTransfer':
                     return super().__getitem__(i)
+            from_address_entity = schemas.StrSchema
+            from_address_entity_logo = schemas.StrSchema
             
             
             class from_address_label(
@@ -170,6 +172,8 @@ class WalletHistoryTransaction(
                         *args,
                         _configuration=_configuration,
                     )
+            to_address_entity = schemas.StrSchema
+            to_address_entity_logo = schemas.StrSchema
             
             
             class to_address(
@@ -275,12 +279,12 @@ class WalletHistoryTransaction(
                 class MetaOapg:
                     
                     @staticmethod
-                    def items() -> typing.Type['Log']:
-                        return Log
+                    def items() -> typing.Type['LogVerbose']:
+                        return LogVerbose
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple['Log'], typing.List['Log']],
+                    arg: typing.Union[typing.Tuple['LogVerbose'], typing.List['LogVerbose']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'logs':
                     return super().__new__(
@@ -289,7 +293,7 @@ class WalletHistoryTransaction(
                         _configuration=_configuration,
                     )
             
-                def __getitem__(self, i: int) -> 'Log':
+                def __getitem__(self, i: int) -> 'LogVerbose':
                     return super().__getitem__(i)
             __annotations__ = {
                 "hash": hash,
@@ -309,7 +313,11 @@ class WalletHistoryTransaction(
                 "nft_transfers": nft_transfers,
                 "erc20_transfers": erc20_transfers,
                 "native_transfers": native_transfers,
+                "from_address_entity": from_address_entity,
+                "from_address_entity_logo": from_address_entity_logo,
                 "from_address_label": from_address_label,
+                "to_address_entity": to_address_entity,
+                "to_address_entity_logo": to_address_entity_logo,
                 "to_address": to_address,
                 "to_address_label": to_address_label,
                 "gas": gas,
@@ -393,7 +401,19 @@ class WalletHistoryTransaction(
     def __getitem__(self, name: typing_extensions.Literal["native_transfers"]) -> MetaOapg.properties.native_transfers: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["from_address_entity"]) -> MetaOapg.properties.from_address_entity: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["from_address_entity_logo"]) -> MetaOapg.properties.from_address_entity_logo: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["from_address_label"]) -> MetaOapg.properties.from_address_label: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["to_address_entity"]) -> MetaOapg.properties.to_address_entity: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["to_address_entity_logo"]) -> MetaOapg.properties.to_address_entity_logo: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["to_address"]) -> MetaOapg.properties.to_address: ...
@@ -431,7 +451,7 @@ class WalletHistoryTransaction(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["hash", "nonce", "transaction_index", "from_address", "value", "gas_price", "receipt_cumulative_gas_used", "receipt_gas_used", "receipt_status", "block_timestamp", "block_number", "block_hash", "category", "summary", "nft_transfers", "erc20_transfers", "native_transfers", "from_address_label", "to_address", "to_address_label", "gas", "input", "receipt_contract_address", "transaction_fee", "internal_transactions", "contract_interactions", "possible_spam", "method_label", "logs", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["hash", "nonce", "transaction_index", "from_address", "value", "gas_price", "receipt_cumulative_gas_used", "receipt_gas_used", "receipt_status", "block_timestamp", "block_number", "block_hash", "category", "summary", "nft_transfers", "erc20_transfers", "native_transfers", "from_address_entity", "from_address_entity_logo", "from_address_label", "to_address_entity", "to_address_entity_logo", "to_address", "to_address_label", "gas", "input", "receipt_contract_address", "transaction_fee", "internal_transactions", "contract_interactions", "possible_spam", "method_label", "logs", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -488,7 +508,19 @@ class WalletHistoryTransaction(
     def get_item_oapg(self, name: typing_extensions.Literal["native_transfers"]) -> MetaOapg.properties.native_transfers: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["from_address_entity"]) -> typing.Union[MetaOapg.properties.from_address_entity, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["from_address_entity_logo"]) -> typing.Union[MetaOapg.properties.from_address_entity_logo, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["from_address_label"]) -> typing.Union[MetaOapg.properties.from_address_label, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["to_address_entity"]) -> typing.Union[MetaOapg.properties.to_address_entity, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["to_address_entity_logo"]) -> typing.Union[MetaOapg.properties.to_address_entity_logo, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["to_address"]) -> typing.Union[MetaOapg.properties.to_address, schemas.Unset]: ...
@@ -526,7 +558,7 @@ class WalletHistoryTransaction(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["hash", "nonce", "transaction_index", "from_address", "value", "gas_price", "receipt_cumulative_gas_used", "receipt_gas_used", "receipt_status", "block_timestamp", "block_number", "block_hash", "category", "summary", "nft_transfers", "erc20_transfers", "native_transfers", "from_address_label", "to_address", "to_address_label", "gas", "input", "receipt_contract_address", "transaction_fee", "internal_transactions", "contract_interactions", "possible_spam", "method_label", "logs", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["hash", "nonce", "transaction_index", "from_address", "value", "gas_price", "receipt_cumulative_gas_used", "receipt_gas_used", "receipt_status", "block_timestamp", "block_number", "block_hash", "category", "summary", "nft_transfers", "erc20_transfers", "native_transfers", "from_address_entity", "from_address_entity_logo", "from_address_label", "to_address_entity", "to_address_entity_logo", "to_address", "to_address_label", "gas", "input", "receipt_contract_address", "transaction_fee", "internal_transactions", "contract_interactions", "possible_spam", "method_label", "logs", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -550,7 +582,11 @@ class WalletHistoryTransaction(
         from_address: typing.Union[MetaOapg.properties.from_address, str, ],
         value: typing.Union[MetaOapg.properties.value, str, ],
         hash: typing.Union[MetaOapg.properties.hash, str, ],
+        from_address_entity: typing.Union[MetaOapg.properties.from_address_entity, str, schemas.Unset] = schemas.unset,
+        from_address_entity_logo: typing.Union[MetaOapg.properties.from_address_entity_logo, str, schemas.Unset] = schemas.unset,
         from_address_label: typing.Union[MetaOapg.properties.from_address_label, None, str, schemas.Unset] = schemas.unset,
+        to_address_entity: typing.Union[MetaOapg.properties.to_address_entity, str, schemas.Unset] = schemas.unset,
+        to_address_entity_logo: typing.Union[MetaOapg.properties.to_address_entity_logo, str, schemas.Unset] = schemas.unset,
         to_address: typing.Union[MetaOapg.properties.to_address, None, str, schemas.Unset] = schemas.unset,
         to_address_label: typing.Union[MetaOapg.properties.to_address_label, None, str, schemas.Unset] = schemas.unset,
         gas: typing.Union[MetaOapg.properties.gas, str, schemas.Unset] = schemas.unset,
@@ -585,7 +621,11 @@ class WalletHistoryTransaction(
             from_address=from_address,
             value=value,
             hash=hash,
+            from_address_entity=from_address_entity,
+            from_address_entity_logo=from_address_entity_logo,
             from_address_label=from_address_label,
+            to_address_entity=to_address_entity,
+            to_address_entity_logo=to_address_entity_logo,
             to_address=to_address,
             to_address_label=to_address_label,
             gas=gas,
@@ -603,7 +643,7 @@ class WalletHistoryTransaction(
 
 from openapi_evm_api.model.e_transaction_category import ETransactionCategory
 from openapi_evm_api.model.internal_transaction import InternalTransaction
-from openapi_evm_api.model.log import Log
+from openapi_evm_api.model.log_verbose import LogVerbose
 from openapi_evm_api.model.native_transfer import NativeTransfer
 from openapi_evm_api.model.resolve_contract_interaction_response import ResolveContractInteractionResponse
 from openapi_evm_api.model.wallet_history_erc20_transfer import WalletHistoryErc20Transfer

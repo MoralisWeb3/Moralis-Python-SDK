@@ -574,6 +574,46 @@ class DefiPositionDetails(
                         *args,
                         _configuration=_configuration,
                     )
+            
+            
+            class base_type(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'base_type':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
+            
+            
+            class health_factor(
+                schemas.NumberBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneDecimalMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, decimal.Decimal, int, float, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'health_factor':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "fee_tier": fee_tier,
                 "range_tnd": range_tnd,
@@ -602,6 +642,8 @@ class DefiPositionDetails(
                 "no_price_available": no_price_available,
                 "shares_in_strategy": shares_in_strategy,
                 "strategy_address": strategy_address,
+                "base_type": base_type,
+                "health_factor": health_factor,
             }
 
     
@@ -687,9 +729,15 @@ class DefiPositionDetails(
     def __getitem__(self, name: typing_extensions.Literal["strategy_address"]) -> MetaOapg.properties.strategy_address: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["base_type"]) -> MetaOapg.properties.base_type: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["health_factor"]) -> MetaOapg.properties.health_factor: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["fee_tier", "range_tnd", "reserves", "current_price", "is_in_range", "price_upper", "price_lower", "price_label", "liquidity", "range_start", "pool_address", "position_key", "nft_metadata", "asset_standard", "apy", "is_debt", "is_variable_debt", "is_stable_debt", "shares", "reserve0", "reserve1", "factory", "pair", "share_of_pool", "no_price_available", "shares_in_strategy", "strategy_address", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["fee_tier", "range_tnd", "reserves", "current_price", "is_in_range", "price_upper", "price_lower", "price_label", "liquidity", "range_start", "pool_address", "position_key", "nft_metadata", "asset_standard", "apy", "is_debt", "is_variable_debt", "is_stable_debt", "shares", "reserve0", "reserve1", "factory", "pair", "share_of_pool", "no_price_available", "shares_in_strategy", "strategy_address", "base_type", "health_factor", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -776,9 +824,15 @@ class DefiPositionDetails(
     def get_item_oapg(self, name: typing_extensions.Literal["strategy_address"]) -> typing.Union[MetaOapg.properties.strategy_address, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["base_type"]) -> typing.Union[MetaOapg.properties.base_type, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["health_factor"]) -> typing.Union[MetaOapg.properties.health_factor, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["fee_tier", "range_tnd", "reserves", "current_price", "is_in_range", "price_upper", "price_lower", "price_label", "liquidity", "range_start", "pool_address", "position_key", "nft_metadata", "asset_standard", "apy", "is_debt", "is_variable_debt", "is_stable_debt", "shares", "reserve0", "reserve1", "factory", "pair", "share_of_pool", "no_price_available", "shares_in_strategy", "strategy_address", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["fee_tier", "range_tnd", "reserves", "current_price", "is_in_range", "price_upper", "price_lower", "price_label", "liquidity", "range_start", "pool_address", "position_key", "nft_metadata", "asset_standard", "apy", "is_debt", "is_variable_debt", "is_stable_debt", "shares", "reserve0", "reserve1", "factory", "pair", "share_of_pool", "no_price_available", "shares_in_strategy", "strategy_address", "base_type", "health_factor", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -812,6 +866,8 @@ class DefiPositionDetails(
         no_price_available: typing.Union[MetaOapg.properties.no_price_available, None, bool, schemas.Unset] = schemas.unset,
         shares_in_strategy: typing.Union[MetaOapg.properties.shares_in_strategy, None, str, schemas.Unset] = schemas.unset,
         strategy_address: typing.Union[MetaOapg.properties.strategy_address, None, str, schemas.Unset] = schemas.unset,
+        base_type: typing.Union[MetaOapg.properties.base_type, None, str, schemas.Unset] = schemas.unset,
+        health_factor: typing.Union[MetaOapg.properties.health_factor, None, decimal.Decimal, int, float, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'DefiPositionDetails':
@@ -845,6 +901,8 @@ class DefiPositionDetails(
             no_price_available=no_price_available,
             shares_in_strategy=shares_in_strategy,
             strategy_address=strategy_address,
+            base_type=base_type,
+            health_factor=health_factor,
             _configuration=_configuration,
             **kwargs,
         )

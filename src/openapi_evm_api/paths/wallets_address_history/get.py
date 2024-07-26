@@ -55,7 +55,6 @@ FromDateSchema = schemas.StrSchema
 ToDateSchema = schemas.StrSchema
 IncludeInternalTransactionsSchema = schemas.BoolSchema
 IncludeInputDataSchema = schemas.BoolSchema
-IncludeLogsDataSchema = schemas.BoolSchema
 NftMetadataSchema = schemas.BoolSchema
 CursorSchema = schemas.StrSchema
 OrderSchema = OrderList
@@ -83,7 +82,6 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'to_date': typing.Union[ToDateSchema, str, ],
         'include_internal_transactions': typing.Union[IncludeInternalTransactionsSchema, bool, ],
         'include_input_data': typing.Union[IncludeInputDataSchema, bool, ],
-        'include_logs_data': typing.Union[IncludeLogsDataSchema, bool, ],
         'nft_metadata': typing.Union[NftMetadataSchema, bool, ],
         'cursor': typing.Union[CursorSchema, str, ],
         'order': typing.Union[OrderSchema, ],
@@ -137,12 +135,6 @@ request_query_include_input_data = api_client.QueryParameter(
     name="include_input_data",
     style=api_client.ParameterStyle.FORM,
     schema=IncludeInputDataSchema,
-    explode=True,
-)
-request_query_include_logs_data = api_client.QueryParameter(
-    name="include_logs_data",
-    style=api_client.ParameterStyle.FORM,
-    schema=IncludeLogsDataSchema,
     explode=True,
 )
 request_query_nft_metadata = api_client.QueryParameter(
@@ -305,7 +297,6 @@ class BaseApi(api_client.Api):
             request_query_to_date,
             request_query_include_internal_transactions,
             request_query_include_input_data,
-            request_query_include_logs_data,
             request_query_nft_metadata,
             request_query_cursor,
             request_query_order,

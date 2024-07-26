@@ -59,6 +59,7 @@ class ChainsSchema(
         return super().__getitem__(i)
 ExcludeSpamSchema = schemas.BoolSchema
 ExcludeUnverifiedContractsSchema = schemas.BoolSchema
+MaxTokenInactivitySchema = schemas.NumberSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -70,6 +71,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'chains': typing.Union[ChainsSchema, list, tuple, ],
         'exclude_spam': typing.Union[ExcludeSpamSchema, bool, ],
         'exclude_unverified_contracts': typing.Union[ExcludeUnverifiedContractsSchema, bool, ],
+        'max_token_inactivity': typing.Union[MaxTokenInactivitySchema, decimal.Decimal, int, float, ],
     },
     total=False
 )
@@ -95,6 +97,12 @@ request_query_exclude_unverified_contracts = api_client.QueryParameter(
     name="exclude_unverified_contracts",
     style=api_client.ParameterStyle.FORM,
     schema=ExcludeUnverifiedContractsSchema,
+    explode=True,
+)
+request_query_max_token_inactivity = api_client.QueryParameter(
+    name="max_token_inactivity",
+    style=api_client.ParameterStyle.FORM,
+    schema=MaxTokenInactivitySchema,
     explode=True,
 )
 # Path params
@@ -229,6 +237,7 @@ class BaseApi(api_client.Api):
             request_query_chains,
             request_query_exclude_spam,
             request_query_exclude_unverified_contracts,
+            request_query_max_token_inactivity,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
