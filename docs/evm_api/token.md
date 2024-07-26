@@ -31,6 +31,7 @@ api_key = "YOUR_API_KEY"
 params = {
     "chain": "eth", 
     "include": "", 
+    "max_token_inactivity": 1.2, 
 }
 body = {
     "tokens": [{'token_address': '0xdac17f958d2ee523a2206206994597c13d831ec7'}, {'token_address': '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'}, {'token_address': '0xae7ab96520de3a18e5e111b5eaab095312d7fe84', 'exchange': 'uniswapv2', 'to_block': '16314545'}, {'token_address': '0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0'}], 
@@ -52,6 +53,7 @@ print(result)
 |------|------|-------------|----------|---------|---------|
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1"<br/>- "chiliz"<br/>- "0x15b38"<br/>- "chiliz testnet"<br/>- "0x15b32"<br/>- "gnosis"<br/>- "0x64"<br/>- "gnosis testnet"<br/>- "0x27d8"<br/>- "base"<br/>- "0x2105"<br/>- "base sepolia"<br/>- "0x14a34"<br/>- "optimism"<br/>- "0xa"<br/>- "holesky"<br/>- "0x4268"<br/>- "polygon amoy"<br/>- "0x13882"<br/>- "linea"<br/>- "0xe708"<br/>- "moonbeam"<br/>- "0x504"<br/>- "moonriver"<br/>- "0x505"<br/>- "moonbase"<br/>- "0x507"<br/>- "linea sepolia"<br/>- "0xe705" | The chain to query |  | "eth" | "eth" |
 | include | enum[str]: <br/>- "percent_change" | If the result should contain the 24hr percent change |  | "" | "" |
+| max_token_inactivity | float | Exclude tokens inactive for more than the given amount of days |  |  | 1.2 |
 
 
 ### Body
@@ -235,6 +237,7 @@ params = {
     "exchange": "", 
     "to_block": 0, 
     "include": "", 
+    "max_token_inactivity": 1.2, 
 }
 
 result = evm_api.token.get_token_price(
@@ -255,6 +258,7 @@ print(result)
 | exchange | str | The factory name or address of the token exchange |  |  | "" |
 | to_block | int | The block number from which the token price should be checked |  |  | 0 |
 | include | enum[str]: <br/>- "percent_change" | If the result should contain the 24hr percent change |  | "" | "" |
+| max_token_inactivity | float | Exclude tokens inactive for more than the given amount of days |  |  | 1.2 |
 
 
 
@@ -377,8 +381,8 @@ print(result)
 | Name | Type | Description | Required | Default | Example |
 |------|------|-------------|----------|---------|---------|
 | address | str | The ERC20 token address. | Yes |  | "" |
-| days | str | Timeframe in days for which profitability is calculated, can be 'all', '7d' or '30d' |  |  | "" |
-| chain | enum[str]: <br/>- "eth"<br/>- "mainnet"<br/>- "0x1"<br/>- "matic"<br/>- "0x89"<br/>- "polygon"<br/>- "bsc"<br/>- "binance"<br/>- "0x38"<br/>- "fantom"<br/>- "ftm"<br/>- "0xfa"<br/>- "arbitrum"<br/>- "0xa4b1"<br/>- "optimism"<br/>- "0xa"<br/>- "pulsechain"<br/>- "0x171"<br/>- "base"<br/>- "0x2105" | The chain to query |  |  | "eth" |
+| days | str | Timeframe in days for which profitability is calculated, Options include 'all', '7', '30', '60', '90' default is 'all'. |  |  | "" |
+| chain | enum[str]: <br/>- "eth"<br/>- "mainnet"<br/>- "0x1"<br/>- "matic"<br/>- "0x89"<br/>- "polygon"<br/>- "bsc"<br/>- "binance"<br/>- "0x38"<br/>- "fantom"<br/>- "ftm"<br/>- "0xfa"<br/>- "arbitrum"<br/>- "0xa4b1"<br/>- "optimism"<br/>- "0xa"<br/>- "pulsechain"<br/>- "0x171"<br/>- "base"<br/>- "0x2105"<br/>- "linea"<br/>- "0xe708" | The chain to query |  |  | "eth" |
 
 
 

@@ -35,13 +35,23 @@ class WalletTopProfitableWalletPerTokenResponse(
 
     class MetaOapg:
         required = {
-            "wallets",
+            "result",
+            "symbol",
+            "possible_spam",
+            "decimals",
+            "name",
+            "logo",
         }
         
         class properties:
+            name = schemas.StrSchema
+            symbol = schemas.StrSchema
+            decimals = schemas.IntSchema
+            logo = schemas.StrSchema
+            possible_spam = schemas.BoolSchema
             
             
-            class wallets(
+            class result(
                 schemas.ListSchema
             ):
             
@@ -56,7 +66,7 @@ class WalletTopProfitableWalletPerTokenResponse(
                     cls,
                     arg: typing.Union[typing.Tuple['TopProfitableWalletPerTokenResponse'], typing.List['TopProfitableWalletPerTokenResponse']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
-                ) -> 'wallets':
+                ) -> 'result':
                     return super().__new__(
                         cls,
                         arg,
@@ -66,44 +76,94 @@ class WalletTopProfitableWalletPerTokenResponse(
                 def __getitem__(self, i: int) -> 'TopProfitableWalletPerTokenResponse':
                     return super().__getitem__(i)
             __annotations__ = {
-                "wallets": wallets,
+                "name": name,
+                "symbol": symbol,
+                "decimals": decimals,
+                "logo": logo,
+                "possible_spam": possible_spam,
+                "result": result,
             }
 
     
-    wallets: MetaOapg.properties.wallets
+    result: MetaOapg.properties.result
+    symbol: MetaOapg.properties.symbol
+    possible_spam: MetaOapg.properties.possible_spam
+    decimals: MetaOapg.properties.decimals
+    name: MetaOapg.properties.name
+    logo: MetaOapg.properties.logo
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["wallets"]) -> MetaOapg.properties.wallets: ...
+    def __getitem__(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["symbol"]) -> MetaOapg.properties.symbol: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["decimals"]) -> MetaOapg.properties.decimals: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["logo"]) -> MetaOapg.properties.logo: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["result"]) -> MetaOapg.properties.result: ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["wallets", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["name", "symbol", "decimals", "logo", "possible_spam", "result", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["wallets"]) -> MetaOapg.properties.wallets: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["symbol"]) -> MetaOapg.properties.symbol: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["decimals"]) -> MetaOapg.properties.decimals: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["logo"]) -> MetaOapg.properties.logo: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["result"]) -> MetaOapg.properties.result: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["wallets", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["name", "symbol", "decimals", "logo", "possible_spam", "result", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
-        wallets: typing.Union[MetaOapg.properties.wallets, list, tuple, ],
+        result: typing.Union[MetaOapg.properties.result, list, tuple, ],
+        symbol: typing.Union[MetaOapg.properties.symbol, str, ],
+        possible_spam: typing.Union[MetaOapg.properties.possible_spam, bool, ],
+        decimals: typing.Union[MetaOapg.properties.decimals, decimal.Decimal, int, ],
+        name: typing.Union[MetaOapg.properties.name, str, ],
+        logo: typing.Union[MetaOapg.properties.logo, str, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'WalletTopProfitableWalletPerTokenResponse':
         return super().__new__(
             cls,
             *args,
-            wallets=wallets,
+            result=result,
+            symbol=symbol,
+            possible_spam=possible_spam,
+            decimals=decimals,
+            name=name,
+            logo=logo,
             _configuration=_configuration,
             **kwargs,
         )

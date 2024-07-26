@@ -62,6 +62,8 @@ class WalletHistoryErc20Transfer(
             possible_spam = schemas.BoolSchema
             verified_contract = schemas.BoolSchema
             block_timestamp = schemas.StrSchema
+            to_address_entity = schemas.StrSchema
+            to_address_entity_logo = schemas.StrSchema
             to_address = schemas.StrSchema
             
             
@@ -83,6 +85,8 @@ class WalletHistoryErc20Transfer(
                         *args,
                         _configuration=_configuration,
                     )
+            from_address_entity = schemas.StrSchema
+            from_address_entity_logo = schemas.StrSchema
             
             
             class from_address_label(
@@ -116,8 +120,12 @@ class WalletHistoryErc20Transfer(
                 "possible_spam": possible_spam,
                 "verified_contract": verified_contract,
                 "block_timestamp": block_timestamp,
+                "to_address_entity": to_address_entity,
+                "to_address_entity_logo": to_address_entity_logo,
                 "to_address": to_address,
                 "to_address_label": to_address_label,
+                "from_address_entity": from_address_entity,
+                "from_address_entity_logo": from_address_entity_logo,
                 "from_address_label": from_address_label,
             }
 
@@ -172,10 +180,22 @@ class WalletHistoryErc20Transfer(
     def __getitem__(self, name: typing_extensions.Literal["block_timestamp"]) -> MetaOapg.properties.block_timestamp: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["to_address_entity"]) -> MetaOapg.properties.to_address_entity: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["to_address_entity_logo"]) -> MetaOapg.properties.to_address_entity_logo: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["to_address"]) -> MetaOapg.properties.to_address: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["to_address_label"]) -> MetaOapg.properties.to_address_label: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["from_address_entity"]) -> MetaOapg.properties.from_address_entity: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["from_address_entity_logo"]) -> MetaOapg.properties.from_address_entity_logo: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["from_address_label"]) -> MetaOapg.properties.from_address_label: ...
@@ -183,7 +203,7 @@ class WalletHistoryErc20Transfer(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_name", "token_symbol", "token_logo", "token_decimals", "address", "from_address", "value", "value_formatted", "log_index", "possible_spam", "verified_contract", "block_timestamp", "to_address", "to_address_label", "from_address_label", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_name", "token_symbol", "token_logo", "token_decimals", "address", "from_address", "value", "value_formatted", "log_index", "possible_spam", "verified_contract", "block_timestamp", "to_address_entity", "to_address_entity_logo", "to_address", "to_address_label", "from_address_entity", "from_address_entity_logo", "from_address_label", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -225,10 +245,22 @@ class WalletHistoryErc20Transfer(
     def get_item_oapg(self, name: typing_extensions.Literal["block_timestamp"]) -> typing.Union[MetaOapg.properties.block_timestamp, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["to_address_entity"]) -> typing.Union[MetaOapg.properties.to_address_entity, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["to_address_entity_logo"]) -> typing.Union[MetaOapg.properties.to_address_entity_logo, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["to_address"]) -> typing.Union[MetaOapg.properties.to_address, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["to_address_label"]) -> typing.Union[MetaOapg.properties.to_address_label, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["from_address_entity"]) -> typing.Union[MetaOapg.properties.from_address_entity, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["from_address_entity_logo"]) -> typing.Union[MetaOapg.properties.from_address_entity_logo, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["from_address_label"]) -> typing.Union[MetaOapg.properties.from_address_label, schemas.Unset]: ...
@@ -236,7 +268,7 @@ class WalletHistoryErc20Transfer(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_name", "token_symbol", "token_logo", "token_decimals", "address", "from_address", "value", "value_formatted", "log_index", "possible_spam", "verified_contract", "block_timestamp", "to_address", "to_address_label", "from_address_label", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_name", "token_symbol", "token_logo", "token_decimals", "address", "from_address", "value", "value_formatted", "log_index", "possible_spam", "verified_contract", "block_timestamp", "to_address_entity", "to_address_entity_logo", "to_address", "to_address_label", "from_address_entity", "from_address_entity_logo", "from_address_label", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -256,8 +288,12 @@ class WalletHistoryErc20Transfer(
         log_index: typing.Union[MetaOapg.properties.log_index, decimal.Decimal, int, ],
         value: typing.Union[MetaOapg.properties.value, str, ],
         block_timestamp: typing.Union[MetaOapg.properties.block_timestamp, str, schemas.Unset] = schemas.unset,
+        to_address_entity: typing.Union[MetaOapg.properties.to_address_entity, str, schemas.Unset] = schemas.unset,
+        to_address_entity_logo: typing.Union[MetaOapg.properties.to_address_entity_logo, str, schemas.Unset] = schemas.unset,
         to_address: typing.Union[MetaOapg.properties.to_address, str, schemas.Unset] = schemas.unset,
         to_address_label: typing.Union[MetaOapg.properties.to_address_label, None, str, schemas.Unset] = schemas.unset,
+        from_address_entity: typing.Union[MetaOapg.properties.from_address_entity, str, schemas.Unset] = schemas.unset,
+        from_address_entity_logo: typing.Union[MetaOapg.properties.from_address_entity_logo, str, schemas.Unset] = schemas.unset,
         from_address_label: typing.Union[MetaOapg.properties.from_address_label, None, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -278,8 +314,12 @@ class WalletHistoryErc20Transfer(
             log_index=log_index,
             value=value,
             block_timestamp=block_timestamp,
+            to_address_entity=to_address_entity,
+            to_address_entity_logo=to_address_entity_logo,
             to_address=to_address,
             to_address_label=to_address_label,
+            from_address_entity=from_address_entity,
+            from_address_entity_logo=from_address_entity_logo,
             from_address_label=from_address_label,
             _configuration=_configuration,
             **kwargs,

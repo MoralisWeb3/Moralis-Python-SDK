@@ -95,6 +95,8 @@ class BlockTransactionDecoded(
                 def __getitem__(self, i: int) -> 'LogVerbose':
                     return super().__getitem__(i)
             decoded_call = schemas.DictSchema
+            from_address_entity = schemas.StrSchema
+            from_address_entity_logo = schemas.StrSchema
             
             
             class from_address_label(
@@ -115,6 +117,8 @@ class BlockTransactionDecoded(
                         *args,
                         _configuration=_configuration,
                     )
+            to_address_entity = schemas.StrSchema
+            to_address_entity_logo = schemas.StrSchema
             to_address = schemas.StrSchema
             
             
@@ -156,7 +160,11 @@ class BlockTransactionDecoded(
                 "block_hash": block_hash,
                 "logs": logs,
                 "decoded_call": decoded_call,
+                "from_address_entity": from_address_entity,
+                "from_address_entity_logo": from_address_entity_logo,
                 "from_address_label": from_address_label,
+                "to_address_entity": to_address_entity,
+                "to_address_entity_logo": to_address_entity_logo,
                 "to_address": to_address,
                 "to_address_label": to_address_label,
                 "gas": gas,
@@ -230,7 +238,19 @@ class BlockTransactionDecoded(
     def __getitem__(self, name: typing_extensions.Literal["decoded_call"]) -> MetaOapg.properties.decoded_call: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["from_address_entity"]) -> MetaOapg.properties.from_address_entity: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["from_address_entity_logo"]) -> MetaOapg.properties.from_address_entity_logo: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["from_address_label"]) -> MetaOapg.properties.from_address_label: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["to_address_entity"]) -> MetaOapg.properties.to_address_entity: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["to_address_entity_logo"]) -> MetaOapg.properties.to_address_entity_logo: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["to_address"]) -> MetaOapg.properties.to_address: ...
@@ -250,7 +270,7 @@ class BlockTransactionDecoded(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["hash", "nonce", "transaction_index", "from_address", "value", "gas_price", "input", "receipt_cumulative_gas_used", "receipt_gas_used", "receipt_status", "transaction_fee", "block_timestamp", "block_number", "block_hash", "logs", "decoded_call", "from_address_label", "to_address", "to_address_label", "gas", "receipt_contract_address", "receipt_root", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["hash", "nonce", "transaction_index", "from_address", "value", "gas_price", "input", "receipt_cumulative_gas_used", "receipt_gas_used", "receipt_status", "transaction_fee", "block_timestamp", "block_number", "block_hash", "logs", "decoded_call", "from_address_entity", "from_address_entity_logo", "from_address_label", "to_address_entity", "to_address_entity_logo", "to_address", "to_address_label", "gas", "receipt_contract_address", "receipt_root", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -304,7 +324,19 @@ class BlockTransactionDecoded(
     def get_item_oapg(self, name: typing_extensions.Literal["decoded_call"]) -> MetaOapg.properties.decoded_call: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["from_address_entity"]) -> typing.Union[MetaOapg.properties.from_address_entity, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["from_address_entity_logo"]) -> typing.Union[MetaOapg.properties.from_address_entity_logo, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["from_address_label"]) -> typing.Union[MetaOapg.properties.from_address_label, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["to_address_entity"]) -> typing.Union[MetaOapg.properties.to_address_entity, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["to_address_entity_logo"]) -> typing.Union[MetaOapg.properties.to_address_entity_logo, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["to_address"]) -> typing.Union[MetaOapg.properties.to_address, schemas.Unset]: ...
@@ -324,7 +356,7 @@ class BlockTransactionDecoded(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["hash", "nonce", "transaction_index", "from_address", "value", "gas_price", "input", "receipt_cumulative_gas_used", "receipt_gas_used", "receipt_status", "transaction_fee", "block_timestamp", "block_number", "block_hash", "logs", "decoded_call", "from_address_label", "to_address", "to_address_label", "gas", "receipt_contract_address", "receipt_root", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["hash", "nonce", "transaction_index", "from_address", "value", "gas_price", "input", "receipt_cumulative_gas_used", "receipt_gas_used", "receipt_status", "transaction_fee", "block_timestamp", "block_number", "block_hash", "logs", "decoded_call", "from_address_entity", "from_address_entity_logo", "from_address_label", "to_address_entity", "to_address_entity_logo", "to_address", "to_address_label", "gas", "receipt_contract_address", "receipt_root", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -347,7 +379,11 @@ class BlockTransactionDecoded(
         logs: typing.Union[MetaOapg.properties.logs, list, tuple, ],
         value: typing.Union[MetaOapg.properties.value, str, ],
         hash: typing.Union[MetaOapg.properties.hash, str, ],
+        from_address_entity: typing.Union[MetaOapg.properties.from_address_entity, str, schemas.Unset] = schemas.unset,
+        from_address_entity_logo: typing.Union[MetaOapg.properties.from_address_entity_logo, str, schemas.Unset] = schemas.unset,
         from_address_label: typing.Union[MetaOapg.properties.from_address_label, None, str, schemas.Unset] = schemas.unset,
+        to_address_entity: typing.Union[MetaOapg.properties.to_address_entity, str, schemas.Unset] = schemas.unset,
+        to_address_entity_logo: typing.Union[MetaOapg.properties.to_address_entity_logo, str, schemas.Unset] = schemas.unset,
         to_address: typing.Union[MetaOapg.properties.to_address, str, schemas.Unset] = schemas.unset,
         to_address_label: typing.Union[MetaOapg.properties.to_address_label, None, str, schemas.Unset] = schemas.unset,
         gas: typing.Union[MetaOapg.properties.gas, str, schemas.Unset] = schemas.unset,
@@ -375,7 +411,11 @@ class BlockTransactionDecoded(
             logs=logs,
             value=value,
             hash=hash,
+            from_address_entity=from_address_entity,
+            from_address_entity_logo=from_address_entity_logo,
             from_address_label=from_address_label,
+            to_address_entity=to_address_entity,
+            to_address_entity_logo=to_address_entity_logo,
             to_address=to_address,
             to_address_label=to_address_label,
             gas=gas,

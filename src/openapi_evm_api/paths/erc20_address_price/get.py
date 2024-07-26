@@ -58,6 +58,7 @@ class IncludeSchema(
     @schemas.classproperty
     def PERCENT_CHANGE(cls):
         return cls("percent_change")
+MaxTokenInactivitySchema = schemas.NumberSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -70,6 +71,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'exchange': typing.Union[ExchangeSchema, str, ],
         'to_block': typing.Union[ToBlockSchema, decimal.Decimal, int, ],
         'include': typing.Union[IncludeSchema, str, ],
+        'max_token_inactivity': typing.Union[MaxTokenInactivitySchema, decimal.Decimal, int, float, ],
     },
     total=False
 )
@@ -101,6 +103,12 @@ request_query_include = api_client.QueryParameter(
     name="include",
     style=api_client.ParameterStyle.FORM,
     schema=IncludeSchema,
+    explode=True,
+)
+request_query_max_token_inactivity = api_client.QueryParameter(
+    name="max_token_inactivity",
+    style=api_client.ParameterStyle.FORM,
+    schema=MaxTokenInactivitySchema,
     explode=True,
 )
 # Path params
@@ -236,6 +244,7 @@ class BaseApi(api_client.Api):
             request_query_exchange,
             request_query_to_block,
             request_query_include,
+            request_query_max_token_inactivity,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:

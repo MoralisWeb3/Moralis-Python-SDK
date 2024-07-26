@@ -56,6 +56,8 @@ class DiscoveryApiChainsList(
             "0x171": "X171",
             "base": "BASE",
             "0x2105": "X2105",
+            "linea": "LINEA",
+            "0xe708": "XE708",
         }
     
     @schemas.classproperty
@@ -137,3 +139,11 @@ class DiscoveryApiChainsList(
     @schemas.classproperty
     def X2105(cls):
         return cls("0x2105")
+    
+    @schemas.classproperty
+    def LINEA(cls):
+        return cls("linea")
+    
+    @schemas.classproperty
+    def XE708(cls):
+        return cls("0xe708")

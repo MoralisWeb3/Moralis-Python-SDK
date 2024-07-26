@@ -70,6 +70,7 @@ class LimitSchema(
     class MetaOapg:
         inclusive_minimum = 0
 ExcludeNativeSchema = schemas.BoolSchema
+MaxTokenInactivitySchema = schemas.NumberSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -86,6 +87,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'cursor': typing.Union[CursorSchema, str, ],
         'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
         'exclude_native': typing.Union[ExcludeNativeSchema, bool, ],
+        'max_token_inactivity': typing.Union[MaxTokenInactivitySchema, decimal.Decimal, int, float, ],
     },
     total=False
 )
@@ -141,6 +143,12 @@ request_query_exclude_native = api_client.QueryParameter(
     name="exclude_native",
     style=api_client.ParameterStyle.FORM,
     schema=ExcludeNativeSchema,
+    explode=True,
+)
+request_query_max_token_inactivity = api_client.QueryParameter(
+    name="max_token_inactivity",
+    style=api_client.ParameterStyle.FORM,
+    schema=MaxTokenInactivitySchema,
     explode=True,
 )
 # Path params
@@ -280,6 +288,7 @@ class BaseApi(api_client.Api):
             request_query_cursor,
             request_query_limit,
             request_query_exclude_native,
+            request_query_max_token_inactivity,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:

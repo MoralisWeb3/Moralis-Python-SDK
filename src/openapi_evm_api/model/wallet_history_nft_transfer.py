@@ -59,6 +59,8 @@ class WalletHistoryNftTransfer(
             log_index = schemas.IntSchema
             possible_spam = schemas.BoolSchema
             direction = schemas.StrSchema
+            from_address_entity = schemas.StrSchema
+            from_address_entity_logo = schemas.StrSchema
             
             
             class from_address_label(
@@ -79,6 +81,8 @@ class WalletHistoryNftTransfer(
                         *args,
                         _configuration=_configuration,
                     )
+            to_address_entity = schemas.StrSchema
+            to_address_entity_logo = schemas.StrSchema
             to_address = schemas.StrSchema
             
             
@@ -119,7 +123,11 @@ class WalletHistoryNftTransfer(
                 "log_index": log_index,
                 "possible_spam": possible_spam,
                 "direction": direction,
+                "from_address_entity": from_address_entity,
+                "from_address_entity_logo": from_address_entity_logo,
                 "from_address_label": from_address_label,
+                "to_address_entity": to_address_entity,
+                "to_address_entity_logo": to_address_entity_logo,
                 "to_address": to_address,
                 "to_address_label": to_address_label,
                 "operator": operator,
@@ -173,7 +181,19 @@ class WalletHistoryNftTransfer(
     def __getitem__(self, name: typing_extensions.Literal["direction"]) -> MetaOapg.properties.direction: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["from_address_entity"]) -> MetaOapg.properties.from_address_entity: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["from_address_entity_logo"]) -> MetaOapg.properties.from_address_entity_logo: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["from_address_label"]) -> MetaOapg.properties.from_address_label: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["to_address_entity"]) -> MetaOapg.properties.to_address_entity: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["to_address_entity_logo"]) -> MetaOapg.properties.to_address_entity_logo: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["to_address"]) -> MetaOapg.properties.to_address: ...
@@ -199,7 +219,7 @@ class WalletHistoryNftTransfer(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "from_address", "value", "amount", "contract_type", "transaction_type", "log_index", "possible_spam", "direction", "from_address_label", "to_address", "to_address_label", "operator", "verified_collection", "collection_logo", "collection_banner_image", "normalized_metadata", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "from_address", "value", "amount", "contract_type", "transaction_type", "log_index", "possible_spam", "direction", "from_address_entity", "from_address_entity_logo", "from_address_label", "to_address_entity", "to_address_entity_logo", "to_address", "to_address_label", "operator", "verified_collection", "collection_logo", "collection_banner_image", "normalized_metadata", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -235,7 +255,19 @@ class WalletHistoryNftTransfer(
     def get_item_oapg(self, name: typing_extensions.Literal["direction"]) -> MetaOapg.properties.direction: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["from_address_entity"]) -> typing.Union[MetaOapg.properties.from_address_entity, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["from_address_entity_logo"]) -> typing.Union[MetaOapg.properties.from_address_entity_logo, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["from_address_label"]) -> typing.Union[MetaOapg.properties.from_address_label, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["to_address_entity"]) -> typing.Union[MetaOapg.properties.to_address_entity, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["to_address_entity_logo"]) -> typing.Union[MetaOapg.properties.to_address_entity_logo, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["to_address"]) -> typing.Union[MetaOapg.properties.to_address, schemas.Unset]: ...
@@ -261,7 +293,7 @@ class WalletHistoryNftTransfer(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "from_address", "value", "amount", "contract_type", "transaction_type", "log_index", "possible_spam", "direction", "from_address_label", "to_address", "to_address_label", "operator", "verified_collection", "collection_logo", "collection_banner_image", "normalized_metadata", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "from_address", "value", "amount", "contract_type", "transaction_type", "log_index", "possible_spam", "direction", "from_address_entity", "from_address_entity_logo", "from_address_label", "to_address_entity", "to_address_entity_logo", "to_address", "to_address_label", "operator", "verified_collection", "collection_logo", "collection_banner_image", "normalized_metadata", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -279,7 +311,11 @@ class WalletHistoryNftTransfer(
         log_index: typing.Union[MetaOapg.properties.log_index, decimal.Decimal, int, ],
         value: typing.Union[MetaOapg.properties.value, str, ],
         direction: typing.Union[MetaOapg.properties.direction, str, ],
+        from_address_entity: typing.Union[MetaOapg.properties.from_address_entity, str, schemas.Unset] = schemas.unset,
+        from_address_entity_logo: typing.Union[MetaOapg.properties.from_address_entity_logo, str, schemas.Unset] = schemas.unset,
         from_address_label: typing.Union[MetaOapg.properties.from_address_label, None, str, schemas.Unset] = schemas.unset,
+        to_address_entity: typing.Union[MetaOapg.properties.to_address_entity, str, schemas.Unset] = schemas.unset,
+        to_address_entity_logo: typing.Union[MetaOapg.properties.to_address_entity_logo, str, schemas.Unset] = schemas.unset,
         to_address: typing.Union[MetaOapg.properties.to_address, str, schemas.Unset] = schemas.unset,
         to_address_label: typing.Union[MetaOapg.properties.to_address_label, None, str, schemas.Unset] = schemas.unset,
         operator: typing.Union[MetaOapg.properties.operator, str, schemas.Unset] = schemas.unset,
@@ -304,7 +340,11 @@ class WalletHistoryNftTransfer(
             log_index=log_index,
             value=value,
             direction=direction,
+            from_address_entity=from_address_entity,
+            from_address_entity_logo=from_address_entity_logo,
             from_address_label=from_address_label,
+            to_address_entity=to_address_entity,
+            to_address_entity_logo=to_address_entity_logo,
             to_address=to_address,
             to_address_label=to_address_label,
             operator=operator,
