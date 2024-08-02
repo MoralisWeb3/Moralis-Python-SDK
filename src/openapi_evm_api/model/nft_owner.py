@@ -73,6 +73,9 @@ class NftOwner(
             def media() -> typing.Type['Media']:
                 return Media
             amount = schemas.StrSchema
+            rarity_rank = schemas.NumberSchema
+            rarity_percentage = schemas.NumberSchema
+            rarity_label = schemas.StrSchema
             verified_collection = schemas.BoolSchema
             __annotations__ = {
                 "token_address": token_address,
@@ -92,6 +95,9 @@ class NftOwner(
                 "normalized_metadata": normalized_metadata,
                 "media": media,
                 "amount": amount,
+                "rarity_rank": rarity_rank,
+                "rarity_percentage": rarity_percentage,
+                "rarity_label": rarity_label,
                 "verified_collection": verified_collection,
             }
 
@@ -161,12 +167,21 @@ class NftOwner(
     def __getitem__(self, name: typing_extensions.Literal["amount"]) -> MetaOapg.properties.amount: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["rarity_rank"]) -> MetaOapg.properties.rarity_rank: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["rarity_percentage"]) -> MetaOapg.properties.rarity_percentage: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["rarity_label"]) -> MetaOapg.properties.rarity_label: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["verified_collection"]) -> MetaOapg.properties.verified_collection: ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "owner_of", "block_number", "block_number_minted", "name", "symbol", "token_hash", "last_token_uri_sync", "last_metadata_sync", "possible_spam", "token_uri", "metadata", "normalized_metadata", "media", "amount", "verified_collection", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "owner_of", "block_number", "block_number_minted", "name", "symbol", "token_hash", "last_token_uri_sync", "last_metadata_sync", "possible_spam", "token_uri", "metadata", "normalized_metadata", "media", "amount", "rarity_rank", "rarity_percentage", "rarity_label", "verified_collection", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -223,12 +238,21 @@ class NftOwner(
     def get_item_oapg(self, name: typing_extensions.Literal["amount"]) -> typing.Union[MetaOapg.properties.amount, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["rarity_rank"]) -> typing.Union[MetaOapg.properties.rarity_rank, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["rarity_percentage"]) -> typing.Union[MetaOapg.properties.rarity_percentage, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["rarity_label"]) -> typing.Union[MetaOapg.properties.rarity_label, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["verified_collection"]) -> typing.Union[MetaOapg.properties.verified_collection, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "owner_of", "block_number", "block_number_minted", "name", "symbol", "token_hash", "last_token_uri_sync", "last_metadata_sync", "possible_spam", "token_uri", "metadata", "normalized_metadata", "media", "amount", "verified_collection", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "token_id", "contract_type", "owner_of", "block_number", "block_number_minted", "name", "symbol", "token_hash", "last_token_uri_sync", "last_metadata_sync", "possible_spam", "token_uri", "metadata", "normalized_metadata", "media", "amount", "rarity_rank", "rarity_percentage", "rarity_label", "verified_collection", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -252,6 +276,9 @@ class NftOwner(
         normalized_metadata: typing.Union['NormalizedMetadata', schemas.Unset] = schemas.unset,
         media: typing.Union['Media', schemas.Unset] = schemas.unset,
         amount: typing.Union[MetaOapg.properties.amount, str, schemas.Unset] = schemas.unset,
+        rarity_rank: typing.Union[MetaOapg.properties.rarity_rank, decimal.Decimal, int, float, schemas.Unset] = schemas.unset,
+        rarity_percentage: typing.Union[MetaOapg.properties.rarity_percentage, decimal.Decimal, int, float, schemas.Unset] = schemas.unset,
+        rarity_label: typing.Union[MetaOapg.properties.rarity_label, str, schemas.Unset] = schemas.unset,
         verified_collection: typing.Union[MetaOapg.properties.verified_collection, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -276,6 +303,9 @@ class NftOwner(
             normalized_metadata=normalized_metadata,
             media=media,
             amount=amount,
+            rarity_rank=rarity_rank,
+            rarity_percentage=rarity_percentage,
+            rarity_label=rarity_label,
             verified_collection=verified_collection,
             _configuration=_configuration,
             **kwargs,

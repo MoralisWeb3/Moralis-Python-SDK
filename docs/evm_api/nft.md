@@ -18,6 +18,8 @@
 - [get_nft_trades](#get_nft_trades)
 - [get_nft_trades_by_token](#get_nft_trades_by_token)
 - [get_nft_trades_by_wallet](#get_nft_trades_by_wallet)
+- [get_nft_traits_by_collection](#get_nft_traits_by_collection)
+- [get_nft_traits_by_collection_paginate](#get_nft_traits_by_collection_paginate)
 - [get_nft_transfers](#get_nft_transfers)
 - [get_nft_transfers_by_block](#get_nft_transfers_by_block)
 - [get_nft_transfers_from_to_block](#get_nft_transfers_from_to_block)
@@ -25,6 +27,7 @@
 - [get_wallet_nft_transfers](#get_wallet_nft_transfers)
 - [get_wallet_nfts](#get_wallet_nfts)
 - [re_sync_metadata](#re_sync_metadata)
+- [resync_nft_rarity](#resync_nft_rarity)
 - [sync_nft_contract](#sync_nft_contract)
 
 
@@ -758,6 +761,84 @@ print(result)
 
 
 ---
+## get_nft_traits_by_collection
+
+> `evm_api.nft.get_nft_traits_by_collection()`
+
+Get traits of NFTs for a given contract.
+
+
+### Example
+```python
+from moralis import evm_api
+
+api_key = "YOUR_API_KEY"
+params = {
+    "address": "0x524cab2ec69124574082676e6f654a18df49a048", 
+    "chain": "eth", 
+}
+
+result = evm_api.nft.get_nft_traits_by_collection(
+    api_key=api_key,
+    params=params,
+)
+
+print(result)
+
+```
+
+### Parameters
+
+| Name | Type | Description | Required | Default | Example |
+|------|------|-------------|----------|---------|---------|
+| address | str | The address of the NFT contract | Yes |  | "0x524cab2ec69124574082676e6f654a18df49a048" |
+| chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1"<br/>- "chiliz"<br/>- "0x15b38"<br/>- "chiliz testnet"<br/>- "0x15b32"<br/>- "gnosis"<br/>- "0x64"<br/>- "gnosis testnet"<br/>- "0x27d8"<br/>- "base"<br/>- "0x2105"<br/>- "base sepolia"<br/>- "0x14a34"<br/>- "optimism"<br/>- "0xa"<br/>- "holesky"<br/>- "0x4268"<br/>- "polygon amoy"<br/>- "0x13882"<br/>- "linea"<br/>- "0xe708"<br/>- "moonbeam"<br/>- "0x504"<br/>- "moonriver"<br/>- "0x505"<br/>- "moonbase"<br/>- "0x507"<br/>- "linea sepolia"<br/>- "0xe705" | The chain to query |  | "eth" | "eth" |
+
+
+
+---
+## get_nft_traits_by_collection_paginate
+
+> `evm_api.nft.get_nft_traits_by_collection_paginate()`
+
+Get traits of NFTs for a given contract with pagination.
+
+
+### Example
+```python
+from moralis import evm_api
+
+api_key = "YOUR_API_KEY"
+params = {
+    "address": "0x524cab2ec69124574082676e6f654a18df49a048", 
+    "chain": "eth", 
+    "cursor": "", 
+    "limit": 0, 
+    "order": "DESC", 
+}
+
+result = evm_api.nft.get_nft_traits_by_collection_paginate(
+    api_key=api_key,
+    params=params,
+)
+
+print(result)
+
+```
+
+### Parameters
+
+| Name | Type | Description | Required | Default | Example |
+|------|------|-------------|----------|---------|---------|
+| address | str | The address of the NFT contract | Yes |  | "0x524cab2ec69124574082676e6f654a18df49a048" |
+| chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1"<br/>- "chiliz"<br/>- "0x15b38"<br/>- "chiliz testnet"<br/>- "0x15b32"<br/>- "gnosis"<br/>- "0x64"<br/>- "gnosis testnet"<br/>- "0x27d8"<br/>- "base"<br/>- "0x2105"<br/>- "base sepolia"<br/>- "0x14a34"<br/>- "optimism"<br/>- "0xa"<br/>- "holesky"<br/>- "0x4268"<br/>- "polygon amoy"<br/>- "0x13882"<br/>- "linea"<br/>- "0xe708"<br/>- "moonbeam"<br/>- "0x504"<br/>- "moonriver"<br/>- "0x505"<br/>- "moonbase"<br/>- "0x507"<br/>- "linea sepolia"<br/>- "0xe705" | The chain to query |  | "eth" | "eth" |
+| cursor | str | The cursor returned in the previous response (used for getting the next page). |  |  | "" |
+| limit | int | The desired page size of the result. |  |  | 0 |
+| order | enum[str]: <br/>- "ASC"<br/>- "DESC" | The order of the result, in ascending (ASC) or descending (DESC) |  | "DESC" | "DESC" |
+
+
+
+---
 ## get_nft_transfers
 
 > `evm_api.nft.get_nft_transfers()`
@@ -1091,6 +1172,42 @@ print(result)
 | chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1"<br/>- "chiliz"<br/>- "0x15b38"<br/>- "chiliz testnet"<br/>- "0x15b32"<br/>- "gnosis"<br/>- "0x64"<br/>- "gnosis testnet"<br/>- "0x27d8"<br/>- "base"<br/>- "0x2105"<br/>- "base sepolia"<br/>- "0x14a34"<br/>- "optimism"<br/>- "0xa"<br/>- "holesky"<br/>- "0x4268"<br/>- "polygon amoy"<br/>- "0x13882"<br/>- "linea"<br/>- "0xe708"<br/>- "moonbeam"<br/>- "0x504"<br/>- "moonriver"<br/>- "0x505"<br/>- "moonbase"<br/>- "0x507"<br/>- "linea sepolia"<br/>- "0xe705" | The chain to query |  | "eth" | "eth" |
 | flag | enum[str]: <br/>- "uri"<br/>- "metadata" | The type of resync to operate |  | "uri" | "uri" |
 | mode | enum[str]: <br/>- "async"<br/>- "sync" | To define the behaviour of the endpoint |  | "async" | "sync" |
+
+
+
+---
+## resync_nft_rarity
+
+> `evm_api.nft.resync_nft_rarity()`
+
+Resync the NFT Trait for a given contract.
+
+
+### Example
+```python
+from moralis import evm_api
+
+api_key = "YOUR_API_KEY"
+params = {
+    "address": "0x524cab2ec69124574082676e6f654a18df49a048", 
+    "chain": "eth", 
+}
+
+result = evm_api.nft.resync_nft_rarity(
+    api_key=api_key,
+    params=params,
+)
+
+print(result)
+
+```
+
+### Parameters
+
+| Name | Type | Description | Required | Default | Example |
+|------|------|-------------|----------|---------|---------|
+| address | str | The address of the NFT contract | Yes |  | "0x524cab2ec69124574082676e6f654a18df49a048" |
+| chain | enum[str]: <br/>- "eth"<br/>- "0x1"<br/>- "sepolia"<br/>- "0xaa36a7"<br/>- "polygon"<br/>- "0x89"<br/>- "bsc"<br/>- "0x38"<br/>- "bsc testnet"<br/>- "0x61"<br/>- "avalanche"<br/>- "0xa86a"<br/>- "fantom"<br/>- "0xfa"<br/>- "palm"<br/>- "0x2a15c308d"<br/>- "cronos"<br/>- "0x19"<br/>- "arbitrum"<br/>- "0xa4b1"<br/>- "chiliz"<br/>- "0x15b38"<br/>- "chiliz testnet"<br/>- "0x15b32"<br/>- "gnosis"<br/>- "0x64"<br/>- "gnosis testnet"<br/>- "0x27d8"<br/>- "base"<br/>- "0x2105"<br/>- "base sepolia"<br/>- "0x14a34"<br/>- "optimism"<br/>- "0xa"<br/>- "holesky"<br/>- "0x4268"<br/>- "polygon amoy"<br/>- "0x13882"<br/>- "linea"<br/>- "0xe708"<br/>- "moonbeam"<br/>- "0x504"<br/>- "moonriver"<br/>- "0x505"<br/>- "moonbase"<br/>- "0x507"<br/>- "linea sepolia"<br/>- "0xe705" | The chain to query |  | "eth" | "eth" |
 
 
 

@@ -10,6 +10,9 @@ from openapi_evm_api.apis.paths.nft_address_owners import NftAddressOwners
 from openapi_evm_api.apis.paths.nft_address_transfers import NftAddressTransfers
 from openapi_evm_api.apis.paths.nft_transfers import NftTransfers
 from openapi_evm_api.apis.paths.block_block_number_or_hash_nft_transfers import BlockBlockNumberOrHashNftTransfers
+from openapi_evm_api.apis.paths.nft_address_traits import NftAddressTraits
+from openapi_evm_api.apis.paths.nft_address_traits_paginate import NftAddressTraitsPaginate
+from openapi_evm_api.apis.paths.nft_address_traits_resync import NftAddressTraitsResync
 from openapi_evm_api.apis.paths.nft_address_trades import NftAddressTrades
 from openapi_evm_api.apis.paths.nft_address_token_id_trades import NftAddressTokenIdTrades
 from openapi_evm_api.apis.paths.wallets_address_nfts_trades import WalletsAddressNftsTrades
@@ -99,6 +102,9 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.NFT_ADDRESS_TRANSFERS: NftAddressTransfers,
         PathValues.NFT_TRANSFERS: NftTransfers,
         PathValues.BLOCK_BLOCK_NUMBER_OR_HASH_NFT_TRANSFERS: BlockBlockNumberOrHashNftTransfers,
+        PathValues.NFT_ADDRESS_TRAITS: NftAddressTraits,
+        PathValues.NFT_ADDRESS_TRAITS_PAGINATE: NftAddressTraitsPaginate,
+        PathValues.NFT_ADDRESS_TRAITS_RESYNC: NftAddressTraitsResync,
         PathValues.NFT_ADDRESS_TRADES: NftAddressTrades,
         PathValues.NFT_ADDRESS_TOKEN_ID_TRADES: NftAddressTokenIdTrades,
         PathValues.WALLETS_ADDRESS_NFTS_TRADES: WalletsAddressNftsTrades,
@@ -189,6 +195,9 @@ path_to_api = PathToApi(
         PathValues.NFT_ADDRESS_TRANSFERS: NftAddressTransfers,
         PathValues.NFT_TRANSFERS: NftTransfers,
         PathValues.BLOCK_BLOCK_NUMBER_OR_HASH_NFT_TRANSFERS: BlockBlockNumberOrHashNftTransfers,
+        PathValues.NFT_ADDRESS_TRAITS: NftAddressTraits,
+        PathValues.NFT_ADDRESS_TRAITS_PAGINATE: NftAddressTraitsPaginate,
+        PathValues.NFT_ADDRESS_TRAITS_RESYNC: NftAddressTraitsResync,
         PathValues.NFT_ADDRESS_TRADES: NftAddressTrades,
         PathValues.NFT_ADDRESS_TOKEN_ID_TRADES: NftAddressTokenIdTrades,
         PathValues.WALLETS_ADDRESS_NFTS_TRADES: WalletsAddressNftsTrades,

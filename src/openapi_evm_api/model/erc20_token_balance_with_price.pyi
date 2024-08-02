@@ -68,6 +68,9 @@ class Erc20TokenBalanceWithPrice(
             thumbnail = schemas.StrSchema
             verified_contract = schemas.BoolSchema
             usd_value_24hr_usd_change = schemas.StrSchema
+            total_supply = schemas.StrSchema
+            total_supply_formatted = schemas.StrSchema
+            percentage_relative_to_total_supply = schemas.NumberSchema
             __annotations__ = {
                 "name": name,
                 "symbol": symbol,
@@ -86,6 +89,9 @@ class Erc20TokenBalanceWithPrice(
                 "thumbnail": thumbnail,
                 "verified_contract": verified_contract,
                 "usd_value_24hr_usd_change": usd_value_24hr_usd_change,
+                "total_supply": total_supply,
+                "total_supply_formatted": total_supply_formatted,
+                "percentage_relative_to_total_supply": percentage_relative_to_total_supply,
             }
     
     symbol: MetaOapg.properties.symbol
@@ -154,9 +160,18 @@ class Erc20TokenBalanceWithPrice(
     def __getitem__(self, name: typing_extensions.Literal["usd_value_24hr_usd_change"]) -> MetaOapg.properties.usd_value_24hr_usd_change: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["total_supply"]) -> MetaOapg.properties.total_supply: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["total_supply_formatted"]) -> MetaOapg.properties.total_supply_formatted: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["percentage_relative_to_total_supply"]) -> MetaOapg.properties.percentage_relative_to_total_supply: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["name", "symbol", "decimals", "balance", "possible_spam", "usd_price", "usd_price_24hr_percent_change", "usd_price_24hr_usd_change", "usd_value", "portfolio_percentage", "balance_formatted", "native_token", "token_address", "logo", "thumbnail", "verified_contract", "usd_value_24hr_usd_change", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["name", "symbol", "decimals", "balance", "possible_spam", "usd_price", "usd_price_24hr_percent_change", "usd_price_24hr_usd_change", "usd_value", "portfolio_percentage", "balance_formatted", "native_token", "token_address", "logo", "thumbnail", "verified_contract", "usd_value_24hr_usd_change", "total_supply", "total_supply_formatted", "percentage_relative_to_total_supply", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -213,9 +228,18 @@ class Erc20TokenBalanceWithPrice(
     def get_item_oapg(self, name: typing_extensions.Literal["usd_value_24hr_usd_change"]) -> typing.Union[MetaOapg.properties.usd_value_24hr_usd_change, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["total_supply"]) -> typing.Union[MetaOapg.properties.total_supply, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["total_supply_formatted"]) -> typing.Union[MetaOapg.properties.total_supply_formatted, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["percentage_relative_to_total_supply"]) -> typing.Union[MetaOapg.properties.percentage_relative_to_total_supply, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["name", "symbol", "decimals", "balance", "possible_spam", "usd_price", "usd_price_24hr_percent_change", "usd_price_24hr_usd_change", "usd_value", "portfolio_percentage", "balance_formatted", "native_token", "token_address", "logo", "thumbnail", "verified_contract", "usd_value_24hr_usd_change", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["name", "symbol", "decimals", "balance", "possible_spam", "usd_price", "usd_price_24hr_percent_change", "usd_price_24hr_usd_change", "usd_value", "portfolio_percentage", "balance_formatted", "native_token", "token_address", "logo", "thumbnail", "verified_contract", "usd_value_24hr_usd_change", "total_supply", "total_supply_formatted", "percentage_relative_to_total_supply", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -240,6 +264,9 @@ class Erc20TokenBalanceWithPrice(
         thumbnail: typing.Union[MetaOapg.properties.thumbnail, str, schemas.Unset] = schemas.unset,
         verified_contract: typing.Union[MetaOapg.properties.verified_contract, bool, schemas.Unset] = schemas.unset,
         usd_value_24hr_usd_change: typing.Union[MetaOapg.properties.usd_value_24hr_usd_change, str, schemas.Unset] = schemas.unset,
+        total_supply: typing.Union[MetaOapg.properties.total_supply, str, schemas.Unset] = schemas.unset,
+        total_supply_formatted: typing.Union[MetaOapg.properties.total_supply_formatted, str, schemas.Unset] = schemas.unset,
+        percentage_relative_to_total_supply: typing.Union[MetaOapg.properties.percentage_relative_to_total_supply, decimal.Decimal, int, float, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'Erc20TokenBalanceWithPrice':
@@ -264,6 +291,9 @@ class Erc20TokenBalanceWithPrice(
             thumbnail=thumbnail,
             verified_contract=verified_contract,
             usd_value_24hr_usd_change=usd_value_24hr_usd_change,
+            total_supply=total_supply,
+            total_supply_formatted=total_supply_formatted,
+            percentage_relative_to_total_supply=percentage_relative_to_total_supply,
             _configuration=_configuration,
             **kwargs,
         )
