@@ -55,6 +55,8 @@ from openapi_evm_api.model.erc20_transaction_collection import Erc20TransactionC
 from openapi_evm_api.model.erc721_metadata import Erc721Metadata
 from openapi_evm_api.model.get_multiple_nfts_dto import GetMultipleNftsDto
 from openapi_evm_api.model.get_multiple_token_prices_dto import GetMultipleTokenPricesDto
+from openapi_evm_api.model.grouped_trait import GroupedTrait
+from openapi_evm_api.model.grouped_trait_collection import GroupedTraitCollection
 from openapi_evm_api.model.historical_nft_transfer import HistoricalNftTransfer
 from openapi_evm_api.model.include_list import IncludeList
 from openapi_evm_api.model.internal_transaction import InternalTransaction
@@ -109,6 +111,8 @@ from openapi_evm_api.model.token_timestamp import TokenTimestamp
 from openapi_evm_api.model.top_profitable_wallet_per_token_response import TopProfitableWalletPerTokenResponse
 from openapi_evm_api.model.trade import Trade
 from openapi_evm_api.model.trade_collection import TradeCollection
+from openapi_evm_api.model.trait import Trait
+from openapi_evm_api.model.trait_collection import TraitCollection
 from openapi_evm_api.model.transaction import Transaction
 from openapi_evm_api.model.transaction_collection import TransactionCollection
 from openapi_evm_api.model.transaction_collection_verbose import TransactionCollectionVerbose

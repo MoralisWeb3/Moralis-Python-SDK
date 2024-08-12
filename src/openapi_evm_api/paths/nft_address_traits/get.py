@@ -25,47 +25,13 @@ import frozendict  # noqa: F401
 
 from openapi_evm_api import schemas  # noqa: F401
 
+from openapi_evm_api.model.grouped_trait_collection import GroupedTraitCollection
 from openapi_evm_api.model.chain_list import ChainList
-from openapi_evm_api.model.wallet_history import WalletHistory
-from openapi_evm_api.model.order_list import OrderList
 
 from . import path
 
 # Query params
 ChainSchema = ChainList
-
-
-class FromBlockSchema(
-    schemas.IntSchema
-):
-
-
-    class MetaOapg:
-        inclusive_minimum = 0
-
-
-class ToBlockSchema(
-    schemas.IntSchema
-):
-
-
-    class MetaOapg:
-        inclusive_minimum = 0
-FromDateSchema = schemas.StrSchema
-ToDateSchema = schemas.StrSchema
-IncludeInternalTransactionsSchema = schemas.BoolSchema
-NftMetadataSchema = schemas.BoolSchema
-CursorSchema = schemas.StrSchema
-OrderSchema = OrderList
-
-
-class LimitSchema(
-    schemas.IntSchema
-):
-
-
-    class MetaOapg:
-        inclusive_minimum = 0
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -75,15 +41,6 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
     'RequestOptionalQueryParams',
     {
         'chain': typing.Union[ChainSchema, ],
-        'from_block': typing.Union[FromBlockSchema, decimal.Decimal, int, ],
-        'to_block': typing.Union[ToBlockSchema, decimal.Decimal, int, ],
-        'from_date': typing.Union[FromDateSchema, str, ],
-        'to_date': typing.Union[ToDateSchema, str, ],
-        'include_internal_transactions': typing.Union[IncludeInternalTransactionsSchema, bool, ],
-        'nft_metadata': typing.Union[NftMetadataSchema, bool, ],
-        'cursor': typing.Union[CursorSchema, str, ],
-        'order': typing.Union[OrderSchema, ],
-        'limit': typing.Union[LimitSchema, decimal.Decimal, int, ],
     },
     total=False
 )
@@ -97,60 +54,6 @@ request_query_chain = api_client.QueryParameter(
     name="chain",
     style=api_client.ParameterStyle.FORM,
     schema=ChainSchema,
-    explode=True,
-)
-request_query_from_block = api_client.QueryParameter(
-    name="from_block",
-    style=api_client.ParameterStyle.FORM,
-    schema=FromBlockSchema,
-    explode=True,
-)
-request_query_to_block = api_client.QueryParameter(
-    name="to_block",
-    style=api_client.ParameterStyle.FORM,
-    schema=ToBlockSchema,
-    explode=True,
-)
-request_query_from_date = api_client.QueryParameter(
-    name="from_date",
-    style=api_client.ParameterStyle.FORM,
-    schema=FromDateSchema,
-    explode=True,
-)
-request_query_to_date = api_client.QueryParameter(
-    name="to_date",
-    style=api_client.ParameterStyle.FORM,
-    schema=ToDateSchema,
-    explode=True,
-)
-request_query_include_internal_transactions = api_client.QueryParameter(
-    name="include_internal_transactions",
-    style=api_client.ParameterStyle.FORM,
-    schema=IncludeInternalTransactionsSchema,
-    explode=True,
-)
-request_query_nft_metadata = api_client.QueryParameter(
-    name="nft_metadata",
-    style=api_client.ParameterStyle.FORM,
-    schema=NftMetadataSchema,
-    explode=True,
-)
-request_query_cursor = api_client.QueryParameter(
-    name="cursor",
-    style=api_client.ParameterStyle.FORM,
-    schema=CursorSchema,
-    explode=True,
-)
-request_query_order = api_client.QueryParameter(
-    name="order",
-    style=api_client.ParameterStyle.FORM,
-    schema=OrderSchema,
-    explode=True,
-)
-request_query_limit = api_client.QueryParameter(
-    name="limit",
-    style=api_client.ParameterStyle.FORM,
-    schema=LimitSchema,
     explode=True,
 )
 # Path params
@@ -182,7 +85,7 @@ request_path_address = api_client.PathParameter(
 _auth = [
     'ApiKeyAuth',
 ]
-SchemaFor200ResponseBodyApplicationJson = WalletHistory
+SchemaFor200ResponseBodyApplicationJson = GroupedTraitCollection
 
 
 @dataclass
@@ -211,7 +114,7 @@ _all_accept_content_types = (
 
 class BaseApi(api_client.Api):
     @typing.overload
-    def _get_wallet_history_oapg(
+    def _get_nft_traits_by_collection_oapg(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
@@ -224,7 +127,7 @@ class BaseApi(api_client.Api):
     ]: ...
 
     @typing.overload
-    def _get_wallet_history_oapg(
+    def _get_nft_traits_by_collection_oapg(
         self,
         skip_deserialization: typing_extensions.Literal[True],
         query_params: RequestQueryParams = frozendict.frozendict(),
@@ -235,7 +138,7 @@ class BaseApi(api_client.Api):
     ) -> api_client.ApiResponseWithoutDeserialization: ...
 
     @typing.overload
-    def _get_wallet_history_oapg(
+    def _get_nft_traits_by_collection_oapg(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
@@ -248,7 +151,7 @@ class BaseApi(api_client.Api):
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
-    def _get_wallet_history_oapg(
+    def _get_nft_traits_by_collection_oapg(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
@@ -258,7 +161,7 @@ class BaseApi(api_client.Api):
         skip_deserialization: bool = False,
     ):
         """
-        Get complete history of wallets
+        Get NFT traits by collection
         :param skip_deserialization: If true then api_response.response will be set but
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
@@ -283,15 +186,6 @@ class BaseApi(api_client.Api):
         prefix_separator_iterator = None
         for parameter in (
             request_query_chain,
-            request_query_from_block,
-            request_query_to_block,
-            request_query_from_date,
-            request_query_to_date,
-            request_query_include_internal_transactions,
-            request_query_nft_metadata,
-            request_query_cursor,
-            request_query_order,
-            request_query_limit,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -332,11 +226,11 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class GetWalletHistory(BaseApi):
+class GetNftTraitsByCollection(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
     @typing.overload
-    def get_wallet_history(
+    def get_nft_traits_by_collection(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
@@ -349,7 +243,7 @@ class GetWalletHistory(BaseApi):
     ]: ...
 
     @typing.overload
-    def get_wallet_history(
+    def get_nft_traits_by_collection(
         self,
         skip_deserialization: typing_extensions.Literal[True],
         query_params: RequestQueryParams = frozendict.frozendict(),
@@ -360,7 +254,7 @@ class GetWalletHistory(BaseApi):
     ) -> api_client.ApiResponseWithoutDeserialization: ...
 
     @typing.overload
-    def get_wallet_history(
+    def get_nft_traits_by_collection(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
@@ -373,7 +267,7 @@ class GetWalletHistory(BaseApi):
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
-    def get_wallet_history(
+    def get_nft_traits_by_collection(
         self,
         query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
@@ -382,7 +276,7 @@ class GetWalletHistory(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ):
-        return self._get_wallet_history_oapg(
+        return self._get_nft_traits_by_collection_oapg(
             query_params=query_params,
             path_params=path_params,
             accept_content_types=accept_content_types,
@@ -442,7 +336,7 @@ class ApiForget(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ):
-        return self._get_wallet_history_oapg(
+        return self._get_nft_traits_by_collection_oapg(
             query_params=query_params,
             path_params=path_params,
             accept_content_types=accept_content_types,
