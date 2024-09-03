@@ -37,7 +37,6 @@ class WalletProfitabilityTokenData(
         required = {
             "symbol",
             "total_tokens_bought",
-            "thumbnail",
             "total_buys",
             "total_sells",
             "avg_cost_of_quantity_sold",
@@ -46,13 +45,13 @@ class WalletProfitabilityTokenData(
             "avg_sell_price_usd",
             "total_usd_invested",
             "realized_profit_usd",
+            "possible_spam",
             "realized_profit_percentage",
             "decimals",
             "avg_buy_price_usd",
             "name",
             "total_tokens_sold",
             "logo",
-            "logo_hash",
             "total_sold_usd",
         }
         
@@ -74,8 +73,6 @@ class WalletProfitabilityTokenData(
             symbol = schemas.StrSchema
             decimals = schemas.StrSchema
             logo = schemas.StrSchema
-            logo_hash = schemas.StrSchema
-            thumbnail = schemas.StrSchema
             possible_spam = schemas.BoolSchema
             __annotations__ = {
                 "token_address": token_address,
@@ -95,14 +92,11 @@ class WalletProfitabilityTokenData(
                 "symbol": symbol,
                 "decimals": decimals,
                 "logo": logo,
-                "logo_hash": logo_hash,
-                "thumbnail": thumbnail,
                 "possible_spam": possible_spam,
             }
     
     symbol: MetaOapg.properties.symbol
     total_tokens_bought: MetaOapg.properties.total_tokens_bought
-    thumbnail: MetaOapg.properties.thumbnail
     total_buys: MetaOapg.properties.total_buys
     total_sells: MetaOapg.properties.total_sells
     avg_cost_of_quantity_sold: MetaOapg.properties.avg_cost_of_quantity_sold
@@ -111,13 +105,13 @@ class WalletProfitabilityTokenData(
     avg_sell_price_usd: MetaOapg.properties.avg_sell_price_usd
     total_usd_invested: MetaOapg.properties.total_usd_invested
     realized_profit_usd: MetaOapg.properties.realized_profit_usd
+    possible_spam: MetaOapg.properties.possible_spam
     realized_profit_percentage: MetaOapg.properties.realized_profit_percentage
     decimals: MetaOapg.properties.decimals
     avg_buy_price_usd: MetaOapg.properties.avg_buy_price_usd
     name: MetaOapg.properties.name
     total_tokens_sold: MetaOapg.properties.total_tokens_sold
     logo: MetaOapg.properties.logo
-    logo_hash: MetaOapg.properties.logo_hash
     total_sold_usd: MetaOapg.properties.total_sold_usd
     
     @typing.overload
@@ -172,18 +166,12 @@ class WalletProfitabilityTokenData(
     def __getitem__(self, name: typing_extensions.Literal["logo"]) -> MetaOapg.properties.logo: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["logo_hash"]) -> MetaOapg.properties.logo_hash: ...
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["thumbnail"]) -> MetaOapg.properties.thumbnail: ...
-    
-    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "avg_buy_price_usd", "avg_sell_price_usd", "total_usd_invested", "total_tokens_sold", "total_tokens_bought", "total_sold_usd", "avg_cost_of_quantity_sold", "count_of_trades", "realized_profit_usd", "realized_profit_percentage", "total_buys", "total_sells", "name", "symbol", "decimals", "logo", "logo_hash", "thumbnail", "possible_spam", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["token_address", "avg_buy_price_usd", "avg_sell_price_usd", "total_usd_invested", "total_tokens_sold", "total_tokens_bought", "total_sold_usd", "avg_cost_of_quantity_sold", "count_of_trades", "realized_profit_usd", "realized_profit_percentage", "total_buys", "total_sells", "name", "symbol", "decimals", "logo", "possible_spam", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -240,18 +228,12 @@ class WalletProfitabilityTokenData(
     def get_item_oapg(self, name: typing_extensions.Literal["logo"]) -> MetaOapg.properties.logo: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["logo_hash"]) -> MetaOapg.properties.logo_hash: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["thumbnail"]) -> MetaOapg.properties.thumbnail: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["possible_spam"]) -> typing.Union[MetaOapg.properties.possible_spam, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["possible_spam"]) -> MetaOapg.properties.possible_spam: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "avg_buy_price_usd", "avg_sell_price_usd", "total_usd_invested", "total_tokens_sold", "total_tokens_bought", "total_sold_usd", "avg_cost_of_quantity_sold", "count_of_trades", "realized_profit_usd", "realized_profit_percentage", "total_buys", "total_sells", "name", "symbol", "decimals", "logo", "logo_hash", "thumbnail", "possible_spam", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["token_address", "avg_buy_price_usd", "avg_sell_price_usd", "total_usd_invested", "total_tokens_sold", "total_tokens_bought", "total_sold_usd", "avg_cost_of_quantity_sold", "count_of_trades", "realized_profit_usd", "realized_profit_percentage", "total_buys", "total_sells", "name", "symbol", "decimals", "logo", "possible_spam", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -260,7 +242,6 @@ class WalletProfitabilityTokenData(
         *args: typing.Union[dict, frozendict.frozendict, ],
         symbol: typing.Union[MetaOapg.properties.symbol, str, ],
         total_tokens_bought: typing.Union[MetaOapg.properties.total_tokens_bought, str, ],
-        thumbnail: typing.Union[MetaOapg.properties.thumbnail, str, ],
         total_buys: typing.Union[MetaOapg.properties.total_buys, decimal.Decimal, int, float, ],
         total_sells: typing.Union[MetaOapg.properties.total_sells, decimal.Decimal, int, float, ],
         avg_cost_of_quantity_sold: typing.Union[MetaOapg.properties.avg_cost_of_quantity_sold, str, ],
@@ -269,15 +250,14 @@ class WalletProfitabilityTokenData(
         avg_sell_price_usd: typing.Union[MetaOapg.properties.avg_sell_price_usd, str, ],
         total_usd_invested: typing.Union[MetaOapg.properties.total_usd_invested, str, ],
         realized_profit_usd: typing.Union[MetaOapg.properties.realized_profit_usd, str, ],
+        possible_spam: typing.Union[MetaOapg.properties.possible_spam, bool, ],
         realized_profit_percentage: typing.Union[MetaOapg.properties.realized_profit_percentage, decimal.Decimal, int, float, ],
         decimals: typing.Union[MetaOapg.properties.decimals, str, ],
         avg_buy_price_usd: typing.Union[MetaOapg.properties.avg_buy_price_usd, str, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
         total_tokens_sold: typing.Union[MetaOapg.properties.total_tokens_sold, str, ],
         logo: typing.Union[MetaOapg.properties.logo, str, ],
-        logo_hash: typing.Union[MetaOapg.properties.logo_hash, str, ],
         total_sold_usd: typing.Union[MetaOapg.properties.total_sold_usd, str, ],
-        possible_spam: typing.Union[MetaOapg.properties.possible_spam, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'WalletProfitabilityTokenData':
@@ -286,7 +266,6 @@ class WalletProfitabilityTokenData(
             *args,
             symbol=symbol,
             total_tokens_bought=total_tokens_bought,
-            thumbnail=thumbnail,
             total_buys=total_buys,
             total_sells=total_sells,
             avg_cost_of_quantity_sold=avg_cost_of_quantity_sold,
@@ -295,15 +274,14 @@ class WalletProfitabilityTokenData(
             avg_sell_price_usd=avg_sell_price_usd,
             total_usd_invested=total_usd_invested,
             realized_profit_usd=realized_profit_usd,
+            possible_spam=possible_spam,
             realized_profit_percentage=realized_profit_percentage,
             decimals=decimals,
             avg_buy_price_usd=avg_buy_price_usd,
             name=name,
             total_tokens_sold=total_tokens_sold,
             logo=logo,
-            logo_hash=logo_hash,
             total_sold_usd=total_sold_usd,
-            possible_spam=possible_spam,
             _configuration=_configuration,
             **kwargs,
         )
